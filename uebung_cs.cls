@@ -16,17 +16,18 @@
 \RequirePackage{scrlayer-scrpage}
 \RequirePackage[a4paper,left=1in,right=1in,bottom=1.5in,top=1in]{geometry}
 \RequirePackage{ifthen}
-\RequirePackage{iftex}
 
 \RequirePackage{amsmath,amsfonts,amssymb,ragged2e}
 \RequirePackage[english,ngerman]{babel}
-\ifpdftex
+
+\RequirePackage{iftex}
+\ifPDFTeX
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
-	\RequirePackage{mathpazo}% palatino fonts
+	\RequirePackage{mathpazo} % palatino fonts
 \else
 	\RequirePackage{fontspec}
-	\setmainfont{TeX Gyre Pagella} %palatino clone
+	\setmainfont{TeX Gyre Pagella} % palatino clone
 \fi
 \usepackage[babel,german=quotes]{csquotes}
 \RequirePackage{microtype}
