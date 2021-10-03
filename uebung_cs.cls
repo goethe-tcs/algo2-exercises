@@ -16,32 +16,21 @@
 \RequirePackage{scrlayer-scrpage}
 \RequirePackage[a4paper,left=1in,right=1in,bottom=1.5in,top=1in]{geometry}
 \RequirePackage{ifthen}
-\RequirePackage{ifpdf}
-\RequirePackage{ifxetex}
-\RequirePackage{ifluatex}
-\newif\ifxetexorluatex
-\ifxetex
-  \xetexorluatextrue
-\else
-  \ifluatex
-    \xetexorluatextrue
-  \else
-    \xetexorluatexfalse
-  \fi
-\fi
+\RequirePackage{iftex}
 
 \RequirePackage{amsmath,amsfonts,amssymb,ragged2e}
-\RequirePackage[english, ngerman]{babel}
-\ifxetexorluatex
-  \RequirePackage{fontspec}
+\RequirePackage[english,ngerman]{babel}
+\ifpdftex
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage{mathpazo}% palatino fonts
 \else
-  \RequirePackage[utf8]{inputenc}
+	\RequirePackage{fontspec}
+	\setmainfont{TeX Gyre Pagella} %palatino clone
 \fi
-\RequirePackage{mathpazo}% palatino fonts
 \usepackage[babel,german=quotes]{csquotes}
 \RequirePackage{microtype}
 \RequirePackage{epic,graphicx,xcolor}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{comment}
 \RequirePackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 \RequirePackage{booktabs}
