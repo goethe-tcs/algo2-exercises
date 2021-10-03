@@ -27,7 +27,7 @@
 	\RequirePackage{mathpazo} % palatino fonts
 \else
 	\RequirePackage{fontspec}
-	\setmainfont{TeX Gyre Pagella} % palatino clone
+	% \setmainfont{TeX Gyre Pagella} % palatino clone
 \fi
 \usepackage[babel,german=quotes]{csquotes}
 \RequirePackage{microtype}
