@@ -13,7 +13,7 @@
 \end{aufgabe}
 
 \begin{aufgabe}[Coderunner]
-    Lös die Aufgabe \enquote{Coderunner ausprobieren} auf Moodle.
+    Löse die Aufgabe \enquote{Coderunner ausprobieren} auf Moodle.
 \end{aufgabe}
 
 % \begin{aufgabe}[Pfannkuchensortierung]
@@ -28,8 +28,8 @@
 
 \begin{aufgabe}[Telefonnetzwerk]
     Gegeben sei ein Diagramm mit Schaltzentren und Verbindungen.
-    Verbindungen können durch Kabel, Funk, oder Satellit realisiert werden.
-    Wir modellieren das, indem jede Verbindungen eine assoziierte Bandbreite und Kosten hat.
+    Letztere können durch Kabel, Funk, oder Satellit realisiert werden.
+    Wir modellieren dies, indem wir mit jeder Verbindung eine Bandbreite und Kosten assoziieren.
     \begin{enumerate}
         \item Gib einen Algorithmus an, der für zwei Schaltzentren $a$ und $b$ den Verbindungsweg ausrechnet, der die kleinsten Kosten verursacht.
         \item Die Bandbreite eines Verbindungsweg ist die kleinste Bandbreite über alle einzelnen Verbindungen, die auf dem Weg auftauchen.
@@ -38,9 +38,106 @@
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: 99 Polizisten]
-    Eine Stadt hat 99 Polizisten.
+  Eine Stadt hat 99 Polizisten.
+  Jeder Polizist ist entweder ehrlich oder korrupt, wobei die Mehrheit der Polizisten ehrlich ist.
+  Finde mit weniger als 299 Fragen heraus, welches die korrupten Polizisten sind.
+  
+  Dabei wissen alle Polizisten, welche der Polizisten ehrlich und welche korrupt sind, aber nur ehrliche Polizisten antworten immer wahrheitsgemäß.
+  Korrupte Polizisten lügen möglicherweise.
+  Aus sicherheitsgründen können nur Fragen folgenden Typs gestellt werden: Du kannst einen Polizisten X fragen ob Polizist Y korrupt ist.
+  Die Antwort darauf lautet entweder \enquote{Y ist korrupt} oder \enquote{Y ist ehrlich}.
+
 \end{aufgabe}
 
 \section*{Donnerstag}
 
+\begin{aufgabe}
+  Gegeben sei der gewichtete Graph $G$ in Abbildung~\ref{example_graph}. 
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+			\usetikzlibrary{arrows.meta}
+			\node[draw,circle] (v0)  at (0,  3.5)	{$0$};
+			\node[draw,circle] (v1)  at (2.5,2.5)	{$1$};
+			\node[draw,circle] (v2)  at (6,  3.5)	{$2$};
+%			\node[draw,circle] (v3)  at (12, 3.5)	{$3$};
+			\node[draw,circle] (v4)  at (0,1.5)	{$4$};
+			\node[draw,circle] (v5)  at (4.5,1.5)	{$5$};
+			\node[draw,circle] (v6)  at (9,1.75)	{$3$};
+%			\node[draw,circle] (v7)  at (12,1.75)	{$7$};
+			\node[draw,circle] (v8)  at (2.5,0)	{$8$};
+			\node[draw,circle] (v9)  at (6,0)	{$9$};
+			\node[draw,circle] (v10) at (9,0)	{$7$};
+%			\node[draw,circle] (v11) at (12,0)	{$11$};
+			%
+			\def\list {v0/v1/6, v0/v2/4, v1/v2/1, v1/v4/8, v1/v5/3, %v2/v3/6,
+      v2/v6/8, v4/v5/4, v4/v8/5, v8/v9/1, v9/v5/6, v9/v10/4%, v10/v7/7,
+      %v10/v11/2
+      }  % list elements
+			\foreach \u\v\weight in \list
+			{	\draw[-Stealth] (\u) -- (\v) node [midway, above] {\weight};
+			}
+			\def\vertical {v0/v4/3, v2/v5/4, v2/v9/4,% v3/v7/7,
+      v6/v10/1%, v11/v7/2
+      }  % list elements
+			\foreach \u\v\weight in \vertical
+			{	\draw[-Stealth] (\u) -- (\v) node [midway, left] {\weight};
+			}
+			
+      \draw[-Stealth] (v10) -- (v2) node [midway, above] {5};
+      \path[-Stealth] (v5) edge[bend right] node[above] {2} (v1);
+		\end{tikzpicture}
+		\caption{\label{example_graph}Der gerichtete, gewichtete Graph $G$.}
+	\end{center}
+\end{figure}
+
+  \begin{enumerate}
+    \item Bestimme die kürzesten Pfade zwischen allen Paaren von Knoten in $(G,w)$ mit Hilfe der Idee der \enquote{Funny Matrix Multiplication}.
+    \item Bestimme die kürzesten Pfade zwischen allen Paaren von Knoten in $(G,w)$ mit Hilfe des Floyd-Warshall-Algorithmus.
+  \end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}
+\ 
+  \begin{enumerate}
+    \item Beschreibe, wie der Algorithmus \textsc{LeyzorekAPSP} modifiziert werden kann um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
+    Die Laufzeit soll weiterhin in $O(V^3 \log V)$ liegen.
+    \item Beschreibe, wie der Algorithmus \textsc{FloydWarshall} modifiziert werden kann um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
+    Die Laufzeit soll weiterhin in $O(V^3)$ liegen.
+  \end{enumerate}
+  \emph{Hinweis}: Das Array von Vorgänger-Pointern soll für jedes Knoten-Paar $(u,v)$ den Vorgänger-Knoten von $v$ auf einem kürzesten $u$-$v$-Pfad angeben.
+\end{aufgabe}
+
+%\begin{aufgabe}
+%  Die in der Vorlesung behandelten Algorithmen scheitern, sobald ein negativer Zyklus im Graph enthalten ist.
+%  Sie können allerdings so modifiziert werden, dass sie auch im Falle von negativen Zyklen korrekte Längen kürzester Pfade berechnen.
+%  Damit ist gemeint, dass im Fall, das entsprechende Array \texttt{dist} für ein Knotenpaar $u,v$ folgenden Wert enthalten soll:
+%  \begin{itemize}
+%  	\item Gibt es keinen $u$-$v$-Pfad im Graphen, dann soll $\texttt{dist}[u,v] = \infty$ sein.
+%    \item Ist von $u$ ein negativer Zyklus erreichbar, von dem aus wiederum $v$ erreichbar ist, so soll $\texttt{dist}[u,v] = -\infty$ sein.
+%    \item Andernfalls soll $\texttt{dist}[u,v]$ die Länge eines kürzesten $u$-$v$-Pfades angeben.
+%  \end{itemize}
+%  \begin{enumerate}
+%    \item Zeige dies beispielhaft für den Floyd-Warshall-Algorithmus.
+%    Beschreibe also, wie dieser modifiziert werden kann, um auch im Falle von negativen Zyklen korrekte Längen kürzester  Wege zu berechnen.
+%    \item Zeige, dass der Floyd-Warshall-Algorithmus außerdem so modifiziert werden kann, dass er einen negativen Zyklus im Graphen zurückgibt, falls ein solcher existiert. Andernfalls soll weiterhin das Array der Längen kürzester Wege zurückgegeben werden.
+%  \end{enumerate}
+%\end{aufgabe}
+
+\begin{aufgabe}
+    Morty muss einen stabilisierten Plumbus aus dem Klappenspitzen-Labyrinth beschaffen.
+    Er muss dazu mit Rick's interdimensionaler Portal Gun das Labyrinth betreten, durch das Labyrinth zu einem Plumbus vordringen, anschließend den (instabilen) Plumbus durch das Labyrinth zu einem Fleeb bringen, um ihn zu stabilisieren, und schließlich wieder zurück zum ursprünglichen Portal, um nach Hause zurückzukehren.
+    Plumbusse werden durch Fleeb-Saft stabilisiert, der von jedem Fleeb abgesondert wird, sobald er aus seinem Fleeb-Loch entfernt wird.
+    Instabile Plumbusse explodieren, wenn sie von ihrer Aufbewahrungs-Einheit über 137 Flinks weit getragen werden.
+    Zudem stinkt das Klappenspitzen-Labyrinth nach Fürzen, weshalb Morty so wenig Zeit wie möglich dort verbringen will.
+
+    Rick hat Morty für diese Aufgabe eine detaillierte Karte des Labyrinths gegeben, die aus einem gerichteten Graphen $G = (V,E)$ mit nicht-negativen Kantengewichten besteht (diese geben die Abstände in Flinks an).
+    Zusätzlich hat er ihm die Menge $P \subset V$ der Plumbus-Aufbewahrungseinheiten und die Menge $F \subset V$ der Fleeb-Löcher mitgeteilt.
+    
+    Die Aufgabe von Morty ist es nun, einen Startknoten $s \in V$, eine Plumbus-Aufbewahrungseinheit $p \in P$ und ein Fleeb-Loch $f \in F$ zu finden, sodass die Länge eines kürzesten $p$-$f$-Pfades kleiner als 137 Flinks ist und die Länge eines kürzesten Pfades, der von $s$ zunächst über $p$ und dann über $f$ schließlich zurück zu $s$ führt, so kurz wie möglich ist.
+
+    Beschreibe und analysire einen Algorithmus, um Morty's Problem zu lösen.
+    Du darfst annehmen, dass eine Lösung existiert.
+\end{aufgabe}
 \end{document}
