@@ -8,14 +8,166 @@
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Name der Aufgabe]
-    Text der Aufgabe
+\begin{aufgabe}[Max-Flow-Min-Cut I]
+\
+    % KT 7.1
+    \begin{enumerate}
+        \item Schreibe alle minimalen $s$-$t$-Schnitte im dargestellten Flussnetzwerk in Abbildung~\ref{Figure_1} auf. Die Kapazität einer Kante steht neben der jeweiligen Kante. \\
+        \item Was ist die minimale Kapazität eines $s$-$t$-Schnittes im gegebenen Flussnetzwerk in Abbildung~\ref{Figure_2}? Die Kapazität einer Kante steht neben der jeweiligen Kante.
+    \end{enumerate}
+    
+    \begin{figure}[h]
+    \begin{minipage}[b]{0.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \usetikzlibrary{arrows.meta}
+            \node[draw,circle] (v0) at (1.5,3) {$u$};
+            \node[draw,circle] (v1) at (0,1.5) {$s$};
+            \node[draw,circle] (v2) at (3,1.5) {$t$};
+            \node[draw,circle] (v3) at (1.5,0) {$v$};
+            
+            \path[-stealth] (v1) edge node[above] {$1$} (v0);
+            \path[-stealth] (v1) edge node[below] {$1$} (v3);
+            \path[-stealth] (v0) edge node[right] {$1$} (v3);
+            \path[-stealth] (v0) edge node[above] {$1$} (v2);
+            \path[-stealth] (v3) edge node[below] {$1$} (v2);
+        \end{tikzpicture}
+        \caption{\label{Figure_1} Ein Graph}
+    \end{minipage}
+    \begin{minipage}[b]{0.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \usetikzlibrary{arrows.meta}
+            \node[draw,circle] (v0) at (1.5,3) {$u$};
+            \node[draw,circle] (v1) at (0,1.5) {$s$};
+            \node[draw,circle] (v2) at (3,1.5) {$t$};
+            \node[draw,circle] (v3) at (1.5,0) {$v$};
+            
+            \path[-stealth] (v1) edge node[above] {$2$} (v0);
+            \path[-stealth] (v1) edge node[below] {$4$} (v3);
+            \path[-stealth] (v0) edge node[right] {$6$} (v3);
+            \path[-stealth] (v0) edge node[above] {$4$} (v2);
+            \path[-stealth] (v3) edge node[below] {$2$} (v2);
+        \end{tikzpicture}
+        \caption{\label{Figure_2} Ein Graph 2.0}
+    \end{minipage}
+    \end{figure}
+\end{aufgabe}
+
+\begin{aufgabe}[Max-Flow-Min-Cut II]
+    % KT 7.2
+    Abbildung~\ref{Figure_3} zeigt ein Flussnetzwerk, auf dem ein $s$-$t$-Fluss berechnet wurde. Die Kapazität einer Kante steht neben der jeweiligen Kante und die Zahlen in den Kästchen geben den über diese Kante geschickten Fluss an. (Über die Kanten ohne Nummern in Kästchen - im Speziellen die vier Kanten mit Kapazität 3 - wird kein Fluss geschickt.)
+    \begin{enumerate}
+        \item Was ist der Wert des Flusses? Liegt auf diesem Graphen ein maximaler $(s,t)$ Fluss vor? \\
+        \item Finde einen minimalen $s$-$t$-Schnitt und gebe dessen Kapazität an.
+    \end{enumerate}
+    
+    \begin{figure}[ht]
+	\begin{center}
+		\begin{tikzpicture}
+			\usetikzlibrary{arrows.meta}
+			\node[draw,circle] (v0) at (4.5,  5)	    {$\phantom{s}$};
+			\node[draw,circle] (v1) at (0,  2.5)    {$s$};
+			\node[draw,circle] (v2) at (3,  2.5)	{$\phantom{s}$};
+			\node[draw,circle] (v3) at (6,  2.5)    {$\phantom{s}$};
+			\node[draw,circle] (v4) at (9,  2.5)	{$t$};
+			\node[draw,circle] (v5) at (4.5,  0)    {$d$};
+			\node[draw,rectangle] (b0) at (2.8, 4.5) {$5$};
+			\node[draw,rectangle] (b1) at (7.4, 3.8) {$5$};
+			\node[draw,rectangle] (b2) at (2, 2.8) {$8$};
+			\node[draw,rectangle] (b3) at (5, 2.8) {$8$};
+			\node[draw,rectangle] (b4) at (7, 2.8) {$8$};
+			\node[draw,rectangle] (b5) at (2.8, 0.5) {$5$};
+			\node[draw,rectangle] (b6) at (7.4, 1.1) {$5$};
+			
+			\def\list {v1/v0/10, v1/v2/8, v2/v3/10, v3/v4/8, v0/v4/5}  % list elements
+			\foreach \u\v\weight in \list
+			{	\draw[-stealth] (\u) -- (\v) node [midway, above] {\weight};
+			}
+			\def\vertical {v2/v0/3, v2/v5/3, v0/v3/3, v3/v5/3}  % list elements
+			\foreach \u\v\weight in \vertical
+			{	\draw[-stealth] (\u) -- (\v) node [midway, left] {\weight};
+			}
+			\def\down {v1/v5/5, v5/v4/10} %list elements
+			\foreach \u\v\weight in \down
+			{   \draw[-stealth] (\u) -- (\v) node [midway, below] {\weight};
+			}
+			
+		\end{tikzpicture}
+		\caption{\label{Figure_3}Der gerichtete, gewichtete Graph $G$.}
+	\end{center}
+\end{figure}
+\end{aufgabe}
+
+\begin{aufgabe}[Ford-Fulkerson Algorithmus]
+    % Algorithms and Data Structures II - network1.pdf
+    Berechne einen maximalen Fluss sowie einen minimalen Schnitt auf dem Graphen in Abbildung~\ref{Figure_4}.
+    
+    \begin{figure}[ht]
+	\begin{center}
+		\begin{tikzpicture}
+			\usetikzlibrary{arrows.meta}
+			\node[draw,circle] (v0) at (0,  3.5)	{$s$};
+			\node[draw,circle] (v1) at (2,  3.5)    {$L$};
+			\node[draw,circle] (v2) at (4,  3.5)	{$F$};
+			\node[draw,circle] (v3) at (6,  3.5)    {$A$};
+			\node[draw,circle] (v4) at (8,  3.5)	{$t$};
+			\node[draw,circle] (v5) at (3,    2)    {$C$};
+			\node[draw,circle] (v6) at (5,    2)    {$G$};
+			\node[draw,circle] (v7) at (3,  0.5)    {$B$};
+			\node[draw,circle] (v8) at (5,  0.5)    {$M$};
+			
+			\def\list {v0/v1/12, v1/v2/13, v2/v3/3, v3/v4/6, v2/v6/4, v5/v6/5, v6/v3/8,
+			v6/v4/2, v7/v8/11}  % list elements
+			\foreach \u\v\weight in \list
+			{	\draw[-stealth] (\u) -- (\v) node [midway, above] {\weight};
+			}
+			\def\vertical {v5/v7/7, v8/v6/1 %v0/v4/3, v2/v5/4, v2/v9/4%, v3/v7/7, v6/v10/1, v11/v7/2
+            }  % list elements
+			\foreach \u\v\weight in \vertical
+			{	\draw[-stealth] (\u) -- (\v) node [midway, left] {\weight};
+			}
+			\def\down {v0/v5/2, v8/v4/2} %list elements
+			\foreach \u\v\weight in \down
+			{   \draw[-stealth] (\u) -- (\v) node [midway, below] {\weight};
+			}
+		\end{tikzpicture}
+		\caption{\label{Figure_4}Der gerichtete, gewichtete Graph $G$.}
+	\end{center}
+\end{figure}
+\end{aufgabe}
+
+\begin{aufgabe}[Eigenschaften maximaler Flüsse]
+    % KT 7.4
+    Entscheide ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre warum sie das ist. Ist sie falsch, gebe ein Gegenbeispiel an.\\
+    \textit{Sei $G$ ein beliebiges Flussnetzwerk mit einer Quelle $s$, einer Senke $t$ und einer positiven Integer-Kapazität $c_e$ auf jeder Kante $e$. Wenn $f$ ein maximaler $s$-$t$-Fluss in $G$ ist, dann saturiert $f$ jede von $s$ ausgehende Kante mit einem Fluss (z.B. für alle Kanten $e$, die von $s$ ausgehen, gilt $f(e) = c_e$).}
 \end{aufgabe}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Name der Aufgabe]
-  Text der Aufgabe
+\begin{aufgabe}[Eigenschaften minimaler Schnitte]
+    % KT 7.5
+    Entscheide ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre warum sie das ist. Ist sie falsch, gebe ein Gegenbeispiel an.\\
+    \textit{Sei $G$ ein beliebiges Flussnetzwerk mit einer Quelle $s$, einer Senke $t$ und einer positiven Integer-Kapazität $c_e$ auf jeder Kante $e$. Sei $(A,B)$ ein minimaler $s$-$t$-Schnitt bezüglich der Kapazitäten $\{c_e : e \in E\}$. Angenommen, wir addieren $1$ zu jeder Kapazität, dann ist $(A,B)$ immer noch ein minimaler $s$-$t$-Schnitt bezüglich der neuen Kapazitäten $\{1 + c_e : e \in E\}$.}
+\end{aufgabe}
+
+\begin{aufgabe}[Zombie-Ausbruch]
+    % Algorithms and Data Structures II - network1.pdf
+    Im Land 1D hat ein Zombie-Ausbruch stattgefunden. Der Premierminister des Landes bittet dich, eine Lösung zu finden, um diesen Ausbruch zu stoppen. Du erhältst eine Karte des ganzen Landes, auf der Koordinaten aller Städte verzeichnet sind. Es gibt $X$ infizierte und $Y$ noch nicht infizierte Städte. Die Karte enthält ebenso Informationen über Straßen, die die Städte miteinander verbinden. Alle Straßen führen in eine Richtung und eine Straße führt direkt von einer Stadt in eine andere. Es gibt $R$ solcher Straßen. Eine Stadt ist von der Hauptstadt aus erreichbar, wenn man einer oder mehreren Straßen von der Hauptstadt aus in die Stadt folgen kann. Du kannst annehmen, dass die Reisezeit von einer Stadt in eine andere nicht länger ist, als einen Tag.
+    \begin{enumerate}
+        \item \textbf{Rette die Hauptstadt!} Die Zombies reisen nur über Straßen. Die Hauptstadt ist noch nicht infiziert und der Premierminister möchte wissen, wie viele Straßen zerstört werden müssen, damit die Hauptstadt verschont wird. Gebe einen Algorithmus an, der die minimale Anzahl an Straßen ausgibt, die zerstört werden müssen, um die Hauptstadt von den infizierten Städten abzugrenzen. Analysiere die Laufzeit deines Algorithmus in Abhängigkeit von $X$, $Y$ und $R$. Zeige, dass dein Algorithmus funktioniert. \\
+        \item \textbf{Verteile den Impfstoff!} Wissenschaftler aus der Hauptstadt haben einen wirksamen Impfstoff gefunden. Um diesen in den noch nicht infizierten Städten zu verteilen, müssen in jede noch nicht infizierte Stadt 10 Ärzte geschickt werden. Die Ärzte können nur auf den Straßen reisen. Sie können auch durch infizierte Städte reisen, allerdings können das nur maximal 50 Ärzte pro Tag machen. Gebe einen Algorithmus an der ausgibt, ob man den Impfstoff innerhalb eines Tages zu allen noch nicht infizierten Städten transportieren kann. Analysiere die Laufzeit des Algorithmus in Abhängigkeit von $X$, $Y$ und $R$. Zeige, dass dein Algorithmus funktioniert.
+    \end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Implementierung eines maximalen Flusses]
+    % Algorithms and Data Structures II - network1.pdf
+    Implementiere ein Programm, dass als Eingabe ein Flussnetzwerk erhält und welches mithilfe des Ford-Fulkerson Algorithmus einen maximalen Fluss zwischen zwei Knoten des Netzwerkes berechnet.
+\end{aufgabe}
+
+\begin{aufgabe}[Puzzle der Woche: Vier Münzen]
+    % Algorithms and Data Structures II - network1.pdf
+    Du musst ein Spiel gegen den Henker gewinnen. Bevor das Spiel startet, werden dir deine Augen verbunden. Es werden vier Münzen auf einem quadratischen Tisch platziert, in jeder Ecke liegt eine Münze. Die anfägnliche Position der Münzen wird durch den Henker bestimmt: beliebig und für dich unbekannt. Dein Ziel ist es, dass alle vier Münzen mit der Kopf-Seite nach oben gerichtet liegen. In jeder Runde kannst du jede Teilmenge der vier Münzen auswählen, die dann vom Henker gleichzeitig umgedreht werden. Ist danach auf allen vier Münzen der Kopf auf der oberen Seite zu sehen, hast du gewonnen. Wenn nicht, darf der Henker den Tisch um 90, 180, 270 oder 360 Grad drehen. Schaffst du es nicht, in höchstens 20 Runden zu gewinnen, verlierst du und der Henker geht seiner eigentlichen Berufung nach. Was ist deine Strategie?
 \end{aufgabe}
 
 \end{document}
