@@ -311,6 +311,9 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 	\huge\uebcs@lecture\\[1mm]%
 	\small\uebcs@semester%
 	\ifthenelse{\equal{\uebcs@staff}{}}{}{\vskip5mm\large\uebcs@staff}%
+	\ifdef{\gitAbbrevHash}{\ $\cdot$ \gitAuthorDate{}\ $\cdot$ \textit{\texttt{%
+\ifdef{\uebcs@giturl}{\href{\uebcs@giturl/\gitHash}{\gitAbbrevHash}}{\gitAbbrevHash}%
+}}}{}
 }
 \hfill
 \parbox[c]{18mm}{
@@ -323,9 +326,6 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 %\uebcs@@assignment\ \arabic{uebungnr}%
 %}{%
 {\Large\bfseries\uebcs@blattname}%
-\ifdef{\gitAbbrevHash}{\hfill\textit{\footnotesize Revision \texttt{%
-\ifdef{\uebcs@giturl}{\href{\uebcs@giturl/\gitHash}{\gitAbbrevHash}}{\gitAbbrevHash}%
-} (\gitAuthorDate)}}{}
 %}
 %}}
 %\hfill
