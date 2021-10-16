@@ -1,23 +1,40 @@
 % !TeX spellcheck = de_DE
 \documentclass{uebung_cs}
 \usepackage{algo221}
-\blattname{Übungen zu Woche 1: Vorbereitung und All Pairs Shortest Paths}
-
+\uebung{1}{}{}
+\blattname{Übungen zu Woche 1: Einführung und All Pairs Shortest Paths}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Dienstag 8--10.} Bearbeite jetzt die Übungen im Abschnitt \textbf{Dienstag}. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+\item \textbf{Heimarbeit bis Mittwoch 17:00.}
+\begin{itemize}
+\item 
+Schau die Videos an und lies [Erickson, Kapitel 9.1, 9.2, 9.5--9.8]. Mach dir Notizen, wenn du etwas nicht verstanden hast!
+\item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+\item Lies den Aufgabentext aller Übungsaufgaben.
+\item Bearbeite die Übungsaufgaben im Abschnitt \textbf{Donnerstag}. Wenn du für mehr als 30 Minuten stecken bleibst, geh zur nächsten Übungsaufgabe.
+\end{itemize}
+\item \textbf{Donnerstag 8--10.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+\item \textbf{Heimarbeit bis Freitag 17:00:} Gib deine Lösung zur aktuellen \emoji{star}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
 \section*{Dienstag}
 
-\begin{aufgabe}[Orga]
-    Lies alle Informationen auf der \href{https://tcs.uni-frankfurt.de/algo2/}{Webseite des Kurses}, auf dem \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle-Kurs}, und auf den \href{https://tcs.uni-frankfurt.de/algo2/organisation.pdf}{Organisationsfolien}.
+\begin{aufgabe}[Orga]\
+  \begin{enumerate}
+    \item Lies alle Informationen auf der \href{https://tcs.uni-frankfurt.de/algo2/}{Webseite des Kurses}, auf der \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle-Seite des Kurses}, und auf den \href{https://tcs.uni-frankfurt.de/algo2/organisation.pdf}{Organisationsfolien}.
+    \item Melde dich jetzt mit einem Nickname deiner Wahl auf dem ALGO2 Discord-Server an. Den Link zum Discord-Server findest du in Moodle. (Es handelt sich hierbei \textbf{nicht} um den Discord-Server des Lernzentrums!)
+
+    Nutze den Discord-Server im ganzen Semester, wenn du andere Studis zum Zusammenarbeiten suchst oder inhaltliche Fragen an das Vorlesungsteam hast.
+  \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Chat]
-  Melde dich mit einem Nickname deiner Wahl auf dem ALGO2 Discord-Server an. Den Link zum Discord-Server findest du in Moodle.
-\end{aufgabe}
-
-\begin{aufgabe}[Coderunner]
-    Löse die Aufgabe \enquote{Aufwärmübung: Coderunner ausprobieren} auf Moodle.
+\begin{aufgabe}[Coderunner ausprobieren]
+    Löse jetzt die Aufgabe \enquote{Aufwärmübung: Coderunner ausprobieren} auf Moodle.
 \end{aufgabe}
 
 % \begin{aufgabe}[Pfannkuchensortierung]
@@ -35,13 +52,13 @@
     Die Verbindungen können durch Kabel, Funk, oder Satellit realisiert werden.
     Wir modellieren dies, indem wir mit jeder Verbindung eine \emph{Bandbreite} und \emph{Kosten} assoziieren.
     \begin{enumerate}
-        \item Gib einen Algorithmus an, der für zwei Schaltzentren $a$ und $b$ den Verbindungsweg von $a$ nach $b$ ausrechnet, der die kleinsten Kosten verursacht.
+        \item Gib einen Algorithmus an, der für zwei Schaltzentren $a$ und $b$ einen Verbindungsweg von $a$ nach $b$ ausrechnet, der die kleinsten Kosten verursacht.
         \item Die \emph{Bandbreite eines Verbindungsweg} ist die kleinste Bandbreite über alle einzelnen Verbindungen, die auf dem Weg auftauchen.
-        Gib einen Algorithmus an, der für zwei Schaltzentren $a$ und $b$ den Verbindungsweg von $a$ nach $b$ ausrechnet, der die größtmögliche Bandbreite hat.
+        Gib einen Algorithmus an, der für zwei Schaltzentren $a$ und $b$ einen Verbindungsweg von $a$ nach $b$ ausrechnet, der die größtmögliche Bandbreite hat.
     \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Puzzle der Woche: 99 Polizisten]
+\begin{aufgabe}[Puzzle der Woche: 99 Polizisten]\
   In einer Stadt arbeiten 99 Polizisten.
   Jeder Polizist ist entweder ehrlich oder korrupt, wobei die Mehrheit der Polizisten ehrlich ist.
   Finde mit weniger als 299 Fragen heraus, welches die korrupten Polizisten sind.
@@ -56,7 +73,7 @@
 \section*{Donnerstag}
 
 \begin{aufgabe}[APSP-Algorithmen anwenden]
-  Gegeben sei der gerichtete, gewichtete Graph $G$ in Abbildung~\ref{example_graph}. 
+  Gegeben sei der gerichtete und gewichtete Graph~$G$ aus Abbildung~\ref{example_graph}.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -93,7 +110,7 @@
       \path[-Stealth] (v1) edge[bend angle=20, bend right] node[above] {3} (v5);
       \path[-Stealth] (v4) edge[bend angle=20, bend right] node[above] {6} (v9);
 		\end{tikzpicture}
-		\caption{\label{example_graph}Der gerichtete, gewichtete Graph $G$.}
+		\caption{\label{example_graph}Der gerichtete, gewichtete Graph $G$. Die Zahlen an den Kanten definieren die Funktion $w\colon E(G)\to\mathbb N$ der Kantengewichte.}
 	\end{center}
 \end{figure}
 
@@ -111,7 +128,7 @@
     \item Beschreibe, wie der Algorithmus \textsc{FloydWarshall} modifiziert werden kann, um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
     Die Laufzeit soll weiterhin in $O(V^3)$ liegen.
   \end{enumerate}
-  \emph{Hinweis}: Das Array von Vorgänger-Pointern soll für jedes Knoten-Paar $(u,v)$ den Vorgänger-Knoten von $v$ auf einem kürzesten $u$-$v$-Pfad angeben.
+  \emph{Hinweis}: Das gesuchte Array \texttt{pred} ist ein zweidimensionale Array, das jedem Knoten-Paar $(u,v)$ einen Knoten \texttt{pred[u,v]} zuordnet. Hierbei soll \texttt{pred[u,v]} der Vorgänger-Knoten von $v$ auf einem kürzesten Pfad von $u$ nach $v$ sein.
 \end{aufgabe}
 
 %\begin{aufgabe}
@@ -142,7 +159,8 @@
     
     Morty hat nun die Aufgabe, einen Startknoten $s \in V$, eine Plumbus-Aufbewahrungseinheit $p \in P$ und ein Fleeb-Loch $f \in F$ zu finden, sodass die Länge eines kürzesten Wegs von $p$ nach $f$ höchstens 137 Flinks beträgt und die Länge eines kürzesten Wegs, der von $s$ zunächst über $p$ und dann über $f$ schließlich zurück zu $s$ führt, so kurz wie möglich ist.
 
-    Beschreibe und analysiere einen Algorithmus, um Mortys Problem zu lösen.
+    Beschreibe einen Algorithmus, um Mortys Problem zu lösen, und analysiere seine Laufzeit.
     Du darfst annehmen, dass eine Lösung existiert.
 \end{aufgabe}
+
 \end{document}
