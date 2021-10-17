@@ -74,12 +74,15 @@ Schau die Videos an und lies [Erickson, Kapitel 9.1, 9.2, 9.5--9.8]. Mach dir No
 
 \begin{aufgabe}[APSP-Algorithmen anwenden]
   Gegeben sei der gerichtete und gewichtete Graph~$G$ aus Abbildung~\ref{example_graph}.
+  Führe den Algorithmus \textsc{FloydWarshall} [Erickson, Abschnitt~9.8] von Hand Schritt für Schritt auf $G$ aus. 
+  Beginne, indem du dir eine $(5\times 5)$-Matrix über $\mathbb N\cup\{\infty\}$ aufmalst, die den Zustand des \texttt{dist[.,.]}-Arrays für $r=0$ enthält (also die Basisfälle).
+  Zeichne danach jeweils den Zustand des Arrays nach den Iterationen $r=1,2,\dots,5$.
 
 \begin{figure}[ht]
 	\begin{center}
 		\begin{tikzpicture}
 			\usetikzlibrary{arrows.meta}
-			\node[draw,circle] (v0)  at (0,  3.5)	{$0$};
+%			\node[draw,circle] (v0)  at (0,  3.5)	{$6$};
 			\node[draw,circle] (v1)  at (2.5,2.5)	{$1$};
 			\node[draw,circle] (v2)  at (6,  3.5)	{$2$};
 %			\node[draw,circle] (v3)  at (12, 3.5)	{$3$};
@@ -92,14 +95,14 @@ Schau die Videos an und lies [Erickson, Kapitel 9.1, 9.2, 9.5--9.8]. Mach dir No
 %			\node[draw,circle] (v10) at (9,0)	{$7$};
 %			\node[draw,circle] (v11) at (12,0)	{$11$};
 			%
-			\def\list {v0/v1/6, v0/v2/4, v1/v2/1, v1/v4/8, %v1/v5/3, v2/v3/6, v2/v6/8,
+			\def\list {v1/v2/1, v1/v4/8, %v0/v1/6, v0/v2/4, v1/v5/3, v2/v3/6, v2/v6/8,
       v4/v5/4, %v4/v8/5, v8/v9/1,
       v9/v5/6%, v9/v10/4, v10/v7/7, v10/v11/2
       }  % list elements
 			\foreach \u\v\weight in \list
 			{	\draw[-Stealth] (\u) -- (\v) node [midway, above] {\weight};
 			}
-			\def\vertical {v0/v4/3, v2/v5/4, v2/v9/4%, v3/v7/7, v6/v10/1, v11/v7/2
+			\def\vertical {v2/v5/4, v2/v9/4%, v0/v4/3, v3/v7/7, v6/v10/1, v11/v7/2
       }  % list elements
 			\foreach \u\v\weight in \vertical
 			{	\draw[-Stealth] (\u) -- (\v) node [midway, left] {\weight};
@@ -113,22 +116,17 @@ Schau die Videos an und lies [Erickson, Kapitel 9.1, 9.2, 9.5--9.8]. Mach dir No
 		\caption{\label{example_graph}Der gerichtete, gewichtete Graph $G$. Die Zahlen an den Kanten definieren die Funktion $w\colon E(G)\to\mathbb N$ der Kantengewichte.}
 	\end{center}
 \end{figure}
-
-  \begin{enumerate}
-    \item Bestimme die kürzesten Pfade zwischen allen Paaren von Knoten in $(G,w)$ mit Hilfe der Idee der \enquote{Funny Matrix Multiplication}.
-    \item Bestimme die kürzesten Pfade zwischen allen Paaren von Knoten in $(G,w)$ mit Hilfe des Floyd-Warshall-Algorithmus.
-  \end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[APSP-Algorithmen anpassen]
 \ 
   \begin{enumerate}
-    \item Beschreibe, wie der Algorithmus \textsc{LeyzorekAPSP} modifiziert werden kann, um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
+    \item Beschreibe, wie der Algorithmus \textsc{LeyzorekAPSP} [Erickson, Abschnitt~9.6] modifiziert werden kann, um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
     Die Laufzeit soll weiterhin in $O(V^3 \log V)$ liegen.
-    \item Beschreibe, wie der Algorithmus \textsc{FloydWarshall} modifiziert werden kann, um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
+    \item Beschreibe, wie der Algorithmus \textsc{FloydWarshall} [Erickson, Abschnitt~9.8] modifiziert werden kann, um neben dem Array der Längen kürzester Wege außerdem ein Array von Vorgänger-Pointern zurückzugeben.
     Die Laufzeit soll weiterhin in $O(V^3)$ liegen.
   \end{enumerate}
-  \emph{Hinweis}: Das gesuchte Array \texttt{pred} ist ein zweidimensionale Array, das jedem Knoten-Paar $(u,v)$ einen Knoten \texttt{pred[u,v]} zuordnet. Hierbei soll \texttt{pred[u,v]} der Vorgänger-Knoten von $v$ auf einem kürzesten Pfad von $u$ nach $v$ sein.
+  \emph{Hinweis}: Das gesuchte Array \texttt{pred} ist ein zweidimensionales Array, das jedem Knoten-Paar $(u,v)$ einen Knoten \texttt{pred[u,v]} zuordnet. Hierbei soll \texttt{pred[u,v]} der Vorgänger-Knoten von $v$ auf einem kürzesten Weg von $u$ nach $v$ sein.
 \end{aufgabe}
 
 %\begin{aufgabe}
