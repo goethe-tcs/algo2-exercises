@@ -7,14 +7,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies [Kleinberg-Tardos, Kapitel 7.1 und 7.2]. Mach dir Notizen, wenn du etwas nicht verstanden hast!
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lies den Aufgabentext aller Übungsaufgaben.
+    \item Bearbeite die Übungsaufgaben. Wenn du für mehr als 30 Minuten stecken bleibst, geh zur nächsten Übungsaufgabe.
+    \end{itemize}
+\item \textbf{Dienstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} (pünktlich!) Nimm an der Besprechung teil: Fragestunde, Feedback zu Aufgaben, Einordnung der Vorlesungsinhalte, Was ist wichtig und was nicht, etc.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Nimm am Lösungsspaziergang zu den Aufgaben im Abschnitt \textbf{Dienstag} teil.
+\end{itemize}
+\item \textbf{Heimarbeit Dienstag/Mittwoch.} Bearbeite die restlichen Übungsaufgaben.
+\item \textbf{Donnerstag.}
+    \begin{itemize}
+        \item \textbf{8:00--8:15.} (pünktlich!) Nimm an der Besprechung teil: Fragestunde, Feedback zu Aufgaben, Einordnung der Vorlesungsinhalte, Was ist wichtig und was nicht, etc.
+        \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+        \item \textbf{9:15--9:45.} Nimm am Lösungsspaziergang zu den Aufgaben im Abschnitt \textbf{Donnerstag} teil.
+    \end{itemize}
+\item \textbf{Heimarbeit bis Freitag 17:00.} Gib deine Lösung zur aktuellen \emoji{star}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
 \section*{Dienstag}
 
 \begin{aufgabe}[Max-Flow-Min-Cut I]
 \
     % KT 7.1
     \begin{enumerate}
-        \item Schreibe alle minimalen $s$-$t$-Schnitte im dargestellten Flussnetzwerk aus Abbildung~\ref{Figure_1} auf. Die Kapazität einer Kante steht neben der jeweiligen Kante. \\
-        \item Was ist die minimale Kapazität eines $s$-$t$-Schnittes im gegebenen Flussnetzwerk aus Abbildung~\ref{Figure_2}? Die Kapazität einer Kante steht neben der jeweiligen Kante.
+        \item Betrachte Abbildung~\ref{Figure_1} und zähle alle minimalen $s$-$t$-Schnitte im dargestellten Flussnetzwerk auf. Die Kapazität einer Kante steht neben der jeweiligen Kante.
+        \item Betrachte Abbildung~\ref{Figure_2}. Was ist die minimale Kapazität eines $s$-$t$-Schnittes in diesem Flussnetzwerk? Die Kapazität einer Kante steht neben der jeweiligen Kante.
     \end{enumerate}
     
     \begin{figure}[h]
@@ -57,9 +84,9 @@
 
 \begin{aufgabe}[Max-Flow-Min-Cut II]
     % KT 7.2
-    Abbildung~\ref{Figure_3} zeigt ein Flussnetzwerk, auf dem ein $s$-$t$-Fluss berechnet wurde. Die Kapazität einer Kante steht neben der jeweiligen Kante und die Zahlen in den Kästchen geben den über diese Kante geschickten Fluss an. (Über die Kanten ohne Nummern in Kästchen - im Speziellen die vier Kanten mit Kapazität 3 - wird kein Fluss geschickt.)
+    Abbildung~\ref{Figure_3} zeigt ein Flussnetzwerk, auf dem ein $s$-$t$-Fluss berechnet wurde. Die Kapazität einer Kante steht neben der jeweiligen Kante und die Zahlen in den Kästchen geben den über diese Kante geschickten Fluss an. (Über die Kanten ohne Kästchen---im Speziellen die vier Kanten mit Kapazität 3---wird kein Fluss geschickt.)
     \begin{enumerate}
-        \item Was ist der Wert des Flusses? Liegt auf diesem Graphen ein maximaler $(s,t)$ Fluss vor? \\
+        \item Was ist der Wert des Flusses? Ist dieser Fluss ein maximaler $s$-$t$-Fluss in diesem Graphen?
         \item Finde einen minimalen $s$-$t$-Schnitt und gebe dessen Kapazität an.
     \end{enumerate}
     
@@ -140,20 +167,19 @@
 \end{figure}
 \end{aufgabe}
 
-\begin{aufgabe}[Eigenschaften maximaler Flüsse]
+\begin{aufgabe}[Eigenschaften maximaler Flüsse]\
     % KT 7.4
-    Entscheide ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre warum sie das ist. Ist sie falsch, gebe ein Gegenbeispiel an.
-    
-    \textit{Sei $G$ ein beliebiges Flussnetzwerk mit einer Quelle $s$, einer Senke $t$ und einer positiven Integer-Kapazität $c_e$ auf jeder Kante $e$. Wenn $f$ ein maximaler $s$-$t$-Fluss in $G$ ist, dann saturiert $f$ jede von $s$ ausgehende Kante mit einem Fluss (z.B. für alle Kanten $e$, die von $s$ ausgehen, gilt $f(e) = c_e$).}
-        
-    
+    Entscheide, ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre, warum sie das ist. Wenn sie falsch ist, gebe ein Gegenbeispiel an.
+    \begin{quote}
+        Sei $G$ ein beliebiges Flussnetzwerk mit einer Quelle $s$, einer Senke $t$ und einer positiven, ganzzahligen Kapazität $c_e$ auf jeder Kante $e$. Wenn $f$ ein maximaler $s$-$t$-Fluss in $G$ ist, dann saturiert $f$ jede von $s$ ausgehende Kante mit einem Fluss (d.h., für alle Kanten~$e$, die von $s$ ausgehen, gilt $f(e) = c_e$).
+    \end{quote}
 \end{aufgabe}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Eigenschaften minimaler Schnitte]
+\begin{aufgabe}[Eigenschaften minimaler Schnitte]\
     % KT 7.5
-    Entscheide ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre warum sie das ist. Ist sie falsch, gebe ein Gegenbeispiel an.
+    Entscheide, ob die folgende Aussage wahr oder falsch ist. Wenn sie wahr ist, erkläre, warum sie das ist. Wenn sie falsch ist, gebe ein Gegenbeispiel an.
     
     \textit{Sei $G$ ein beliebiges Flussnetzwerk mit einer Quelle $s$, einer Senke $t$ und einer positiven Integer-Kapazität $c_e$ auf jeder Kante $e$. Sei $(A,B)$ ein minimaler $s$-$t$-Schnitt bezüglich der Kapazitäten $\{c_e : e \in E\}$. Angenommen, wir addieren $1$ zu jeder Kapazität, dann ist $(A,B)$ immer noch ein minimaler $s$-$t$-Schnitt bezüglich der neuen Kapazitäten $\{1 + c_e : e \in E\}$.}
 \end{aufgabe}
