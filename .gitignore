@@ -5,6 +5,5 @@
 *.out
 *.synctex.gz
 *.thm
-warmup.pdf
-woche*.pdf
+*week*.pdf
 *.gitinfo
