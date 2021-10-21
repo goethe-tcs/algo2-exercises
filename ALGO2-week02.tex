@@ -40,9 +40,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \
     % KT 7.1
     \begin{enumerate}
-        \item Betrachte Abbildung~\ref{Figure_1} und zähle alle minimalen $s$-$t$-Schnitte im dargestellten Flussnetzwerk auf. Die Kapazität einer Kante steht neben der jeweiligen Kante.
-        \item Betrachte Abbildung~\ref{Figure_2}. Was ist die minimale Kapazität eines $s$-$t$-Schnittes in diesem Flussnetzwerk? Die Kapazität einer Kante steht neben der jeweiligen Kante.
+        \item Zähle alle minimalen $s$-$t$-Schnitte in dem in Abbildung~\ref{Figure_1} dargestellten Flussnetzwerk auf. 
+        \item Was ist die minimale Kapazität eines $s$-$t$-Schnittes in dem Flussnetzwerk in Abbildung~\ref{Figure_2}? 
     \end{enumerate}
+    \emph{Hinweis}: Die Kapazität einer Kante steht dabei neben der jeweiligen Kante.
     
     \begin{figure}[ht]
     \begin{minipage}[b]{0.5\textwidth}
@@ -103,15 +104,15 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			
 			\def\list {v1/v0/5/10, v1/v2/8/8, v2/v3/8/10, v3/v4/8/8, v0/v4/5/5}  % list elements
 			\foreach \u\v\flow\weight in \list
-			{	\draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\flow $/$ \weight};
+			{	\draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\small \flow\ $/$ \weight};
 			}
 			\def\vertical {v2/v0/0/3, v2/v5/0/3, v0/v3/0/3, v3/v5/0/3}  % list elements
 			\foreach \u\v\flow\weight in \vertical
-			{	\draw[-stealth] (\u) -- (\v) node [fill=white, midway] {\flow $/$ \weight};
+			{	\draw[-stealth] (\u) -- (\v) node [fill=white, midway] {\small \flow\ $/$ \weight};
 			}
 			\def\down {v1/v5/5/5, v5/v4/5/10} %list elements
 			\foreach \u\v\flow\weight in \down
-			{   \draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\flow $/$ \weight};
+			{   \draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\small \flow\ $/$ \weight};
 			}
 			
 		\end{tikzpicture}
