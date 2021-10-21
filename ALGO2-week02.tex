@@ -84,7 +84,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Max-Flow-Min-Cut II]
     % KT 7.2
-    Abbildung~\ref{Figure_3} zeigt ein Flussnetzwerk, auf dem ein $s$-$t$-Fluss berechnet wurde. Die Kapazität einer Kante steht neben der jeweiligen Kante und die Zahlen in den Kästchen geben den über diese Kante geschickten Fluss an. (Über die Kanten ohne Kästchen---im Speziellen die vier Kanten mit Kapazität 3---wird kein Fluss geschickt.)
+    Abbildung~\ref{Figure_3} zeigt ein Flussnetzwerk, auf dem ein $s$-$t$-Fluss berechnet wurde. Der Ausdruck $f/c$ in jeder Kante gibt an, wie viel Fluss $f$ über die Kante geschickt wird und welche Kapazizät $c$ die Kante hat. (Über die Kanten ohne Kästchen---im Speziellen die vier Kanten mit Kapazität 3---wird kein Fluss geschickt.)
     \begin{enumerate}
         \item Was ist der Wert des Flusses? Ist dieser Fluss ein maximaler $s$-$t$-Fluss in diesem Graphen?
         \item Finde einen minimalen $s$-$t$-Schnitt und gebe dessen Kapazität an.
@@ -94,31 +94,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{center}
 		\begin{tikzpicture}
 			\usetikzlibrary{arrows.meta}
-			\node[draw,circle] (v0) at (4.5,  5)	    {$\phantom{s}$};
+			\node[draw,circle] (v0) at (4.5,  5)	    {$a$};
 			\node[draw,circle] (v1) at (0,  2.5)    {$s$};
-			\node[draw,circle] (v2) at (3,  2.5)	{$\phantom{s}$};
-			\node[draw,circle] (v3) at (6,  2.5)    {$\phantom{s}$};
+			\node[draw,circle] (v2) at (3,  2.5)	{$b$};
+			\node[draw,circle] (v3) at (6,  2.5)    {$c$};
 			\node[draw,circle] (v4) at (9,  2.5)	{$t$};
 			\node[draw,circle] (v5) at (4.5,  0)    {$d$};
-			\node[draw,rectangle] (b0) at (2.8, 4.5) {$5$};
-			\node[draw,rectangle] (b1) at (7.4, 3.8) {$5$};
-			\node[draw,rectangle] (b2) at (2, 2.8) {$8$};
-			\node[draw,rectangle] (b3) at (5, 2.8) {$8$};
-			\node[draw,rectangle] (b4) at (7, 2.8) {$8$};
-			\node[draw,rectangle] (b5) at (2.8, 0.5) {$5$};
-			\node[draw,rectangle] (b6) at (7.4, 1.1) {$5$};
 			
-			\def\list {v1/v0/10, v1/v2/8, v2/v3/10, v3/v4/8, v0/v4/5}  % list elements
-			\foreach \u\v\weight in \list
-			{	\draw[-stealth] (\u) -- (\v) node [midway, above] {\weight};
+			\def\list {v1/v0/5/10, v1/v2/8/8, v2/v3/8/10, v3/v4/8/8, v0/v4/5/5}  % list elements
+			\foreach \u\v\flow\weight in \list
+			{	\draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\flow $/$ \weight};
 			}
-			\def\vertical {v2/v0/3, v2/v5/3, v0/v3/3, v3/v5/3}  % list elements
-			\foreach \u\v\weight in \vertical
-			{	\draw[-stealth] (\u) -- (\v) node [midway, left] {\weight};
+			\def\vertical {v2/v0/0/3, v2/v5/0/3, v0/v3/0/3, v3/v5/0/3}  % list elements
+			\foreach \u\v\flow\weight in \vertical
+			{	\draw[-stealth] (\u) -- (\v) node [fill=white, midway] {\flow $/$ \weight};
 			}
-			\def\down {v1/v5/5, v5/v4/10} %list elements
-			\foreach \u\v\weight in \down
-			{   \draw[-stealth] (\u) -- (\v) node [midway, below] {\weight};
+			\def\down {v1/v5/5/5, v5/v4/5/10} %list elements
+			\foreach \u\v\flow\weight in \down
+			{   \draw[-stealth] (\u) -- (\v) node [fill=white, sloped, midway] {\flow $/$ \weight};
 			}
 			
 		\end{tikzpicture}
