@@ -197,6 +197,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     Teste dein Programm in Coderunner (siehe \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}).
 \end{aufgabe}
 
+\begin{aufgabe}[Eine andere Sicht auf Schnitte]
+  Schnitte werden manchmal als Teilmengen der Kanten eines Graphs definiert anstatt als Partition der Knotenmenge.
+  In dieser Aufgabe soll gezeigt werden, dass beide Definitionen \emph{nahezu} äquivalent sind.
+
+  Wir sagen, dass eine Menge $X$ (gerichteter) Kanten zwei Knoten $s$ und $t$ \emph{separiert}, falls jeder gerichtete $s$-$t$-Pfad mindestens eine (gerichtete) Kante aus $X$ enthält.
+  Für eine Teilmenge $S$ der Knoten definieren wir
+  \[δS \coloneqq \{u \to v : u \in S, v \not\in S\}.\]
+  Somit ist $δS$ die Menge der gerichteten Kanten, die von $S$ ausgehen.
+
+  \begin{enumerate}
+    \item Beweise, dass für jeden $(s,t)$-Schnitt $(S,T)$ die Menge $δS$ die beiden Knoten $s$ und $t$ separiert.
+    \item Sei $X$ eine beliebige Teilmenge der Kanten, die $s$ und $t$ separiert.
+    Zeige, dass es einen $(s,t)$-Schnitt $(S,T)$ gibt, für den $δS \subseteq X$ gilt.
+    \item Sei $X$ eine minimale Teilmenge der Kanten, die $s$ und $t$ separiert.
+    Zeige, dass es einen $(s,t)$-Schnitt $(S,T)$ gibt, für den $δS = X$ gilt.
+  \end{enumerate}
+\end{aufgabe}
+
 \begin{aufgabe}[Puzzle der Woche: Vier Münzen]
     % Algorithms and Data Structures II - network1.pdf
     Du musst ein Spiel gegen den Henker gewinnen. Bevor das Spiel startet, werden deine Augen verbunden. Es werden vier Münzen auf einem quadratischen Tisch platziert, sodass in jeder Ecke eine Münze liegt. Ob und welche der Münzen mit der Zahl-Seite nach oben liegen wird durch den Henker bestimmt: beliebig und für dich unbekannt. Dein Ziel ist es, dass alle vier Münzen mit der Kopf-Seite nach oben gerichtet auf dem Tisch liegen.
