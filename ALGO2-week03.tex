@@ -80,10 +80,10 @@
 \begin{aufgabe}[Blutspende]
     % KT exercise 7.8
     Statistisch steigt die Zahl der Unfälle mit dem Beginn des Frühlings an. Für die steigende Anzahl an Notfällen braucht es auch vermehrt Bluttransfusionen. Stell dir vor, du arbeitest für ein Krankenhaus, das beurteilen muss, ob seine Blutreserven ausreichend sind.\\
-    Beim Blutspenden gibt es eine grundlegende Regel: Eine Person hat in ihrem Blut bestimmte Antigene (Du kannst dir Antigene als eine Art molekulare Signatur vorstellen). Bei einer Blutspende kann ein Person nur Blut empfangen, welches die gleichen Antigene hat, wie das eigene. Konkret gesagt unterteilt dieses Prinzip das Blut in vier Gruppen: A, B, AB und O. Blutgruppe A hat das Antigen A, Blutgruppe B hat das Antigen B, Blutgruppe AB hat beide und Blutgruppe O hat keines der Antigene. Demnach können Patienten mit Blutgruppe A nur Blut der Gruppen A und O, Patienten der Blutgruppe B nur Blut der Gruppen B und O, Patienten der Blutgruppe O nur Blut der Gruppe O und Patienten der Gruppe AB Blut aller Blutgruppen empfangen.
+    Beim Blutspenden gibt es eine grundlegende Regel: Eine Person hat in ihrem Blut bestimmte Antigene (Du kannst dir Antigene als eine Art molekulare Signatur vorstellen). Bei einer Blutspende kann ein Person nur Blut empfangen, welches die gleichen Antigene hat, wie das eigene. Konkret gesagt unterteilt dieses Prinzip das Blut in vier Gruppen: A, B, AB und 0. Blutgruppe A hat das Antigen A, Blutgruppe B hat das Antigen B, Blutgruppe AB hat beide und Blutgruppe 0 hat keines der Antigene. Demnach können Patienten mit Blutgruppe A nur Blut der Gruppen A und 0, Patienten der Blutgruppe B nur Blut der Gruppen B und 0, Patienten der Blutgruppe 0 nur Blut der Gruppe 0 und Patienten der Gruppe AB Blut aller Blutgruppen empfangen.
     \begin{enumerate}
-    	\item Seien $s_O,s_A,s_B$ und $s_{AB}$ der Vorrat der vier Blutgruppen, angegeben in ganzen Einheiten. Nimm an, dass das Krankenhaus den prognostizierten Bedarf $d_O, d_A,d_B$ und $d_{AB}$ an Blut der nächsten Woche kennt. Gib einen Algorithmus an, der in Polynomialzeit ausgibt, ob das vorrätige Blut den prognostizierten Bedarf der nächsten Woche deckt.\\
-    	\item Schaue dir das folgende Beispiel an. Das Krankenhaus prognostiziert für die nächste Woche einen Bedarf von maximal $100$ Einheiten an Blut. Die durchschnittliche Verteilung der Blutgruppen über die U.S.-Bevölkerung liegt bei $45\%$ Blutgruppe O, $42\%$ Blutgruppe A, $10\%$ Blutgruppe B und $3\%$ Blutgruppe AB. Das Krankenhaus möchte wissen, ob seine Vorräte ausreichend sind, wenn 100 Patienten mit der erwarteten Verteilung behandelt werden müssen. Es sind $105$ Einheiten an Blut vorrätig. Die Tabelle gibt den Vorrat und die Nachfrage an Blut an.
+    	\item Seien $s_0,s_A,s_B$ und $s_{AB}$ der Vorrat der vier Blutgruppen, angegeben in ganzen Einheiten. Nimm an, dass das Krankenhaus den prognostizierten Bedarf $d_0, d_A,d_B$ und $d_{AB}$ an Blut der nächsten Woche kennt. Gib einen Algorithmus an, der in Polynomialzeit ausgibt, ob das vorrätige Blut den prognostizierten Bedarf der nächsten Woche deckt.\\
+    	\item Schaue dir das folgende Beispiel an. Das Krankenhaus prognostiziert für die nächste Woche einen Bedarf von maximal $100$ Einheiten an Blut. Die durchschnittliche Verteilung der Blutgruppen über die U.S.-Bevölkerung liegt bei $45\%$ Blutgruppe 0, $42\%$ Blutgruppe A, $10\%$ Blutgruppe B und $3\%$ Blutgruppe AB. Das Krankenhaus möchte wissen, ob seine Vorräte ausreichend sind, wenn $100$ Patienten mit der erwarteten Verteilung behandelt werden müssen. Es sind $105$ Einheiten an Blut vorrätig. Die Tabelle gibt den Vorrat und die Nachfrage an Blut an.
     	
     	\vspace{4mm}
     	\begin{center}
@@ -91,7 +91,7 @@
     	\hline 
     	Blutgruppe & Vorrat & Nachfrage \\ 
     	\hline 
-    	O & 50 & 45 \\ 
+    	0 & 50 & 45 \\ 
     	\hline 
     	A & 36 & 42 \\ 
     	\hline 
@@ -102,7 +102,7 @@
     	\end{tabular}
     	\end{center}
     	\vspace{4mm}
-    	Sind die 105 vorrätigen Einheiten an Blut ausreichend, um der Nachfrage von 100 Einheiten gerecht zu werden? Finde eine Verteilung, sodass die maximale Anzahl an Patienten behandelt werden kann. Benutze einen minimalen Kapazität-Schnitt, um zu begründen, warum nicht alle Patienten behandelt werden können. Stelle außerdem eine verständliche Erklärung dieses Umstandes für die Krankenhausverwaltung bereit, die ALGO2 nicht belegt haben. (Die Erklärung soll also die Worte \textit{Fluss, Schnitt} oder \textit{Graph} nicht enthalten.
+    	Sind die 105 vorrätigen Einheiten an Blut ausreichend, um der Nachfrage von $100$ Einheiten gerecht zu werden? Finde eine Verteilung, sodass die maximale Anzahl an Patienten behandelt werden kann. Benutze einen minimalen Kapazität-Schnitt, um zu begründen, warum nicht alle Patienten behandelt werden können. Stelle außerdem eine verständliche Erklärung dieses Umstandes für die Krankenhausverwaltung bereit, die ALGO2 nicht belegt haben. (Die Erklärung soll also die Worte \textit{Fluss, Schnitt} oder \textit{Graph} nicht enthalten.
     \end{enumerate}
 \end{aufgabe}
 
@@ -138,14 +138,28 @@
 
 \begin{aufgabe}[Flucht]
     % KT exercise 7.14
+    Wir definieren das Fluchtproblem wie folgt: Gegeben ist ein gerichteter Graph $G = (V,E)$ (stell dir ein Straßennetzwerk vor). Eine Teilmenge $X \subset V$ aller Knoten sind bewohnte Knoten und eine andere Teilmenge $S \subset V$ sind sichere Knoten. Du kannst annehmen, dass $X$ und $S$ disjunkt sind. Für den Notfall soll es Evakuierungsrouten von den bewohnten Knoten zu den sicheren Knoten geben. Eine Menge von Evakuierungsrouten ist als eine Menge von Pfaden in $G$ definiert, sodass $1.$ jeder Knoten aus $X$ der Anfang eines Pfades ist, $2.$ der letzte Knoten eines Pfades in $S$ liegt und $3.$ die Pfade keine gemeinsamen Kanten besitzen. Diese Menge an Pfaden sorgt dafür, dass die Bewohner der bewohnten Knoten sicher evakuiert werden können, ohne dass eine Kante in $G$ überlastet wird.
+    \begin{enumerate}
+    	\item Gegeben $G, X$ und $S$. Zeige, wie man in polynomialer Zeit entscheiden kann, ob eine solche Menge an Evakuierungsrouten existiert.\\
+    	\item Wir wollen das gleiche Problem lösen, wie in a), aber mit einer strengeren Version der Überlastungs-Bedingung. Die Pfade dürfen nun auch keine gemeinsamen Knoten mehr haben.
+    	
+    	Zeige, ob mit dieser neuen Bedingung in polynomialer Zeit entschieden werden kann, ob eine Menge an Evakuierungsrouten existiert.
+    	
+    	Gib außerdem ein Beispiel mit gleichem $G, X$ und $S$ an, das für Aufgabenteil a) funktioniert und in Aufgabenteil b) nicht.
+    \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Eulerwege in gemischten Graphen]
+\begin{aufgabe}[Eulerkreise in gemischten Graphen]
     % Algorithms and Data Structures 2 - networks2.pdf
+    Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis (ein Kreis, der jede Kante genau einmal enthält) hat, wenn --- und nur wenn --- jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten besitzt.
+    
+    Im folgenden arbeiten wir mit gemischten Graphen. Das sind Graphen, in denen einige Kanten gerichtet sind und einige ungerichtet. Wir nehmen an, dass die Graphen verbunden sind.
+    UNVOLLSTÄNDIG
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Das Zwölf-Münzen Problem]
 	% Algorithms and Data Structures 2 - networks2.pdf
+	Vor dir liegen 12 Münzen. 11 davon sind identisch, aber eine ist schwerer oder leichter als der Rest. Du hast eine traditionelle Balkenwaage mit zwei Schalen, jede auf einer Seite. Um die Waage zu benutzen, legst du eine Münzen in jede Schale. Die Waage zeigt dann an, welche der beiden Seiten schwerer ist. Die Balkenwaage darf 3 mal benutzt werden, um die andere Münze zu finden und um festzustellen, ob diese leichter oder schwerer ist als der Rest.
 	
 \end{aufgabe}
 
