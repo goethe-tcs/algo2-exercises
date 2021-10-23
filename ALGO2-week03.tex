@@ -4,6 +4,8 @@
 \uebung{3}{}{}
 \blattname{Übungen zu Woche 3: Network Flow II}
 
+\usetikzlibrary{arrows.meta}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -17,7 +19,6 @@
     	\begin{minipage}[b]{0.5\textwidth}
     		\centering
     		\begin{tikzpicture}[scale=0.85]
-			\usetikzlibrary{arrows.meta}
 			\node[draw,circle] (v0) at (0,  3.5)	{$s$};
 			\node[draw,circle] (v1) at (2,  3.5)    {$L$};
 			\node[draw,circle] (v2) at (4,  3.5)	{$F$};
@@ -47,7 +48,6 @@
     	\begin{minipage}[b]{0.5\textwidth}
     		\centering
     		\begin{tikzpicture}[scale=0.85]
-			\usetikzlibrary{arrows.meta}
 			\node[draw,circle] (v0) at (0  ,    0)	  {$s$};
 			\node[draw,circle] (v1) at (0  ,    5)    {$A$};
 			\node[draw,circle] (v2) at (2.5,    5)	  {$B$};
@@ -153,8 +153,63 @@
     % Algorithms and Data Structures 2 - networks2.pdf
     Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis (ein Kreis, der jede Kante genau einmal enthält) hat, wenn --- und nur wenn --- jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten besitzt.
     
-    Im folgenden arbeiten wir mit gemischten Graphen. Das sind Graphen, in denen einige Kanten gerichtet sind und einige ungerichtet. Wir nehmen an, dass die Graphen verbunden sind.
-    UNVOLLSTÄNDIG
+    Im folgenden arbeiten wir mit gemischten Graphen. Das sind Graphen, in denen einige Kanten gerichtet sind und einige ungerichtet. Wir nehmen an, dass die Graphen verbunden sind, beispielsweise sind die Graphen verbunden, wenn die Richtung aller Kanten ignoriert wird.
+    Wir wollen einen Algorithmus, der entscheidet, ob es möglich ist, den ungerichteten Kanten eine Richtung zu geben, sodass der Graph einen Eulerkreis hat. Im Beispiel können die ungerichteten Kanten des gemischten Graphen links so gerichtet werden, dass ein Eulerkreis entsteht (die Nummern der Kanten geben die Besuchsreihenfolge an).
+    
+    \begin{figure}[ht]
+    	\begin{minipage}[b]{0.5\textwidth}
+    		\centering
+    		\begin{tikzpicture}[scale=0.85]
+			\node[draw,circle] (v0) at (0,  0)  {};
+			\node[draw,circle] (v1) at (1,  -1)  {};
+			\node[draw,circle] (v2) at (1.2, 1)  {};
+			\node[draw,circle] (v3) at (2,  0)  {};
+			\node[draw,circle] (v4) at (3,  -1.25)  {};
+			\node[draw,circle] (v5) at (3.5, 0.25)  {};
+			\node[draw,circle] (v6) at (3.7,  1.5)  {};
+			\node[draw,circle] (v7) at (4.5,  -0.5)  {};
+			
+			\def\list {v0/v2, v1/v3, v2/v6, v3/v0, v3/v2, v5/v4, v7/v4}  % directed edges
+			\foreach \u\v in \list
+			{	\draw[-{Stealth[length=3mm, width=2mm]}] (\u) -- (\v);}
+			
+			\def\vertical {v0/v1, v2/v5, v3/v4, v6/v7}  % undirected edges
+			\foreach \u\v in \vertical
+			{	\draw[] (\u) -- (\v);}
+			
+			\path (v0) edge[bend right=90] node [left] {} (v4);
+		\end{tikzpicture}
+    	\end{minipage}
+    	\begin{minipage}[b]{0.5\textwidth}
+    		\centering
+    		\begin{tikzpicture}[scale=0.85]
+			\node[draw,circle] (v0) at (0,  0)  {};
+			\node[draw,circle] (v1) at (1,  -1)  {};
+			\node[draw,circle] (v2) at (1.2, 1)  {};
+			\node[draw,circle] (v3) at (2,  0)  {};
+			\node[draw,circle] (v4) at (3,  -1.25)  {};
+			\node[draw,circle] (v5) at (3.5, 0.25)  {};
+			\node[draw,circle] (v6) at (3.7,  1.5)  {};
+			\node[draw,circle] (v7) at (4.5,  -0.5)  {};
+			
+			\def\list {v0/v2/2, v1/v3/9, v2/v6/3, v3/v0/7, v3/v2/10, v5/v4/12, v7/v4/5}  % directed edges
+			\foreach \u\v\w in \list
+			{	\draw[-{Stealth[length=3mm, width=2mm]}] (\u) -- (\v) [midway, left] {};
+			}
+			
+			\def\vertical {v0/v1/8, v2/v5/11, v4/v3/6, v6/v7/4}  % undirected edges
+			\foreach \u\v\weight in \vertical
+			{	\draw[-{Stealth[length=3mm, width=2mm]}, ultra thick] (\u) -- (\v) [midway, left] {};
+			}
+			
+			\path (v4) edge[-{Stealth[length=3mm, width=2mm]}, ultra thick, bend left=90] node [midway, below] {$1$} (v0);
+		\end{tikzpicture}
+    	
+    	\end{minipage}
+    \end{figure}
+    
+    Gib einen Algorithmus an, der entscheidet, ob man alle ungerichteten Kanten so richten kann, dass ein Eulerkreis entsteht.
+    \textit{Hinweis:} Denk an einen bipartiten Graphen, bei dem auf der einen Seite die Knoten aus $G$ und auf der anderen Seite die Kanten aus $G$ dargestellt sind. Nutze den Algorithmus der vorherigen Aufgabe.
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Das Zwölf-Münzen Problem]
