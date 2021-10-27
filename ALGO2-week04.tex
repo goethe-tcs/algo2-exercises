@@ -1,0 +1,115 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{4}{}{}
+\blattname{Übungen zu Woche 4: Amortisierte Analyse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 12.11., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[Splay-Bäume]
+\
+	% Algorithms and Data Structures 2 - amortized.pdf
+	\begin{enumerate}
+		\item Wie sieht ein Splay-Baum aus, nachdem man die Schlüssel $41,38,31,12,19,8$ in dieser Reihenfolge in einen anfangs leeren Baum eingefügt hat? \\
+		\item Wie sieht der Baum aus, nachdem man die $31$ entfernt hat?
+	\end{enumerate}		
+\end{aufgabe}
+
+\begin{aufgabe}[Amortisierte Analyse]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Wir haben eine Datenstruktur, bei der die Kosten $T(i)$ der $i$-ten Operation durch 
+	$$T(i) = \begin{cases} 2i & \text{falls i eine 2er Potenz ist}, \\ 1 & \text{sonst}. \end{cases}$$ 
+	gegeben sind.
+	Was ist die amortisierte Laufzeit dieser Operation? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
+\end{aufgabe}    
+
+\begin{aufgabe}[Potenzialfunktion: Verdopplung von Arrays]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Wir gehen von einer dynamischen Tabelle aus, die nur Einfügungen erlaubt (keine Löschungen), wobei wir die Verdopplungsmethode nutzen. Nutze die Potenzialfunktion $\Phi(D_i) = k$, wobei $k$ die Anzahl an Elementen im Array ist, um zu zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ betragen!
+\end{aufgabe}
+
+\begin{aufgabe}[Mengenvereinigung]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	In Mengenvereinigungsproblem haben wir $n$ Elemente, die anfangs in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen unterstützen:
+	\begin{itemize}
+		\item Union($A,B$): Führe die beiden Menge $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.\\
+		\item SameSet($x,y$): Gebe \textit{true} zurück, wenn $x$ und $y$ in der selben Menge liegen, ansonsten gebe \textit{false} zurück.
+	\end{itemize}
+	Das können wir folgendermaßen implementieren: Weise jeder Menge am Anfang eine Farbe zu. Übernehme beim Zusammenführen zweier Mengen für die kleinere Menge die Farbe der größeren Menge (bei Gleichstand wird eine der beiden Farben beliebig gewählt). Um die SameSet Anfrage zu beantworten, überprüfe ob zwei Elemente die selbe Farbe haben.
+	\begin{enumerate}
+		\item Analysiere den \textit{worst-case} der beiden Operationen.\\
+		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die Laufzeit $\Oh(m \log n + l)$ benötigt.\\
+		\textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Splay-Bäume]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Professer Sheldon schlägt eine einfachere Variante der Splay-Bäume vor und nennt diese Spiel-Bäume. Spiel-Bäume sind den Splay-Bäumen ähnlich, sie führen in der Splay-Operation aber nur eine Rotation aus. 
+	\begin{enumerate}
+		\item Was sind die amortisierten Kosten der Operation splay($x$), wenn wir nur einzelne Rotationen benutzen? Analysiere die Kosten mit der selben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.\\
+		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ in dieser Reihenfolge in einen Spiel-Baum einfügt und dann nach den Schlüsseln $1,2,3,\dots,n$ in diese Reihenfolge sucht?\\
+		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \glqq Du musst nur eine raffiniertere Potenzialfunktion benutzen \grqq{,} sagt er. Liegt er damit richtig?
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Implementierung von dynamischen Tabellen]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Implementiere deine eigene dynamische Tabelle für \texttt{Integer}-Werte, ohne dabei built-in Methoden zu verwenden. Deine dynamische Tabelle soll folgende Operationen beherrschen:
+	\begin{itemize}
+		\item Einfügen von Elementen, \\
+		\item Löschen von Elementen, \\
+		\item Ausgabe enthaltener Elemente, \\
+		\item Ausgabe der Größe der Tabelle.
+	\end{itemize}
+\end{aufgabe}
+
+\begin{aufgabe}[Dynamische Hashtabelle]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode erstellt. Deine Lösung soll $\Theta(n)$ Platz benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
+\end{aufgabe}
+
+\begin{aufgabe}[Deamortisierung von Hashtabellen]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben worst-case Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im worst-case einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Platz benutzt ($n$ ist die aktuelle Anzahl der Elemente in der Tabelle).
+	
+	\textit{Hinweis:} Benutze die Verdopplungsmethode, aber verteile die Arbeit auf alle Einfügungen.
+\end{aufgabe}
+
+\begin{aufgabe}[Puzzle der Woche: Prinzessinnen]
+	% Algorithms and Data Structures 2 - amortized.pdf
+	Du bist ein junger Prinz aus dem fernen Lande Algo. Der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt manchmal und sagt auch manchmal die Wahrheit.\\
+	Du willst entweder die älteste oder die jüngste Tochter heiraten (da sie immer lügt ist das genauso gut, wie immer die Wahrheit zu sagen). Nur die mittlere Tochter möchtest du nicht heiraten.\\
+	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. Sie sehen alle gleich aus, also ist es nicht möglich dem Aussehen nach zu entscheiden.\\
+	Welche Frage solltest du stellen und welche der Töchter sollst du dann aussuchen?
+\end{aufgabe}
+
+\section*{Sternaufgabe}
+
+\end{document}
