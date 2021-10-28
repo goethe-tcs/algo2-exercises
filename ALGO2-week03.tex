@@ -68,7 +68,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Edmonds-Karp Algorithmus und capacity-scaling algorithm]
     % Algorithms and Data Structures 2 - networks2.pdf
-    Benutze sowohl den Edmonds-Karp Algorithmus, als auch den \textit{capacity-scaling algorithm}, um in den folgenden beiden Graphen einen maximalen Fluss und einen minimalen Schnitt zu berechnen. Schreibe für jeden augmentierenden Pfad die Knoten auf dem Pfad und den Wert, um die der Pfad augmentiert wird, auf.
+    Benutze sowohl den Edmonds-Karp Algorithmus, als auch den \textit{capacity-scaling algorithm}, um in den folgenden beiden Graphen einen maximalen Fluss und einen minimalen Schnitt zu berechnen. Schreibe für jeden augmentierenden Pfad die zugehörigen Knoten und den Wert, um die der Pfad augmentiert wird, auf.
     
     \begin{figure}[ht]
     	\begin{minipage}[b]{0.5\textwidth}
@@ -84,20 +84,23 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\node[draw,circle] (v7) at (3,  0.5)    {$B$};
 			\node[draw,circle] (v8) at (5,  0.5)    {$M$};
 			
-			\def\list {v0/v1/12, v1/v2/13, v2/v3/3, v3/v4/6, v2/v6/4, v5/v6/5, v6/v3/8,
-			v6/v4/2, v7/v8/11}  % list elements
+			\def\list {v0/v1/12, v1/v2/13, v2/v3/3, v3/v4/6, v5/v6/5}  % list elements
 			\foreach \u\v\weight in \list
 			{	\draw[-stealth] (\u) -- (\v) node [midway, above] {\weight};
 			}
+			
 			\def\vertical {v5/v7/7, v8/v6/1 %v0/v4/3, v2/v5/4, v2/v9/4%, v3/v7/7, v6/v10/1, v11/v7/2
             }  % list elements
 			\foreach \u\v\weight in \vertical
 			{	\draw[-stealth] (\u) -- (\v) node [midway, left] {\weight};
 			}
-			\def\down {v0/v5/2, v8/v4/2} %list elements
+			\def\down {v0/v5/2, v8/v4/2, v6/v4/2, v7/v8/11} %list elements
 			\foreach \u\v\weight in \down
 			{   \draw[-stealth] (\u) -- (\v) node [midway, below] {\weight};
 			}
+		
+			\draw[-stealth] (v2) -- (v6) node [midway, above, yshift=-1.5, xshift=3.5] {4};
+			\draw[-stealth] (v6) -- (v3) node [midway, above, yshift=-1.5, xshift=-3.5] {8};
 		\end{tikzpicture}
     	\end{minipage}
     	\begin{minipage}[b]{0.5\textwidth}
@@ -114,11 +117,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\node[draw,circle] (v8) at (3.5,    1)    {$H$};
 			\node[draw,circle] (v9) at (5  ,    0)    {$t$};
 			
-			\def\list {v0/v4/12, v4/v1/13, v5/v7/7, v8/v9/10}  % label left from edge
+			\def\list {v0/v4/12, v4/v1/13, v5/v7/7}  % label left from edge
 			\foreach \u\v\weight in \list
 			{	\draw[-stealth] (\u) -- (\v) node [midway, left] {\weight};
 			}
-			\def\vertical {v0/v9/2, v1/v2/8, v2/v3/5, v4/v5/4, v5/v6/3, v7/v8/6}  % label above edge
+			\def\vertical {v1/v2/8, v2/v3/5, v4/v5/4, v5/v6/3, v7/v8/6}  % label above edge
 			\foreach \u\v\weight in \vertical
 			{	\draw[-stealth] (\u) -- (\v) node [midway, above] {\weight};
 			}
@@ -126,6 +129,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\foreach \u\v\weight in \down
 			{   \draw[-stealth] (\u) -- (\v) node [midway, right] {\weight};
 			}
+			\draw[-stealth] (v8) -- (v9) node [midway, above, yshift=0, xshift=3.5] {10};
+			\draw[-stealth] (v0) -- (v9) node [midway, below, yshift=0, xshift=3.5] {2};
 		\end{tikzpicture}
     	
     	\end{minipage}
@@ -186,8 +191,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{center}
     \vspace{4mm}
     \begin{enumerate}
-    	\item Modelliere das Problem als Graphenproblem. Erkläre, wie du das machst und zeichne den zum oben angegebenen Beispiel passenden Graphen.\\
-    	\item Beschreibe einen Algorithmus, der, gegeben $n,m$ und die Platzierung der Weihnachtsbäume, eine maximale Anzahl an Tischen, die im Festsaal platziert werden können, ausgibt. Analysiere die asymptotische Laufzeit deines Algorithmus. Denke daran, die Korrektheit deines Algorithmus zu zeigen.\\
+    	\item Modelliere das Problem als Graphenproblem. Erkläre, wie du dir das überlegt hast und zeichne den zum oben angegebenen Beispiel passenden Graphen.\\
+    	\item Gegeben seinen $n,m$ und die Platzierung der Weihnachtsbäume. Beschreibe einen Algorithmus, der eine maximale Anzahl an Tischen, die im Festsaal platziert werden können, ausgibt. Analysiere die asymptotische Laufzeit deines Algorithmus und denke daran, die Korrektheit deines Algorithmus zu zeigen.\\
     	\item Implementiere deinen Algorithmus in Python oder Java.
     \end{enumerate}
 \end{aufgabe}
@@ -204,9 +209,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{enumerate}
     Diese Menge von Pfaden sorgt dafür, dass die bewohnten Knoten sicher evakuiert werden können, ohne dass eine Kante in $G$ überlastet wird.
     \begin{enumerate}
-    	\item Zeige, wie bei Eingabe $G, X, S$ in polynomieller Zeit entscheiden werden kann, ob eine solche Menge von Fluchtwegen existiert.
-    	\item Wir wollen das gleiche Problem lösen, wie in a), aber mit einer strengeren Version von Bedingung iii. Die Pfade dürfen nun auch keine gemeinsamen Knoten mehr haben.
-    	
+    	\item Zeige, wie bei einer Eingabe von $G, X, S$ in polynomieller Zeit entscheiden werden kann, ob eine solche Menge von Fluchtwegen existiert.
+    	\item Wir wollen das gleiche Problem wie in Aufgabenteil a) mit einer strengeren Version der Bedingung iii. lösen, dass heißt die Pfade dürfen keine gemeinsamen Knoten mehr haben.
     	Zeige, ob mit dieser neuen Bedingung in polynomieller Zeit entschieden werden kann, ob eine Menge von Fluchtwegen existiert.
     	
     	Gib außerdem eine Beispiel-Eingabe $G_0, X_0, S_0$ an, für die der Algorithmus aus Aufgabenteil a) \glqq Ja\grqq{} ausgibt und der Algorithmus aus Aufgabenteil b) \glqq Nein\grqq.
@@ -215,16 +219,17 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Eulerkreise in gemischten Graphen, \hard]
     % Algorithms and Data Structures 2 - networks2.pdf
-    Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis (ein Kreis, der jede Kante genau einmal enthält) besitzt genau dann, wenn jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten hat.
+    Ein Eulerkreis ist ein Kreis, der jede Kante genau einmal enthält.
+    Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis genau dann besitzt, wenn jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten hat.
+
+	Gemischte Graphen sind Graphen, in denen einige Kanten gerichtet und einige ungerichtet sind. Wir nehmen an, dass die Graphen (schwach) zusammenhängend sind, also der zugrunde liegende ungerichtete Graph zusammenhängend ist. 
     
-    Im Folgenden arbeiten wir mit gemischten Graphen. Das sind Graphen, in denen einige Kanten gerichtet sind und einige ungerichtet. Wir nehmen an, dass die Graphen (schwach) zusammenhängend sind. Das heißt, das der zugrunde liegende Graph zusammenhängend ist, also der ungerichtete Graph, den man erhält, wenn man die Richtungen aller Kanten ignoriert (und sie als ungerichtet auffasst).
-    
-    Gesucht ist nun ein Algorithmus, der entscheidet, ob es möglich ist, den ungerichteten Kanten eine Richtung zu geben, sodass der Graph einen Eulerkreis besitzt. Im Beispiel können die ungerichteten Kanten des gemischten Graphen links so gerichtet werden, dass ein Eulerkreis entsteht (die Nummern der Kanten geben die Besuchsreihenfolge an).
-    
+    Gib einen Algorithmus an, der entscheidet, ob es möglich ist allen ungerichteten Kanten eine Richtung zu geben, sodass der Graph einen Eulerkreis besitzt. Im folgenden Beispiel können die ungerichteten Kanten des gemischten Graphen so gerichtet werden, dass ein Eulerkreis entsteht (die Nummern der Kanten geben die Besuchsreihenfolge an).
+    \newpage
     \begin{figure}[ht]
     	\begin{minipage}[b]{0.5\textwidth}
     		\centering
-    		\begin{tikzpicture}[scale=0.85]
+    		\begin{tikzpicture}
 			\node[draw,circle] (v0) at (0,  0)  {};
 			\node[draw,circle] (v1) at (1,  -1)  {};
 			\node[draw,circle] (v2) at (1.2, 1)  {};
@@ -247,7 +252,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	\end{minipage}
     	\begin{minipage}[b]{0.5\textwidth}
     		\centering
-    		\begin{tikzpicture}[scale=0.85]
+    		\begin{tikzpicture}
 			\node[draw,circle] (v0) at (0,  0)  {};
 			\node[draw,circle] (v1) at (1,  -1)  {};
 			\node[draw,circle] (v2) at (1.2, 1)  {};
@@ -262,7 +267,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\path (v2) edge[-{Stealth[length=3mm, width=2mm]}							] node [font=\small,midway, above] {$3$} (v6);
 			\path (v6) edge[-{Stealth[length=3mm, width=2mm]}, ultra thick				] node [font=\small,midway, right] {$4$} (v7);
 			\path (v7) edge[-{Stealth[length=3mm, width=2mm]}							] node [font=\small,midway, below] {$5$} (v4);
-			\path (v4) edge[-{Stealth[length=3mm, width=2mm]}, ultra thick				] node [font=\small,midway, above] {$6$} (v3);
+			\path (v4) edge[-{Stealth[length=3mm, width=2mm]}, ultra thick				] node [font=\small,midway, below] {$6$} (v3);
 			\path (v3) edge[-{Stealth[length=3mm, width=2mm]}							] node [font=\small,midway, above] {$7$} (v0);
 			\path (v0) edge[-{Stealth[length=3mm, width=2mm]}, ultra thick				] node [font=\small,midway, above,yshift=-1.5, xshift=1.5] {$8$} (v1);
 			\path (v1) edge[-{Stealth[length=3mm, width=2mm]}							] node [font=\small,midway, left ] {$9$} (v3);
@@ -275,14 +280,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	\end{minipage}
     \end{figure}
     
-    Gib einen Algorithmus an, der entscheidet, ob man alle ungerichteten Kanten so richten kann, dass ein Eulerkreis entsteht.
-    
-    \textit{Hinweis:} Denk an einen bipartiten Graphen, bei dem auf der einen Seite die Knoten aus $G$ und auf der anderen Seite die Kanten aus $G$ dargestellt sind. Nutze den Algorithmus der vorherigen Aufgabe.
+    \textit{Hinweis:} Stelle dir einen bipartiten Graphen mit den Knoten aus $G$ auf der einen und den Kanten aus $G$ auf der anderen Seite vor und nutze den Algorithmus der vorherigen Aufgabe.
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Das Zwölf-Münzen Problem]
 	% Algorithms and Data Structures 2 - networks2.pdf
-	Vor dir liegen 12 Münzen. 11 davon sind identisch, aber eine ist schwerer oder leichter als der Rest. Du hast eine traditionelle Balkenwaage mit zwei Waagschalen. Um die Waage zu benutzen, legst du eine Münze in jede Schale. Die Waage zeigt dann an, welche der beiden Seiten (und damit welche der beiden Münzen) schwerer ist. Die Balkenwaage darf dreimal benutzt werden, um die andere Münze zu finden und um festzustellen, ob diese leichter oder schwerer ist als der Rest.
+	Vor dir liegen 12 Münzen. 11 davon sind identisch, aber eine Münze ist schwerer oder leichter als der Rest. Du hast eine traditionelle Balkenwaage mit zwei Waagschalen. Um die Waage zu benutzen, legst du eine Münze in jede Schale. Die Waage zeigt dann an, welche der beiden Seiten (und damit welche der beiden Münzen) schwerer ist. Die Balkenwaage darf dreimal benutzt werden, um die andere Münze zu finden und um festzustellen, ob diese leichter oder schwerer ist als der Rest.
 \end{aufgabe}
 
 \end{document}
