@@ -191,27 +191,27 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Implementierung eines maximalen Flusses, \emoji{star}]
+\begin{aufgabe}[\emoji{star}: Implementierung eines maximalen Flusses]
     % Algorithms and Data Structures II - network1.pdf
     Implementiere ein Programm, das als Eingabe ein Flussnetzwerk erhält und welches mithilfe des Ford-Fulkerson Algorithmus einen maximalen Fluss zwischen zwei Knoten des Netzwerkes berechnet.
     Teste dein Programm in Coderunner (siehe \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}).
 \end{aufgabe}
 
-\begin{aufgabe}[Eine andere Sicht auf Schnitte, \emoji{star}]
-  Schnitte werden manchmal als Teilmengen der Kanten eines Graphs definiert anstatt als Partitionen der Knotenmenge.
+\begin{aufgabe}[\emoji{star}: Eine andere Sicht auf Schnitte]
+  Schnitte werden manchmal als Teilmengen der Kanten eines Graphen definiert anstatt als Partitionen der Knotenmenge.
   In dieser Aufgabe soll gezeigt werden, dass beide Definitionen \emph{nahezu} äquivalent sind.
 
-  Wir sagen, dass eine Menge $X$ (gerichteter) Kanten zwei Knoten $s$ und $t$ \emph{separiert}, falls jeder gerichtete $s$-$t$-Pfad mindestens eine (gerichtete) Kante aus $X$ enthält.
-  Für eine Teilmenge $S$ der Knoten definieren wir
+  Sei $G$ ein gerichteter Graph mit zwei ausgezeichneten Knoten $s$ und $t$. Wir sagen, dass eine Menge $X$ von Kanten die Knoten $s$ und $t$ \emph{separiert}, falls jeder gerichtete $s$-$t$-Pfad mindestens eine Kante aus $X$ enthält.
+  Für eine Menge $S$ von Knoten definieren wir
   \[δS \coloneqq \{u \to v : u \in S, v \not\in S\}.\]
-  Somit ist $δS$ die Menge der gerichteten Kanten, die von $S$ ausgehen.
+  Somit ist $δS$ die Menge der gerichteten Kanten, die aus $S$ raus führen.
 
   \begin{enumerate}
-    \item Beweise, dass für jeden $(s,t)$-Schnitt $(S,T)$ die Menge $δS$ die beiden Knoten $s$ und $t$ separiert.
-    \item Sei $X$ eine beliebige Teilmenge der Kanten, die $s$ und $t$ separiert.
-    Zeige, dass es einen $(s,t)$-Schnitt $(S,T)$ gibt, für den $δS \subseteq X$ gilt.
-    \item Sei $X$ eine minimale Teilmenge der Kanten, die $s$ und $t$ separiert.
-    Zeige, dass es einen $(s,t)$-Schnitt $(S,T)$ gibt, für den $δS = X$ gilt.
+    \item Sei $(S,T)$ ein beliebiger $s$-$t$-Schnitt in $G$. Beweise, dass die Kantenmenge $δS$ die beiden Knoten $s$ und $t$ separiert.
+    \item Sei $X$ eine beliebige Teilmenge von Kanten, sodass $X$ die Knoten $s$ und $t$ separiert.
+    Beweise, dass es einen $s$-$t$-Schnitt $(S,T)$ gibt, für den $δS \subseteq X$ gilt.
+    \item Sei $X$ eine minimale Teilmenge von Kanten, sodass $X$ die Knoten $s$ und $t$ separiert.
+    Beweise, dass es einen $s$-$t$-Schnitt $(S,T)$ gibt, für den $δS = X$ gilt.
   \end{enumerate}
 \end{aufgabe}
 
