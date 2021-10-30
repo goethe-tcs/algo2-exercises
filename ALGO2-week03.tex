@@ -173,22 +173,41 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     % Algorithms and Data Structures 2 - networks2.pdf
     Professor Regloh hat dich beauftragt, die jährliche Weihnachtsfeier für alle Student:innen der Goethe-Universität zu organisieren. Du musst einen Plan erstellen, auf dem die Platzierung der Tische im Casino-Festsaal vermerkt ist. Damit die Brandschutzmaßnahmen eingehalten werden können, hat die Frankfurter Feuerwehr den Festsaal in ein quadratisches $n \times m$ Gitter aufgeteilt und festgelegt, dass höchstens zwei Tische in jeder Zeile und höchstens ein Tisch in jeder Spalte aufgestellt werden dürfen. Leider liebt Professor Regloh Weihnachtsbäume so sehr, dass er in vielen Bereichen schon welche aufgestellt hat. Du kannst keinen Tisch in einen Bereich stellen, in dem schon ein Weihnachtsbaum steht.
     
-    \textbf{Beispiel.} Es gilt $n = 4$ und $m = 8$. Die $\star$ stellen Weihnachtsbäume dar und $T$ die Tische. In diesem Beispiel ist die maximale Anzahl an platzierbaren Tischen 7.
+    \textbf{Beispiel.} Es gilt $n = 4$ und $m = 8$. Die $\star$ stellen Weihnachtsbäume dar und $T$ die Tische. In Abbildung~\ref{Ohne_Tische} ist die Ausgangslage (Weihnachtsbäume positioniert, Tische nicht) dargestellt. In Abbildung~\ref{Mit Tischen} ist die bestmögliche Positionierung einer maximalen Anzahl an Tischen (7) dargestellt.
+   
+    \begin{figure}[h]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+    	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+    		\hline 
+		    \rule[-1ex]{0pt}{2.5ex} $\star$ &  &  &  &  &  &  &  \\ 
+    		\hline 
+	    	\rule[-1ex]{0pt}{2.5ex}  & $\star$ & $\star$ &  & $\star$ & $\star$ &  & $\star$ \\ 
+	    	\hline 
+		    \rule[-1ex]{0pt}{2.5ex}  & $\star$ & $\star$ &  & $\star$ & $\star$ &  & $\star$ \\ 
+    		\hline 
+		    \rule[-1ex]{0pt}{2.5ex}  & $\star$ &  & $\star$ &  &  & $\star$ &  \\ 
+    		\hline 
+    	\end{tabular}
+    	\caption{\label{Ohne_Tische}}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+    	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		    \hline 
+    		\rule[-1ex]{0pt}{2.5ex} $\star$ & $T$ &  &  &  &  &  & $T$ \\ 
+	    	\hline 
+	    	\rule[-1ex]{0pt}{2.5ex} $T$ & $\star$ & $\star$ & $T$ & $\star$ & $\star$ &  & $\star$ \\ 
+		    \hline 
+    		\rule[-1ex]{0pt}{2.5ex}  & $\star$ & $\star$ &  & $\star$ & $\star$ & $T$ & $\star$ \\ 
+		    \hline 
+    		\rule[-1ex]{0pt}{2.5ex}  & $\star$ & $T$ & $\star$ &  & $T$ & $\star$ &  \\ 
+	    	\hline 
+    	\end{tabular}
+    	\caption{\label{Mit Tischen}}
+    \end{minipage}
+    \end{figure}
+     
     
-    \vspace{4mm}
-    \begin{center}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-    \hline 
-    \rule[-1ex]{0pt}{2.5ex} $\star$ & $T$ &  &  &  &  &  & $T$ \\ 
-    \hline 
-    \rule[-1ex]{0pt}{2.5ex} $T$ & $\star$ & $\star$ & $T$ & $\star$ & $\star$ &  & $\star$ \\ 
-    \hline 
-    \rule[-1ex]{0pt}{2.5ex}  & $\star$ & $\star$ &  & $\star$ & $\star$ & $T$ & $\star$ \\ 
-    \hline 
-    \rule[-1ex]{0pt}{2.5ex}  & $\star$ & $T$ & $\star$ &  & $T$ & $\star$ &  \\ 
-    \hline 
-    \end{tabular} 
-    \end{center}
     \vspace{4mm}
     \begin{enumerate}
     	\item Modelliere das Problem als Graphenproblem. Erkläre, wie du dir das überlegt hast und zeichne den zum oben angegebenen Beispiel passenden Graphen.\\
