@@ -229,22 +229,23 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     Diese Menge von Pfaden sorgt dafür, dass die bewohnten Knoten sicher evakuiert werden können, ohne dass eine Kante in $G$ überlastet wird.
     \begin{enumerate}
     	\item Zeige, wie bei einer Eingabe von $G, X, S$ in polynomieller Zeit entscheiden werden kann, ob eine solche Menge von Fluchtwegen existiert.
-    	\item Wir wollen das gleiche Problem wie in Aufgabenteil a) mit einer strengeren Version der Bedingung iii. lösen, dass heißt die Pfade dürfen keine gemeinsamen Knoten mehr haben.
-    	Zeige, ob mit dieser neuen Bedingung in polynomieller Zeit entschieden werden kann, ob eine Menge von Fluchtwegen existiert.
+    	\item Wir wollen das gleiche Problem wie in Aufgabenteil a)~mit einer strengeren Version von Bedingung iii.~lösen, das heißt die Pfade dürfen keine gemeinsamen Knoten mehr haben.
+    	Zeige, wie in polynomieller Zeit entschieden werden kann, ob eine Menge von Fluchtwegen gemäß dieser neuen Bedinungen existiert.
     	
     	Gib außerdem eine Beispiel-Eingabe $G_0, X_0, S_0$ an, für die der Algorithmus aus Aufgabenteil a) \glqq Ja\grqq{} ausgibt und der Algorithmus aus Aufgabenteil b) \glqq Nein\grqq.
     \end{enumerate}
 \end{aufgabe}
 
+\newpage
 \begin{aufgabe}[Eulerkreise in gemischten Graphen, \hard]
     % Algorithms and Data Structures 2 - networks2.pdf
     Ein Eulerkreis ist ein Kreis, der jede Kante genau einmal enthält.
     Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis genau dann besitzt, wenn jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten hat.
 
-	Gemischte Graphen sind Graphen, in denen einige Kanten gerichtet und einige ungerichtet sind. Wir nehmen an, dass die Graphen (schwach) zusammenhängend sind, also der zugrunde liegende ungerichtete Graph zusammenhängend ist. 
+	\emph{Gemischte Graphen} sind Graphen, in denen einige Kanten gerichtet und einige ungerichtet sind. Wir nehmen an, dass die Graphen schwach zusammenhängend sind, also dass der zugrunde liegende ungerichtete Graph zusammenhängend ist. 
     
-    Gib einen Algorithmus an, der entscheidet, ob es möglich ist allen ungerichteten Kanten eine Richtung zu geben, sodass der Graph einen Eulerkreis besitzt. Im folgenden Beispiel können die ungerichteten Kanten des gemischten Graphen so gerichtet werden, dass ein Eulerkreis entsteht (die Nummern der Kanten geben die Besuchsreihenfolge an).
-    \newpage
+    Gib einen Algorithmus an, der entscheidet, ob man allen ungerichteten Kanten eine Richtung zuweisen kann, sodass der dadurch entstehende gerichtete Graph einen Eulerkreis besitzt. Im folgenden Beispiel können die ungerichteten Kanten des gemischten Graphen (\emph{links}) so gerichtet werden (\emph{rechts}), dass ein Eulerkreis entsteht (die Zahlen an den Kanten geben die Besuchsreihenfolge an).
+
     \begin{figure}[ht]
     	\begin{minipage}[b]{0.5\textwidth}
     		\centering
