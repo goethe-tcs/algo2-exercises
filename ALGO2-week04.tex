@@ -42,7 +42,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Amortisierte Analyse]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Wir haben eine Datenstruktur, bei der die Kosten $T(i)$ der $i$-ten Operation durch 
-	$$T(i) = \begin{cases} 2i & \text{falls i eine 2er Potenz ist}, \\ 1 & \text{sonst}. \end{cases}$$ 
+	$$T(i) = \begin{cases} 2i & \text{falls i eine 2er Potenz ist}, \\ 1 & \text{sonst} \end{cases}$$ 
 	gegeben sind.
 	Was ist die amortisierte Laufzeit dieser Operation? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
 \end{aufgabe}    
@@ -54,14 +54,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Mengenvereinigung]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	In Mengenvereinigungsproblem haben wir $n$ Elemente, die anfangs in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen unterstützen:
+	Im Mengenvereinigungsproblem haben wir $n$ Elemente, die anfangs in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen ausführen:
 	\begin{itemize}
 		\item Union($A,B$): Führe die beiden Menge $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.\\
 		\item SameSet($x,y$): Gebe \textit{true} zurück, wenn $x$ und $y$ in der selben Menge liegen, ansonsten gebe \textit{false} zurück.
 	\end{itemize}
 	Das können wir folgendermaßen implementieren: Weise jeder Menge am Anfang eine Farbe zu. Übernehme beim Zusammenführen zweier Mengen für die kleinere Menge die Farbe der größeren Menge (bei Gleichstand wird eine der beiden Farben beliebig gewählt). Um die SameSet Anfrage zu beantworten, überprüfe ob zwei Elemente die selbe Farbe haben.
 	\begin{enumerate}
-		\item Analysiere den \textit{worst-case} der beiden Operationen.\\
+		\item Analysiere die Kosten der beiden Operationen im \textit{worst-case}.\\
 		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die Laufzeit $\Oh(m \log n + l)$ benötigt.\\
 		\textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
 	\end{enumerate}
@@ -92,22 +92,22 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Dynamische Hashtabelle]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode erstellt. Deine Lösung soll $\Theta(n)$ Platz benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
+	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode erstellt. Deine Lösung soll einen Speicherplatz von $\Theta(n)$ benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
 \end{aufgabe}
 
 \begin{aufgabe}[Deamortisierung von Hashtabellen]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben worst-case Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im worst-case einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Platz benutzt ($n$ ist die aktuelle Anzahl der Elemente in der Tabelle).
+	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben worst-case Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im worst-case einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Speicherplatz benutzt ($n$ ist die aktuelle Anzahl der Elemente in der Tabelle).
 	
 	\textit{Hinweis:} Benutze die Verdopplungsmethode, aber verteile die Arbeit auf alle Einfügungen.
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Prinzessinnen]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Du bist ein junger Prinz aus dem fernen Lande Algo. Der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt manchmal und sagt auch manchmal die Wahrheit.\\
+	Du bist ein junger Prinz aus dem fernen Lande Algo. Der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt und sagt die Wahrheit, wie es ihr gefällt.\\
 	Du willst entweder die älteste oder die jüngste Tochter heiraten (da sie immer lügt ist das genauso gut, wie immer die Wahrheit zu sagen). Nur die mittlere Tochter möchtest du nicht heiraten.\\
-	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. Sie sehen alle gleich aus, also ist es nicht möglich dem Aussehen nach zu entscheiden.\\
-	Welche Frage solltest du stellen und welche der Töchter sollst du dann aussuchen?
+	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. Sie sehen alle gleich aus, also ist es nicht möglich, dem Aussehen nach zu entscheiden.\\
+	Welche Frage sollst du stellen und welche der Töchter sollst du dann aussuchen?
 \end{aufgabe}
 
 \section*{Sternaufgabe}
