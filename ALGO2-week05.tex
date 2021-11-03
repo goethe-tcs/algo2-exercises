@@ -1,0 +1,98 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{5}{}{}
+\blattname{Übungen zu Woche 5: Randomisierte Algorithmen I}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 19.11., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[Wahrscheinlichkeitsrechnung]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Löse die folgenden Aufgaben.
+	\begin{enumerate}
+		\item Seien $E$ und $F$ zwei Ereignisse, so dass $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$. Zeige, dass $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$. \\
+		\item Betrachte die \textit{contention resolution analysis of failure} für mindestens einen Prozess. Wenn wir die \textit{union bound} anwenden, sind die Ereignisse dann disjunkt oder überschneiden sie sich?
+	\end{enumerate}		
+\end{aufgabe}
+
+\begin{aufgabe}[Contention Resolution]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Führe das \textit{contention resolution} Protokoll mit 4 Prozessen aus. Benutze zwei Münzen oder eine zufällige Nummer, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
+\end{aufgabe}    
+
+\begin{aufgabe}[Minimum cut]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum \textit{contraction algorithm}, das wir in der Vorlesung behandelt haben. Löse die folgenden Aufgaben.
+	\begin{enumerate}
+		\item Zeige, dass es eine Auswahl von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führen.\\
+		\item Berechne die Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Schneller Kontraktionsalgorithmus]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Zeige, wie man den Kontraktionsalgorithmus für minimale Schnitte effizient implementiert.
+\end{aufgabe}
+
+\begin{aufgabe}[Kontraktionsalgorithmus analysieren]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Betrachte die Wahrscheinlichkeitsanalyse des Erfolgs für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis.
+	\begin{align}
+	\Pr(E_{n-2} \cap \cdots \cap E_1) &= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
+	&= \Pr(E_1) \cdot \Pr(E_2|E_1) \cdot \Pr(E_{j+1} | E_j \cap \cdots \cap E_1) \cdots \Pr(E_{n-2} | E_{n-3} \cap \cdots \cap E_1) \\
+	&= \left(1 - \frac{2}{n} \right) \cdot \left(1 - \frac{2}{n-1} \right) \cdot \left(1 - \frac{2}{n-2} \right) \cdots \left(1 - \frac{2}{3} \right) \\
+	&= \left(\frac{n-2}{n}\right) \cdot \left(\frac{n-3}{n-1}\right) \cdot \left(\frac{n-4}{n-2}\right) \cdots \left(\frac{2}{4}\right) \cdot \left(\frac{1}{3}\right) \\
+	&= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
+	\end{align}
+	Löse die folgenden Aufgaben.
+	\begin{enumerate}
+		\item Zeige (1) auf zwei Wege: (I) benutze die Formel für die bedingte Wahrscheinlichkeit und (II) interpretiere, was die linke und rechte Seite repräsentieren. \\
+		\item Zeige (2). \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a). \\
+		\item Füge die Grenzen für jeden Faktor ein, um (3) zu zeigen. \\
+		\item Zeige (4). \\
+		\item Zeige (5).
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Mehrheit]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ Integern. Die Sequenz hat ein \textit{Mehrheitselement} $t$, wenn eine Nummer $t$ öfters als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat.
+	
+	Hier ist ein randomisierter Algorithmus für das Problem: Wähle zufällig eine Zahl $x_i$ aus der Sequenz. Prüfe dann, ob dieses Element öfters als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, ist es das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt. Löse die folgenden Aufgaben.
+	\begin{enumerate}
+		\item Was ist die Laufzeit des Algorithmus? \\
+		\item Kann der Algorithmus ein Mehrheitselement zurückgeben, wenn die Sequenz keins hat? Begründe deine Antwort. \\
+		\item Kann der Algorithmus ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort. \\
+		\item Bestimme die Wahrscheinlichkeit für falsche Antworten.
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Sternaufgabe}
+
+\end{document}
