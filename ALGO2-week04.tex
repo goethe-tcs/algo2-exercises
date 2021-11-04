@@ -31,11 +31,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \section*{Dienstag}
 
 \begin{aufgabe}[Splay-Bäume]
-\
 	% Algorithms and Data Structures 2 - amortized.pdf
+	Gegeben sei ein leerer Splay-Baum.
 	\begin{enumerate}
-		\item Wie sieht ein Splay-Baum aus, nachdem man die Schlüssel $41,38,31,12,19,8$ in dieser Reihenfolge in einen anfangs leeren Baum eingefügt hat? \\
-		\item Wie sieht der Baum aus, nachdem man die $31$ entfernt hat?
+		\item Füge die Schlüssel $41,38,31,12,19,8$ in der angegebenen Reihenfolge ein. Wie sieht der resultierende Splay-Baum aus?
+		\item Wie sieht der Splay-Baum aus, nachdem man Schlüssel $31$ entfernt hat?
 	\end{enumerate}		
 \end{aufgabe}
 
@@ -49,21 +49,21 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Potenzialfunktion: Verdopplung von Arrays]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Wir gehen von einer dynamischen Tabelle aus, die nur Einfügungen erlaubt (keine Löschungen), wobei wir die Verdopplungsmethode nutzen. Können wir zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ betragen, wenn wir die Potenzialfunktion $\Phi(D_i) = k$, wobei $k$ die Anzahl an Elementen im Array ist, benutzen?
+	Gegeben sei eine dynamischen Tabelle, die nur Einfügungen und keine Löschungen erlaubt, und für die die Verdopplungsmethode genutzet wird. Wenn wir als Potenzialfunktion $\Phi(D_i) = k$ für $k$ ist die Anzahl an Elementen im Array wählen, können wir dann zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ betragen?
 \end{aufgabe}
 
 \begin{aufgabe}[Mengenvereinigung]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Im Mengenvereinigungsproblem haben wir $n$ Elemente, die anfangs in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen ausführen:
+	Im Mengenvereinigungsproblem betrachten wir $n$ Elemente, die zu Beginn in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen ausführen können:
 	\begin{itemize}
-		\item Union($A,B$): Führe die beiden Menge $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.\\
-		\item SameSet($x,y$): Gebe \textit{true} zurück, wenn $x$ und $y$ in der selben Menge liegen, ansonsten gebe \textit{false} zurück.
+		\item \emph{Union($A,B$)}: Führe die beiden Menge $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.
+		\item \emph{SameSet($x,y$)}: Gebe \textit{true} zurück, wenn $x$ und $y$ in der selben Menge liegen, ansonsten gebe \textit{false} zurück.
 	\end{itemize}
-	Das können wir folgendermaßen implementieren: Weise jeder Menge am Anfang eine Farbe zu. Übernehme beim Zusammenführen zweier Mengen für die kleinere Menge die Farbe der größeren Menge (bei Gleichstand wird eine der beiden Farben beliebig gewählt). Um die SameSet Anfrage zu beantworten, überprüfe ob zwei Elemente die selbe Farbe haben.
+	Das können wir implementieren, indem man jeder Menge am Anfang eine Farbe zuweist. Beim Zusammenführen zweier Mengen übernimmt die kleinere Menge die Farbe der größeren Menge; bei Gleichstand wird eine der beiden Farben beliebig gewählt. Um zu überprüfen, dass zwei Elemente in der gleichen Menge liegen, vergleicht man ihre Farben.
 	\begin{enumerate}
-		\item Analysiere die Kosten der beiden Operationen im \textit{worst-case}.\\
-		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die Laufzeit $\Oh(m \log n + l)$ benötigt.\\
-		\textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
+		\item Analysiere die Kosten der beiden Operationen im \textit{worst-case}.
+		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für \emph{Union} und $\O(1)$ für \emph{SameSet} betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die Laufzeit $\Oh(m \log n + l)$ benötigt.
+		\item[] \textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
 	\end{enumerate}
 \end{aufgabe}
 
@@ -71,11 +71,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Splay-Bäume]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Professer Sheldon schlägt eine einfachere Variante der Splay-Bäume vor und nennt diese Spiel-Bäume. Spiel-Bäume sind den Splay-Bäumen ähnlich, sie führen in der Splay-Operation aber nur eine Rotation aus. 
+	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Im Gegensatz zu Splay-Bäumen führen sie in der Splay-Operation nur eine Rotation aus. 
 	\begin{enumerate}
-		\item Was sind die amortisierten Kosten der Operation splay($x$), wenn wir nur einzelne Rotationen benutzen? Analysiere die Kosten mit der selben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.\\
-		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ in dieser Reihenfolge in einen Spiel-Baum einfügt und dann nach den Schlüsseln $1,2,3,\dots,n$ in diese Reihenfolge sucht?\\
-		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \glqq Du musst nur eine raffiniertere Potenzialfunktion benutzen \grqq{,} sagt er. Liegt er damit richtig?
+		\item Was sind die amortisierten Kosten der Operation \emph{splay($x$)}, wenn wir nur einzelne Rotationen benutzen? Analysiere die Kosten mit der selben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
+		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
+		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \glqq Du musst nur eine raffiniertere Potenzialfunktion benutzen\grqq{,} sagt er. Liegt er damit richtig?
 	\end{enumerate}
 \end{aufgabe}
 
@@ -83,9 +83,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Implementiere deine eigene dynamische Tabelle für \texttt{Integer}-Werte, ohne dabei built-in Methoden zu verwenden. Deine dynamische Tabelle soll folgende Operationen beherrschen:
 	\begin{itemize}
-		\item Einfügen von Elementen, \\
-		\item Löschen von Elementen, \\
-		\item Ausgabe enthaltener Elemente, \\
+		\item Einfügen von Elementen,
+		\item Löschen von Elementen,
+		\item Ausgabe enthaltener Elemente,
 		\item Ausgabe der Größe der Tabelle.
 	\end{itemize}
 \end{aufgabe}
@@ -97,21 +97,30 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Deamortisierung von Hashtabellen]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben worst-case Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im worst-case einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Speicherplatz benutzt ($n$ ist die aktuelle Anzahl der Elemente in der Tabelle).
+	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben \emph{worst-case} Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Sei $n$ ist die aktuelle Anzahl der Elemente in der Tabelle. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im \emph{worst-case} einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Speicherplatz benutzt.
 	
 	\textit{Hinweis:} Benutze die Verdopplungsmethode, aber verteile die Arbeit auf alle Einfügungen.
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Prinzessinnen]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Du bist ein junger Prinz aus dem fernen Lande Algo. Der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt und sagt die Wahrheit, wie es ihr gefällt.\\
-	Du willst entweder die älteste oder die jüngste Tochter heiraten (da sie immer lügt ist das genauso gut, wie immer die Wahrheit zu sagen). Nur die mittlere Tochter möchtest du nicht heiraten.\\
-	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. Sie sehen alle gleich aus, also ist es nicht möglich, dem Aussehen nach zu entscheiden.\\
-	Welche Frage sollst du stellen und welche der Töchter sollst du dann aussuchen?
+	Stelle dir vor, du bist ein junger Prinz aus dem fernen Lande Algo und der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt und sagt die Wahrheit, wie es ihr gefällt.
+	
+	Du willst entweder die älteste oder die jüngste Tochter heiraten, da immer lügen genauso gut ist, wie immer die Wahrheit zu sagen. Nur die mittlere Tochter möchtest du nicht heiraten. Allerdings sehen alle Töchter gleich aus, sodass du sie nicht unterscheiden kannst.
+
+	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. 
+
+	Welche Frage sollst du stellen und welche der Töchter sollst du aussuchen?
 \end{aufgabe}
 
-\section*{\emoji{star}-Aufgabe}
+\section*{Sternaufgabe}
 
-Beschreibe, wie man eine Queue implementiert, wenn man zwei Stacks und $\Oh(1)$ zusätzlichen Speicherplatz benutzt, sodass die amortisierte Laufzeit für jede \texttt{enqueue} oder \texttt{dequeue} Operation $\Oh(1)$ beträgt. Der \textit{einzige} Zugriff auf die Stacks erfolgt durch die Standardoperationen \texttt{PUSH} und \texttt{POP}.
+\begin{aufgabe}[\emoji{star}: Der Unterschied zwischen Stacks und Queues]
+
+	Man kann eine Queue mithilfe von zwei Stacks und $\Oh(1)$ zusätzlichen Speicherplatz implementieren. 
+	Der \textit{einzige} Zugriff auf die Stacks erfolgt durch die zwei Standardoperationen \texttt{PUSH} und \texttt{POP}.
+	Beschreibe eine Queue Implementierung, sodass die amortisierte Laufzeit für jede \texttt{enqueue} oder \texttt{dequeue} Operation $\Oh(1)$ beträgt. 
+
+\end{aufgabe}
 
 \end{document}
