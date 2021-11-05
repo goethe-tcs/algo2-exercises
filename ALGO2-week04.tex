@@ -41,10 +41,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Amortisierte Analyse]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Wir haben eine Datenstruktur, bei der die Kosten $T(i)$ der $i$-ten Operation durch 
-	$$T(i) = \begin{cases} 2i & \text{falls i eine 2er Potenz ist}, \\ 1 & \text{sonst} \end{cases}$$ 
-	gegeben sind.
-	Was ist die amortisierte Laufzeit dieser Operation? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
+	Wir haben eine Datenstruktur mit einer Operation \texttt{Foo()}. Die Kosten~$T(i)$ der $i$-ten Ausführung dieser Operation sind gegeben durch: 
+	\[T(i) = \begin{cases} 2i & \text{falls i eine Zweierpotenz ist}, \\ 1 & \text{sonst}. \end{cases}\] 
+	Was ist die amortisierte Laufzeit der Operation \texttt{Foo()}? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
 \end{aufgabe}    
 
 \begin{aufgabe}[Potenzialfunktion: Verdopplung von Arrays]
@@ -54,15 +53,18 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Mengenvereinigung]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Im Mengenvereinigungsproblem betrachten wir $n$ Elemente, die zu Beginn in $n$ einzelne Sets aufgeteilt sind. Wir wollen die folgenden Operationen ausführen können:
+	Mengenvereinigung ist eine abstrakte Datenstruktur, die disjunkte Teilmengen von $\{1,\dots,n\}$ verwaltet (ganz ähnlich zu Union-Find).
+	Anfangs sind die Elemente auf $n$ einzelne Mengen aufgeteilt, also $\{1\}, \{2\}, \dots,\{n\}$.
+	Die Datenstruktur soll die folgenden Operationen unterstützen:
 	\begin{itemize}
-		\item \emph{Union($A,B$)}: Führe die beiden Menge $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.
-		\item \emph{SameSet($x,y$)}: Gebe \textit{true} zurück, wenn $x$ und $y$ in der selben Menge liegen, ansonsten gebe \textit{false} zurück.
+		\item Union($A,B$): Führe die beiden Mengen $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen.
+		\item SameSet($x,y$): Gebe \textit{true} zurück, wenn $x$ und $y$ in derselben Menge liegen, ansonsten gebe \textit{false} zurück.
 	\end{itemize}
-	Das können wir implementieren, indem man jeder Menge am Anfang eine Farbe zuweist. Beim Zusammenführen zweier Mengen übernimmt die kleinere Menge die Farbe der größeren Menge; bei Gleichstand wird eine der beiden Farben beliebig gewählt. Um zu überprüfen, dass zwei Elemente in der gleichen Menge liegen, vergleicht man ihre Farben.
+	Diese Operationen können wir folgendermaßen implementieren: Weise jeder Menge am Anfang eine eigene Farbe zu. Um die Union-Operation zu unterstützen, übernimm für alle Elemente in der kleineren Menge die Farbe der größeren Menge (bei Gleichstand wird eine der beiden Farben beliebig gewählt). Um die SameSet-Operation zu beantworten, überprüfe, ob die zwei Elemente dieselbe Farbe haben.
+	
 	\begin{enumerate}
-		\item Analysiere die Kosten der beiden Operationen im \textit{worst-case}.
-		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für \emph{Union} und $\O(1)$ für \emph{SameSet} betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die Laufzeit $\Oh(m \log n + l)$ benötigt.
+		\item Analysiere die \textit{worst-case} Laufzeit der beiden Operationen.
+		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die worst-case Laufzeit $\Oh(m \log n + l)$ einhält.
 		\item[] \textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
 	\end{enumerate}
 \end{aufgabe}
@@ -71,11 +73,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Splay-Bäume]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Im Gegensatz zu Splay-Bäumen führen sie in der Splay-Operation nur eine Rotation aus. 
+	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \emph{splay(x)}-Methode auf die nervigen \emph{rollercoaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
 	\begin{enumerate}
-		\item Was sind die amortisierten Kosten der Operation \emph{splay($x$)}, wenn wir nur einzelne Rotationen benutzen? Analysiere die Kosten mit der selben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
+		\item Was sind die amortisierten Kosten der Operation \emph{splay($x$)}, wenn wir nur einfache Rotationen benutzen? Analysiere die Kosten mit derselben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
 		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
-		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \glqq Du musst nur eine raffiniertere Potenzialfunktion benutzen\grqq{,} sagt er. Liegt er damit richtig?
+		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \enquote{Du musst nur eine raffiniertere Potenzialfunktion benutzen}, sagt er. Liegt er damit richtig?
 	\end{enumerate}
 \end{aufgabe}
 
@@ -92,14 +94,22 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Dynamische Hashtabelle]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode erstellt. Deine Lösung soll einen Speicherplatz von $\Theta(n)$ benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
+	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode verwaltet. Deine Lösung soll einen Speicherplatz von $\Theta(n)$ benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
 \end{aufgabe}
 
-\begin{aufgabe}[Deamortisierung von Hashtabellen]
+\begin{aufgabe}[Deamortisierung von dynamischen Tabellen]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Manchmal ist es möglich, Datenstrukturen zu deamortisieren, d.h. man erhält die selben \emph{worst-case} Schranken, wie im amortisierten Fall, indem die Arbeit \glqq im Hintergrund\grqq{}  ausgeführt wird. Sei $n$ ist die aktuelle Anzahl der Elemente in der Tabelle. Zeige, dass man beim Einfügen eines Elements in die dynamische Tabelle im \emph{worst-case} einen konstanten Zeitaufwand benötigt, während man immer noch $\Oh(n)$ Speicherplatz benutzt.
+	Manchmal ist es möglich, Datenstrukturen zu deamortisieren. Das heißt, man erhält dieselben \emph{worst-case} Schranken, wie im amortisierten Fall, indem die teure Arbeit auf viele Operationen verteilt wird und im Hintergrund ausgeführt wird.
+
+	\begin{enumerate}
+		\item
+	Zeige, wie man dynamische Tabellen mit Einfügen (ohne Löschen) so implementieren kann, dass das Einfügen eines Elements im \emph{worst-case} einen konstanten Zeitaufwand benötigt. Hierbei soll zu jedem Zeitpunkt weiterhin nur $\Oh(n)$ Speicherplatz benutzt werden, wo $n$ die Anzahl der gespeicherten Elemente ist.
 	
+	\item[]
 	\textit{Hinweis:} Benutze die Verdopplungsmethode, aber verteile die Arbeit auf alle Einfügungen.
+
+	\item Jetzt mach dasselbe für dynamische Tabellen mit Einfügen \emph{und} Löschen.
+	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Puzzle der Woche: Prinzessinnen]
@@ -110,17 +120,22 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. 
 
-	Welche Frage sollst du stellen und welche der Töchter sollst du aussuchen?
+	Welche Frage solltest du stellen und dann welche der Töchter aussuchen?
 \end{aufgabe}
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Der Unterschied zwischen Stacks und Queues]
+\begin{aufgabe}[\emoji{star}: Der Unterschied zwischen Stacks und Queues]\mbox{}\\
+	Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)} und \texttt{S.POP()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
 
-	Man kann eine Queue mithilfe von zwei Stacks und $\Oh(1)$ zusätzlichen Speicherplatz implementieren. 
+	Du sollst für diese Aufgabe eine Queue \texttt{Q} mithilfe von zwei Stacks \texttt{S1}, \texttt{S2} und $\Oh(1)$ zusätzlichem Speicher implementieren. 
 	Der \textit{einzige} Zugriff auf die Stacks erfolgt durch die zwei Standardoperationen \texttt{PUSH} und \texttt{POP}.
-	Beschreibe eine Queue Implementierung, sodass die amortisierte Laufzeit für jede \texttt{enqueue} oder \texttt{dequeue} Operation $\Oh(1)$ beträgt. 
-
+	\begin{enumerate}
+		\item 
+		\textbf{Beschreibe mit Pseudocode} eine solche Queue-Implementierung, wobei die amortisierte Laufzeit für jede \texttt{Q.ENQUEUE(x)} oder \texttt{Q.DEQUEUE()} Operation $\Oh(1)$ betragen muss.
+		\item
+		\textbf{Beweise mithilfe der Potenzialmethode}, dass die amortisierten Kosten deiner Implementierung tatsächlich konstant sind.
+	\end{enumerate}
 \end{aufgabe}
 
 \end{document}
