@@ -30,26 +30,28 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Wahrscheinlichkeitsrechnung]
+\begin{aufgabe}[Wahrscheinlichkeitsrechnung]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Löse die folgenden Aufgaben.
-	\begin{enumerate}
-		\item Seien $E$ und $F$ zwei Ereignisse, so dass $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$. Zeige, dass $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$. \\
-		\item Betrachte die \textit{contention resolution analysis of failure} für mindestens einen Prozess. Wenn wir die \textit{union bound} anwenden, sind die Ereignisse dann disjunkt oder überschneiden sie sich?
-	\end{enumerate}		
+	Seien $E$ und $F$ zwei Ereignisse, für die $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$ gelten. Zeige, dass dann auch $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$ gilt.
 \end{aufgabe}
 
-\begin{aufgabe}[Contention Resolution]
+\begin{aufgabe}[Contention Resolution]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Führe das \textit{contention resolution} Protokoll mit 4 Prozessen aus. Benutze zwei Münzen oder eine zufällige Nummer, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
+	\begin{enumerate}
+		\item 
+		Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen aus. Benutze zwei Münzen, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
+		\item Betrachte jetzt \textit{contention resolution} mit $n$ Prozessen und betrachte das Ereignis~$E$, dass mindestens einer der $n$ Prozesse in irgendeiner der $t$ Runden nicht auf die Datenbank zugreifen kann.
+		Um die Wahrscheinlichkeit $\Pr(E)$ nach oben abzuschätzen wurde die \textit{union bound} angewendet. Sind die einzelnen Ereignisse hierbei disjunkt oder überschneiden sie sich?
+	\end{enumerate}
 \end{aufgabe}    
 
-\begin{aufgabe}[Minimum cut]
+\begin{aufgabe}[Minimaler Schnitt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum \textit{contraction algorithm}, das wir in der Vorlesung behandelt haben. Löse die folgenden Aufgaben.
+	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum Kontraktionsalgorithmus, das wir in der Vorlesung behandelt haben. Löse die folgenden Aufgaben.
+	%TODO: Graph einfügen.
 	\begin{enumerate}
-		\item Zeige, dass es eine Auswahl von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führen.\\
-		\item Berechne die Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
+		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führen.
+		\item Berechne die genaue Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
 	\end{enumerate}
 \end{aufgabe}
 
@@ -57,39 +59,40 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Schneller Kontraktionsalgorithmus]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Zeige, wie man den Kontraktionsalgorithmus für minimale Schnitte effizient implementiert.
+	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe alle nötigen Datenstrukturen und Algorithmen.
 \end{aufgabe}
 
 \begin{aufgabe}[Kontraktionsalgorithmus analysieren]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Betrachte die Wahrscheinlichkeitsanalyse des Erfolgs für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis.
+	Betrachte die folgende Analyse der Erfolgswahrscheinlichkeit für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
 	\begin{align}
-	\Pr(E_{n-2} \cap \cdots \cap E_1) &= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
-	&= \Pr(E_1) \cdot \Pr(E_2|E_1) \cdot \Pr(E_{j+1} | E_j \cap \cdots \cap E_1) \cdots \Pr(E_{n-2} | E_{n-3} \cap \cdots \cap E_1) \\
-	&= \left(1 - \frac{2}{n} \right) \cdot \left(1 - \frac{2}{n-1} \right) \cdot \left(1 - \frac{2}{n-2} \right) \cdots \left(1 - \frac{2}{3} \right) \\
-	&= \left(\frac{n-2}{n}\right) \cdot \left(\frac{n-3}{n-1}\right) \cdot \left(\frac{n-4}{n-2}\right) \cdots \left(\frac{2}{4}\right) \cdot \left(\frac{1}{3}\right) \\
-	&= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
+	&\nonumber\Pr(E_{n-2} \cap \cdots \cap E_1) \\
+	&\quad= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
+	&\quad= \Pr(E_1) \cdot \Pr(E_2|E_1) \cdot \Pr(E_{j+1} | E_j \cap \cdots \cap E_1) \cdots \Pr(E_{n-2} | E_{n-3} \cap \cdots \cap E_1) \\
+	&\quad\ge \left(1 - \frac{2}{n} \right) \cdot \left(1 - \frac{2}{n-1} \right) \cdot \left(1 - \frac{2}{n-2} \right) \cdots \left(1 - \frac{2}{3} \right) \\
+	&\quad= \left(\frac{n-2}{n}\right) \cdot \left(\frac{n-3}{n-1}\right) \cdot \left(\frac{n-4}{n-2}\right) \cdots \left(\frac{2}{4}\right) \cdot \left(\frac{1}{3}\right) \\
+	&\quad= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
 	\end{align}
 	Löse die folgenden Aufgaben.
 	\begin{enumerate}
-		\item Zeige (1) auf zwei Wege: (I) benutze die Formel für die bedingte Wahrscheinlichkeit und (II) interpretiere, was die linke und rechte Seite repräsentieren. \\
-		\item Zeige (2). \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a). \\
-		\item Füge die Grenzen für jeden Faktor ein, um (3) zu zeigen. \\
-		\item Zeige (4). \\
+		\item Zeige (1) auf zwei Wege: Erstens, indem du die Formel für die bedingte Wahrscheinlichkeit benutzt, und zweitens, indem du interpretierst, was die linke und rechte Seite bedeuten.
+		\item Zeige (2). \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a).
+		\item Schätze jeden Faktor einzeln ab, um (3) zu zeigen. 
+		\item Zeige (4).
 		\item Zeige (5).
 	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Mehrheit]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ Integern. Die Sequenz hat ein \textit{Mehrheitselement} $t$, wenn eine Nummer $t$ öfters als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat.
+	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat.
 	
-	Hier ist ein randomisierter Algorithmus für das Problem: Wähle zufällig eine Zahl $x_i$ aus der Sequenz. Prüfe dann, ob dieses Element öfters als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, ist es das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt. Löse die folgenden Aufgaben.
+	Hier ist ein randomisierter Algorithmus, um das Mehrheitselement zu finden: Ziehe eine uniform zufällige Zahl $x_i$ aus der Sequenz. Prüfe dann, ob diese Zahl öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, ist es das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt. Löse die folgenden Aufgaben.
 	\begin{enumerate}
-		\item Was ist die Laufzeit des Algorithmus? \\
-		\item Kann der Algorithmus ein Mehrheitselement zurückgeben, wenn die Sequenz keins hat? Begründe deine Antwort. \\
-		\item Kann der Algorithmus ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort. \\
-		\item Bestimme die Wahrscheinlichkeit für falsche Antworten.
+		\item Was ist die Laufzeit des Algorithmus?
+		\item Kann der Algorithmus ein Mehrheitselement zurückgeben, wenn die Sequenz keins hat? Begründe deine Antwort.
+		\item Kann der Algorithmus ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
+		\item Bestimme die Wahrscheinlichkeit, dass der Algorithmus eine falsche Antwort liefert.
 	\end{enumerate}
 \end{aufgabe}
 
