@@ -40,14 +40,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{enumerate}
 		\item 
 		Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen aus. Benutze zwei Münzen, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
-		\item Betrachte jetzt \textit{contention resolution} mit $n$ Prozessen und betrachte das Ereignis~$E$, dass mindestens einer der $n$ Prozesse in irgendeiner der $t$ Runden nicht auf die Datenbank zugreifen kann.
-		Um die Wahrscheinlichkeit $\Pr(E)$ nach oben abzuschätzen wurde die \textit{union bound} angewendet. Sind die einzelnen Ereignisse hierbei disjunkt oder überschneiden sie sich?
+		\item Betrachte \textit{contention resolution} mit $n$ Prozessen. Sei $E$ das Ereignis, dass mindestens einer der $n$ Prozesse in irgendeiner der $t$ Runden nicht auf die Datenbank zugreifen kann.
+		Um die Wahrscheinlichkeit $\Pr(E)$ nach oben abzuschätzen, wurde die \textit{union bound} angewendet. Sind die einzelnen Ereignisse hierbei disjunkt oder überschneiden sie sich?
 	\end{enumerate}
 \end{aufgabe}    
 
 \begin{aufgabe}[Minimaler Schnitt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum Kontraktionsalgorithmus, das wir in der Vorlesung behandelt haben. Löse die folgenden Aufgaben.
+	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum Kontraktionsalgorithmus aus  der Vorlesung.
 	\begin{center}
 	\begin{tikzpicture}
             \node[draw,circle] (a) at (0,0) {$a$};
@@ -72,24 +72,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Schneller Kontraktionsalgorithmus]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe alle nötigen Datenstrukturen und Algorithmen, und analysiere die Laufzeit sowie den Platzverbrauch.
+	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe alle nötigen Datenstrukturen und Algorithmen und analysiere die Laufzeit sowie den Platzverbrauch.
 \end{aufgabe}
 
 \begin{aufgabe}[Kontraktionsalgorithmus analysieren]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte die folgende Analyse der Erfolgswahrscheinlichkeit für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
 	\begin{align}
-	&\nonumber\Pr(E_{n-2} \cap \cdots \cap E_1) \\
-	&\quad= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
-	&\quad= \Pr(E_1) \cdot \Pr(E_2|E_1) \cdots \Pr(E_{j+1} | E_j \cap \cdots \cap E_1) \cdots \Pr(E_{n-2} | E_{n-3} \cap \cdots \cap E_1) \\
-	&\quad\ge \left(1 - \frac{2}{n} \right) \cdot \left(1 - \frac{2}{n-1} \right) \cdot \left(1 - \frac{2}{n-2} \right) \cdots \left(1 - \frac{2}{3} \right) \\
-	&\quad= \left(\frac{n-2}{n}\right) \cdot \left(\frac{n-3}{n-1}\right) \cdot \left(\frac{n-4}{n-2}\right) \cdots \left(\frac{2}{4}\right) \cdot \left(\frac{1}{3}\right) \\
-	&\quad= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
+		&\nonumber\Pr(E_{n-2} \cap \cdots \cap E_1) \\
+		&= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
+		&= \Pr(E_1) \cdot \Pr(E_2|E_1) \cdots \Pr(E_{j+1} | E_j \cap \cdots \cap E_1) \cdots \Pr(E_{n-2} | E_{n-3} \cap \cdots \cap E_1) \\
+		&\ge \left(1 - \frac{2}{n} \right) \cdot \left(1 - \frac{2}{n-1} \right) \cdot \left(1 - \frac{2}{n-2} \right) \cdots \left(1 - \frac{2}{3} \right) \\
+		&= \left(\frac{n-2}{n}\right) \cdot \left(\frac{n-3}{n-1}\right) \cdot \left(\frac{n-4}{n-2}\right) \cdots \left(\frac{2}{4}\right) \cdot \left(\frac{1}{3}\right) \\
+		&= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
 	\end{align}
-	Löse die folgenden Aufgaben.
 	\begin{enumerate}
-		\item Zeige (1) auf zwei Wege: Erstens, indem du die Formel für die bedingte Wahrscheinlichkeit benutzt, und zweitens, indem du interpretierst, was die linke und rechte Seite bedeuten.
-		\item Zeige (2). \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a).
+		\item Benutze zwei verschiedene Wege, um (1) zu zeigen. Erstens, indem du die Formel für die bedingte Wahrscheinlichkeit benutzt. Zweitens, mache dir bewusst, was die linke und rechte Seite bedeuten.
+		\item Zeige (2). 
+		\item[] \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a)
 		\item Schätze jeden Faktor einzeln ab, um (3) zu zeigen. 
 		\item Zeige (4).
 		\item Zeige (5).
@@ -98,14 +98,17 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Mehrheit]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat.
+	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat. Im Folgenden ist der randomisierter Algorithmus \textsc{FindeMehrheitsElement} beschrieben, der das Mehrheitselement finden soll.
 	
-	Hier ist ein randomisierter Algorithmus, um das Mehrheitselement zu finden: Ziehe eine uniform zufällige Zahl $x_i$ aus der Sequenz. Prüfe dann, ob diese Zahl öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, ist es das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt. Löse die folgenden Aufgaben.
+	\begin{quote}
+		\textsc{FindeMehrheitsElement}: \\
+		Ziehe eine uniform zufällige Zahl $x_i$ aus der Sequenz. Prüfe dann, ob $x_i$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, dann ist $x_i$ das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt.
+	\end{quote}
 	\begin{enumerate}
-		\item Was ist die Laufzeit des Algorithmus?
-		\item Kann der Algorithmus ein Mehrheitselement zurückgeben, wenn die Sequenz keins hat? Begründe deine Antwort.
-		\item Kann der Algorithmus ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
-		\item Bestimme die Wahrscheinlichkeit, dass der Algorithmus eine falsche Antwort liefert.
+		\item Was ist die Laufzeit von \textsc{FindeMehrheitsElement}?
+		\item Kann \textsc{FindeMehrheitsElement} ein Mehrheitselement zurückgeben, wenn die Sequenz keines hat? Begründe deine Antwort.
+		\item Kann \textsc{FindeMehrheitsElement} ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
+		\item Bestimme die Wahrscheinlichkeit, dass \textsc{FindeMehrheitsElement} eine falsche Antwort liefert.
 	\end{enumerate}
 \end{aufgabe}
 
@@ -113,19 +116,23 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \section*{Sternaufgabe}
 
 \begin{aufgabe}[\emoji{star}: Scheduling mit Independent Set]
-	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Wir beschreiben jetzt eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, nämlich durch eine verteilte Konstruktion eines Independent Set.
+	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, ist eine verteilte Konstruktion eines Independent Set.
+
+	In einem System mit $n$ Aufgaben stehen einige Paare von Aufgaben miteinander im Konflikt, beispielsweise wenn beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
 	
-	Wir haben ein System mit $n$ Aufgaben. Einige Paare von Aufgaben stehen im Konflikt, zum Beispiel weil beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
+	Diesen Vorgang kann man sich als einen Graphen $G = (V,E)$ vorstellen. Dabei repräsentiert jeder Knoten $v \in V$ eine Aufgabe und eine Kante $e = (u,v)$ stellt einen Konflikt zwischen zwei Aufgaben $u$ und $v$ dar. Ist eine Menge~$S$ von Aufgaben konfliktfrei, bilden sie eine \emph{unabhängige Menge} (\emph{independent set}) in $G$. 
+	Da man das allgemeine Independent Set Problem auf dieses Problem reduzieren kann, ist es schwierig, eine maximale und konfliktfreie Menge $S$ für einen beliebigen Konfliktgraphen $G$ zu finden. 
 	
-	Man kann sich diesen Vorgang mit einem Graphen $G = (V,E)$ vorstellen. Dabei repräsentiert jeder Knoten $v \in V$ eine Aufgabe und eine Kante $e = (u,v)$ stellt einen Konflikt zwischen zwei Aufgaben $u$ und $v$ dar. Ist eine Menge~$S$ von Aufgaben konfliktfrei, bilden sie eine \emph{unabhängige Menge} (\emph{independent set}) in $G$. Da man das allgemeine Independent Set Problem auf dieses Problem reduzieren kann, ist es schwierig, eine maximale und konfliktfreie Menge $S$ für einen beliebigen Konfliktgraphen $G$ zu finden. Dennoch können wir uns eine Heuristik anschauen, die eine vernünftig große und konfliktfreie Menge findet. Dafür überlegen wir uns eine einfache dezentralisierte Methode: Jede Aufgabe kommuniziert nur mit einer kleinen Anzahl anderer Aufgaben und entscheidet dann, ob sie in die Menge~$S$ gehört oder nicht.
+	Deshalb benutzen wir eine Heuristik mit einer einfachen dezentralisierten Methode, die eine vernünftig große und konfliktfreie Menge findet: Jede Aufgabe kommuniziert nur mit einer kleinen Anzahl anderer Aufgaben und entscheidet dann, ob sie in die Menge~$S$ gehört oder nicht.
+	Wir nehmen an, dass jeder Knoten genau $d$ Nachbarn in $G$ hat. Das heißt, jede Aufgabe hat einen Konflikt zu genau $d$ anderen Aufgaben. Schaue dir nun das folgende Verfahren an:
 	
-	Wir nehmen an, dass jeder Knoten genau $d$ Nachbarn in $G$ hat. Das heißt, jede Aufgabe hat einen Konflikt zu genau $d$ anderen Aufgaben.
-	Schaue dir nun das folgende Verfahren an:
 	\begin{quote}
+		\textsc{FindeKonfliktfreieMenge}: \\
 		Jede Aufgabe $P_i$ wählt unabhängig einen zufälligen Wert $x_i$. Dabei nimmt $x_i$ mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $0$ und mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $1$ an. Die Aufgabe kommt genau dann in die Menge $S$, wenn sie $x_i = 1$ gewählt hat und jede Aufgabe, mit der sie im Konflikt steht, den Wert $0$ gewählt hat.
 	\end{quote}
-	\begin{enumerate}
-		\item Beweise, dass die Menge~$S$, die durch dieses Verfahren entsteht, immer konfliktfrei ist.
+	
+		\begin{enumerate}
+		\item Beweise, dass die durch \textsc{FindeKonfliktfreieMenge} entstehende Menge~$S$ immer konfliktfrei ist.
 		\item Gib außerdem eine Formel für die erwartete Größe von $S$ in Abhängigkeit der Anzahl $n$ an Aufgaben und der Anzahl~$d$ an Konflikten pro Aufgabe an. Begründe, warum deine Formel korrekt ist.
 	\end{enumerate}
 \end{aufgabe}
