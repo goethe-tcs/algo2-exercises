@@ -48,7 +48,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Potenzialfunktion: Verdopplung von Arrays]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Gegeben sei eine dynamischen Tabelle, die nur Einfügungen und keine Löschungen erlaubt, und für die die Verdopplungsmethode genutzet wird. Wenn wir als Potenzialfunktion $\Phi(D_i) = k$ für $k$ ist die Anzahl an Elementen im Array wählen, können wir dann zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ betragen?
+	Gegeben sei eine dynamische Tabelle, die nur Einfügungen und keine Löschungen erlaubt, und für die die Verdopplungsmethode genutzt wird. Wenn wir als Potenzialfunktion $\Phi(D_i) = k$ wählen, wobei $k$ die Anzahl an Elementen im Array ist, können wir dann mit dieser Potenzialfunktion zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ sind?
 \end{aufgabe}
 
 \begin{aufgabe}[Mengenvereinigung]
@@ -73,7 +73,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Splay-Bäume]
 	% Algorithms and Data Structures 2 - amortized.pdf
-	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \emph{splay(x)}-Methode auf die nervigen \emph{rollercoaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
+	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \emph{splay(x)}-Methode auf die nervigen \emph{roller-coaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
 	\begin{enumerate}
 		\item Was sind die amortisierten Kosten der Operation \emph{splay($x$)}, wenn wir nur einfache Rotationen benutzen? Analysiere die Kosten mit derselben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
 		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
@@ -128,8 +128,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[\emoji{star}: Queues mit zwei Stacks]\mbox{}\\
 	Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)} und \texttt{S.POP()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
 
-	Du sollst für diese Aufgabe eine Queue \texttt{Q} mithilfe von zwei Stacks \texttt{S1}, \texttt{S2} und $\Oh(1)$ zusätzlichem Speicher implementieren. 
-	Der \textit{einzige} Zugriff auf die Stacks erfolgt durch die zwei Standardoperationen \texttt{PUSH} und \texttt{POP}.
+	Du sollst für diese Aufgabe eine Queue \texttt{Q} mithilfe von zwei Stacks \texttt{S1}, \texttt{S2} implementieren. Dabei darfst du nur $\Oh(1)$ zusätzlichen Speicher benutzen.
+	Der \textit{einzige} Zugriff auf die Stacks erfolgt als \emph{black-box} über die Standardoperationen \texttt{PUSH} und \texttt{POP}.
 	\begin{enumerate}
 		\item 
 		\textbf{Beschreibe mit Pseudocode} eine solche Queue-Implementierung, wobei die amortisierte Laufzeit für jede \texttt{Q.ENQUEUE(x)} oder \texttt{Q.DEQUEUE()} Operation $\Oh(1)$ betragen muss.
