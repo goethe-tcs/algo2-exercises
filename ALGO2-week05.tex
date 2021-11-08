@@ -48,7 +48,20 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Minimaler Schnitt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum Kontraktionsalgorithmus, das wir in der Vorlesung behandelt haben. Löse die folgenden Aufgaben.
-	%TODO: Graph einfügen.
+	\begin{center}
+	\begin{tikzpicture}
+            \node[draw,circle] (a) at (0,0) {$a$};
+            \node[draw,circle] (b) at (1.5,1.5) {$b$};
+            \node[draw,circle] (d) at (1.5,-1.5) {$d$};
+            \node[draw,circle] (c) at (3,0) {$c$};
+            
+            \draw  (a) -- (b)
+                   (a) -- (c)
+                   (a) -- (d)
+                   (b) -- (c)
+                   (c) -- (d);
+        \end{tikzpicture}
+	\end{center}
 	\begin{enumerate}
 		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führen.
 		\item Berechne die genaue Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
