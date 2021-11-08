@@ -109,21 +109,25 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
+\newpage
 \section*{Sternaufgabe}
 
 \begin{aufgabe}[\emoji{star}: Scheduling mit Independent Set]
-	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Hier ist eine andere Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, nämlich durch eine verteilte Konstruktion eines Independent Set.
+	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Wir beschreiben jetzt eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, nämlich durch eine verteilte Konstruktion eines Independent Set.
 	
-	Wir haben ein System mit $n$ Aufgaben. Einige Paare von Aufgaben stehen im Konflikt, das heißt beide brauchen Zugang zu der gleichen Ressource. Das Ziel ist es, in einem gegebenen Zeitintervall ein möglichst großes Set $S$ ausführbarer Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Das Set $S$ nennen wir \textit{konfliktfrei}.
+	Wir haben ein System mit $n$ Aufgaben. Einige Paare von Aufgaben stehen im Konflikt, zum Beispiel weil beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
 	
-	Man kann sich diesen Vorgang mit einem Graphen $G = (V,E)$ vorstellen. Dabei repräsentiert jeder Knoten $v \in V$ eine Aufgabe und eine Kante $e = (u,v)$ stellt einen Konflikt zwischen zwei Aufgaben $u$ und $v$ dar. Ist ein Set $S$ von Aufgaben konfliktfrei, bilden sie ein Independent Set in $G$. Da man das allgemeine Independent Set Problem auf dieses Problem reduzieren kann, ist es schwierig, ein maximales und konfliktfreies Set $S$ für einen beliebigen Konfliktgraphen $G$ zu finden. Dennoch können wir uns eine Heuristik anschauen, die ein vernünftig großes und konfliktfreies Set findet. Dafür überlegen wir uns eine einfache dezentralisierte Methode: Jede Aufgabe kommuniziert nur mit einer kleinen Anzahl anderer Aufgaben und entscheidet dann, ob sie in das Set $S$ gehört oder nicht.
+	Man kann sich diesen Vorgang mit einem Graphen $G = (V,E)$ vorstellen. Dabei repräsentiert jeder Knoten $v \in V$ eine Aufgabe und eine Kante $e = (u,v)$ stellt einen Konflikt zwischen zwei Aufgaben $u$ und $v$ dar. Ist eine Menge~$S$ von Aufgaben konfliktfrei, bilden sie eine \emph{unabhängige Menge} (\emph{independent set}) in $G$. Da man das allgemeine Independent Set Problem auf dieses Problem reduzieren kann, ist es schwierig, eine maximale und konfliktfreie Menge $S$ für einen beliebigen Konfliktgraphen $G$ zu finden. Dennoch können wir uns eine Heuristik anschauen, die eine vernünftig große und konfliktfreie Menge findet. Dafür überlegen wir uns eine einfache dezentralisierte Methode: Jede Aufgabe kommuniziert nur mit einer kleinen Anzahl anderer Aufgaben und entscheidet dann, ob sie in die Menge~$S$ gehört oder nicht.
 	
 	Wir nehmen an, dass jeder Knoten genau $d$ Nachbarn in $G$ hat. Das heißt, jede Aufgabe hat einen Konflikt zu genau $d$ anderen Aufgaben.
 	Schaue dir nun das folgende Verfahren an:
 	\begin{quote}
-		Jede Aufgabe $P_i$ wählt unabhängig einen zufälligen Wert $x_i$. Dabei nimmt $x_i$ mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $0$ und mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $1$ an. Die Aufgabe gehört genau dann in das Set $S$, wenn sie $x_i = 1$ gewählt hat und jede Aufgabe, mit der sie im Konflikt steht, den Wert $0$ gewählt hat.
+		Jede Aufgabe $P_i$ wählt unabhängig einen zufälligen Wert $x_i$. Dabei nimmt $x_i$ mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $0$ und mit einer Wahrscheinlichkeit von $\frac{1}{2}$ den Wert $1$ an. Die Aufgabe kommt genau dann in die Menge $S$, wenn sie $x_i = 1$ gewählt hat und jede Aufgabe, mit der sie im Konflikt steht, den Wert $0$ gewählt hat.
 	\end{quote}
-	Zeige, dass das dadurch entstandene Set $S$ konfliktfrei ist. Gib außerdem eine Formel für die erwartete Größe von $S$ in Abhängigkeit  der Anzahl an Aufgaben $n$ und der Anzahl an Konflikten $d$ an.
+	\begin{enumerate}
+		\item Beweise, dass die Menge~$S$, die durch dieses Verfahren entsteht, immer konfliktfrei ist.
+		\item Gib außerdem eine Formel für die erwartete Größe von $S$ in Abhängigkeit der Anzahl $n$ an Aufgaben und der Anzahl~$d$ an Konflikten pro Aufgabe an. Begründe, warum deine Formel korrekt ist.
+	\end{enumerate}
 \end{aufgabe}
 
 \end{document}
