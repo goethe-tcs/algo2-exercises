@@ -41,13 +41,15 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}	
 \end{aufgabe}
 
-\begin{aufgabe}[Auswahlanalyse]\
+
+\begin{aufgabe}[Analyse von Selection]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
+	In Kapitel 13.5 wurde die erwartete Laufzeit von \textsc{Selection} analysiert.
 	Anstatt eine Phase wie im Buch zu definieren, definieren wir eine Phase wie folgt:
+	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im folgenden Intervall liegt:
+	\[n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j \]
 	
-	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im Intervall $n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j$ liegt.
-	
-	Führe die Auswahlanalyse mit dieser Definition einer Phase durch. Erreicht man in Erwartung immer noch eine lineare Laufzeit?
+	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man in Erwartung immer noch eine lineare Laufzeit?
 \end{aufgabe}    
 
 \begin{aufgabe}[Weihnachtsfeier im Institut]
