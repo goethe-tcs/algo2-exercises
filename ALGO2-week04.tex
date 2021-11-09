@@ -126,13 +126,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \section*{Sternaufgabe}
 
 \begin{aufgabe}[\emoji{star}: Queues mit zwei Stacks]\mbox{}\\
-	Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)} und \texttt{S.POP()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
+	Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)}, \texttt{S.POP()} und \texttt{S.ISEMPTY()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
 
 	Du sollst für diese Aufgabe eine Queue \texttt{Q} mithilfe von zwei Stacks \texttt{S1}, \texttt{S2} implementieren. Dabei darfst du nur $\Oh(1)$ zusätzlichen Speicher benutzen.
-	Der \textit{einzige} Zugriff auf die Stacks erfolgt als \emph{black-box} über die Standardoperationen \texttt{PUSH} und \texttt{POP}.
+	Der \textit{einzige} Zugriff auf die Stacks erfolgt als \emph{black-box} über die Standardoperationen \texttt{PUSH}, \texttt{POP} und \texttt{ISEMPTY}.
 	\begin{enumerate}
 		\item 
-		\textbf{Beschreibe mit Pseudocode} eine solche Queue-Implementierung, wobei die amortisierte worst-case Laufzeit für jede \texttt{Q.ENQUEUE(x)} und \texttt{Q.DEQUEUE()} Operation $\Oh(1)$ betragen muss.
+		\textbf{Beschreibe mit Pseudocode} eine solche Queue-Implementierung, wobei die amortisierte worst-case Laufzeit für jede \texttt{Q.ENQUEUE(x)}, \texttt{Q.DEQUEUE()} und \texttt{Q.ISEMPTY()} Operation konstant sein muss.
 		\item
 		\textbf{Beweise mithilfe der Potenzialmethode}, dass die amortisierten Kosten deiner Implementierung tatsächlich konstant sind.
 	\end{enumerate}
