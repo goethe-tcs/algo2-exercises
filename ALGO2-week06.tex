@@ -1,0 +1,143 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{6}{}{}
+\blattname{Übungen zu Woche 6: Randomisierte Algorithmen II}
+
+\usepackage[ruled]{algorithm2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 26.11., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[Erwartungswerte]\
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	\begin{enumerate}
+		\item Sei $X$ eine Zufallsvariable welche die Werte $2,5$ und $8$ mit Wahrscheinlichkeit $P[X=2] = \frac{1}{3}, P[X=5]=\frac{1}{2}, P[X=8] = \frac{1}{6}$ annimmt. Was ist der Erwartungswert von $X$?\\
+		
+		\item Sei $Y$ eine Zufallsvariable welche die Werte $2^i,\dots,$ für $i = 0,1,2,\dots$ mit Wahrscheinlichkeit $P[Y=2^i] = \frac{1}{2^{(i+1)}}$ annimmt. Was ist der Erwartungswert von $Y$?
+	\end{enumerate}	
+\end{aufgabe}
+
+\begin{aufgabe}[Auswahlanalyse]\
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	Anstatt eine Phase wie im Buch zu definieren, definieren wir eine Phase wie folgt:
+	
+	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im Intervall $n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j$ liegt.
+	
+	Führe die Auswahlanalyse mit dieser Definition einer Phase durch. Erreicht man in Erwartung immer noch eine lineare Laufzeit?
+\end{aufgabe}    
+
+\begin{aufgabe}[Weihnachtsfeier im Institut]
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh plötzlich wissen, wer die meisten Cookies im \glqq Bing or Ding\grqq{}~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor:
+	
+	\begin{algorithm}[H]
+		\SetAlgoLined
+		max \gets $- \infty$\\
+		$s$ \gets null\\
+		Sortiere die Student:innen zufällig, sodass $s_1,\dots,s_n$ die zufällige Reihenfolge angibt.\\
+		Sei $c_i$ die von Student:in $s_i$ gewonnene Anzahl an Cookies.\\
+		\For{$i = 1,\dots,n$}{
+			\If{$c_i >$ max}{
+				max \gets $c_i$ and $s$ \gets $s_i$ \qquad $(\ast)$\\
+				}
+			}
+		\Return{$s$}
+		\caption{Finde die Student:innen mit den meisten Cookies}
+\end{algorithm}
+	
+	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ für alle $i \neq j$.
+	\begin{enumerate}
+		\item Was ist die Wahrscheinlichkeit, dass die mit einem $(\ast)$ markierte Zeile im Code in der letzten Iteration ausgeführt wird?\\
+		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $P(X_i = 1)$.\\% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
+		\item Wie oft wird die $(\ast)$-Zeile in Erwartung ausgeführt?
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Schrauben und Muttern]
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	% But taken from http://algs4.cs.princeton.edu/23quicksort/
+	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen um herauszufinden, welches der beiden Teile größer ist. Gebe eine effiziente Methode an, um dieses Problem zu lösen.
+	
+	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.\\
+	\textit{Anmerkung:} Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
+\end{aufgabe}
+
+\begin{aufgabe}[Bierkisten]
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	Dir werden $n$ Bierkisten $B_1,\dots,B_n$ gegeben. Genau $k$ Kisten enthalten eine Flasche Bier $(k \leq n)$. Die restlichen Kisten sind leer. Du kannst mit bloßem Auge nicht sehen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, in einer Kiste eine Flasche Bier zu finden. Im Folgenden ist der deterministische Algorithmus \textsc{FindeBier} vorgeschlagen, der eine Flasche Bier finden soll: 
+	\begin{quote}
+		\textsc{FindeBier}:\\
+		Öffne die Kisten $B_1,B_2,\dots$ in dieser Reihenfolge. Der Algorithmus terminiert, wenn ein Bier gefunden wurde. Das Öffnen einer Kiste entspricht einem Rechenschritt.
+	\end{quote}
+	
+	\begin{enumerate}
+		\item Was ist die \textit{best-case}~Laufzeit von \textsc{FindeBier}?\\
+		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeBier}?\\
+	\end{enumerate}
+	
+	Betrachte nun den folgenden randomisierten Algorithmus \textsc{FindeZufälligBier}:
+		\begin{quote}
+			\textsc{FindeZufälligBier}:\\
+			Wähle zufällig eine Nummer $i \in \{1,2,\dots,n\}$ und öffne die Kiste $B_i$.
+		\end{quote}		 
+		
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligBier}?\\
+		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligBier}?\\
+	\end{enumerate}
+	
+	Betrachte nun folgende Modifikation von \textsc{FindeZufälligBier}: 
+	\begin{quote}
+		Wähle zufällig eine noch nicht geöffnete Kiste aus und öffne diese.	
+	\end{quote}	
+	
+	\begin{enumerate}
+		\setcounter{enumi}{4}
+		\item Was ist die \textit{worst-case}~Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?\\
+	\end{enumerate}			
+		
+	Wir wollen nun die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus analysieren. Sei $X_i$ eine Indikatorvariable für jede leere Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. Sei $X$ die Anzahl vom Algorithmus geöffneter Kisten.
+		
+	\begin{enumerate}
+		\setcounter{enumi}{5}
+		\item Stelle $X$ durch die $X_i$ dar, also $X = \dots\dots$\\
+		\item Was ist der Erwartungswert von $X_i$?\\
+		\item Was ist der Erwartungswert von $X$? Benutze die Grenzen des Erwartungswertes der $X_i$.\\
+		\item Was ist die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}:]
+	
+\end{aufgabe}
+
+\end{document}
