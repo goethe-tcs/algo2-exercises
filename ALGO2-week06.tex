@@ -35,7 +35,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Erwartungswerte]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	\begin{enumerate}
-		\item Sei $X$ eine Zufallsvariable welche die Werte $2,5$ und $8$ mit Wahrscheinlichkeit $P[X=2] = \frac{1}{3}, P[X=5]=\frac{1}{2}, P[X=8] = \frac{1}{6}$ annimmt. Was ist der Erwartungswert von $X$?\\
+		\item Sei $X$ eine Zufallsvariable welche die Werte $2,5$ und $8$ mit Wahrscheinlichkeit \newline $P[X=2] = \frac{1}{3}, P[X=5]=\frac{1}{2}$ und $P[X=8] = \frac{1}{6}$ annimmt. Was ist der Erwartungswert von $X$?\\
 		
 		\item Sei $Y$ eine Zufallsvariable welche die Werte $2^i,\dots,$ für $i = 0,1,2,\dots$ mit Wahrscheinlichkeit $P[Y=2^i] = \frac{1}{2^{(i+1)}}$ annimmt. Was ist der Erwartungswert von $Y$?
 	\end{enumerate}	
@@ -60,7 +60,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\SetAlgoLined
 		max \gets $- \infty$\\
 		$s$ \gets null\\
-		Sortiere die Student:innen zufällig, sodass $s_1,\dots,s_n$ die zufällige Reihenfolge angibt.\\
+		Sortiere die Student:innen zufällig, sodass $s_1,\dots,s_n$ die zufällige Reihenfolge ist.\\
 		Sei $c_i$ die von Student:in $s_i$ gewonnene Anzahl an Cookies.\\
 		\For{$i = 1,\dots,n$}{
 			\If{$c_i >$ max}{
@@ -68,7 +68,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 				}
 			}
 		\Return{$s$}
-		\caption{Finde die Student:innen mit den meisten Cookies}
+		\caption{Finde Student:in mit den meisten Cookies}
 \end{algorithm}
 	
 	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ für alle $i \neq j$.
@@ -84,7 +84,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Schrauben und Muttern]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	% But taken from http://algs4.cs.princeton.edu/23quicksort/
-	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen um herauszufinden, welches der beiden Teile größer ist. Gebe eine effiziente Methode an, um dieses Problem zu lösen.
+	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen um herauszufinden, welches der beiden Teile größer ist. Gib einen effizienten Algorithmus an, um dieses Problem zu lösen.
 	
 	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.\\
 	\textit{Anmerkung:} Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
@@ -125,13 +125,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Was ist die \textit{worst-case}~Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?\\
 	\end{enumerate}			
 		
-	Wir wollen nun die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus analysieren. Sei $X_i$ eine Indikatorvariable für jede leere Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. Sei $X$ die Anzahl vom Algorithmus geöffneter Kisten.
+	Wir wollen nun die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus analysieren. Sei $X_i$ eine Indikatorvariable für jede leere Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. Sei $X$ die Anzahl der vom Algorithmus geöffneter Kisten.
 		
 	\begin{enumerate}
 		\setcounter{enumi}{5}
-		\item Stelle $X$ durch die $X_i$ dar, also $X = \dots\dots$\\
+		\item Stelle $X$ durch die $X_i$ dar, also $X = ......$\\
 		\item Was ist der Erwartungswert von $X_i$?\\
-		\item Was ist der Erwartungswert von $X$? Benutze die Grenzen des Erwartungswertes der $X_i$.\\
+		\item Was ist der Erwartungswert von $X$? Benutze die Erwartungswerte der $X_i$.\\
 		\item Was ist die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?
 	\end{enumerate}
 \end{aufgabe}
