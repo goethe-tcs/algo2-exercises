@@ -32,7 +32,19 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Wahrscheinlichkeitsrechnung]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Seien $E$ und $F$ zwei Ereignisse, für die $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$ gelten. Zeige, dass dann auch $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$ gilt.
+	\begin{enumerate}
+		\item 
+		Seien $E$ und $F$ zwei Ereignisse, für die $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$ gelten. Zeige, dass dann auch $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$ gilt.
+		\item Betrachte \textit{contention resolution} mit $n$ Prozessen. Betrachte die folgende Anwendung der \textit{union bound} aus der Vorlesung:
+		\[
+			\Pr\left(\bigcup_{i=1}^n F_{i,t}\right)
+			\le
+			\sum_{i=1}^n \Pr(F_{i,t})\,.
+		\]
+		Hierbei ist $F_{i,t}$ das Ereignis, dass Prozess $i$ es in keiner der Runden $1,\dots,t$ geschafft hat, auf die Datenbank zuzugreifen.
+		Sind die einzelnen Ereignisse~$F_{i,t}$ hierbei disjunkt oder überschneiden sie sich?
+		\emph{Hinweis: Nutze Aufgabenteil a).}
+	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Contention Resolution]\
@@ -40,8 +52,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{enumerate}
 		\item 
 		Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen aus. Benutze zwei Münzen, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
-		\item Betrachte \textit{contention resolution} mit $n$ Prozessen. Sei $E$ das Ereignis, dass mindestens einer der $n$ Prozesse in irgendeiner der $t$ Runden nicht auf die Datenbank zugreifen kann.
-		Um die Wahrscheinlichkeit $\Pr(E)$ nach oben abzuschätzen, wurde die \textit{union bound} angewendet. Sind die einzelnen Ereignisse hierbei disjunkt oder überschneiden sie sich?
+
 	\end{enumerate}
 \end{aufgabe}    
 
