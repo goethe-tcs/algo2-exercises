@@ -35,9 +35,15 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Erwartungswerte]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	\begin{enumerate}
-		\item Sei $X$ eine Zufallsvariable welche die Werte $2,5$ und $8$ mit Wahrscheinlichkeit \newline $P[X=2] = \frac{1}{3}, P[X=5]=\frac{1}{2}$ und $P[X=8] = \frac{1}{6}$ annimmt. Was ist der Erwartungswert von $X$?\\
+		\item Sei $X$ eine Zufallsvariable, die die Werte $2$, $5$ und $8$ mit den folgenden Wahrscheinlichkeiten annimmt:
+		\begin{align*}
+			P[X=2] &= \tfrac{1}{3},\\
+			P[X=5] &= \tfrac{1}{2},\\
+			P[X=8] &= \tfrac{1}{6}.
+		\end{align*}
+		Was ist der Erwartungswert von $X$?\\
 		
-		\item Sei $Y$ eine Zufallsvariable welche die Werte $2^i,\dots,$ für $i = 0,1,2,\dots$ mit Wahrscheinlichkeit $P[Y=2^i] = \frac{1}{2^{(i+1)}}$ annimmt. Was ist der Erwartungswert von $Y$?
+		\item Sei $Y$ eine Zufallsvariable, die den Wert $2^i$ für alle $i \in \{0,1,2,\dots\}$ mit Wahrscheinlichkeit $P[Y=2^i] = \frac{1}{2^{(i+1)}}$ annimmt. Was ist der Erwartungswert von $Y$?
 	\end{enumerate}	
 \end{aufgabe}
 
@@ -49,7 +55,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im folgenden Intervall liegt:
 	\[n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j \]
 	
-	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man in Erwartung immer noch eine lineare Laufzeit?
+	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man in Erwartungswert immer noch eine lineare Laufzeit?
 \end{aufgabe}    
 
 \begin{aufgabe}[Weihnachtsfeier im Institut]
@@ -58,24 +64,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 	\begin{algorithm}[H]
 		\SetAlgoLined
-		max \gets $- \infty$\\
-		$s$ \gets null\\
-		Sortiere die Student:innen zufällig, sodass $s_1,\dots,s_n$ die zufällige Reihenfolge ist.\\
+		max $\gets -\infty$\\
+		$s \gets \text{null}$\\
+		Sortiere die Student:innen gleichverteilt zufällig und sei $s_1,\dots,s_n$ die gezogene Reihenfolge.\\
 		Sei $c_i$ die von Student:in $s_i$ gewonnene Anzahl an Cookies.\\
 		\For{$i = 1,\dots,n$}{
-			\If{$c_i >$ max}{
-				max \gets $c_i$ and $s$ \gets $s_i$ \qquad $(\ast)$\\
+			\If{$c_i >$ {\upshape max}}{
+				max $\gets c_i$ and $s \gets s_i$ \qquad $(\ast)$\\
 				}
 			}
 		\Return{$s$}
 		\caption{Finde Student:in mit den meisten Cookies}
 \end{algorithm}
 	
-	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ für alle $i \neq j$.
+	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ gilt für alle $i,j$ mit $i \neq j$.
 	\begin{enumerate}
 		\item Was ist die Wahrscheinlichkeit, dass die mit einem $(\ast)$ markierte Zeile im Code in der letzten Iteration ausgeführt wird?\\
 		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $P(X_i = 1)$.\\% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
-		\item Wie oft wird die $(\ast)$-Zeile in Erwartung ausgeführt?
+		\item Wie oft wird die $(\ast)$-Zeile im Erwartungswert ausgeführt?
 	\end{enumerate}
 \end{aufgabe}
 
@@ -84,7 +90,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Schrauben und Muttern]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	% But taken from http://algs4.cs.princeton.edu/23quicksort/
-	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen um herauszufinden, welches der beiden Teile größer ist. Gib einen effizienten Algorithmus an, um dieses Problem zu lösen.
+	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen, um herauszufinden, welches der beiden Teile größer ist. Gib einen effizienten Algorithmus an, um dieses Problem zu lösen.
 	
 	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.\\
 	\textit{Anmerkung:} Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
