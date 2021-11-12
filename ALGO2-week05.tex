@@ -43,22 +43,17 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\]
 		Hierbei ist $F_{i,t}$ das Ereignis, dass Prozess $i$ es in keiner der Runden $1,\dots,t$ geschafft hat, auf die Datenbank zuzugreifen.
 		Sind die einzelnen Ereignisse~$F_{i,t}$ hierbei disjunkt oder überschneiden sie sich?
-		\emph{Hinweis: Nutze Aufgabenteil a).}
 	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Contention Resolution]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	\begin{enumerate}
-		\item 
-		Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen aus. Benutze zwei Münzen, um die zufällige Auswahl zu simulieren. Wie viele Runden braucht man, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
-
-	\end{enumerate}
+	Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen von Hand aus. Benutze hierzu zwei Münzen und werfe sie, um die zufällige Auswahl zu simulieren. Wie viele Runden hast du gebraucht, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
 \end{aufgabe}    
 
 \begin{aufgabe}[Minimaler Schnitt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Betrachte das \glqq kleine Graph\grqq{} Beispiel zum Kontraktionsalgorithmus aus  der Vorlesung.
+	Betrachte den Beispielgraphen zum Kontraktionsalgorithmus aus der Vorlesung:
 	\begin{center}
 	\begin{tikzpicture}
             \node[draw,circle] (a) at (0,0) {$a$};
@@ -74,7 +69,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
         \end{tikzpicture}
 	\end{center}
 	\begin{enumerate}
-		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führen.
+		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führt.
 		\item Berechne die genaue Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
 	\end{enumerate}
 \end{aufgabe}
