@@ -50,23 +50,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Analyse von Selection]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
-	In Kapitel 13.5 wurde die erwartete Laufzeit von \textsc{Selection} analysiert.
+	In Abschnitt 13.5 (\textbf{KT}) wurde die erwartete Laufzeit von \textsc{Selection} analysiert.
 	Anstatt eine Phase wie im Buch zu definieren, definieren wir eine Phase wie folgt:
-	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im folgenden Intervall liegt:
-	\[n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j \]
+	Der Algorithmus ist in Phase $j$, wenn die Größe $g$ der betrachteten Menge im folgenden Intervall liegt
+	\[n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j. \]
 	
 	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man in Erwartungswert immer noch eine lineare Laufzeit?
 \end{aufgabe}    
 
 \begin{aufgabe}[Weihnachtsfeier im Institut]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
-	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh plötzlich wissen, wer die meisten Cookies im \glqq Bing or Ding\grqq{}~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor:
-	
+	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh wissen, wer die meisten Cookies im \glqq Bing or Ding\grqq{}-~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor: 
+
 	\begin{algorithm}[H]
 		\SetAlgoLined
 		max $\gets -\infty$\\
 		$s \gets \text{null}$\\
-		Sortiere die Student:innen gleichverteilt zufällig und sei $s_1,\dots,s_n$ die gezogene Reihenfolge.\\
+		Sortiere die Student:innen gleichverteilt zufällig. \\
+		Sei $s_1,\dots,s_n$ die gezogene Reihenfolge.\\
 		Sei $c_i$ die von Student:in $s_i$ gewonnene Anzahl an Cookies.\\
 		\For{$i = 1,\dots,n$}{
 			\If{$c_i >$ {\upshape max}}{
@@ -79,8 +80,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ gilt für alle $i,j$ mit $i \neq j$.
 	\begin{enumerate}
-		\item Was ist die Wahrscheinlichkeit, dass die mit einem $(\ast)$ markierte Zeile im Code in der letzten Iteration ausgeführt wird?\\
-		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $P(X_i = 1)$.\\% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
+		\item Was ist die Wahrscheinlichkeit, dass die mit einem $(\ast)$ markierte Zeile im Code in der letzten Iteration ausgeführt wird?
+		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $P(X_i = 1)$.% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
 		\item Wie oft wird die $(\ast)$-Zeile im Erwartungswert ausgeführt?
 	\end{enumerate}
 \end{aufgabe}
@@ -90,55 +91,54 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Schrauben und Muttern]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	% But taken from http://algs4.cs.princeton.edu/23quicksort/
-	Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. Du willst keine weitere Zeit verlieren und so schnell wie möglich herausfinden, welche Mutter zu welcher Schraube passt. Jede Mutter passt zu genau einer Schraube und jede Schraube passt zu genau einer Mutter. Es ist nicht möglich, eine Schraube und eine Mutter mit bloßem Auge zu vergleichen. Du musst die Mutter an der Schraube anbringen, um herauszufinden, welches der beiden Teile größer ist. Gib einen effizienten Algorithmus an, um dieses Problem zu lösen.
+	Beim Ausmisten deines Kellers hast du genau $N$ Muttern und $N$ Schrauben gefunden.
+	% Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. 
+	Intuitiv weißt du, dass jede Mutter zu \emph{genau} einer Schraube und jede Schraube zu \emph{genau} einer Mutter passt, obwohl es nicht möglich ist, ein Paar von Mutter und Schraube mit bloßem Auge zu vergleichen. 
+	Dafür musst du die Mutter an der Schraube anbringen und herauszufinden, welches der beiden Teile größer ist. 
+
+	Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
+	Gib einen effizienten Algorithmus an, der so schnell wie möglich herausfindet, welche Paare zusammenpassen. 
 	
-	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.\\
-	\textit{Anmerkung:} Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
+	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.
 \end{aufgabe}
 
 \begin{aufgabe}[Bierkisten]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
-	Dir werden $n$ Bierkisten $B_1,\dots,B_n$ gegeben. Genau $k$ Kisten enthalten eine Flasche Bier $(k \leq n)$. Die restlichen Kisten sind leer. Du kannst mit bloßem Auge nicht sehen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, in einer Kiste eine Flasche Bier zu finden. Im Folgenden ist der deterministische Algorithmus \textsc{FindeBier} vorgeschlagen, der eine Flasche Bier finden soll: 
+	Von $n$ Bierkisten $B_1,\dots,B_n$ enthalten genau $k$ Kisten eine Flasche Bier $(k \leq n)$, während die restlichen Kisten leer sind. Du kannst mit bloßem Auge nicht sehen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, eine Flasche Bier in einer Kiste zu finden. Dafür schlagen wir einen deterministischen und zwei randomisierte Algorithmen vor:
 	\begin{quote}
 		\textsc{FindeBier}:\\
-		Öffne die Kisten $B_1,B_2,\dots$ in dieser Reihenfolge. Der Algorithmus terminiert, wenn ein Bier gefunden wurde. Das Öffnen einer Kiste entspricht einem Rechenschritt.
+		Öffne die Kisten $B_1,B_2,\dots$ der Reihenfolge nach, wobei das Öffnen einer Kiste einem Rechenschritt entspricht.
+		Der Algorithmus terminiert, wenn ein Bier gefunden wurde. 
+
+		\textsc{FindeZufälligBier}:\\
+		Wähle zufällig eine Nummer $i \in \{1,2,\dots,n\}$ und öffne die Kiste $B_i$.
+
+		\textsc{FindeZufälligUngeöffnetesBier}:\\
+		Wähle zufällig eine noch nicht geöffnete Kiste aus und öffne diese.	
 	\end{quote}
 	
 	\begin{enumerate}
-		\item Was ist die \textit{best-case}~Laufzeit von \textsc{FindeBier}?\\
-		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeBier}?\\
+		\item Was ist die \textit{best-case}~Laufzeit von \textsc{FindeBier}?
+		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeBier}?
 	\end{enumerate}
-	
-	Betrachte nun den folgenden randomisierten Algorithmus \textsc{FindeZufälligBier}:
-		\begin{quote}
-			\textsc{FindeZufälligBier}:\\
-			Wähle zufällig eine Nummer $i \in \{1,2,\dots,n\}$ und öffne die Kiste $B_i$.
-		\end{quote}		 
 		
 	\begin{enumerate}
 		\setcounter{enumi}{2}
-		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligBier}?\\
-		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligBier}?\\
-	\end{enumerate}
-	
-	Betrachte nun folgende Modifikation von \textsc{FindeZufälligBier}: 
-	\begin{quote}
-		Wähle zufällig eine noch nicht geöffnete Kiste aus und öffne diese.	
-	\end{quote}	
+		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligBier}?
+		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligBier}?
+	\end{enumerate}	
 	
 	\begin{enumerate}
 		\setcounter{enumi}{4}
-		\item Was ist die \textit{worst-case}~Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?\\
-	\end{enumerate}			
-		
-	Wir wollen nun die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus analysieren. Sei $X_i$ eine Indikatorvariable für jede leere Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. Sei $X$ die Anzahl der vom Algorithmus geöffneter Kisten.
-		
-	\begin{enumerate}
-		\setcounter{enumi}{5}
-		\item Stelle $X$ durch die $X_i$ dar, also $X = ......$\\
-		\item Was ist der Erwartungswert von $X_i$?\\
-		\item Was ist der Erwartungswert von $X$? Benutze die Erwartungswerte der $X_i$.\\
-		\item Was ist die erwartete Laufzeit des modifizierten \textsc{FindeZufälligBier} Algorithmus?
+		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
+		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
+		\item[] Sei $X$ die Anzahl der vom Algorithmus geöffneter Kisten. Sei $X_i$ eine Indikatorvariable für jede \emph{leere} Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. 
+		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
+			\item[f$_1$)] Stelle $X$ durch die $X_i$ dar, also die Form $X = .....$ hat.
+			\item[f$_2$)] Was ist der Erwartungswert von $X_i$?
+			\item[f$_3$)] Benutze die Erwartungswerte der $X_i$, um den Erwartungswert von $X$ anzugeben.
+			\item[f$_4$)] Was ist die erwartete Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
+		\end{itemize}
 	\end{enumerate}
 \end{aufgabe}
 
