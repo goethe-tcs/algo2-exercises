@@ -1,0 +1,121 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{}{}{}
+\blattname{Übungen zu Woche 7: Hartnäckigkeit I}
+
+\usepackage[ruled]{algorithm2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 03.12., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[NP]\
+	% KT - Exercise 8.1
+	Entscheide für die beiden Fragen unten, ob die Antwort \glqq Ja\grqq{}, \glqq Nein\grqq{} oder \glqq Unbekannt, da es $\mathcal{P} = \mathcal{NP}$ beantworten würde\grqq{}. Erkläre kurz, warum du dich für deine Antwort entschieden hast.
+	\begin{enumerate}
+		\item Die Entscheidungsvariante von \textsc{IntervalScheduling} ist Folgende: Sei eine Menge von Intervallen auf einer Zeitleiste und eine Schranke $k$ gegeben. Enthält diese Menge an Intervallen eine Teilmenge von sich nicht überschneidenden Intervallen der Größe mindestens $k$?
+		
+		Gilt \textsc{IntervalScheduling} $\leq_p$ \textsc{VertexCover}?
+		\item Gilt \textsc{IndependentSet} $\leq_p$ \textsc{IntervalScheduling}?
+	\end{enumerate}
+\end{aufgabe}
+
+
+\begin{aufgabe}[Kundenanalyse]\
+	% KT - Exercise 8.2
+	Wenn ein Geschäft das Verhalten seiner Kunden analysiert, benutzt es oftmals ein zweidimensionales Array $A$. Die Zeilen von $A$ enthalten die Kunden, während die Spalten die verkauften Produkte enthalten. Demzufolge gibt der Eintrag $A[i,j]$ an, welche Menge von Produkt $j$ der Kunde $i$ gekauft hat. Hier ist ein Beispiel für eine solches Array $A$:
+	
+	\begin{center}
+	\begin{tabular}{l c c c c}
+	\hline 
+	& Waschmittel & Bier & Windeln & Katzenstreu \\ 
+	\hline 
+	Raj & 0 & 6 & 0 & 3 \\ 
+	Alanis & 2 & 3 & 0 & 0 \\ 
+	Chelsea & 0 & 0 & 0 & 7 \\ 
+	\hline 
+	\end{tabular} 
+	\end{center}
+	
+	Das Geschäft möchte nun eine \textit{diverse} Teilmenge an Kunden finden. Eine Teilmenge $S$ von Kunden heißt \textit{divers}, wenn keine zwei Kunden aus $S$ die selben Produkte gekauft haben. Das heißt, für jedes Produkt gibt es nur genau einen Kunden aus $S$, der es gekauft hat. Eine \textit{diverse} Menge an Kunden kann nützlich sein, um Marktforschung zu betreiben. Wir können nun das Problem \textsc{DiverseTeilmenge} definieren:
+	\begin{quote}
+		\textsc{DiverseTeilmenge}:\\
+		Seien ein $n \times m$ Array $A$, wie oben definiert, und eine Zahl $k \leq m$ gegeben. Gibt es eine \textit{diverse} Teilmenge $S$ mit $|S| \geq k$ Kunden?
+	\end{quote}
+	Zeige, dass \textsc{DiverseTeilmenge} $\mathcal{NP}$-vollständig ist.
+\end{aufgabe}    
+
+\begin{aufgabe}[Feriencamp]
+	% KT - Exercise 8.3
+	Du hilfst einer Jugendorganisation ein Feriencamp zu organisieren. Dabei tritt das \textsc{EffizientesRekrutieren}-Problem auf.
+	\begin{quote}
+		\textsc{EffizientesRekrutieren}:\\
+		Im Camp muss es für jede der $n$ angebotenen Sportarten einen für diesen Sport geschulten Betreuer geben. Es haben sich $m$ potenzielle Betreuer beworben. Für jede der $n$ Sportarten gibt es eine Teilmenge der $m$ Bewerber, die für diese Sportart qualifiziert sind. Ist es möglich, maximal $k < m$ Betreuer einzustellen, sodass mindestens ein Betreuer für jede Sportart geschult ist?
+	\end{quote}	 
+	
+	Zeige, dass \textsc{EffizientesRekrutieren} $\mathcal{NP}$-vollständig ist.
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Ressourcenmanagement]
+	% KT - Exercise 8.4
+	 Du berätst ein Unternehmen, das high-performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen, verwaltet. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. Zu jedem gegebenen Zeitpunkt beschreibt ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann von mehreren Prozessoren zugleich angefragt werden, aber es kann zu jeder Zeit nur genau ein Prozess auf die Ressource zugreifen. Deine Aufgabe ist es, Ressourcen an Prozesse zu verteilen. Wenn einem Prozess alle benötigten Ressourcen zugeteilt werden, ist er \textit{aktiv}, sonst ist er \textit{blockiert}. Die Zuweisung der Ressourcen soll möglichst effizient sein, sodass so viele Prozesse wie möglich \textit{aktiv} sind. Dafür definieren wir das \textsc{RessourcenReservieren}-Problem:
+	 \begin{quote}
+	 \textsc{RessourcenReservieren}:\\
+	 Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
+	 \end{quote}
+	 
+	 Betrachte die folgende Liste von Problemen. Gib für jedes Problem einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem $\mathcal{NP}$-vollständig ist.
+	 \begin{enumerate}
+	 	\item \textsc{RessourcenReservieren}. \\
+	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $k=2$.\\
+	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass es nur zwei Ressourcen gibt: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. Das heißt, jeder Prozess braucht eine spezielle Person und eine spezielle Maschine.\\
+	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal $2$ Prozessen angefragt wird.	 	
+	 \end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Clique]
+	% Algorithms and Data Structures 2 - NP.pdf
+	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind. Das heißt, zwischen jedem Knotenpaar $v,w \in V', v \neq w$ existiert eine Kante $(v,w) \in E$. $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
+	\begin{quote}
+		\textsc{Clique}:\\
+		\textbf{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
+		\textbf{Output:} \glqq JA\grqq{}, wenn $G$ eine $k$-\textit{Clique} besitzt, sonst \glqq NEIN\grqq{}.
+	\end{quote}
+	\begin{enumerate}
+		\item Zeige, dass \textsc{Clique} $\in \mathcal{NP}$.\\
+		\item Zeige, dass \textsc{Clique} $\mathcal{NP}$-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}:]
+	
+\end{aufgabe}
+
+\end{document}
