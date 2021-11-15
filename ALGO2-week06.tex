@@ -86,6 +86,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
+\newpage
 \section*{Donnerstag}
 
 \begin{aufgabe}[Schrauben und Muttern]
@@ -144,10 +145,41 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
+\newpage
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}:]
-	
+\begin{aufgabe}[\emoji{star}: Randomisierte Pivotwahl]
+	Die Laufzeit von \textit{Quicksort} und \textit{Quickselect} hängt ganz entscheidend von der Wahl des Pivotelements ab.
+	Das Pivotelement sollte das zu sortierende Array in zwei möglichst gleichgroße Teilarrays aufspalten.
+
+	Gegeben sei ein unsortiertes Array~$A[1..n]$ mit $n$ paarweise verschiedenen Elementen~$A[1], \dots, A[n]$. Wir nehmen an, dass $n$ ganzzahlig durch~$4$ teilbar ist.
+	Weiterhin sei der \emph{Rang $r(x)$ von $x$} die Position des Elements~$x$ im sortierten Array. Zum Beispiel heißt $r(x)=3$, dass $x$ das drittkleinste Element von~$A$ ist.
+
+	Eine mögliche Strategie für die Pivotwahl ist Folgende:
+
+	\begin{quote}
+		\textsc{SamplePivot($A$):}
+		\begin{itemize}
+			\item Wähle uniform zufällig 7 Elemente $p_1,p_2,\dots,p_7$ aus dem Array $A$ aus. Hierbei können Elemente mehrmals gewählt werden (\enquote{Ziehen mit Zurücklegen}).
+			\item Liefere den Median dieser 7 Elemente zurück.
+		\end{itemize}
+	\end{quote}
+	\begin{enumerate}
+		\item Was ist die Laufzeit von \textsc{SamplePivot}? (Ohne Begründung.)
+		\item Berechne $\Pr\Big(\frac{n}{4}<r(p_i)\le\frac{3n}{4}\Big)$ für alle $i\in\{1,\dots,7\}$ und begründe deine Antwort.
+		\item Sei
+		\[X_i=
+		\begin{cases}
+			1,&\text{wenn }
+			\frac{n}{4}<r(p_i)\le\frac{3n}{4};\\
+			0,&\text{sonst.}
+		\end{cases}
+		\]
+		Sei $X=\sum_{i=1}^7 X_i$.
+		Berechne $\Pr\left(X\ge 4\right)$ und begründe deine Antwort.
+		\item Berechne $\Pr\Big(\frac{n}{4}<r(\text{\textsc{SamplePivot($A$)}})\le\frac{3n}{4}\Big)$ und begründe deine Antwort.
+		\item Wir wiederholen \textsc{SamplePivot($A$)} jetzt unabhängig so oft, bis das Ereignis \[\tfrac{n}{4}<r(\text{\textsc{SamplePivot($A$)}}\le\tfrac{3n}{4}\] zum ersten Mal \emph{nicht} eintritt. Sei $W$ die Anzahl der Wiederholungen. Was ist der Erwartungswert von~$W$? Begründe deine Antwort.
+	\end{enumerate}
 \end{aufgabe}
 
 \end{document}
