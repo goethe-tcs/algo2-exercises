@@ -116,8 +116,15 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\NP}[0]{$\mathcal{NP}$}
-\newcommand{\NPv}[0]{$\mathcal{NP}$-vollst"andig}
+\newcommand{\cc}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\pp}[1]{\textup{#1}}
+\renewcommand{\P}{\cc{P}}
+\newcommand{\NP}{\cc{NP}}
+\newcommand{\NPv}[0]{\NP-vollst"andig}
+\newcommand{\FPT}{\cc{FPT}}
+\newcommand{\W}{\cc{W[1]}}
+\DeclareMathOperator{\poly}{poly}
+
 \newcommand{\Problem}[1]{\textsc{#1}}
 \newcommand{\pr}{\ensuremath{\mathbb P}}
 \newcommand{\Oh}[0]{\ensuremath{\mathcal{O}}}
