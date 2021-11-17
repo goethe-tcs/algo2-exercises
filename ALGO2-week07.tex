@@ -64,10 +64,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{tabular} 
 	\end{center}
 	
-	Ein Geschäft möchte nun eine \textit{diverse} Teilmenge an Kunden finden, weil das nützlich sein kann, um Marktforschung zu betreiben. Eine Teilmenge $S$ von Kunden heißt \textit{divers}, wenn keine zwei Kunden aus $S$ die selben Produkte gekauft haben. Mit anderen Worten gibt es für jedes Produkt nur genau einen Kunden aus $S$, der es gekauft hat. Das lässt sich als das Problem \textsc{DiverseTeilmenge} formulieren.
+	Ein Geschäft möchte nun eine \textit{diverse} Teilmenge an Kunden finden, weil das nützlich sein kann, um Marktforschung zu betreiben. Eine Teilmenge $S$ von Kunden heißt \textit{divers}, wenn keine zwei Kunden aus $S$ dieselben Produkte gekauft haben. Mit anderen Worten gibt es für jedes Produkt nur genau einen Kunden aus $S$, der es gekauft hat. Das lässt sich als das Problem \textsc{DiverseTeilmenge} formulieren.
 	\begin{quote}
 		\textsc{DiverseTeilmenge}:\\
-		Seien ein $n \times m$ Array $A$, wie oben definiert, und eine Zahl $k \leq m$ gegeben. Gibt es eine \textit{diverse} Teilmenge $S$ mit $|S| \geq k$ Kunden?
+		Seien ein $n \times m$ Array $A$, wie oben definiert, und eine Zahl $k$ mit $k \leq m$ gegeben. Gibt es eine \textit{diverse} Teilmenge $S$ mit $|S| \geq k$ Kunden?
 	\end{quote}
 	Zeige, dass \textsc{DiverseTeilmenge} \NP-vollständig ist.
 \end{aufgabe}    
@@ -88,9 +88,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Ressourcenmanagement]
 	% KT - Exercise 8.4
 	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
-	Zu jedem Zeitpunkt spezifiert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
+	Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
 	
-	Deine Aufgabe ist es, die Ressourcen an Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} audrücken lässt.
+	Deine Aufgabe ist es, die Ressourcen an die Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} ausdrücken lässt.
 	 \begin{quote}
 	 \textsc{RessourcenReservieren}:\\
 	 Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
@@ -100,14 +100,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	 \begin{enumerate}
 	 	\item \textsc{RessourcenReservieren}.
 	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $k=2$.
-	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $m=2$ Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ, also eine spezielle Person und eine spezielle Maschine.
+	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
 	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
 	 \end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Clique]
 	% Algorithms and Data Structures 2 - NP.pdf
-	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V', v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
+	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
 	\begin{quote}
 		\textsc{Clique}:\\
 		\textit{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
