@@ -1,0 +1,80 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{8}{}{}
+\blattname{Übungen zu Woche 8: Hartnäckigkeit II}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{circuitikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 10.12., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[Ressourcenmanagement]
+	% KT - Exercise 8.4
+	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
+	Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
+	
+	Deine Aufgabe ist es, die Ressourcen an die Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} ausdrücken lässt.
+	 \begin{quote}
+	 \textsc{RessourcenReservieren}:\\
+	 Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
+	 \end{quote}
+	 
+	Gib für jedes Problem auf der folgenden Liste entweder einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem \NP-vollständig ist.
+	 \begin{enumerate}
+	 	\item \textsc{RessourcenReservieren}.
+	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $k=2$.
+	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
+	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
+	 \end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Clique]
+	% Algorithms and Data Structures 2 - NP.pdf
+	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
+	\begin{quote}
+		\textsc{Clique}:\\
+		\textit{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
+		\textit{Output:} \glqq JA\grqq{}, wenn $G$ eine $k$-\textit{Clique} besitzt, sonst \glqq NEIN\grqq{}.
+	\end{quote}
+	\begin{enumerate}
+		\item Zeige, dass \textsc{Clique} $\in \NP$.
+		\item Zeige, dass \textsc{Clique} \NP-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
+	\end{enumerate}
+\end{aufgabe}
+
+
+\section*{Donnerstag}
+
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}:]
+	
+\end{aufgabe}
+
+\end{document}

@@ -5,6 +5,7 @@
 \blattname{Übungen zu Woche 7: Hartnäckigkeit I}
 
 \usepackage[ruled]{algorithm2e}
+\usepackage{circuitikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -31,6 +32,106 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \end{itemize}
 
 \section*{Dienstag}
+
+\begin{aufgabe}[Schaltkreise]
+	% Eigenkreation
+	In der Vorlesung haben wir eine Reduktion von \textsc{CircuitSat} auf \textsc{3SAT} gesehen. Gegeben sei folgender Schaltkreis:
+	
+	\begin{center}
+	\begin{circuitikz} 
+	\ctikzset{logic ports=ieee}
+		\draw
+		(0,2)  node[and port] (and_1) {}
+		(0,0)  node[or port]  (or_1)  {}
+		(0,-2) node[not port] (not_1) {}
+		(3,1)  node[not port] (not_2) {}
+		(3,-1) node[and port] (and_2) {}
+		(6,0)  node[or port]  (or_2)  {}		
+%		(0,2) node[and port] (myand1) {}
+%		(0,0) node[and port] (myand2) {}
+%		(2,1) node[or port] (myxnor) {}
+		(and_1.out) -| (not_2.in)
+		(or_1.out)  -| (and_2.in 1)
+		(not_1.out) -| (and_2.in 2)
+		(and_2.out) -| (or_2.in 2)
+		(not_2.out) -| (or_2.in 1)
+		(or_2.out) -- ++(1,0) node[near end,above]{Out}
+		
+		(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
+		(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
+		(or_1.in 1) -- (In2)
+		(not_1.in) -- ++(-1.5,0)node[left](In3){z}
+		(or_1.in 2) -- (In3);
+%		(myand1.out) -- (myxnor.in 1)
+%		(myand2.out) -- (myxnor.in 2);
+	\end{circuitikz}
+	\end{center}
+	
+	Welche \textsc{3CNF} Formel gibt die Reduktion aus, wenn die Eingabe aus dem dargestellten Schaltkreis besteht?\\
+\end{aufgabe}
+
+\begin{aufgabe}[DNF Erfüllbarkeit]
+	% Erickson, Chapter 12, Exercise 3
+	Eine aussagenlogische Formel ist in \textit{disjunktiver Normalform} (DNF), wenn sie eine Disjunktionen (\textsc{Or}) von Konjunktionstermen (\textsc{And}) ist. Ein Beispiel für eine DNF ist:
+	$$(\overline{x} \wedge y \wedge \overline{z}) \vee (y \wedge z) \vee (x \wedge \overline{y} \wedge \overline{z}).$$
+	Gegeben ist eine aussagenlogische Formel in Disjunktiver Normalform. DNF-\textsc{Sat} entscheidet, ob diese Funktion erfüllbar ist.
+	\begin{enumerate}
+		\item Beschreibe einen Algorithmus, der in Polynomialzeit DNF-\textsc{Sat} löst.\\
+		\item Was ist der Fehler im folgenden Argument, in dem $\P = \NP$ gezeigt wird?
+		\begin{quote}
+			Angenommen, wir haben eine aussagenlogische Formel in konjunktiver Normalform mit höchstens 3 Literalen pro Klausel. Wir wollen herausfinden, ob diese Funktion erfüllbar ist. Wir können die Distributivität verwenden, um eine äquivalente Formel in disjunktiver Normalform zu konstruieren. Zum Beispiel:
+			$$(x \vee y \vee \overline{z}) \wedge (\overline{x} \vee \overline{y}) \Leftrightarrow (x \wedge \overline{y}) \vee (y \wedge \overline{x}) \vee (\overline{z} \wedge \overline{x}) \vee (\overline{z} \wedge \overline{y}).$$
+			Nun können wir den Algorithmus aus Aufgabenteil a) verwenden, um in Polynomialzeit herauszufinden, ob die entstandenen DNF-Formel erfüllbar ist. Wir haben also \textsc{3Sat} in Polynomialzeit gelöst! Da \textsc{3Sat} $\NP$-hart ist, gilt $\P = \NP$!	
+		\end{quote}
+	\end{enumerate}	 
+\end{aufgabe}
+
+\begin{aufgabe}[Perfektes Matching]\
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 1
+	Sei $G = (V,E)$ ein Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit dem selben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine andere mögliche Definition betrachtet die Größe des Matchings: $M$ ist perfekt, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfektesMatching}-Problem:
+	\begin{quote}
+		\textsc{PerfektesMatching}:\\
+		Sei ein Graph $G = (V,E)$ gegeben. Existiert in $G$ ein perfektes Matching?
+	\end{quote}
+	Dieses Problem kann in Polynomialzeit gelöst werden. Das ist ein fundamentales Ergebnis der kombinatorischen Optimisierung mit vielen Anwendungen in Theorie und Praxis. Es stellt sich heraus, dass das \textsc{PerfektesMatching}-Problem auf bipartiten Graphen einfacher zu lösen ist. Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Menge der Knoten $V$ auf zwei Teilmengen $L$ und $R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ sind. In anderen Worten: $L$ und $R$ sind Independent Sets. Im Folgenden ist ein Algorithmus vorgeschlagen, der allgemeine Graphen auf bipartite Graphen reduziert:
+	\begin{quote}
+		\textsc{ReduceGraph}:\\
+		Gegeben sei ein Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
+		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist $V_1 = \{(u,1)|u\in V\}$ eine Seite und $V_2 = \{(u,2)|u\in V\}$ die andere Seite des bipartiten Graphen. Sei $E_H = \{((u,1),(u,2))|(u,v) \in E\}$. In anderen Worten: Wenn $(u,v) \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $((u,1),(u,2))$ geben kann.
+	\end{quote}
+	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden, müssen wir überprüfen, ob $H$ nur genau dann ein perfektes Matching hat, wenn $G$ eins hat.
+	\begin{enumerate}
+		\item Zeige: Wenn $G$ ein perfektes Matching hat, dann hat auch $H$ eins.
+		\item Sei $G$ der komplette Graph mit $3$ Knoten, also ein Dreieck. Zeige: $G$ hat kein perfektes Matching, aber $H$ hat eins.
+		\item Erweitere das Beispiel aus der vorherigen Teilaufgabe: Konstruiere einen Graphen $G$ mit einer gerade Anzahl an Knoten, sodass $G$ kein perfektes Matching hat, $H$ aber schon.
+	\end{enumerate}
+	Damit ist die Reduktion inkorrekt, obwohl eine Richtung wahr ist.
+\end{aufgabe}
+
+\begin{aufgabe}[Independent Set]\
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 2
+	Ein Independent Set in einem Graphen $G = (V,E)$ ist eine Teilmenge $S \subseteq V$, sodass keine zwei Knoten $u,v \in S$ durch eine Kante $(u,v) \in E$ verbunden sind. Nimm an, du hast eine magische Blackbox, die auf wundersame Art und Weise das folgende Entscheidungsproblem in Polynomialzeit beantwortet:
+	\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
+		\item \textsc{Input}: Ein ungerichteter Graph $G$ und eine Zahl $k \in \N$.
+		\item \textsc{Output}: \textsc{True}, wenn $G$ ein Independent Set der Größe $k$ besitzt, sonst \textsc{False}.
+	\end{itemize}
+	\begin{enumerate}
+		\item Benutze diese Blackbox als Subroutine, um einen Algorithmus zu beschreiben, der folgendes Optimisierungsproblem in Polynomialzeit löst:
+		
+		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
+			\item \textsc{Input}: Ein ungerichteter Graph $G$.
+			\item \textsc{Output}: Die Größe des größten Independent Set in $G$.
+		\end{itemize}
+		\item Benutze diese Blackbox als Subroutine, um einen Algorithmus zu beschreiben, der folgendes Suchproblem in Polynomialzeit löst:
+		
+		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
+			\item \textsc{Input}: Ein ungerichteter Graph $G$.
+			\item \textsc{Output}: Ein Independent Set in $G$ mit maximaler Größe.
+		\end{itemize}
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
 
 \begin{aufgabe}[NP]\
 	% KT - Exercise 8.1
@@ -83,41 +184,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Zeige, dass \textsc{EffizientesRekrutieren} \NP-vollständig ist.
 \end{aufgabe}
 
-\section*{Donnerstag}
-
-\begin{aufgabe}[Ressourcenmanagement]
-	% KT - Exercise 8.4
-	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
-	Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
-	
-	Deine Aufgabe ist es, die Ressourcen an die Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} ausdrücken lässt.
-	 \begin{quote}
-	 \textsc{RessourcenReservieren}:\\
-	 Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
-	 \end{quote}
-	 
-	Gib für jedes Problem auf der folgenden Liste entweder einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem \NP-vollständig ist.
-	 \begin{enumerate}
-	 	\item \textsc{RessourcenReservieren}.
-	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $k=2$.
-	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
-	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
-	 \end{enumerate}
-\end{aufgabe}
-
-\begin{aufgabe}[Clique]
-	% Algorithms and Data Structures 2 - NP.pdf
-	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
-	\begin{quote}
-		\textsc{Clique}:\\
-		\textit{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
-		\textit{Output:} \glqq JA\grqq{}, wenn $G$ eine $k$-\textit{Clique} besitzt, sonst \glqq NEIN\grqq{}.
-	\end{quote}
-	\begin{enumerate}
-		\item Zeige, dass \textsc{Clique} $\in \NP$.
-		\item Zeige, dass \textsc{Clique} \NP-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
-	\end{enumerate}
-\end{aufgabe}
 
 \section*{Sternaufgabe}
 
