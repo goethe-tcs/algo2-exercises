@@ -74,14 +74,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Erickson, Chapter 12, Exercise 3
 	Eine aussagenlogische Formel ist in \textit{disjunktiver Normalform} (DNF), wenn sie eine Disjunktionen (\textsc{Or}) von Konjunktionstermen (\textsc{And}) ist. Ein Beispiel für eine DNF ist:
 	$$(\overline{x} \wedge y \wedge \overline{z}) \vee (y \wedge z) \vee (x \wedge \overline{y} \wedge \overline{z}).$$
-	Gegeben ist eine aussagenlogische Formel in Disjunktiver Normalform. DNF-\textsc{Sat} entscheidet, ob diese Funktion erfüllbar ist.
+	Gegeben ist eine aussagenlogische Formel in disjunktiver Normalform. DNF-\textsc{Sat} entscheidet, ob diese Funktion erfüllbar ist.
 	\begin{enumerate}
-		\item Beschreibe einen Algorithmus, der in Polynomialzeit DNF-\textsc{Sat} löst.\\
+		\item Beschreibe einen Algorithmus, der DNF-\textsc{Sat} in Polynomialzeit  löst.\\
 		\item Was ist der Fehler im folgenden Argument, in dem $\P = \NP$ gezeigt wird?
 		\begin{quote}
 			Angenommen, wir haben eine aussagenlogische Formel in konjunktiver Normalform mit höchstens 3 Literalen pro Klausel. Wir wollen herausfinden, ob diese Funktion erfüllbar ist. Wir können das Distributivgesetz für Boolesche Operationen verwenden, um eine äquivalente Formel in disjunktiver Normalform zu konstruieren. Zum Beispiel:
 			$$(x \vee y \vee \overline{z}) \wedge (\overline{x} \vee \overline{y}) \Leftrightarrow (x \wedge \overline{y}) \vee (y \wedge \overline{x}) \vee (\overline{z} \wedge \overline{x}) \vee (\overline{z} \wedge \overline{y}).$$
-			Nun können wir den Algorithmus aus Aufgabenteil a) verwenden, um in Polynomialzeit herauszufinden, ob die entstandenen DNF-Formel erfüllbar ist. Wir haben also \textsc{3Sat} in Polynomialzeit gelöst! Da \textsc{3Sat} $\NP$-hart ist, gilt $\P = \NP$!	
+			Nun können wir den Algorithmus aus Aufgabenteil a) verwenden, um in Polynomialzeit herauszufinden, ob die entstandene DNF erfüllbar ist. Wir haben also \textsc{3Sat} in Polynomialzeit gelöst! Da \textsc{3Sat} $\NP$-hart ist, gilt $\P = \NP$!	
 		\end{quote}
 	\end{enumerate}	 
 \end{aufgabe}
@@ -91,18 +91,18 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Sei $G = (V,E)$ ein Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit dem selben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine andere mögliche Definition betrachtet die Größe des Matchings: $M$ ist perfekt, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfektesMatching}-Problem:
 	\begin{quote}
 		\textsc{PerfektesMatching}:\\
-		Sei ein Graph $G = (V,E)$ gegeben. Existiert in $G$ ein perfektes Matching?
+		Gegeben sei ein Graph $G = (V,E)$. Existiert in $G$ ein perfektes Matching?
 	\end{quote}
-	Dieses Problem kann in Polynomialzeit gelöst werden. Das ist ein fundamentales Ergebnis der kombinatorischen Optimisierung mit vielen Anwendungen in Theorie und Praxis. Es stellt sich heraus, dass das \textsc{PerfektesMatching}-Problem auf bipartiten Graphen einfacher zu lösen ist. Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Menge der Knoten $V$ auf zwei Teilmengen $L$ und $R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ sind. In anderen Worten: $L$ und $R$ sind Independent Sets. Im Folgenden ist ein Algorithmus vorgeschlagen, der allgemeine Graphen auf bipartite Graphen reduziert:
+	Dieses Problem kann in Polynomialzeit gelöst werden. Das ist ein fundamentales Ergebnis der kombinatorischen Optimisierung mit vielen Anwendungen in Theorie und Praxis. Es stellt sich heraus, dass das \textsc{PerfektesMatching}-Problem auf bipartiten Graphen einfacher zu lösen ist. Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Menge der Knoten $V$ auf zwei Teilmengen $L$ und $R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ liegen. In anderen Worten: $L$ und $R$ sind unabhängige Knotenmengen (Independent Set). Im Folgenden ist ein Algorithmus vorgeschlagen, der allgemeine Graphen auf bipartite Graphen reduziert:
 	\begin{quote}
 		\textsc{ReduceGraph}:\\
 		Gegeben sei ein Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
 		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist $V_1 = \{(u,1)|u\in V\}$ eine Seite und $V_2 = \{(u,2)|u\in V\}$ die andere Seite des bipartiten Graphen. Sei $E_H = \{((u,1),(u,2))|(u,v) \in E\}$. In anderen Worten: Wenn $(u,v) \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $((u,1),(u,2))$ geben kann.
 	\end{quote}
-	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden, müssen wir überprüfen, ob $H$ nur genau dann ein perfektes Matching hat, wenn $G$ eins hat.
+	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden müssen wir überprüfen, ob $H$ nur genau dann ein perfektes Matching hat, wenn $G$ eins hat.
 	\begin{enumerate}
 		\item Zeige: Wenn $G$ ein perfektes Matching hat, dann hat auch $H$ eins.
-		\item Sei $G$ der komplette Graph mit $3$ Knoten, also ein Dreieck. Zeige: $G$ hat kein perfektes Matching, aber $H$ hat eins.
+		\item Sei $G$ der vollständige Graph mit $3$ Knoten, also ein Dreieck. Zeige: $G$ hat kein perfektes Matching, aber $H$ hat eins.
 		\item Erweitere das Beispiel aus der vorherigen Teilaufgabe: Konstruiere einen Graphen $G$ mit einer gerade Anzahl an Knoten, sodass $G$ kein perfektes Matching hat, $H$ aber schon.
 	\end{enumerate}
 	Damit ist die Reduktion inkorrekt, obwohl eine Richtung wahr ist.
@@ -110,19 +110,19 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Independent Set]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 2
-	Ein Independent Set in einem Graphen $G = (V,E)$ ist eine Teilmenge $S \subseteq V$, sodass keine zwei Knoten $u,v \in S$ durch eine Kante $(u,v) \in E$ verbunden sind. Nimm an, du hast eine magische Blackbox, die auf wundersame Art und Weise das folgende Entscheidungsproblem in Polynomialzeit beantwortet:
+	Ein Independent Set in einem Graphen $G = (V,E)$ ist eine Teilmenge $S \subseteq V$, sodass keine zwei Knoten $u,v \in S$ durch eine Kante $(u,v) \in E$ verbunden sind. Du hast eine magische Blackbox, die auf wundersame Art und Weise das folgende Entscheidungsproblem in Polynomialzeit beantwortet:
 	\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
 		\item \textsc{Input}: Ein ungerichteter Graph $G$ und eine Zahl $k \in \N$.
 		\item \textsc{Output}: \textsc{True}, wenn $G$ ein Independent Set der Größe $k$ besitzt, sonst \textsc{False}.
 	\end{itemize}
 	\begin{enumerate}
-		\item Benutze diese Blackbox als Subroutine, um einen Algorithmus zu beschreiben, der folgendes Optimisierungsproblem in Polynomialzeit löst:
+		\item Benutze die Blackbox, um einen Algorithmus zu beschreiben, der folgendes Optimisierungsproblem in Polynomialzeit löst:
 		
 		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
 			\item \textsc{Input}: Ein ungerichteter Graph $G$.
 			\item \textsc{Output}: Die Größe des größten Independent Set in $G$.
 		\end{itemize}
-		\item Benutze diese Blackbox als Subroutine, um einen Algorithmus zu beschreiben, der folgendes Suchproblem in Polynomialzeit löst:
+		\item Benutze die Blackbox, um einen Algorithmus zu beschreiben, der folgendes Suchproblem in Polynomialzeit löst:
 		
 		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
 			\item \textsc{Input}: Ein ungerichteter Graph $G$.
