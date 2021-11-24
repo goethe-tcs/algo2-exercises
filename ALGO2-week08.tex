@@ -5,7 +5,7 @@
 \blattname{Übungen zu Woche 8: Hartnäckigkeit II}
 
 \usepackage[ruled]{algorithm2e}
-\usepackage{circuitikz}
+%\usepackage{circuitikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -33,6 +33,28 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
+\begin{aufgabe}[k-COLOR]\
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 1
+	\begin{quote}
+		$k$-\textsc{Color}:\\
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Können alle Knoten $v \in V$ mit $k$ Farben so gefärbt werden, dass jede Kante inzident zu zwei Knoten unterschiedlicher Farbe ist?
+	\end{quote}
+	\begin{enumerate}
+		\item Beschreibe eine polynomielle Reduktion von \textsc{3Color} zu \textsc{4Color}.
+		\item Zeige, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-hart ist.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[$\NP$-Härte]\
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
+	Zeige, dass die folgenden Probleme $\NP$-hart sind.
+	\begin{enumerate}
+		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen einfachen Pfad, der alle außer 247 Knoten besucht?
+		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
+		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
+	\end{enumerate}
+\end{aufgabe}
+
 \begin{aufgabe}[Ressourcenmanagement]
 	% KT - Exercise 8.4
 	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
@@ -53,6 +75,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	 \end{enumerate}
 \end{aufgabe}
 
+\section*{Donnerstag}
+
 \begin{aufgabe}[Clique]
 	% Algorithms and Data Structures 2 - NP.pdf
 	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
@@ -67,14 +91,45 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
-
-\section*{Donnerstag}
-
+\newpage
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}:]
+\begin{aufgabe}[\emoji{star}: Vorsichtige Färbung]
+	% Ericksen, Chapter 12, Exercise 24
+	Eine $5$-\textsc{Färbung} eines Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine \glqq Farbe\grqq{} aus der Menge $\{0,1,2,3,4\}$ zu, sodass $u,v \in V$ für jede Kante $(u,v) \in E$ unterschiedliche \glqq Farben\grqq{} haben. Eine $5$-\textsc{Färbung} ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich um mindestens $(1 \mod 5)$ unterscheiden. Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine $5$-\textsc{Färbung} besitzt, $\NP$-hart ist.
 	
+	\textit{Tipp: Benutze für die Reduktion das normale $5$-\textsc{Färbung}-Problem}.
+	
+	\begin{figure}[ht]
+	\begin{center}
+		\begin{tikzpicture}
+            \node[draw,circle,fill=red] (a) at (0,0) {$0$};
+            \node[draw,circle,fill=blue] (b) at (0,1.75) {$3$};
+            \node[draw,circle,fill=orange] (c) at (1,1) {$4$};
+            \node[draw,circle,fill=green] (d) at (1.75,0) {$2$};
+            \node[draw,circle,fill=orange] (e) at (1,-1) {$4$};
+            \node[draw,circle,fill=green] (f) at (0,-1.75) {$2$};
+            \node[draw,circle,fill=red] (g) at (-1,-1) {$0$};
+            \node[draw,circle,fill=blue] (h) at (-1.75,0) {$3$};
+            \node[draw,circle,fill=yellow] (i) at (-1,1) {$1$};
+            
+            \draw  (a) -- (b)
+                   (a) -- (d)
+                   (a) -- (h)
+                   (b) -- (i)
+                   (i) -- (c)
+                   (d) -- (g)
+                   (c) -- (d)
+                   (d) -- (e)
+                   (e) -- (f)
+                   (f) -- (g)
+                   (g) -- (h)
+                   (h) -- (i);
+        \end{tikzpicture}
+        \caption{Ein Beispiel für eine vorsichtige $5$-\textsc{Färbung}.}
+	\end{center}
+	\end{figure}
 \end{aufgabe}
 
 \end{document}
