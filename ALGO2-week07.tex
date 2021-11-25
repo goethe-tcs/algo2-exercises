@@ -5,7 +5,6 @@
 \blattname{Übungen zu Woche 7: Hartnäckigkeit I}
 
 \usepackage[ruled]{algorithm2e}
-\usepackage{circuitikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -37,32 +36,33 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Eigenkreation
 	In der Vorlesung haben wir eine Reduktion von \textsc{CircuitSat} auf \textsc{3SAT} gesehen. Gegeben sei folgender Schaltkreis:
 	
-	\begin{center}
-	\begin{circuitikz} 
-	\ctikzset{logic ports=ieee}
-    	\draw
-		(0,2)  node[and port] (and_1) {}
-		(0,0)  node[or port]  (or_1)  {}
-		(0,-2) node[not port] (not_1) {}
-		(3,1)  node[not port] (not_2) {}
-		(3,-1) node[and port] (and_2) {}
-		(6,0)  node[or port]  (or_2)  {}
-		(and_1.out) -| (not_2.in)
-		(or_1.out)  -| (and_2.in 1)
-		(not_1.out) -| (and_2.in 2)
-		(and_2.out) -| (or_2.in 2)
-		(not_2.out) -| (or_2.in 1)
-		(or_2.out) -- ++(1,0) node[near end,above]{Out}
+	[TODO]
+	% \begin{center}
+	% \begin{circuitikz} 
+	% \ctikzset{logic ports=ieee}
+    % 	\draw
+	% 	(0,2)  node[and port] (and_1) {}
+	% 	(0,0)  node[or port]  (or_1)  {}
+	% 	(0,-2) node[not port] (not_1) {}
+	% 	(3,1)  node[not port] (not_2) {}
+	% 	(3,-1) node[and port] (and_2) {}
+	% 	(6,0)  node[or port]  (or_2)  {}
+	% 	(and_1.out) -| (not_2.in)
+	% 	(or_1.out)  -| (and_2.in 1)
+	% 	(not_1.out) -| (and_2.in 2)
+	% 	(and_2.out) -| (or_2.in 2)
+	% 	(not_2.out) -| (or_2.in 1)
+	% 	(or_2.out) -- ++(1,0) node[near end,above]{Out}
 		
-		(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
-		(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
-		(or_1.in 1) -- (In2)
-		(not_1.in) -- ++(-1.5,0)node[left](In3){z}
-		(or_1.in 2) -- (In3);
-		(myand1.out) -- (myxnor.in 1)
-		(myand2.out) -- (myxnor.in 2);
-	\end{circuitikz}
-	\end{center}
+	% 	(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
+	% 	(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
+	% 	(or_1.in 1) -- (In2)
+	% 	(not_1.in) -- ++(-1.5,0)node[left](In3){z}
+	% 	(or_1.in 2) -- (In3);
+	% 	(myand1.out) -- (myxnor.in 1)
+	% 	(myand2.out) -- (myxnor.in 2);
+	% \end{circuitikz}
+	% \end{center}
 	
 	Welche \textsc{3CNF} Formel gibt die Reduktion aus, wenn die Eingabe aus dem dargestellten Schaltkreis besteht?\\
 \end{aufgabe}
