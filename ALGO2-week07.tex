@@ -5,7 +5,7 @@
 \blattname{Übungen zu Woche 7: Hartnäckigkeit I}
 
 \usepackage[ruled]{algorithm2e}
-%\usepackage{circuitikz}
+\usepackage{circuitikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -37,42 +37,39 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Eigenkreation
 	In der Vorlesung haben wir eine Reduktion von \textsc{CircuitSat} auf \textsc{3SAT} gesehen. Gegeben sei folgender Schaltkreis:
 	
-	%\begin{center}
-	%\begin{circuitikz} 
-	%\ctikzset{logic ports=ieee}
-%		\draw
-%		(0,2)  node[and port] (and_1) {}
-%		(0,0)  node[or port]  (or_1)  {}
-%		(0,-2) node[not port] (not_1) {}
-%		(3,1)  node[not port] (not_2) {}
-%		(3,-1) node[and port] (and_2) {}
-%		(6,0)  node[or port]  (or_2)  {}		
-%		(0,2) node[and port] (myand1) {}
-%		(0,0) node[and port] (myand2) {}
-%		(2,1) node[or port] (myxnor) {}
-%		(and_1.out) -| (not_2.in)
-%		(or_1.out)  -| (and_2.in 1)
-%		(not_1.out) -| (and_2.in 2)
-%		(and_2.out) -| (or_2.in 2)
-%		(not_2.out) -| (or_2.in 1)
-%		(or_2.out) -- ++(1,0) node[near end,above]{Out}
+	\begin{center}
+	\begin{circuitikz} 
+	\ctikzset{logic ports=ieee}
+    	\draw
+		(0,2)  node[and port] (and_1) {}
+		(0,0)  node[or port]  (or_1)  {}
+		(0,-2) node[not port] (not_1) {}
+		(3,1)  node[not port] (not_2) {}
+		(3,-1) node[and port] (and_2) {}
+		(6,0)  node[or port]  (or_2)  {}
+		(and_1.out) -| (not_2.in)
+		(or_1.out)  -| (and_2.in 1)
+		(not_1.out) -| (and_2.in 2)
+		(and_2.out) -| (or_2.in 2)
+		(not_2.out) -| (or_2.in 1)
+		(or_2.out) -- ++(1,0) node[near end,above]{Out}
 		
-%		(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
-%		(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
-%		(or_1.in 1) -- (In2)
-%		(not_1.in) -- ++(-1.5,0)node[left](In3){z}
-%		(or_1.in 2) -- (In3);
-%		(myand1.out) -- (myxnor.in 1)
-%		(myand2.out) -- (myxnor.in 2);
-%	\end{circuitikz}
-%	\end{center}
+		(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
+		(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
+		(or_1.in 1) -- (In2)
+		(not_1.in) -- ++(-1.5,0)node[left](In3){z}
+		(or_1.in 2) -- (In3);
+		(myand1.out) -- (myxnor.in 1)
+		(myand2.out) -- (myxnor.in 2);
+	\end{circuitikz}
+	\end{center}
 	
 	Welche \textsc{3CNF} Formel gibt die Reduktion aus, wenn die Eingabe aus dem dargestellten Schaltkreis besteht?\\
 \end{aufgabe}
 
 \begin{aufgabe}[DNF Erfüllbarkeit]
 	% Erickson, Chapter 12, Exercise 3
-	Eine aussagenlogische Formel ist in \textit{disjunktiver Normalform} (DNF), wenn sie eine Disjunktionen (\textsc{Or}) von Konjunktionstermen (\textsc{And}) ist. Ein Beispiel für eine DNF ist:
+	Eine aussagenlogische Formel ist in \textit{disjunktiver Normalform} (DNF), wenn sie eine Disjunktion (\textsc{Or}) von Konjunktionstermen (\textsc{And}) ist. Ein Beispiel für eine DNF ist:
 	$$(\overline{x} \wedge y \wedge \overline{z}) \vee (y \wedge z) \vee (x \wedge \overline{y} \wedge \overline{z}).$$
 	Gegeben ist eine aussagenlogische Formel in disjunktiver Normalform. DNF-\textsc{Sat} entscheidet, ob diese Funktion erfüllbar ist.
 	\begin{enumerate}
@@ -88,16 +85,16 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Perfektes Matching]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 1
-	Sei $G = (V,E)$ ein Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit dem selben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine andere mögliche Definition betrachtet die Größe des Matchings: $M$ ist perfekt, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfektesMatching}-Problem:
+	Sei $G = (V,E)$ ein ungerichteter Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit dem selben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine andere mögliche Definition betrachtet die Größe des Matchings: $M$ ist perfekt, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfektesMatching}-Problem:
 	\begin{quote}
 		\textsc{PerfektesMatching}:\\
-		Gegeben sei ein Graph $G = (V,E)$. Existiert in $G$ ein perfektes Matching?
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Existiert in $G$ ein perfektes Matching?
 	\end{quote}
 	Dieses Problem kann in Polynomialzeit gelöst werden. Das ist ein fundamentales Ergebnis der kombinatorischen Optimisierung mit vielen Anwendungen in Theorie und Praxis. Es stellt sich heraus, dass das \textsc{PerfektesMatching}-Problem auf bipartiten Graphen einfacher zu lösen ist. Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Menge der Knoten $V$ auf zwei Teilmengen $L$ und $R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ liegen. In anderen Worten: $L$ und $R$ sind unabhängige Knotenmengen (Independent Set). Im Folgenden ist ein Algorithmus vorgeschlagen, der allgemeine Graphen auf bipartite Graphen reduziert:
 	\begin{quote}
 		\textsc{ReduceGraph}:\\
-		Gegeben sei ein Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
-		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist $V_1 = \{(u,1)|u\in V\}$ eine Seite und $V_2 = \{(u,2)|u\in V\}$ die andere Seite des bipartiten Graphen. Sei $E_H = \{((u,1),(u,2))|(u,v) \in E\}$. In anderen Worten: Wenn $(u,v) \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $((u,1),(u,2))$ geben kann.
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
+		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist $V_1 = \{(u,1)|u\in V\}$ eine Seite und $V_2 = \{(u,2)|u\in V\}$ die andere Seite des bipartiten Graphen. Sei $E_H = \{\{(u,1),(u,2)\}|\{u,v\} \in E\}$. In anderen Worten: Wenn $\{u,v\} \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $\{(u,1),(u,2)\}$ geben kann.
 	\end{quote}
 	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden müssen wir überprüfen, ob $H$ nur genau dann ein perfektes Matching hat, wenn $G$ eins hat.
 	\begin{enumerate}
