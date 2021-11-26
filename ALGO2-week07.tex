@@ -36,7 +36,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Eigenkreation
 	In der Vorlesung haben wir eine Reduktion von \textsc{CircuitSat} auf \textsc{3SAT} gesehen. Gegeben sei folgender Schaltkreis:
 	
-	[TODO]
+	\begin{figure}[ht]
+		\begin{center}
+			\includegraphics[scale=0.5]{schaltkreis}
+		\end{center}
+	\end{figure}
 	% \begin{center}
 	% \begin{circuitikz} 
 	% \ctikzset{logic ports=ieee}
@@ -52,15 +56,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% 	(not_1.out) -| (and_2.in 2)
 	% 	(and_2.out) -| (or_2.in 2)
 	% 	(not_2.out) -| (or_2.in 1)
-	% 	(or_2.out) -- ++(1,0) node[near end,above]{Out}
+	% 	(or_2.out) -- ++(1,0) node[near end,above]{$y$}
 		
-	% 	(and_1.in 1) -- ++(-1.5,0)node[left](In1){x}
-	% 	(and_1.in 2) -- ++(-1.5,0)node[left](In2){y}
+	% 	(and_1.in 1) -- ++(-1.5,0)node[left](In1){$x_1$}
+	% 	(and_1.in 2) -- ++(-1.5,0)node[left](In2){$x_2$}
 	% 	(or_1.in 1) -- (In2)
-	% 	(not_1.in) -- ++(-1.5,0)node[left](In3){z}
+	% 	(not_1.in) -- ++(-1.5,0)node[left](In3){$x_3$}
 	% 	(or_1.in 2) -- (In3);
-	% 	(myand1.out) -- (myxnor.in 1)
-	% 	(myand2.out) -- (myxnor.in 2);
 	% \end{circuitikz}
 	% \end{center}
 	
