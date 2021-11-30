@@ -96,7 +96,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{quote}
 		\textsc{ReduceGraph}:\\
 		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
-		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist \[V_1 = \{(u,1)\,|\,u\in V\}\] eine Seite und \[V_2 = \{(u,2)\,|\,u\in V\}\] die andere Seite des bipartiten Graphen. Sei \[E_H = \{\{(u,1),(u,2)\}\,|\,\{u,v\} \in E\}\,.\] In anderen Worten: Wenn $\{u,v\} \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $\{(u,1),(u,2)\}$ geben kann.
+		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Dabei ist \[V_1 = \{(u,1)\,|\,u\in V\}\] eine Seite und \[V_2 = \{(u,2)\,|\,u\in V\}\] die andere Seite des bipartiten Graphen. Sei \[E_H = \{\{(u,1),(v,2)\}\,|\,\{u,v\} \in E\}\,.\] In anderen Worten: Wenn $\{u,v\} \in E$, fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ ein. Beachte, dass es keine Eigenschleifen in $G$ gibt und es dadurch in $H$ für alle $u \in V$ keine Kante  $\{(u,1),(u,2)\}$ geben kann.
 	\end{quote}
 	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden müssen wir überprüfen, ob $H$ nur genau dann ein perfektes Matching hat, wenn $G$ eins hat.
 	\begin{enumerate}
