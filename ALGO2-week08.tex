@@ -55,6 +55,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
+\section*{Donnerstag}
+
 \begin{aufgabe}[Ressourcenmanagement]
 	% KT - Exercise 8.4
 	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
@@ -75,21 +77,33 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	 \end{enumerate}
 \end{aufgabe}
 
-\section*{Donnerstag}
-
-\begin{aufgabe}[Clique]
-	% Algorithms and Data Structures 2 - NP.pdf
-	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
-	\begin{quote}
-		\textsc{Clique}:\\
-		\textit{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
-		\textit{Output:} \glqq JA\grqq{}, wenn $G$ eine $k$-\textit{Clique} besitzt, sonst \glqq NEIN\grqq{}.
-	\end{quote}
+\begin{aufgabe}[Zweifärbung]
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
+	Eine Zweifärbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge von zwei unterschiedlichen Farben $\{f_1,f_2\} \in F$ zu. Es gibt zwei Arten der Zweifärbung:
+	\begin{itemize}
+		\item In einer \textit{schwachen} Zweifärbung müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen. Die beiden Mengen dürfen sich aber eine Farbe teilen.
+		\item In einer \textit{starken} Zweifärbung müssen die zu jeder Kante inzidenten Knoten komplett unterschiedliche Farbmengen haben. Das heißt, eine Kante ist inzident zu $4$ Farben.
+	\end{itemize}
+	Jede starke Zweifärbung ist auch eine schwache Zweifärbung.
 	\begin{enumerate}
-		\item Zeige, dass \textsc{Clique} $\in \NP$.
-		\item Zeige, dass \textsc{Clique} \NP-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
+		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Zweifärbung zu finden.
+		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Zweifärbung zu finden.
 	\end{enumerate}
 \end{aufgabe}
+
+%\begin{aufgabe}[Clique]
+	% Algorithms and Data Structures 2 - NP.pdf
+%	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
+%	\begin{quote}
+%		\textsc{Clique}:\\
+%		\textit{Input:} Ein ungerichteter Graph $G = (V,E)$ und ein $k \in \mathbb{N}_0$.\\
+%		\textit{Output:} \glqq JA\grqq{}, wenn $G$ eine $k$-\textit{Clique} besitzt, sonst \glqq NEIN\grqq{}.
+%	\end{quote}
+%	\begin{enumerate}
+%		\item Zeige, dass \textsc{Clique} $\in \NP$.
+%		\item Zeige, dass \textsc{Clique} \NP-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
+%	\end{enumerate}
+%\end{aufgabe}
 
 \newpage
 
