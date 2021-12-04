@@ -77,17 +77,17 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	 \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Zweifärbung]
+\begin{aufgabe}[Doppel-Färbung]
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
-	Eine Zweifärbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge von zwei unterschiedlichen Farben $\{f_1,f_2\} \in F$ zu. Es gibt zwei Arten der Zweifärbung:
+	Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge von zwei unterschiedlichen Farben $\{f_1,f_2\} \in F$ zu. Es gibt zwei Arten der Doppel-Färbung:
 	\begin{itemize}
-		\item In einer \textit{schwachen} Zweifärbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen. Die beiden Mengen dürfen sich aber eine Farbe teilen.
-		\item In einer \textit{starken} Zweifärbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten komplett unterschiedliche Farbmengen haben. Das heißt, eine Kante ist inzident zu $4$ Farben.
+		\item In einer \textit{schwachen} Doppel-Färbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen. Die beiden Mengen dürfen sich aber eine Farbe teilen.
+		\item In einer \textit{starken} Doppel-Färbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten komplett unterschiedliche Farbmengen haben. Das heißt, eine Kante ist inzident zu $4$ Farben.
 	\end{itemize}
-	Jede starke Zweifärbung ist auch eine schwache Zweifärbung.
+	Jede starke Doppel-Färbung ist auch eine schwache Doppel-Färbung.
 	\begin{enumerate}
-		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Zweifärbung zu finden.
-		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Zweifärbung zu finden.
+		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Doppel-Färbung zu finden.
+		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Doppel-Färbung zu finden.
 	\end{enumerate}
 	\begin{figure}[ht]
 	    \begin{minipage}{0.5\linewidth}
@@ -115,7 +115,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
                            (c) -- (e)
                            (d) -- (e);
                 \end{tikzpicture}
-                \caption{Eine schwache Zweifärbung.}\label{schwach}
+                \caption{Eine schwache Doppel-Färbung.}\label{schwach}
 	    \end{minipage}
 	    \begin{minipage}{0.5\linewidth}
 	        \centering
@@ -137,7 +137,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
                            (d) -- (e)
                            (e) -- (a);
                 \end{tikzpicture}
-                \caption{Eine starke Zweifärbung.}\label{stark}
+                \caption{Eine starke Doppel-Färbung.}\label{stark}
 	    \end{minipage}
 	\end{figure}
 \end{aufgabe}
