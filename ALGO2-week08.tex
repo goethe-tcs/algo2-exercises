@@ -47,6 +47,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[$\NP$-Härte]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
+	Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen NP-hart ist.
 	Zeige, dass die folgenden Probleme $\NP$-hart sind.
 	\begin{enumerate}
 		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen einfachen Pfad, der alle außer 247 Knoten besucht?
@@ -162,7 +163,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[\emoji{star}: Vorsichtige Färbung]
 	% Ericksen, Chapter 12, Exercise 24
-	Eine $5$-\textsc{Färbung} eines Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine \glqq Farbe\grqq{} aus der Menge $\{0,1,2,3,4\}$ zu, sodass $u,v \in V$ für jede Kante $(u,v) \in E$ unterschiedliche \glqq Farben\grqq{} haben. Eine $5$-\textsc{Färbung} ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich um mindestens $(1 \mod 5)$ unterscheiden. Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-\textsc{Färbung} besitzt, $\NP$-hart ist.
+	Eine $5$-\textsc{Färbung} eines Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-\textsc{Färbung} ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (z.B.~darf die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-\textsc{Färbung} besitzt, $\NP$-hart ist.
 	
 	\textit{Tipp: Benutze für die Reduktion das normale $5$-\textsc{Färbung}-Problem}.
 	
