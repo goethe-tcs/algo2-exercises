@@ -1,0 +1,144 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{10}{}{}
+\blattname{Übungen zu Woche 10: Turingmaschinen}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 14.01., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[Turingmaschinen I]\
+	% Eigenkreation
+	\begin{enumerate}
+		\item Gegeben ist die Turingmaschine $M_1 = (Q,\Sigma,\Gamma,\delta,q_0,\texttt{acc},\mathtt{rej},\square)$ mit\\
+		$Q = \{q_0,q_1,q_2,q_3,q_4,\mathtt{acc},\mathtt{rej}\}$, $\Sigma = \{0,1\}$ und $\Gamma = \Sigma \cup \{\cancel{0},\cancel{1},\square\}$. Die Überführungsfunktion $\delta$ ist gegeben durch:
+		
+		$$\begin{tabular}{p{5cm}p{7.2cm}}
+			$\delta(q_0,0) = (q_1,\cancel{0},+1)$ & $\delta(q_3,\cancel{1}) = (q_3,\cancel{1},-1)$\\
+			$\delta(q_0,\square) = (\mathtt{acc})$ &  $\delta(q_3,0) = (q_3,0,-1)$\\
+			$\delta(q_0,\cancel{1}) = (q_4,\cancel{1},+1)$ & $\delta(q_3,\cancel{0}) = (q_0,\cancel{0},+1)$\\
+			& \\
+			$\delta(q_1,0) = (q_1,0,+1)$ & $\delta(q_4,\cancel{1}) = (q_4,\cancel{1},+1)$\\
+			$\delta(q_1,\cancel{1}) = (q_1,\cancel{1},+1)$ &  $\delta(q_4,\square) = (\mathtt{acc},\square ,-1)$\\
+			$\delta(q_1,1) = (q_2,\cancel{1},+1)$ & \\
+			& \\
+			$\delta(q_2,1) = (q_3,\cancel{1},-1)$ & $\delta(q,a) = (\mathtt{rej},a,+1)$ sonst\\
+		\end{tabular}$$
+		
+		Führe $M_1$ auf den beiden Eingaben \texttt{001111} und \texttt{00011111} aus. Gib jeweils die Konfiguration nach Ende der Berechnung, also bei Erreichen von \texttt{acc} oder \texttt{rej}, an.
+		
+		Welche Sprache entscheidet $M_1$?
+		
+		\item Gegeben ist die Turingmaschine $M_2 = (Q,\Sigma,\Gamma,\delta,q_0,\mathtt{halt},\square)$ mit\\
+		$Q = \{q_0,q_1,q_2,q_3,q_4,q_5,q_6,\mathtt{halt}\}$, $\Sigma = \{0,1\}$ und $\Gamma = \Sigma \cup \{\cancel{0},\cancel{1},\underline{0},\underline{1},\underline{\cancel{0}},\underline{\cancel{1}},\square\}$.
+		
+		$$\begin{tabular}{p{7.2cm}p{7.2cm}}
+			$\delta(q_0,0) = (q_1,\underline{\cancel{0}},+1)$ & $\delta(q_4,0) = (q_1,\cancel{0},+1)$ \\
+			$\delta(q_0,1) = (q_2,\underline{\cancel{1}},+1)$ & $\delta(q_4,1) = (q_2,\cancel{1},+1)$ \\
+			$\delta(q_0,\square) = (\mathtt{halt},\square ,+1)$ & $\delta(q_4,\underline{0}) = (q_5,\underline{0},-1)$ \\
+			& $\delta(q_4,\underline{1}) = (q_5,1,-1)$ \\
+			& \\
+			$\delta(q_1,x) = (q_1,x,+1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$ & $\delta(q_5,z) = (q_5,z,-1)$ für $z \in \{\cancel{0},\cancel{1}\}$\\
+			$\delta(q_1,\square) = (q_3,\underline{0},-1)$ & $\delta(q_5,\underline{\cancel{0}}) = (q_6,0,+1)$ \\
+			& $\delta(q_5,\underline{\cancel{1}}) = (q_6,1,+1) $ \\
+			& \\
+			$\delta(q_2,x) = (q_2,x,+1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$ & $\delta(q_6,\cancel{0}) = (q_6,0,+1)$ \\
+			$\delta(q_2,\square) = (q_3,\underline{1},-1)$ & $\delta(q_6,\cancel{1}) = (q_6,1,+1)$\\
+			& $\delta(q_6,\underline{0}) = (q_6,0,+1)$ \\
+			$\delta(q_3,x) = (q_3,x,-1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$ & $\delta(q_6,\underline{1}) = (q_6,1,+1)$ \\
+			$\delta(q_3,y) = (q_4,y,+1)$ für $y \in \{\cancel{0},\cancel{1},\underline{\cancel{0}},\underline{\cancel{1}}\}$ & $\delta(q_6,\square) = (\mathtt{halt,\square ,-1})$ \\
+		\end{tabular}$$
+		
+		Führe $M_2$ auf den beiden Eingaben \texttt{0001} und \texttt{1010} aus. Gib jeweils die Konfiguration nach Ende der Berechnung, also bei Erreichen von \texttt{halt}, an.
+		
+		Welche Funktion berechnet $M_1$?
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Turingmaschinen II]\
+	% Eigenkreation
+	In \href{https://jeffe.cs.illinois.edu/teaching/algorithms/models/06-turing-machines.pdf}{Abschnitt 6.3 aus Ericksons \glqq Models of Computation\grqq}  ist eine Turingmaschine für die Sprache $L = \{0^n 1^n 0^n | n \geq 0\}$ angegeben. Diese enthält einige Fehler. Warum entscheidet die Turingmaschine nicht die Sprache $L$ und wie lassen sich die  Fehler beheben?
+\end{aufgabe}
+
+\begin{aufgabe}[Turingmaschinen III]\
+	% Eigenkreation
+	Sei $L = \{0^n 1^m 0^{(n+m)} | n,m \in \N\}$.
+	\begin{enumerate}
+		\item Beschreibe eine Turingmaschine, die die Sprache $L$ entscheidet.
+		\item Gib die beschriebene Turingmaschine formal an. Insbesondere ist also auch die Überführungsfunktion $\delta$ der Maschine anzugeben.		
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Turingmaschinen IV]
+	% Eigenkreation
+	Beschreibe Turingmaschinen, die die folgenden Sprachen entscheiden, bzw. die folgenden Funktionen berechnen. Die Maschine muss nicht formal angegeben werden.
+	\begin{enumerate}
+		\item $\{ww | w \in \{0,1\}^*\}$
+		\item $1^n 0 1^m \mapsto 1^{nm}$
+		\item $1^n \mapsto$ Binärdarstellung von $n$
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Rekursive Aufzählbarkeit]
+	% Eigenkreation
+	Eine Sprache $L \subseteq \Sigma^*$ heißt rekursiv aufzählbar, wenn es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^*) = L$, also $L = \{f(0), f(1), f(01), f(10), ...\}$.
+	\begin{enumerate}
+		\item Zeige, dass jede rekursiv aufzählbare Sprache semi-entscheidbar ist.
+		\item Zeige, dass jede semi-entscheidbare Sprache rekursiv aufzählbar ist.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Turingmaschinen V]\
+	% Ericksen "Models of Computation": Chapter 6, Exercise 4 und Eigenkreation
+	\begin{enumerate}
+		\item Eine Zwei-Band-Maschine ist eine Turingmaschine mit zwei Bändern und dem folgendem eingeschränkten Verhalten:
+		
+		Zu jeder Zeit ist auf jedem Band jede Zelle rechts vom Kopf das Blanksymbol und jede Zelle links vom Kopf ist kein Blanksymbol. Deshalb kann sich der Kopf nur nach rechts bewegen, indem ein Symbol, das kein Blank ist, in eine Zelle mit Blank geschrieben wird. Der Kopf kann sich nur nach links bewegen, wenn die rechteste Zelle, die kein Blank ist, zu einem Blank wird. Jedes Band verhält sich also wie ein Stack. Um ein Überlaufen des Kopfes am Anfang des Bands zu vermeiden, gibt es dort ein spezielles Symbol, dass nicht überschrieben werden kann. Am Anfang enthält das eine Band den Input, wobei sich der Kopf über dem letzten Symbol der Eingabe befindet. Das andere Band ist, bis auf das spezielle Symbol am Anfang des Bandes, leer.
+		
+		Zeige, dass jede normale Turingmaschine durch die Zwei-Band-Maschine simuliert werden kann. Beschreibe also eine Zwei-Band-Maschine $M'$, die genau die gleichen Eingaben akzeptiert und verwirft, wie eine beliebige normale Turingmaschine $M$.
+		
+		\item Zeige, dass nichtdeterministische Turingmaschinen genauso mächtig sind, wie gewöhnliche Turingmaschinen, d.h.
+		\begin{quote}
+			Jede Sprache, die von einer nichtdeterministischen Turingmaschine entschieden wird, wird auch von einer Turingmaschine entschieden und umgekehrt.
+		\end{quote}
+	\end{enumerate}
+\end{aufgabe}
+
+\newpage
+
+%\section*{Sternaufgabe}
+
+%\begin{aufgabe}[\emoji{star}:]
+	% To-Do
+	
+%\end{aufgabe}
+
+\end{document}
