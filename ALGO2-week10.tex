@@ -83,14 +83,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Turingmaschinen II]\
 	% Eigenkreation
-	In \href{https://jeffe.cs.illinois.edu/teaching/algorithms/models/06-turing-machines.pdf}{Abschnitt 6.3 aus Ericksons \glqq Models of Computation\grqq}  ist eine Turingmaschine für die Sprache $L = \{0^n 1^n 0^n | n \geq 0\}$ angegeben. Diese enthält einige Fehler. Warum entscheidet die Turingmaschine nicht die Sprache $L$ und wie lassen sich die  Fehler beheben?
+	In \href{https://jeffe.cs.illinois.edu/teaching/algorithms/models/06-turing-machines.pdf}{Abschnitt 6.3 aus Ericksons \glqq Models of Computation\grqq}  ist eine Turingmaschine für die Sprache $L = \{0^n 1^n 0^n \;|\; n \geq 0\}$ angegeben. Diese enthält einige Fehler. Warum entscheidet die Turingmaschine nicht die Sprache $L$ und wie lassen sich die  Fehler beheben?
 \end{aufgabe}
 
 \begin{aufgabe}[Turingmaschinen III]\
 	% Eigenkreation
-	Sei $L = \{0^n 1^m 0^{(n+m)} | n,m \in \N\}$.
+	Sei $L = \{0^n 1^m 0^{(n+m)} \;|\; n,m \in \N\}$.
 	\begin{enumerate}
-		\item Beschreibe eine Turingmaschine, die die Sprache $L$ entscheidet.
+		\item Beschreibe auf informelle Art und Weise eine Turingmaschine, die die Sprache $L$ entscheidet.
 		\item Gib die beschriebene Turingmaschine formal an. Insbesondere ist also auch die Überführungsfunktion $\delta$ der Maschine anzugeben.		
 	\end{enumerate}
 \end{aufgabe}
@@ -101,7 +101,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Eigenkreation
 	Beschreibe Turingmaschinen, die die folgenden Sprachen entscheiden, bzw. die folgenden Funktionen berechnen. Die Maschine muss nicht formal angegeben werden.
 	\begin{enumerate}
-		\item $\{ww | w \in \{0,1\}^*\}$
+		\item $\{ww \;|\; w \in \{0,1\}^*\}$
 		\item $1^n 0 1^m \mapsto 1^{nm}$
 		\item $1^n \mapsto$ Binärdarstellung von $n$
 	\end{enumerate}
@@ -109,7 +109,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Rekursive Aufzählbarkeit]
 	% Eigenkreation
-	Eine Sprache $L \subseteq \Sigma^*$ heißt rekursiv aufzählbar, wenn es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^*) = L$, also $L = \{f(0), f(1), f(01), f(10), ...\}$.
+	Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv aufzählbar}, wenn es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^*) = L$, also $L = \{f(0), f(1), f(00), f(01), f(10), f(11), f(000), \dots\}$ gilt.
 	\begin{enumerate}
 		\item Zeige, dass jede rekursiv aufzählbare Sprache semi-entscheidbar ist.
 		\item Zeige, dass jede semi-entscheidbare Sprache rekursiv aufzählbar ist.
@@ -119,26 +119,26 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \begin{aufgabe}[Turingmaschinen V]\
 	% Ericksen "Models of Computation": Chapter 6, Exercise 4 und Eigenkreation
 	\begin{enumerate}
-		\item Eine Zwei-Band-Maschine ist eine Turingmaschine mit zwei Bändern und dem folgendem eingeschränkten Verhalten:
+		\item Bei einer Zwei-Band-Maschine gibt es zwei Bänder und jedes Band hat einen eigenen Lese-/Schreibkopf.
+		Eine \emph{Zwei-Stapel-Maschine} ist eine Turingmaschine mit zwei Bändern und dem folgendem eingeschränkten Verhalten:
 		
-		Zu jeder Zeit ist auf jedem Band jede Zelle rechts vom Kopf das Blanksymbol und jede Zelle links vom Kopf ist kein Blanksymbol. Deshalb kann sich der Kopf nur nach rechts bewegen, indem ein Symbol, das kein Blank ist, in eine Zelle mit Blank geschrieben wird. Der Kopf kann sich nur nach links bewegen, wenn die rechteste Zelle, die kein Blank ist, zu einem Blank wird. Jedes Band verhält sich also wie ein Stack. Um ein Überlaufen des Kopfes am Anfang des Bands zu vermeiden, gibt es dort ein spezielles Symbol, dass nicht überschrieben werden kann. Am Anfang enthält das eine Band den Input, wobei sich der Kopf über dem letzten Symbol der Eingabe befindet. Das andere Band ist, bis auf das spezielle Symbol am Anfang des Bandes, leer.
+		Zu jeder Zeit ist auf jedem Band jede Zelle rechts vom Kopf das Blanksymbol und jede Zelle links vom Kopf ist kein Blanksymbol. Deshalb kann sich der Kopf nur nach rechts bewegen, indem ein Symbol, das kein Blank ist, in eine Zelle mit Blank geschrieben wird. Der Kopf kann sich nur nach links bewegen, wenn die rechteste Zelle, die kein Blank ist, zu einem Blank wird. Jedes Band verhält sich also wie ein Stapel (\emph{stack}) und die beiden Köpfe sind immer ganz oben auf dem Stapel. Um ein Überlaufen des Kopfes am Anfang des Bands zu vermeiden, gibt es dort ein spezielles Symbol, dass nicht überschrieben werden kann. Zu Beginn enthält das erste Band den Input, wobei sich der Kopf über dem letzten Symbol der Eingabe befindet. Das andere Band ist, bis auf das spezielle Symbol am Anfang des Bandes, leer.
 		
-		Zeige, dass jede normale Turingmaschine durch die Zwei-Band-Maschine simuliert werden kann. Beschreibe also eine Zwei-Band-Maschine $M'$, die genau die gleichen Eingaben akzeptiert und verwirft, wie eine beliebige normale Turingmaschine $M$.
+		Zeige, dass jede normale Turingmaschine durch eine Zwei-Stapel-Maschine simuliert werden kann. Gegeben ist also eine normale Turingmaschine $M$, und du sollst eine Zwei-Stapel-Maschine $M'$ beschreiben, die genau die gleichen Eingaben akzeptiert und verwirft wie~$M$.
 		
-		\item Zeige, dass nichtdeterministische Turingmaschinen genauso mächtig sind, wie gewöhnliche Turingmaschinen, d.h.
+		\item Zeige, dass nichtdeterministische Turingmaschinen genauso mächtig sind wie gewöhnliche Turingmaschinen, d.h., zeige die folgende Aussage für alle Sprachen~$L$:
 		\begin{quote}
-			Jede Sprache, die von einer nichtdeterministischen Turingmaschine entschieden wird, wird auch von einer Turingmaschine entschieden und umgekehrt.
+			Es gibt eine nichtdeterministische Turingmaschine, die $L$ entscheidet, genau dann, wenn es eine gewöhnliche Turingmaschine gibt, die $L$ entscheidet.
 		\end{quote}
 	\end{enumerate}
 \end{aufgabe}
 
-\newpage
+%\newpage
 
-%\section*{Sternaufgabe}
+\section*{Sternaufgabe}
 
-%\begin{aufgabe}[\emoji{star}:]
-	% To-Do
-	
-%\end{aufgabe}
+\begin{aufgabe}[\emoji{star}: Turingmaschine simulieren (Coderunner)]
+  Implementiere ein Programm, das eine gewöhnliche Turingmaschine als Eingabe erhält, diese simuliert, und die Ausgabe der Turingmaschine berechnet. Die genaue Ein- und Ausgabespezifikation des geforderten Programms findest du in Moodle.
+\end{aufgabe}
 
 \end{document}
