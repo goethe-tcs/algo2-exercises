@@ -105,17 +105,19 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Beschreibe Turingmaschinen, die die folgenden Sprachen entscheiden, bzw. die folgenden Funktionen berechnen. Die Maschine muss nicht formal angegeben werden.
 	\begin{enumerate}
 		\item $\{ww \;|\; w \in \{0,1\}^*\}$
-		\item $1^n 0 1^m \mapsto 1^{nm}$
+		\item $1^n 0 1^m \mapsto 1^{nm}$ (falls die Eingabe nicht von der Form $1^n 0 1^m$ für gewisse $n$ und $m$ ist, darf die Maschine sich beliebig verhalten)
 		\item $1^n \mapsto$ Binärdarstellung von $n$
 	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Rekursive Aufzählbarkeit]
 	% Eigenkreation
-	Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv aufzählbar}, wenn es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^*) = L$, also $L = \{f(0), f(1), f(00), f(01), f(10), f(11), f(000), \dots\}$ gilt.
+	Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv aufzählbar}, wenn $L = \emptyset$ oder es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^+) = L$, also $L = \{f(0), f(1), f(00), f(01), f(10), f(11), f(000), \dots\}$ gilt.
 	\begin{enumerate}
-		\item Zeige, dass jede rekursiv aufzählbare Sprache semi-entscheidbar ist.
-		\item Zeige, dass jede semi-entscheidbare Sprache rekursiv aufzählbar ist.
+		\item \emph{(schwer)} Zeige, dass jede rekursiv aufzählbare Sprache semi-entscheidbar ist.
+		\item \emph{(sehr schwer)} Zeige, dass jede semi-entscheidbare Sprache rekursiv aufzählbar ist.\\
+    \emph{Hinweis}: Du kannst verwenden, dass Turingmaschinen Paare von Zahlen aus einzelnen Binärwörtern dekodieren können und sich dabei jedes Paar aus einer gewissen Zahl ergibt.
+    (Dies ist mit der Cantor-Abzählung möglich.)
 	\end{enumerate}
 \end{aufgabe}
 
@@ -129,9 +131,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		
 		Zeige, dass jede normale Turingmaschine durch eine Zwei-Stapel-Maschine simuliert werden kann. Gegeben ist also eine normale Turingmaschine $M$, und du sollst eine Zwei-Stapel-Maschine $M'$ beschreiben, die genau die gleichen Eingaben akzeptiert und verwirft wie~$M$.
 		
-		\item Zeige, dass nichtdeterministische Turingmaschinen genauso mächtig sind wie gewöhnliche Turingmaschinen, d.h., zeige die folgende Aussage für alle Sprachen~$L$:
+		\item \emph{(schwer)} Erkläre, warum nichtdeterministische Turingmaschinen genauso mächtig sind wie gewöhnliche Turingmaschinen, d.h., erkläre die folgende Aussage:
 		\begin{quote}
-			Es gibt eine nichtdeterministische Turingmaschine, die $L$ entscheidet, genau dann, wenn es eine gewöhnliche Turingmaschine gibt, die $L$ entscheidet.
+			Für alle Sprachen $L$ gibt es eine nichtdeterministische Turingmaschine, die $L$ entscheidet, genau dann, wenn es eine gewöhnliche Turingmaschine gibt, die $L$ entscheidet.
 		\end{quote}
 	\end{enumerate}
 \end{aufgabe}
