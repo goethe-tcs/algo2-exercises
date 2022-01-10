@@ -33,18 +33,27 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
+\textbf{Zur Erinnerung:}
+
+\begin{itemize}
+	\item $\textsc{Accept}(M) := \{w \in \Sigma^{\ast} \;|\; M \text{ akzeptiert } w\}$
+	\item $\textsc{Reject}(M) := \{w \in \Sigma^{\ast} \;|\; M \text{ verwirft } w\}$
+	\item $\textsc{Halt}(M) := \textsc{Accept}(M) \cup \textsc{Reject}(M)$
+	\item $\textsc{Diverge}(M) := \Sigma^{\ast} \backslash \textsc{Halt}(M)$
+\end{itemize}
+
 \begin{aufgabe}[Turingmaschinen]\
 	% Erickson Models of Computation - Chapter 7, Exercise 1
 	Sei $M$ eine beliebige Turingmaschine.
 	\begin{enumerate}
 		\item Beschreibe eine Turingmaschine $M^R$, sodass:
-		$$\textsc{Accept}(M^R) = \textsc{Reject(M)} \text{ und } \textsc{Reject}(M^R) = \textsc{Accept}(M)$$
+		$$\textsc{Accept}(M^R) = \textsc{Reject(M)} \qquad \text{und} \qquad \textsc{Reject}(M^R) = \textsc{Accept}(M)$$
 		
 		\item Beschreibe eine Turingmaschine $M^A$, sodass:
-		$$\textsc{Accept}(M^A) = \textsc{Accept}(M) \text{ und } \textsc{Reject}(M^A) = \varnothing$$
+		$$\textsc{Accept}(M^A) = \textsc{Accept}(M) \qquad \text{und} \qquad \textsc{Reject}(M^A) = \varnothing$$
 		
 		\item Beschreibe eine Turingmaschine $M^H$, sodass:
-		$$\textsc{Accept}(M^H) = \textsc{Halt}(M) \text{ und } \textsc{Reject}(M^H) = \varnothing$$
+		$$\textsc{Accept}(M^H) = \textsc{Halt}(M) \qquad \text{und} \qquad \textsc{Reject}(M^H) = \varnothing$$
 	\end{enumerate}
 \end{aufgabe}
 
@@ -58,7 +67,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Entscheidbarkeit II]\
 	% Erickson Models of Computation - Chapter 7, Exercise 3b
-	Beweise, dass \textsc{NeverHalt} unentscheidbar ist.
+	Beweise, dass $\textsc{NeverHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \varnothing\}$ unentscheidbar ist.
 \end{aufgabe}
 
 \begin{aufgabe}[Entscheidbarkeit III]\
@@ -71,18 +80,18 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \begin{aufgabe}[Entscheidbarkeit IV]
 	% Erickson Models of Computation - Chapter 7, Exercise 6c, i, Eigenkreation, k
-	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der inverse String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
+	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der umgekehrte String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
 	\begin{enumerate}
 		\item Akzeptiert $M$ die Eingabe $\langle M \rangle \langle M \rangle$?
 		\item Akzeptiert $M$ alle Palindrome?
 		\item Akzeptiert $M$ die Sprache $\{\langle M \rangle \;|\; M \text{ hat min. 100 Zustände und hält auf Eingabe } \langle M \rangle\}$?
-		\item Gibt es eine Eingabe, die $M$ zu einer Bewegung nach links zwingt?
+		\item Gibt es einen Eingabestring, der $M$ zu einer Bewegung nach links zwingt?
 	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Entscheidbarkeit V]
 	% Erickson Models of Computation - Chapter 7, Exercise 7b,e,n
-	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der inverse String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrer Eingabe $w$.
+	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der umgekehrte String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrem Eingabestring $w$.
 	\begin{enumerate}
 		\item Akzeptiert $M$ entweder $w$ oder $w^R$?
 		\item Akzeptiert $M$ die Eingabe $w$ in höchstens $2^{|w|}$ Schritten?
