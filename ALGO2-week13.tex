@@ -1,0 +1,109 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{11}{}{}
+\blattname{Übungen zu Woche 13: Linear Programming II}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+\usepackage[smaller]{acronym}
+\newacro{LP}{Linear Program}
+\newacro{ILP}{Integer Linear Program}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 04.02., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}
+	Write down the corresponding dual problem to the following \acs{LP}.
+	\[
+		\begin{array}{rrrlllllllll}
+		\text{max}    &     &   2 x_1       &   +     &   x_2   &       &         &   -   & 3x_4  &         &   \\
+		\text{s.t.}  &     &   2x_1      &   +     &   4x_2  &   +   &  3 x_3   &   -   & 2x_4   &  \geq   & 1 \\
+							&     &   5x_1      &   -     &   2x_2   &   +   &   x_3  &   -   & 4x_4  &  \leq   & 2 \\
+							&     &   -3x_1     & +     &   x_2  &   -   &   6x_3  &   -   & 7 x_4   &   =     & 0 \\
+							&     &           &       &         &       &       &         &x_1,x_3   & \leq    &   0      \\
+							&     &          &       &         &       &       &         &  x_4       & \geq    &   0    
+		\end{array}
+	\]
+	
+\end{aufgabe}
+
+\begin{aufgabe}[Bipartite maximum matching \acs{LP}]\
+	% Erickson Extended Dance Remix - Chapter H, Exercise 2a,b
+	The \emph{bipartite maximum matching problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
+	\begin{enumerate}
+		\item Provide a linear program that has one variable for each edge.
+		\item Derive the dual of the \acs{LP} of \emph{part a)}. What do the dual variables represent? What does the objective function represent? What problem is this!?
+	\end{enumerate}
+\end{aufgabe}
+
+
+\begin{aufgabe}[School Assignment \acs{ILP}]
+	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
+	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Skew-symmetric matrices]\
+	% Erickson Extended Dance Remix - Chapter H, Exercise 1a,b
+	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{cx  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
+	\begin{enumerate}
+		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
+		\item Show that any linear program (P) with $d$ variables and $n$ constraints can be transformed into a self-dual linear program with $n + d$ variables and $n + d$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $d$ of the variables) and the optimal solution for the dual program (D) (in the other $n$ variables).
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Totally unimodularity]
+	% Erickson Extended Dance Remix - Chapter I, Exercise 9a,b
+	A minor of a matrix $A$ is the submatrix defined by any subset of the rows and any subset of the columns. A matrix $A$ is \emph{totally unimodular} if, for every square minor $M$, the determinant of $M$ is $−1, 0$, or $1$.
+	\begin{enumerate}
+		\item Let A be an arbitrary totally unimodular matrix.
+		\begin{itemize}
+			\item[i.] Prove that the transposed matrix $A^T$ is also totally unimodular.
+			\item[ii.] Prove that negating any row or column of A leaves the matrix totally unimod- ular.
+			\item[iii.] Prove that the block matrix $[A | I ]$ is totally unimodular.
+		\end{itemize}
+		\item Prove that for any totally unimodular matrix $A$ and any integer vector $b$, the canonical linear program $\max\{cx  \; | \; Ax \leq b, x \geq 0\}$ has an integer optimal solution. \\
+		\emph{Hint: Cramer’s rule.}
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Integer Feasibility]
+	Let $A \in \Z^{m\times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b \}$.
+	The Integer Feasibility problem is to decide if $P \cap \Z^n \neq \emptyset$.
+	Show that it is NP-hard using a reduction from 3-SAT. \\
+	\emph{Hint: You want a transformation of a 3-CNF formula with $m$ clauses over $n$ variables to $P$.}
+\end{aufgabe}
+
+%\newpage
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}:]
+\end{aufgabe}
+
+\end{document}

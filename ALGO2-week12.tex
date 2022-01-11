@@ -1,0 +1,177 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{11}{}{}
+\blattname{Übungen zu Woche 12: Linear Programming I}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+\usepackage[smaller]{acronym}
+\newacro{LP}{Linear Program}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 28.01., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}\
+	Consider the following \acs{LP}.
+	\[
+		\begin{array}{rrllll}
+			\text{max} &   2 x_1 +5 x_2 \\	
+			\text{s.t.} 
+			&  x_1 + 2x_2 &\leq 8\\
+			&  x_1  &\leq 4\\
+			& 2x_2 &\leq 7\\
+			& x_1,x_2&\geq  0\\
+		\end{array}
+	\] 
+
+	\begin{enumerate}
+	\item Draw the corresponding polyhedron $P$.
+	\item Find an optimal fractional and integer solution graphically.
+	\item If we add the first constraint multiplied by $p_1=1$, to the second constraint multiplied by $p_2=1$, and to the third constraint multiplied by $p_3=1.5$, we obtain 
+	$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$ 
+	Find non-negative values for $p_1,p_2,p_3$ such that proceeding as above we obtain $2x_1+5x_2\leq opt$ for every $x \in P$,  where $opt$ is one of the optimal values determined in \textit{part b)}.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Standard Form]\
+	Optimization Lecture
+	Consider the following \acs{LP}.
+	\[
+		\begin{array}{rrrllll}
+			\text{max}    & 3x_1 		    & + & 2 x_2	& +  & 4x_3  &\\
+			\text{s.t.}	&  x_1		    & 	&		& +	 & 2x_3  & \le 50 \\
+								& 3x_1 		    & + & 10x_2	& +	 & 6x_3	 & \le 300\\
+								& 18 x_1 	    &   &       & +  & x_3 	 & \le 40\\ 
+								& x_1,      	&	& x_2,	&	 & x_3	 &\geq 0 
+		\end{array}
+	\]
+	\begin{enumerate}
+		\item Convert the \acs{LP} into standard form by introducing slack variables $s_1,s_2, s_3$, one for each equation.
+		\item List all the feasible bases for this \acs{LP}.   
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Single-source shortest path \acs{LP}]
+	% Erickson Extended Dance Remix - Chapter H, Exercise 7a - c
+	The \emph{single-source shortest path problem} can be formulated as a \acs{LP}, with one variable $d_v$ for each vertex $v \neq s$ in the input graph:
+
+	\[
+		\begin{array}{rrl}
+			\text{max}   &  \sum_{v} d_v & 	   \\
+			\text{s.t.}  &		   d_v & \leq l_{s \rightarrow v} \\
+						 &	 d_v - d_u & \leq l_{u \rightarrow v} \\
+						 &	       d_v & \geq 0
+		\end{array}
+	\]
+
+	Describe the behavior of the simplex algorithm on this linear program in terms of distances. Assume that the edge weights $l_{u \rightarrow v}$ are all non-negative and that there is a unique shortest path between any two vertices in the graph.
+	\begin{enumerate}
+		\item What is a basis for this linear program? What is a feasible basis? What is a locally optimal basis?
+		\item Show that in the optimal basis, every variable $d_v$ is equal to the shortest-path distance from $s$ to $v$.
+		\item Describe the primal simplex algorithm for the shortest-path linear program directly in terms of vertex distances. In particular, what does it mean to pivot from a feasible basis to a neighboring feasible basis, and how can we execute such a pivot quickly?
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+\begin{aufgabe}[Polyhedron]
+	% Erickson Extended Dance Remix - Chapter I, Exercise 2a, Optimization Lecture
+	Let $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ be a polyhedron, where $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^m$.
+	\begin{enumerate}
+		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
+		\item Prove that $P$ is convex.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Locally optimal and feasible basis]\
+	% Erickson Extended Dance Remix - Chapter I, Exercise 1a,b
+	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
+
+	A basis is \emph{locally optimal} if its location $x$ is the optimal solution to the linear program with the same objective function and only the constraints in the basis. Geometrically, a basis is locally optimal if its location $x$ is the lowest point in the intersection of those $d$ halfspaces.
+
+	Fix a non-degenerate linear program in canonical form with d variables and n + d constraints.
+	\begin{enumerate}
+		\item Prove that every feasible basis has exactly d feasible neighbors.
+		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Initial basis for Simplex]
+	% Erickson Extended Dance Remix - Chapter I, Exercise 4a,b
+	In this exercise, we develop another standard method for computing an initial feasible basis for the primal simplex algorithm. Suppose we are given a linear program (P) with $d$ variables and $n + d$ constraints as input:
+
+	\[
+		\begin{array}{rrl}
+			\text{max}   &  cx &  	    \\
+			\text{s.t.}  &	Ax & \leq b \\
+						 &	x  & \geq 0
+		\end{array}
+	\]
+
+	To compute an initial feasible basis for (P), we solve a modified linear program (P') defined by introducing a new variable $\lambda$ and two new constraints $0 \geq \lambda \geq 1$, and modifying the objective function:
+
+	\[
+		\begin{array}{rrl}
+			\text{max}   &        \lambda & 	   \\
+			\text{s.t.}  &	Ax - b\lambda & \leq 0 \\
+						 &		  \lambda & \leq 1 \\
+						 &	 x, \lambda   & \geq 0
+		\end{array}
+	\]
+
+	\begin{enumerate}
+		\item Prove that $x_1 = x_2 = \dots = x_d = \lambda = 0$ is a feasible basis for (P).
+		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1. 
+	\end{enumerate}
+\end{aufgabe}
+
+%\newpage
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}: Carath{\'e}odory's Theorem]
+	Let $A_1,\dots , A_n$ be a collection of $n$ vectors in $\R^m$.
+	\begin{enumerate}
+		\item Show that any element of
+			\[
+				C=\left\{\sum_{i=1}^n \lambda_i A_i : \lambda_1, \dots , \lambda_n\geq 0\right\}
+			\]
+			can be expressed as $\sum_{i=1}^n \lambda_i A_i$, with $\lambda_i\geq 0$ and at most $m$ of the coefficients $\lambda_i$ being non-zero. 
+
+			\textit{Hint: Consider the polyhedron
+			\[
+				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n : \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+			\]}
+		\item Let $P$ be the convex hull of the vectors $A_i$, given by
+			\[
+				P=\left\{\sum_{i=1}^n \lambda_i A_i : \sum_{i=1}^n\lambda_i=1,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+			\]
+			Show that any element of $P$ can be expressed as $\sum_{i=1}^n \lambda_i A_i$, where $\sum_{i=1}^n \lambda_i=1$ and $\lambda_i\geq 0$ for all $i$, with at most $m+1$ of the coefficients $\lambda_i$ being nonzero.
+	\end{enumerate}
+\end{aufgabe}
+
+\end{document}
