@@ -58,29 +58,31 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \end{aufgabe}
 
 \begin{aufgabe}[Entscheidbarkeit I]\
-	% Erickson Models of Computation - Chapter 7, Exercise 2a,c
-	\begin{enumerate}
-		\item Beweise, dass \textsc{Accept} unentscheidbar ist.
-		\item Beweise, dass \textsc{Diverge} unentscheidbar ist.
-	\end{enumerate}
-\end{aufgabe}
-
-\begin{aufgabe}[Entscheidbarkeit II]\
 	% Erickson Models of Computation - Chapter 7, Exercise 3b
-	Beweise, dass $\textsc{NeverHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \varnothing\}$ unentscheidbar ist.
-\end{aufgabe}
-
-\begin{aufgabe}[Entscheidbarkeit III]\
-	% Erickson Models of Computation - Chapter 7, Exercise 4c
-	Beweise, dass die folgende Sprache unentscheidbar ist:
-	$$\textsc{AlwaysHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \Sigma^{\ast}\}$$
+	Beweise für jede der folgenden vier Sprachen, dass sie unentscheidbar ist:
+	\begin{enumerate}
+		\item $\textsc{Accept} := \{\langle M,w\rangle \;|\; M \text{ akzeptiert } w\}$
+		\item $\textsc{Diverge} := \{\langle M,w\rangle \;|\; M \text{ hält nicht auf Eingabe } w\}$
+		\item $\textsc{NeverHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \varnothing\}$
+		\item $\textsc{AlwaysHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \Sigma^{\ast}\}$
+	\end{enumerate}
 \end{aufgabe}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Entscheidbarkeit IV]
+\begin{aufgabe}[Entscheidbarkeit II]\
+	% Erickson Models of Computation - Chapter 7, Exercise 10a,b,g
+	Argumentiere für jedes der folgenden Entscheidungsprobleme, dass es unentscheidbar ist.
+	\begin{enumerate}
+		\item Für ein als Eingabe gegebenes Python-Programm \texttt{fib.py} wollen wir verifizieren, ob \texttt{fib.py} ein korrektes Programm für die Fibonacci-Zahlen ist, also ob \texttt{fib.py} bei Eingabe $n$ die $n$-te Fibonacci-Zahl ausgibt.
+		\item Kann ein als Eingabe gegebenes Python-Programm \texttt{p.py} in eine Endlosschleife gelangen?
+		\item Berechnen zwei als Eingabe gegebene Python-Programme, \texttt{p1.py} und \texttt{p2.py}, die gleiche Funktion?
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Entscheidbarkeit III]
 	% Erickson Models of Computation - Chapter 7, Exercise 6c, i, Eigenkreation, k
-	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der umgekehrte String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
+	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
 	\begin{enumerate}
 		\item Akzeptiert $M$ die Eingabe $\langle M \rangle \langle M \rangle$?
 		\item Akzeptiert $M$ alle Palindrome?
@@ -89,9 +91,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Entscheidbarkeit V]
+\begin{aufgabe}[Entscheidbarkeit IV]
 	% Erickson Models of Computation - Chapter 7, Exercise 7b,e,n
-	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Denke daran, dass $w^R$ der umgekehrte String von $w$ ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrem Eingabestring $w$.
+	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrem Eingabestring $w$.
 	\begin{enumerate}
 		\item Akzeptiert $M$ entweder $w$ oder $w^R$?
 		\item Akzeptiert $M$ die Eingabe $w$ in höchstens $2^{|w|}$ Schritten?
@@ -99,22 +101,20 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Entscheidbarkeit $-$I]\
-	% Erickson Models of Computation - Chapter 7, Exercise 10a,b,g
-	Argumentiere für jedes der folgenden Entscheidungsprobleme über Programme in einer Programmiersprache deiner Wahl, dass es unentscheidbar ist.
-	\begin{enumerate}
-		\item Berechnet dieses Programm die Fibonacci-Zahlen korrekt?
-		\item Kann dieses Programm in eine Endlosschleife gelangen?
-		\item Berechnen diese beiden Programme die gleiche Funktion?
-	\end{enumerate}
-\end{aufgabe}
-
 %\newpage
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}:]
-  
+\begin{aufgabe}[\emoji{star}:]\
+	% ALGO2 WiSe 20/21 - Blatt 9, Aufgabe 1b und 2
+	\begin{enumerate}
+		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M\rangle w \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und }M\text{ durchl"auft Zustand 1 f"ur Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
+		
+		\item Zeige unter Anwendung des Satzes von Rice, dass die folgende Sprache nicht entscheidbar ist. Begründe die Nicht-Trivialität der Menge $S$.
+ $$L_2 = \left\{\langle M\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und } |L(M)| \leq 2.\end{array}\right\}$$
+			
+		Hierbei ist $L(M)$ die von der deterministischen Turingmaschine $M$ akzeptierte Sprache.
+	\end{enumerate}
 \end{aufgabe}
 
 \end{document}
