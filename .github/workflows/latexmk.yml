@@ -35,7 +35,7 @@ jobs:
           format: pdf
           filename: "*.tex"
 
-      - name: Release pdf files
+      - name: Release pdf files to tag on github
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -43,3 +43,15 @@ jobs:
           prerelease: true
           title: "Latest version"
           files: "*.pdf"
+
+      # Copying files and artifacts via SSH
+      # - name: Copying files to server
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.REMOTE_HOST }}
+      #     username: ${{ secrets.REMOTE_USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+      #     rm: true
+      #     source: "*.pdf"
+      #     target: "${{ secrets.REMOTE_DIR }}"
