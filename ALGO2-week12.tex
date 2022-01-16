@@ -35,8 +35,27 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}\
-	Consider the following \acs{LP}.
+\begin{aufgabe}[LP]\
+%	Consider the following \acs{LP}.
+%	\[
+%		\begin{array}{rrllll}
+%			\text{max} &   2 x_1 +5 x_2 \\	
+%			\text{s.t.} 
+%			&  x_1 + 2x_2 &\leq 8\\
+%			&  x_1  &\leq 4\\
+%			& 2x_2 &\leq 7\\
+%			& x_1,x_2&\geq  0\\
+%		\end{array}
+%	\] 
+%
+%	\begin{enumerate}
+%	\item Draw the corresponding polyhedron $P$.
+%	\item Find an optimal fractional and integer solution graphically.
+%	\item If we add the first constraint multiplied by $p_1=1$, to the second constraint multiplied by $p_2=1$, and to the third constraint multiplied by $p_3=1.5$, we obtain 
+%	$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$ 
+%	Find non-negative values for $p_1,p_2,p_3$ such that proceeding as above we obtain $2x_1+5x_2\leq opt$ for every $x \in P$,  where $opt$ is one of the optimal values determined in \textit{part b)}.
+%	\end{enumerate}
+	Betrachte das folgende \acs{LP}.
 	\[
 		\begin{array}{rrllll}
 			\text{max} &   2 x_1 +5 x_2 \\	
@@ -47,19 +66,33 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			& x_1,x_2&\geq  0\\
 		\end{array}
 	\] 
-
+	
 	\begin{enumerate}
-	\item Draw the corresponding polyhedron $P$.
-	\item Find an optimal fractional and integer solution graphically.
-	\item If we add the first constraint multiplied by $p_1=1$, to the second constraint multiplied by $p_2=1$, and to the third constraint multiplied by $p_3=1.5$, we obtain 
-	$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$ 
-	Find non-negative values for $p_1,p_2,p_3$ such that proceeding as above we obtain $2x_1+5x_2\leq opt$ for every $x \in P$,  where $opt$ is one of the optimal values determined in \textit{part b)}.
+		\item Zeichne das korrespondierende Polyeder $P$.
+		\item Finde grafisch eine optimale fraktionale und eine optimale ganzzahlige Lösung.
+		\item Addiert man die erste Nebenbedingung, multipliziert mit $p_1 = 1$, zu der zweiten Nebenbedingung, multipliziert mit $p_2 = 1$, und zu der dritten Nebenbedingung, multipliziert mit $p_3 = 1.5$, dann erhält man
+		$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$
+		Finde nicht-negative Werte für $p_1, p_2, p_3$, sodass man, wenn man wie oben vorgeht, $2x_1 + 5x_2 \leq opt$ für jedes $x \in P$ erhält, wobei $opt$ einer der in \text{Aufgabenteil b)} bestimmten optimalen Werte ist.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Standard Form]\
-	Optimization Lecture
-	Consider the following \acs{LP}.
+\begin{aufgabe}[Standardform]\
+%	Optimization Lecture
+%	Consider the following \acs{LP}.
+%	\[
+%		\begin{array}{rrrllll}
+%			\text{max}    & 3x_1 		    & + & 2 x_2	& +  & 4x_3  &\\
+%			\text{s.t.}	&  x_1		    & 	&		& +	 & 2x_3  & \le 50 \\
+%								& 3x_1 		    & + & 10x_2	& +	 & 6x_3	 & \le 300\\
+%								& 18 x_1 	    &   &       & +  & x_3 	 & \le 40\\ 
+%								& x_1,      	&	& x_2,	&	 & x_3	 &\geq 0 
+%		\end{array}
+%	\]
+%	\begin{enumerate}
+%		\item Convert the \acs{LP} into standard form by introducing slack variables $s_1,s_2, s_3$, one for each equation.
+%		\item List all the feasible bases for this \acs{LP}.   
+%	\end{enumerate}
+	Betrachte das folgende \acs{LP}.
 	\[
 		\begin{array}{rrrllll}
 			\text{max}    & 3x_1 		    & + & 2 x_2	& +  & 4x_3  &\\
@@ -70,15 +103,32 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	\begin{enumerate}
-		\item Convert the \acs{LP} into standard form by introducing slack variables $s_1,s_2, s_3$, one for each equation.
-		\item List all the feasible bases for this \acs{LP}.   
+		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Slackvariablen $s_1,s_2,s_3$ einführst
+		\item Zähle alle möglichen Basen für das \acs{LP} auf.
 	\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}[Single-source shortest path \acs{LP}]
 	% Erickson Extended Dance Remix - Chapter H, Exercise 7a - c
-	The \emph{single-source shortest path problem} can be formulated as a \acs{LP}, with one variable $d_v$ for each vertex $v \neq s$ in the input graph:
-
+%	The \emph{single-source shortest path problem} can be formulated as a \acs{LP}, with one variable $d_v$ for each vertex $v \neq s$ in the input graph:
+%
+%	\[
+%		\begin{array}{rrl}
+%			\text{max}   &  \sum_{v} d_v & 	   \\
+%			\text{s.t.}  &		   d_v & \leq l_{s \rightarrow v} \\
+%						 &	 d_v - d_u & \leq l_{u \rightarrow v} \\
+%						 &	       d_v & \geq 0
+%		\end{array}
+%	\]
+%
+%	Describe the behavior of the simplex algorithm on this linear program in terms of distances. Assume that the edge weights $l_{u \rightarrow v}$ are all non-negative and that there is a unique shortest path between any two vertices in the graph.
+%	\begin{enumerate}
+%		\item What is a basis for this linear program? What is a feasible basis? What is a locally optimal basis?
+%		\item Show that in the optimal basis, every variable $d_v$ is equal to the shortest-path distance from $s$ to $v$.
+%		\item Describe the primal simplex algorithm for the shortest-path linear program directly in terms of vertex distances. In particular, what does it mean to pivot from a feasible basis to a neighboring feasible basis, and how can we execute such a pivot quickly?
+%	\end{enumerate}
+	Das \emph{single-source shortest path Problem}} kann, mit einer Variable $d_v$ für jeden Knoten $v \neq s$ im Input-Graphen, als \acs{LP} formuliert werden:
+	
 	\[
 		\begin{array}{rrl}
 			\text{max}   &  \sum_{v} d_v & 	   \\
@@ -87,43 +137,83 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 						 &	       d_v & \geq 0
 		\end{array}
 	\]
-
-	Describe the behavior of the simplex algorithm on this linear program in terms of distances. Assume that the edge weights $l_{u \rightarrow v}$ are all non-negative and that there is a unique shortest path between any two vertices in the graph.
+	
+	Beschreibe das Verhalten des Simplex-Algorithmus auf diesem linearen Programm in Bezug auf die Distanzen. Nimm an, dass die Kantengewichte $l_{u \rightarrow v}$ nicht-negativ sind und dass ein eindeutiger kürzester Pfad zwischen zwei beliebigen Knoten im Graphen existiert.
 	\begin{enumerate}
-		\item What is a basis for this linear program? What is a feasible basis? What is a locally optimal basis?
-		\item Show that in the optimal basis, every variable $d_v$ is equal to the shortest-path distance from $s$ to $v$.
-		\item Describe the primal simplex algorithm for the shortest-path linear program directly in terms of vertex distances. In particular, what does it mean to pivot from a feasible basis to a neighboring feasible basis, and how can we execute such a pivot quickly?
+		\item Was ist die Basis dieses linearen Programms? Was ist eine mögliche Basis? Was ist eine lokal optimale Basis?
+		\item Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
+		\item Beschreibe den Primal Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer möglichen Basis zu einer anderen möglichen Basis ausführt und wie können wir einen solchen Pivot schnell durchführen?
 	\end{enumerate}
+	
 \end{aufgabe}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Polyhedron]
+\begin{aufgabe}[Polyeder]
 	% Erickson Extended Dance Remix - Chapter I, Exercise 2a, Optimization Lecture
-	Let $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ be a polyhedron, where $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^m$.
+%	Let $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ be a polyhedron, where $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^m$.
+%	\begin{enumerate}
+%		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
+%		\item Prove that $P$ is convex.
+%	\end{enumerate}
+	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyeder, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
 	\begin{enumerate}
-		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
-		\item Prove that $P$ is convex.
+		\item Gib ein Beispiel für ein nicht-leeres $P$, dass für jeden Zielvektor $c$ unbeschränkt ist.
+		\item Beweise, dass $P$ konvex ist.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Locally optimal and feasible basis]\
+\begin{aufgabe}[Lokal optimale und mögliche Basis]\
 	% Erickson Extended Dance Remix - Chapter I, Exercise 1a,b
-	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
-
-	A basis is \emph{locally optimal} if its location $x$ is the optimal solution to the linear program with the same objective function and only the constraints in the basis. Geometrically, a basis is locally optimal if its location $x$ is the lowest point in the intersection of those $d$ halfspaces.
-
-	Fix a non-degenerate linear program in canonical form with d variables and n + d constraints.
+%	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
+%
+%	A basis is \emph{locally optimal} if its location $x$ is the optimal solution to the linear program with the same objective function and only the constraints in the basis. Geometrically, a basis is locally optimal if its location $x$ is the lowest point in the intersection of those $d$ halfspaces.
+%
+%	Fix a non-degenerate linear program in canonical form with d variables and n + d constraints.
+%	\begin{enumerate}
+%		\item Prove that every feasible basis has exactly d feasible neighbors.
+%		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
+%	\end{enumerate}
+	Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
+	
+	Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, dass die selben Zielfunktionen und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
+	
+	Fixiere ein nicht-degenerierendes lineares Programm in kanonischer Form mit $d$ Variablen und $n + d$ Nebenbedingungen.
 	\begin{enumerate}
-		\item Prove that every feasible basis has exactly d feasible neighbors.
-		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
+		\item Beweise, dass jede mögliche Basis genau $d$ mögliche Nachbarn hat.
+		\item Beweise, dass jede lokal optimale Basis genau $n$ lokal optimale Nachbarn hat.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Initial basis for Simplex]
+\begin{aufgabe}[Initiale Basis für Simplex]
 	% Erickson Extended Dance Remix - Chapter I, Exercise 4a,b
-	In this exercise, we develop another standard method for computing an initial feasible basis for the primal simplex algorithm. Suppose we are given a linear program (P) with $d$ variables and $n + d$ constraints as input:
-
+%	In this exercise, we develop another standard method for computing an initial feasible basis for the primal simplex algorithm. Suppose we are given a linear program (P) with $d$ variables and $n + d$ constraints as input:
+%
+%	\[
+%		\begin{array}{rrl}
+%			\text{max}   &  cx &  	    \\
+%			\text{s.t.}  &	Ax & \leq b \\
+%						 &	x  & \geq 0
+%		\end{array}
+%	\]
+%
+%	To compute an initial feasible basis for (P), we solve a modified linear program (P') defined by introducing a new variable $\lambda$ and two new constraints $0 \geq \lambda \geq 1$, and modifying the objective function:
+%
+%	\[
+%		\begin{array}{rrl}
+%			\text{max}   &        \lambda & 	   \\
+%			\text{s.t.}  &	Ax - b\lambda & \leq 0 \\
+%						 &		  \lambda & \leq 1 \\
+%						 &	 x, \lambda   & \geq 0
+%		\end{array}
+%	\]
+%
+%	\begin{enumerate}
+%		\item Prove that $x_1 = x_2 = \dots = x_d = \lambda = 0$ is a feasible basis for (P).
+%		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1. 
+%	\end{enumerate}
+	In dieser Aufgabe entwickeln wir eine andere Standardmethode, um eine initiale mögliche Basis für den Primal Simplex-Algorithmus zu berechnen. Nimm an, wir erhalten ein lineares Programm (P) mit $d$ Variablen und $n + d$ Nebenbedingungen als Eingabe:
+	
 	\[
 		\begin{array}{rrl}
 			\text{max}   &  cx &  	    \\
@@ -131,9 +221,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 						 &	x  & \geq 0
 		\end{array}
 	\]
-
-	To compute an initial feasible basis for (P), we solve a modified linear program (P') defined by introducing a new variable $\lambda$ and two new constraints $0 \geq \lambda \geq 1$, and modifying the objective function:
-
+	
+	Um eine initiale mögliche Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P'). (P') wird definiert durch eine neue Variable $\lambda$ und zwei neue Nebenbedingungen $0 \geq \lambda \geq 1$, sowie eine Modifikation der Zielfunktion:
+	
 	\[
 		\begin{array}{rrl}
 			\text{max}   &        \lambda & 	   \\
@@ -142,10 +232,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 						 &	 x, \lambda   & \geq 0
 		\end{array}
 	\]
-
+	
 	\begin{enumerate}
-		\item Prove that $x_1 = x_2 = \dots = x_d = \lambda = 0$ is a feasible basis for (P).
-		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1. 
+		\item Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ eine mögliche Basis für (P) ist.
+		\item Beweise, dass (P) genau dann plausibel ist, wenn für (P') der optimale Wert 1 ist.
 	\end{enumerate}
 \end{aufgabe}
 
@@ -154,23 +244,41 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \section*{Sternaufgabe}
 
 \begin{aufgabe}[\emoji{star}: Carath{\'e}odory's Theorem]
-	Let $A_1,\dots , A_n$ be a collection of $n$ vectors in $\R^m$.
+%	Let $A_1,\dots , A_n$ be a collection of $n$ vectors in $\R^m$.
+%	\begin{enumerate}
+%		\item Show that any element of
+%			\[
+%				C=\left\{\sum_{i=1}^n \lambda_i A_i : \lambda_1, \dots , \lambda_n\geq 0\right\}
+%			\]
+%			can be expressed as $\sum_{i=1}^n \lambda_i A_i$, with $\lambda_i\geq 0$ and at most $m$ of the coefficients $\lambda_i$ being non-zero. 
+%
+%			\textit{Hint: Consider the polyhedron
+%			\[
+%				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n : \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+%			\]}
+%		\item Let $P$ be the convex hull of the vectors $A_i$, given by
+%			\[
+%				P=\left\{\sum_{i=1}^n \lambda_i A_i : \sum_{i=1}^n\lambda_i=1,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+%			\]
+%			Show that any element of $P$ can be expressed as $\sum_{i=1}^n \lambda_i A_i$, where $\sum_{i=1}^n \lambda_i=1$ and $\lambda_i\geq 0$ for all $i$, with at most $m+1$ of the coefficients $\lambda_i$ being nonzero.
+%	\end{enumerate}
+	Sei $A_1,\dots , A_n$ eine Sammlung von $n$ Vektoren in $\R^m$.
 	\begin{enumerate}
-		\item Show that any element of
+		\item Zeige, dass jedes Element von 
 			\[
 				C=\left\{\sum_{i=1}^n \lambda_i A_i : \lambda_1, \dots , \lambda_n\geq 0\right\}
 			\]
-			can be expressed as $\sum_{i=1}^n \lambda_i A_i$, with $\lambda_i\geq 0$ and at most $m$ of the coefficients $\lambda_i$ being non-zero. 
+			durch $\sum_{i=1}^n \lambda_i A_i$ formuliert werden kann, wobei $\lambda_i\geq 0$ ist und höchstens $m$ der Koeffizienten $\lambda_i$ von Null verschieden sind. 
 
-			\textit{Hint: Consider the polyhedron
+			\textit{Hinweis: Betrachte das Polyeder
 			\[
 				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n : \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
 			\]}
-		\item Let $P$ be the convex hull of the vectors $A_i$, given by
+		\item Sei $P$ die konvexe Hülle des Vektors $A_i$, gegeben durch
 			\[
 				P=\left\{\sum_{i=1}^n \lambda_i A_i : \sum_{i=1}^n\lambda_i=1,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
 			\]
-			Show that any element of $P$ can be expressed as $\sum_{i=1}^n \lambda_i A_i$, where $\sum_{i=1}^n \lambda_i=1$ and $\lambda_i\geq 0$ for all $i$, with at most $m+1$ of the coefficients $\lambda_i$ being nonzero.
+			Zeige, dass jedes Element von $P$ durch $\sum_{i=1}^n \lambda_i A_i$ formuliert werden kann, wobei $\sum_{i=1}^n \lambda_i=1$ und $\lambda_i\geq 0$ für alle $i$ sind und höchstens $m+1$ der Koeffizienten $\lambda_i$ von Null verschieden sind.
 	\end{enumerate}
 \end{aufgabe}
 
