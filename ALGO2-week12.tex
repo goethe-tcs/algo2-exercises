@@ -2,7 +2,7 @@
 \documentclass{uebung_cs}
 \usepackage{algo221}
 \uebung{11}{}{}
-\blattname{Übungen zu Woche 12: Linear Programming I}
+\blattname{Übungen zu Woche 12: Lineare Programmierung I}
 
 \usepackage[ruled]{algorithm2e}
 \usepackage{cancel}
@@ -103,7 +103,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	\begin{enumerate}
-		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Slackvariablen $s_1,s_2,s_3$ einführst
+		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Schlupfvariablen (\textit{slack variables}) $s_1,s_2,s_3$ einführst
 		\item Zähle alle möglichen Basen für das \acs{LP} auf.
 	\end{enumerate}
 \end{aufgabe}
@@ -158,7 +158,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %	\end{enumerate}
 	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyeder, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
 	\begin{enumerate}
-		\item Gib ein Beispiel für ein nicht-leeres $P$, dass für jeden Zielvektor $c$ unbeschränkt ist.
+		\item Gib ein Beispiel für ein nicht-leeres $P$, das für jeden Zielvektor $c$ unbeschränkt ist.
 		\item Beweise, dass $P$ konvex ist.
 	\end{enumerate}
 \end{aufgabe}
@@ -176,7 +176,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %	\end{enumerate}
 	Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
 	
-	Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, dass die selben Zielfunktionen und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
+	Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
 	
 	Fixiere ein nicht-degenerierendes lineares Programm in kanonischer Form mit $d$ Variablen und $n + d$ Nebenbedingungen.
 	\begin{enumerate}
@@ -216,7 +216,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 	\[
 		\begin{array}{rrl}
-			\text{max}   &  cx &  	    \\
+			\text{max}   &  c^T x &  	    \\
 			\text{s.t.}  &	Ax & \leq b \\
 						 &	x  & \geq 0
 		\end{array}
@@ -235,7 +235,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 	\begin{enumerate}
 		\item Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ eine mögliche Basis für (P) ist.
-		\item Beweise, dass (P) genau dann plausibel ist, wenn für (P') der optimale Wert 1 ist.
+		\item Beweise, dass (P) genau dann eine Lösung hat, wenn für (P') der optimale Wert 1 ist.
 	\end{enumerate}
 \end{aufgabe}
 
@@ -262,23 +262,23 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %			\]
 %			Show that any element of $P$ can be expressed as $\sum_{i=1}^n \lambda_i A_i$, where $\sum_{i=1}^n \lambda_i=1$ and $\lambda_i\geq 0$ for all $i$, with at most $m+1$ of the coefficients $\lambda_i$ being nonzero.
 %	\end{enumerate}
-	Sei $A_1,\dots , A_n$ eine Sammlung von $n$ Vektoren in $\R^m$.
+	Seien $A_1,\dots , A_n$ Vektoren in $\R^m$.
 	\begin{enumerate}
-		\item Zeige, dass jedes Element von 
+		\item Zeige, dass jedes Element~$y$ von 
 			\[
-				C=\left\{\sum_{i=1}^n \lambda_i A_i : \lambda_1, \dots , \lambda_n\geq 0\right\}
+				C=\left\{\sum_{i=1}^n \lambda_i A_i \;:\; \lambda_1, \dots , \lambda_n\geq 0\right\}
 			\]
-			durch $\sum_{i=1}^n \lambda_i A_i$ formuliert werden kann, wobei $\lambda_i\geq 0$ ist und höchstens $m$ der Koeffizienten $\lambda_i$ von Null verschieden sind. 
+			als eine Summe $y=\sum_{i=1}^n \lambda_i A_i$ geschrieben werden kann, in der $\lambda_i\geq 0$ für alle Koeffizienten gilt und höchstens $m$ der Koeffizienten $\lambda_i$ von Null verschieden sind. 
 
 			\textit{Hinweis: Betrachte das Polyeder
 			\[
-				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n : \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n \;:\; \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
 			\]}
-		\item Sei $P$ die konvexe Hülle des Vektors $A_i$, gegeben durch
+		\item Sei $P$ die konvexe Hülle der Vektoren $A_1,\dots,A_n$, gegeben durch
 			\[
-				P=\left\{\sum_{i=1}^n \lambda_i A_i : \sum_{i=1}^n\lambda_i=1,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
+				P=\left\{\sum_{i=1}^n \lambda_i A_i \;:\; \sum_{i=1}^n\lambda_i=1,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
 			\]
-			Zeige, dass jedes Element von $P$ durch $\sum_{i=1}^n \lambda_i A_i$ formuliert werden kann, wobei $\sum_{i=1}^n \lambda_i=1$ und $\lambda_i\geq 0$ für alle $i$ sind und höchstens $m+1$ der Koeffizienten $\lambda_i$ von Null verschieden sind.
+			Zeige, dass jedes Element $y\in P$ als eine Summe $y=\sum_{i=1}^n \lambda_i A_i$ geschrieben werden kann, in der $\lambda_i\geq 0$ für alle Koeffizienten gilt, $\sum_{i=1}^n\lambda_i=1$ gilt, und höchstens $m+1$ der Koeffizienten $\lambda_i$ von Null verschieden sind. 
 	\end{enumerate}
 \end{aufgabe}
 
