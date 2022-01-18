@@ -1,7 +1,7 @@
 % !TeX spellcheck = de_DE
 \documentclass{uebung_cs}
 \usepackage{algo221}
-\uebung{11}{}{}
+\uebung{12}{}{}
 \blattname{Übungen zu Woche 12: Lineare Programmierung I}
 
 \usepackage[ruled]{algorithm2e}
@@ -35,7 +35,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[LP]\
+\begin{aufgabe}[Lösungsmenge eines \acsp{LP}]\
 %	Consider the following \acs{LP}.
 %	\[
 %		\begin{array}{rrllll}
@@ -68,7 +68,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\] 
 	
 	\begin{enumerate}
-		\item Zeichne das korrespondierende Polyeder $P$.
+		\item Zeichne das korrespondierende Polytop $P$.
 		\item Finde grafisch eine optimale fraktionale und eine optimale ganzzahlige Lösung.
 		\item Addiert man die erste Nebenbedingung, multipliziert mit $p_1 = 1$, zu der zweiten Nebenbedingung, multipliziert mit $p_2 = 1$, und zu der dritten Nebenbedingung, multipliziert mit $p_3 = 1.5$, dann erhält man
 		$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$
@@ -103,12 +103,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	\begin{enumerate}
-		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Schlupfvariablen (\textit{slack variables}) $s_1,s_2,s_3$ einführst
+		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Schlupfvariablen (\textit{slack variables}) $s_1,s_2,s_3$ einführst.
 		\item Zähle alle möglichen Basen für das \acs{LP} auf.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Single-source shortest path \acs{LP}]
+\begin{aufgabe}[Single-Source Shortest Path \acs{LP}]
 	% Erickson Extended Dance Remix - Chapter H, Exercise 7a - c
 %	The \emph{single-source shortest path problem} can be formulated as a \acs{LP}, with one variable $d_v$ for each vertex $v \neq s$ in the input graph:
 %
@@ -127,7 +127,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Show that in the optimal basis, every variable $d_v$ is equal to the shortest-path distance from $s$ to $v$.
 %		\item Describe the primal simplex algorithm for the shortest-path linear program directly in terms of vertex distances. In particular, what does it mean to pivot from a feasible basis to a neighboring feasible basis, and how can we execute such a pivot quickly?
 %	\end{enumerate}
-	Das \emph{single-source shortest path Problem} kann, mit einer Variable $d_v$ für jeden Knoten $v \neq s$ im Input-Graphen, als \acs{LP} formuliert werden:
+	Das \emph{Single-Source Shortest Path Problem} kann, mit einer Variable $d_v$ für jeden Knoten $v \neq s$ im Input-Graphen, als \acs{LP} formuliert werden:
 	
 	\[
 		\begin{array}{rrl}
@@ -142,7 +142,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{enumerate}
 		\item Was sind die Basen dieses linearen Programms? Was ist eine zulässige (\textit{feasible}) Basis? Was ist eine lokal optimale Basis?
 		\item Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
-		\item Beschreibe den Primal Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer möglichen Basis zu einer anderen möglichen Basis ausführt und wie können wir einen solchen Pivot schnell durchführen?
+		\item Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer möglichen Basis zu einer anderen möglichen Basis ausführt und wie können wir einen solchen Pivot schnell durchführen?
 	\end{enumerate}
 	
 \end{aufgabe}
@@ -156,14 +156,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
 %		\item Prove that $P$ is convex.
 %	\end{enumerate}
-	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyeder, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
+	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyhedron, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
 	\begin{enumerate}
 		\item Gib ein Beispiel für ein nicht-leeres $P$, das für jeden Zielvektor $c$ unbeschränkt ist.
 		\item Beweise, dass $P$ konvex ist.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Lokal optimale und mögliche Basis]\
+\begin{aufgabe}[Lokal optimale und zulässige Basis]\
 	% Erickson Extended Dance Remix - Chapter I, Exercise 1a,b
 %	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
 %
@@ -174,13 +174,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Prove that every feasible basis has exactly d feasible neighbors.
 %		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
 %	\end{enumerate}
-	Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
+	% Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
 	
-	Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
-	
-	Fixiere ein nicht-degenerierendes lineares Programm in kanonischer Form mit $d$ Variablen und $n + d$ Nebenbedingungen.
+	% Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
+	Stelle ein nicht-degenerierendes lineares Programm in kanonischer Form mit $m$ Variablen und $n + m$ Constraints auf.
 	\begin{enumerate}
-		\item Beweise, dass jede mögliche Basis genau $d$ mögliche Nachbarn hat.
+		\item Beweise, dass jede mögliche Basis genau $m$ zulässige (\textit{feasible}) Nachbarn hat.
 		\item Beweise, dass jede lokal optimale Basis genau $n$ lokal optimale Nachbarn hat.
 	\end{enumerate}
 \end{aufgabe}
@@ -212,7 +211,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Prove that $x_1 = x_2 = \dots = x_d = \lambda = 0$ is a feasible basis for (P).
 %		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1. 
 %	\end{enumerate}
-	In dieser Aufgabe entwickeln wir eine andere Standardmethode, um eine initiale mögliche Basis für den Primal Simplex-Algorithmus zu berechnen. Nimm an, wir erhalten ein lineares Programm (P) mit $d$ Variablen und $n + d$ Nebenbedingungen als Eingabe:
+	In dieser Aufgabe entwickeln wir eine Standardmethode, um eine initiale zulässige (\textit{feasible}) Basis für den Simplex-Algorithmus zu berechnen. Nimm an, wir erhalten ein lineares Programm (P) mit $m$ Variablen und $n + m$ Nebenbedingungen als Eingabe:
 	
 	\[
 		\begin{array}{rrl}
@@ -222,7 +221,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	
-	Um eine initiale mögliche Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P'). (P') wird definiert durch eine neue Variable $\lambda$ und zwei neue Nebenbedingungen $0 \geq \lambda \geq 1$, sowie eine Modifikation der Zielfunktion:
+	Um eine initiale mögliche Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P') für das eine neue Variable $\lambda$ und zwei neue Constraints $0 \geq \lambda \geq 1$ eingeführt und die Zielfunktion angepasst wird:
 	
 	\[
 		\begin{array}{rrl}
@@ -270,7 +269,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\]
 			als eine Summe $y=\sum_{i=1}^n \lambda_i A_i$ geschrieben werden kann, in der $\lambda_i\geq 0$ für alle Koeffizienten gilt und höchstens $m$ der Koeffizienten $\lambda_i$ von Null verschieden sind. 
 
-			\textit{Hinweis: Betrachte das Polyeder
+			\textit{Hinweis: Betrachte das Polyhedron
 			\[
 				\Lambda=\left\{(\lambda_1, \dots , \lambda_n)\in \R^n \;:\; \sum_{i=1}^n\lambda_i A_i = y,\ \lambda_1, \dots , \lambda_n\geq 0\right\}.
 			\]}
