@@ -36,7 +36,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}
+\begin{aufgabe}[Primal vs Dual]
 	Write down the corresponding dual problem to the following \acs{LP}.
 	\[
 		\begin{array}{rrrlllllllll}
@@ -51,29 +51,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 \end{aufgabe}
 
-\begin{aufgabe}[Bipartite maximum matching \acs{LP}]\
+\begin{aufgabe}[Bipartite Maximum Matching \acs{LP}]\
 	% Erickson Extended Dance Remix - Chapter H, Exercise 2a,b
-	The \emph{bipartite maximum matching problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
+	The \emph{Bipartite Maximum Matching Problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
 	\begin{enumerate}
 		\item Provide a linear program that has one variable for each edge.
 		\item Derive the dual of the \acs{LP} of \emph{part a)}. What do the dual variables represent? What does the objective function represent? What problem is this!?
-	\end{enumerate}
-\end{aufgabe}
-
-
-\begin{aufgabe}[School Assignment \acs{ILP}]
-	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
-	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
-\end{aufgabe}
-
-\section*{Donnerstag}
-
-\begin{aufgabe}[Skew-symmetric matrices]\
-	% Erickson Extended Dance Remix - Chapter H, Exercise 1a,b
-	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
-	\begin{enumerate}
-		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
-		\item Show that any linear program (P) with $d$ variables and $n$ constraints can be transformed into a self-dual linear program with $n + d$ variables and $n + d$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $d$ of the variables) and the optimal solution for the dual program (D) (in the other $n$ variables).
 	\end{enumerate}
 \end{aufgabe}
 
@@ -92,6 +75,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{aufgabe}
 
+\section*{Donnerstag}
+
+
+\begin{aufgabe}[School Assignment \acs{ILP}]
+	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
+	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
+\end{aufgabe}
+
+
+\begin{aufgabe}[Skew-symmetric matrices]\
+	% Erickson Extended Dance Remix - Chapter H, Exercise 1a,b
+	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
+	\begin{enumerate}
+		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
+		\item Show that any linear program (P) with $n$ variables and $m$ constraints can be transformed into a self-dual linear program with $m + n$ variables and $m + n$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $n$ of the variables) and the optimal solution for the dual program (D) (in the other $m$ variables).
+	\end{enumerate}
+\end{aufgabe}
+
 \begin{aufgabe}[ILP is NP-hard]
 	Let $A \in \Z^{m\times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b \}$.
 	The Integer Feasibility problem is to decide if $P \cap \Z^n \neq \emptyset$.
@@ -99,11 +100,5 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\emph{Hint: You want a transformation of a 3-CNF formula with $m$ clauses over $n$ variables to $P$.}
 \end{aufgabe}
 
-%\newpage
-
-\section*{Sternaufgabe}
-
-\begin{aufgabe}[\emoji{star}:]
-\end{aufgabe}
 
 \end{document}
