@@ -1,7 +1,7 @@
 % !TeX spellcheck = de_DE
 \documentclass{uebung_cs}
 \usepackage{algo221}
-\uebung{11}{}{}
+\uebung{13}{}{}
 \blattname{Übungen zu Woche 13: Lineare Programmierung II}
 
 \usepackage[ruled]{algorithm2e}
@@ -37,7 +37,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \section*{Dienstag}
 
 \begin{aufgabe}[Primal vs Dual]
-	Write down the corresponding dual problem to the following \acs{LP}.
+	%Write down the corresponding dual problem to the following \acs{LP}.
+	Berechne für das folgende \acs{LP} das korrespondierende duale Problem.
 	\[
 		\begin{array}{rrrlllllllll}
 		\text{max}    &     &   2 x_1       &   +     &   x_2   &       &         &   -   & 3x_4  &         &   \\
@@ -51,53 +52,80 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 \end{aufgabe}
 
-\begin{aufgabe}[Bipartite Maximum Matching \acs{LP}]\
+\begin{aufgabe}[Bipartites Maximum Matching \acs{LP}]\
 	% Erickson Extended Dance Remix - Chapter H, Exercise 2a,b
-	The \emph{Bipartite Maximum Matching Problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
+%	The \emph{Bipartite Maximum Matching Problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
+%	\begin{enumerate}
+%		\item Provide a linear program that has one variable for each edge.
+%		\item Derive the dual of the \acs{LP} of \emph{part a)}. What do the dual variables represent? What does the objective function represent? What problem is this!?
+%	\end{enumerate}
+	Das \emph{Bipartite Maximum Matching Problem} kann als \acs{LP} formuliert werden. Die Eingabe ist ein bipartiter Graph $G = (U \cup V, E)$, wobei $E \subseteq U \times V$. Die Ausgabe ist das größte Matching in $G$.
 	\begin{enumerate}
-		\item Provide a linear program that has one variable for each edge.
-		\item Derive the dual of the \acs{LP} of \emph{part a)}. What do the dual variables represent? What does the objective function represent? What problem is this!?
+		\item Stelle ein lineares Programm auf, das für jede Kante eine Variable besitzt.
+		\item Leite das duale \acs{LP} aus \emph{Teil a)} her. Was repräsentieren die dualen Variablen? Was repräsentiert die Zielfunktion? Welches Problem ist das!?
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[Total unimodularity]
+\begin{aufgabe}[Totale Unimodularität]
 	% Erickson Extended Dance Remix - Chapter I, Exercise 9a,b
-	A minor of a matrix $A$ is the submatrix defined by any subset of the rows and any subset of the columns. A matrix $A$ is \emph{totally unimodular} if, for every square minor $M$, the determinant of $M$ is $−1, 0$, or $1$.
+%	A minor of a matrix $A$ is the submatrix defined by any subset of the rows and any subset of the columns. A matrix $A$ is \emph{totally unimodular} if, for every square minor $M$, the determinant of $M$ is $−1, 0$, or $1$.
+%	\begin{enumerate}
+%		\item Let A be an arbitrary totally unimodular matrix.
+%		\begin{itemize}
+%			\item[i.] Prove that the transposed matrix $A^T$ is also totally unimodular.
+%			\item[ii.] Prove that negating any row or column of A leaves the matrix totally unimod- ular.
+%			\item[iii.] Prove that the block matrix $[A | I ]$ is totally unimodular.
+%		\end{itemize}
+%		\item Prove that for any totally unimodular matrix $A$ and any integer vector $b$, the canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ has an integer optimal solution. \\
+%		\emph{Hint: Cramer’s rule.}
+%	\end{enumerate}
+	Ein Minor (Unterdeterminante) einer Matrix $A$ ist die Determinante einer Untermatrix, die aus jeder Teilmenge der Zeilen und jeder Teilmenge der Spalten bestehen kann. Eine Matrix A ist \emph{total unimodular} wenn für jeden quadratische Minor $M$ die Determinante $-1,0$ oder $1$ ist.
 	\begin{enumerate}
-		\item Let A be an arbitrary totally unimodular matrix.
-		\begin{itemize}
-			\item[i.] Prove that the transposed matrix $A^T$ is also totally unimodular.
-			\item[ii.] Prove that negating any row or column of A leaves the matrix totally unimod- ular.
-			\item[iii.] Prove that the block matrix $[A | I ]$ is totally unimodular.
-		\end{itemize}
-		\item Prove that for any totally unimodular matrix $A$ and any integer vector $b$, the canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ has an integer optimal solution. \\
-		\emph{Hint: Cramer’s rule.}
+		\item Sei $A$ eine beliebige total unimodulare Matrix.
+		\begin{enumerate}
+			\item[i.] Beweise, dass die transponierte Matrix $A^T$ ebenfalls total unimodular ist.
+			\item[ii.] Beweise, dass die Matrix $A$ durch das Negieren beliebiger Zeilen oder Spalten total unimodular bleibt.
+			\item[iii.] Beweise, dass die Blockmatrix $[A\;|\;I]$ total unimodular ist.
+		\end{enumerate}
+		\item Beweise, dass das kanonische lineare Programm $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ für eine beliebige total unimodulare Matrix $A$ und einen beliebigen ganzzahligen Vektor $b$ eine ganzzahlige optimale Lösung hat. \\
+		\emph{Hinweis: Cramersche Regel.}
 	\end{enumerate}
+	
 \end{aufgabe}
 
 \section*{Donnerstag}
 
 
-\begin{aufgabe}[School Assignment \acs{ILP}]
-	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
-	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
+\begin{aufgabe}[Schulzuweisung \acs{ILP}]
+%	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
+%	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
+	Betrachte einen Schulbezirk mit $I$ Schulen, $G$ Jahrgangsstufen an jeder Schule und $J$ Nachbarschaften. Jede Schule $i$ hat eine Kapazität von $C_{ig}$ für den Jahrgang $g$. Die Anzahl der Schüler der Jahrgangsstufe $g$ aus jeder Nachbarschaft $j$ beträgt $S_{jg}$. Die Distanz einer Schule $i$ zu Nachbarschaft $j$ beträgt $d_{ij}$.\\
+	Formuliere ein ganzzahliges lineares Programm, dessen Zielfunktion es ist, alle Schüler einer Schule zuzuweisen, wobei die von allen Schülern zurückgelegte Distanz zwischen ihrer Nachbarschaft und ihrer Schule minimiert werden soll.\\
+	\emph{Hinweis: Führe Variablen $x_{jig}$ ein, die die Anzahl der Schüler aus Nachbarschaft $j \in J$, die die Schule $i \in I$ in der Jahrgangsstufe $g \in G$ besuchen, darstellen.}
 \end{aufgabe}
 
 
-\begin{aufgabe}[Skew-symmetric matrices]\
+\begin{aufgabe}[Schiefsymmetrische Matrizen]\
 	% Erickson Extended Dance Remix - Chapter H, Exercise 1a,b
-	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
+%	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
+%	\begin{enumerate}
+%		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
+%		\item Show that any linear program (P) with $n$ variables and $m$ constraints can be transformed into a self-dual linear program with $m + n$ variables and $m + n$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $n$ of the variables) and the optimal solution for the dual program (D) (in the other $m$ variables).
+%	\end{enumerate}
+	Eine Matrix $A = (a_{ij})$ heißt \emph{schiefsymmetrisch} genau dann, wenn $a_{ji} = -a_{ij}$ für alle Indizes $i \neq j$ gilt; insbesondere ist jede schiefsymmetrische Matrix quadratisch. Ein kanonisches lineares Programm $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ ist selbst-dual, wenn die Matrix $A$ schiefsymmetrisch ist und der Zielvektor $c$ gleich dem Vektor der Nebenbedingungen $b$ ist.
 	\begin{enumerate}
-		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
-		\item Show that any linear program (P) with $n$ variables and $m$ constraints can be transformed into a self-dual linear program with $m + n$ variables and $m + n$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $n$ of the variables) and the optimal solution for the dual program (D) (in the other $m$ variables).
+		\item Beweise, dass ein beliebiges selbst-duales lineares Programm (P) syntaktisch äquivalent zu seinem dualen linearen Programm (D) ist.
+		\item Zeige, dass jedes beliebige lineare Programm (P) mit $n$ Variablen und $m$ Nebenbedingungen in ein selbst-duales lineares Programm mit $m + n$ Variablen und $m + n$ Nebenbedingungen transformiert werden kann. Die optimale Lösung zum selbst-dualen Programm sollte sowohl die optimale Lösung für (P) (in $n$ der Variablen), als auch die optimale Lösung für das duale Programm (D) (in den anderen $m$ Variablen) beinhalten.
 	\end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}[ILP is NP-hard]
-	Let $A \in \Z^{m\times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b \}$.
-	The Integer Feasibility problem is to decide if $P \cap \Z^n \neq \emptyset$.
-	Show that it is NP-hard using a reduction from 3-SAT. \\
-	\emph{Hint: You want a transformation of a 3-CNF formula with $m$ clauses over $n$ variables to $P$.}
+\begin{aufgabe}[ILP ist NP-hart]
+%	Let $A \in \Z^{m\times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b \}$.
+%	The Integer Feasibility problem is to decide if $P \cap \Z^n \neq \emptyset$.
+%	Show that it is NP-hard using a reduction from 3-SAT. \\
+%	\emph{Hint: You want a transformation of a 3-CNF formula with $m$ clauses over $n$ variables to $P$.}
+	Sei $A \in \Z^{m \times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b\}$. Das \emph{Integer Feasability Problem} ist, zu entscheiden, ob $\P \cap \Z^n \neq \emptyset$ gilt. Zeige, dass das \emph{Integer Feasability Problem} \NP-hart ist, indem du eine Reduktion ausgehend von \textsc{3-Sat} durchführst.\\
+	\emph{Hinweis: Es soll eine \textsc{3CNF} Formel mit $m$ Klauseln und $n$ Variablen zu $P$ transformiert werden.}
 \end{aufgabe}
 
 
