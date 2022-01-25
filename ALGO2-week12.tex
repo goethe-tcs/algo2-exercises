@@ -141,7 +141,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\begin{enumerate}
 		\item Was sind die Basen dieses linearen Programms? Was ist eine zulässige (\textit{feasible}) Basis? Was ist eine lokal optimale Basis?
 		\item Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
-		\item Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer möglichen Basis zu einer anderen möglichen Basis ausführt?
+		\item Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer zulässigen Basis zu einer anderen zulässigen Basis ausführt?
 	\end{enumerate}
 	
 \end{aufgabe}
@@ -178,7 +178,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
 	Stelle ein nicht-degenerierendes lineares Programm in kanonischer Form mit $m$ Variablen und $n + m$ Constraints auf.
 	\begin{enumerate}
-		\item Argumentiere, dass jede mögliche Basis genau $m$ zulässige (\textit{feasible}) Nachbarn hat.
+		\item Argumentiere, dass jede zulässige Basis genau $m$ zulässige (\textit{feasible}) Nachbarn hat.
 		\item Argumentiere, dass jede lokal optimale Basis genau $n$ lokal optimale Nachbarn hat.
 	\end{enumerate}
 \end{aufgabe}
@@ -220,7 +220,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	
-	Um eine initiale mögliche Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P') für das eine neue Variable $\lambda$ und zwei neue Constraints $0 \geq \lambda \geq 1$ eingeführt und die Zielfunktion angepasst wird:
+	Um eine initiale zulässige Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P') für das eine neue Variable $\lambda$ und zwei neue Constraints $0 \geq \lambda \geq 1$ eingeführt und die Zielfunktion angepasst wird:
 	
 	\[
 		\begin{array}{rrl}
@@ -232,7 +232,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\]
 	
 	\begin{enumerate}
-		\item Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ eine mögliche Basis für (P') ist.
+		\item Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ eine zulässige Basis für (P') ist.
 		\item Beweise, dass (P) genau dann eine Lösung hat, wenn für (P') der optimale Wert 1 ist.
 	\end{enumerate}
 \end{aufgabe}
