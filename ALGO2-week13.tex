@@ -113,7 +113,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Prove that any self-dual linear program (P) is syntactically equivalent to its dual linear program (D).
 %		\item Show that any linear program (P) with $n$ variables and $m$ constraints can be transformed into a self-dual linear program with $m + n$ variables and $m + n$ constraints. The optimal solution to the self-dual program should include both the optimal solution for (P) (in $n$ of the variables) and the optimal solution for the dual program (D) (in the other $m$ variables).
 %	\end{enumerate}
-	Eine Matrix $A = (a_{ij})$ wird genau dann \emph{schief-symmetrisch} genannt, wenn $a_{ji} = -a_{ij}$ für alle Indizes $i \neq j$ gilt; insbesondere ist jede schief-symmetrische Matrix quadratisch. Ein kanonisches lineares Programm $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ ist selbst-dual, wenn die Matrix $A$ schief-symmetrisch ist und der Zielvektor $c$ gleich dem Vektor der Nebenbedingungen $b$ ist.
+	Eine Matrix $A = (a_{ij})$ wird genau dann \emph{schief-symmetrisch} genannt, wenn $a_{ji} = -a_{ij}$ für alle Indizes $i, j$ gilt; insbesondere ist jede schief-symmetrische Matrix quadratisch. Ein kanonisches lineares Programm ${\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}}$ ist selbst-dual, wenn die Matrix $A$ schief-symmetrisch ist und für den Zielvektor $c$ und den Vektor der Nebenbedingungen $b$ folgender Zusammenhang besteht: $c = -b$.
 	
 	% \begin{enumerate}
 	Beweise, dass ein beliebiges selbst-duales lineares Programm (P) syntaktisch äquivalent zu seinem dualen linearen Programm (D) ist.
