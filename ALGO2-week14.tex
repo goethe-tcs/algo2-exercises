@@ -1,0 +1,103 @@
+% !TeX spellcheck = de_DE
+\documentclass{uebung_cs}
+\usepackage{algo221}
+\uebung{14}{}{}
+\blattname{Übungen zu Woche 14: Algorithmen für NP-schwere Probleme}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+\usepackage[smaller]{acronym}
+\newacro{LP}{Linear Program}
+\newacro{ILP}{Integer Linear Program}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
+
+\begin{itemize}
+\item \textbf{Heimarbeit bis Montag 17:00.}
+    \begin{itemize}
+    \item 
+    Schau die Videos an und lies die Buchkapitel.
+    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
+    \item Lese den Aufgabentext aller Übungsaufgaben.
+    \end{itemize}
+\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
+\item \textbf{Dienstag/Donnerstag.}
+\begin{itemize}
+    \item \textbf{8:00--8:15.} Besprechung im Zoom.
+    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
+    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
+\end{itemize}
+
+\item \textbf{Heimarbeit bis Freitag, den 11.02., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
+\end{itemize}
+
+\section*{Dienstag}
+
+\begin{aufgabe}[GreedyVertexCover]\
+	% Erickson Extended Dance Remix - Chapter J, Exercise 2a,b
+	\begin{enumerate}
+		\item Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{GreedyVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
+		\item Beschreibe für alle ganzzahligen Werte von $n$ einen Graphen mit $n$ Knoten, für den \textsc{GreedyVertexCover} eine Knotenüberdeckung der Größe $OPT \cdot \Omega(\log n)$ ausgibt.
+	\end{enumerate}
+	
+\end{aufgabe}
+
+\begin{aufgabe}[DumbVertexCover]\
+	% Erickson Extended Dance Remix - Chapter J, Exercise 3a,b
+	\begin{enumerate}
+		\item Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{DumbVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
+		\item Beschreibe eine unendlich große Familie von Graphen, für welche \textsc{DumbVertexCover} eine Knotenüberdeckung der Größe $2 \cdot OPT$ ausgibt.
+	\end{enumerate}
+\end{aufgabe}
+
+\section*{Donnerstag}
+
+
+\begin{aufgabe}[Approximationsalgorithmen]
+	% Erickson Extended Dance Remix - Chapter J, Exercise 5a,b,c
+	Betrachte folgende Heuristik zum Finden eines Vertex Covers auf einem zusammenhängenden Graphen $G$.
+	\begin{quote}
+		Gebe die Menge der nicht-Blätter aus einem beliebigen Spannbaum der Tiefensuche auf $G$ aus.
+	\end{quote}
+	\begin{enumerate}
+		\item Beweise, dass diese Heuristik ein Vertex Cover auf $G$ findet.
+		\item Beweise, dass diese Heuristik eine $2$-Approximation zum minimalen Vertex Cover von $G$ ist.
+		\item Beschreibe eine unendlich große Familie von Graphen, für welche die Heuristik ein Vertex Cover der Größe $2 \cdot OPT$ ausgibt.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}[Hitting Set]\
+	% KT - Exercise 10.1
+	Betrachte das \textsc{HittingSet}-Problem:
+	\begin{quote}
+		\textsc{HittingSet}:\\
+		Gegeben eine Menge $A = \{a_1,\dots,a_n\}$ und eine Kollektion von Mengen $B_1,B_2,\dots,B_m$, wobei $B_i \subseteq A$, für alle $i = \{1,\dots,m\}$. Eine Menge $H \subseteq A$ heißt \emph{hitting set}, für die Kollektion $B_1,B_2,\dots,B_m$, wenn $H$ mindestens ein Element von jeder Menge $B_i$ enthält. In anderen Worten: $H \cap B_i \neq \emptyset$, für alle $i = \{1,\dots,m\}$.
+	\end{quote}
+	Nimm an, wir erhalten eine Instanz des \textsc{HittingSet}-Problems und wollen entscheiden, ob es ein \emph{hitting set} für eine Kollektion der Größe höchstens $k$, $k \leq n$, gibt. Nimm außerdem an, dass jede Menge $B_i$ höchstens $c$ Elemente enthält und dass $c$ eine Konstante ist.
+	
+	Beschreibe einen Algorithmus, der das Problem in einer Laufzeit von $\O(f(c,k) \cdot p(n,m))$ löst, wobei $p(\cdot)$ eine polynomiale Funktion und $f(\cdot)$ eine beliebige Funktion, die nur von $c$ und $k$ abhängt, ist.
+\end{aufgabe}
+
+\section*{Sternaufgabe}
+
+\begin{aufgabe}[\emoji{star}: Bounded Search Tree für Clique]
+%	Eigenkreation
+	Wir haben in Woche $7$ bereits das Entscheidungsproblem \textsc{Clique} kennengelernt:
+	\begin{quote}
+		\textsc{Clique}:\\
+		Eingabe: Ein Graph $G$ mit $n$ Knoten, einem Maximalgrad $\delta$ für jeden Knoten und eine Zahl $k$.\\
+		Frage: Enthält $G$ eine Clique mit $k$ Knoten?
+	\end{quote}
+	\begin{enumerate}
+		\item Überlege dir einen rekursiven Bounded Search Tree Algorithmus, der das \textsc{Clique}-Problem in Zeit $\O(f(k,\delta) \cdot p(n))$ löst, wobei $p(\cdot)$ eine polynomiale Funktion und $f(\cdot)$ eine beliebige Funktion, die nur von $k$ und $\delta$ abhängt, ist.\\ Beschreibe den Algorithmus in Pseudocode.
+		\item Beweise, dass dein Algorithmus korrekt ist.
+		\item Gib die Funktion $f$ konkret an und beweise, dass dein Algorithmus die gegebene Laufzeitschranke einhält.
+		\item Wir wissen aus Woche $7$, dass \textsc{Clique} \NP-schwer ist. Impliziert dein Algorithmus aus \emph{Aufgabenteil a)} nun \P = \NP? Erkläre deine Antwort in $2-3$ Sätzen.
+	\end{enumerate}
+\end{aufgabe}
+
+
+\end{document}
