@@ -42,7 +42,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\item $\textsc{Diverge}(M) := \Sigma^{\ast} \backslash \textsc{Halt}(M)$
 \end{itemize}
 
-\begin{aufgabe}[Turingmaschinen]\
+\begin{exercise}[Turingmaschinen]\
 	% Erickson Models of Computation - Chapter 7, Exercise 1
 	Sei $M$ eine beliebige Turingmaschine.
 	\begin{enumerate}
@@ -55,9 +55,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Beschreibe eine Turingmaschine $M^H$, sodass:
 		$$\textsc{Accept}(M^H) = \textsc{Halt}(M) \qquad \text{und} \qquad \textsc{Reject}(M^H) = \varnothing$$
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Entscheidbarkeit I]\
+\begin{exercise}[Entscheidbarkeit I]\
 	% Erickson Models of Computation - Chapter 7, Exercise 3b
 	Beweise für jede der folgenden vier Sprachen, dass sie unentscheidbar ist:
 	\begin{enumerate}
@@ -66,11 +66,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item $\textsc{NeverHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \varnothing\}$
 		\item $\textsc{AlwaysHalt} := \{\langle M \rangle \;|\; \textsc{Halt}(M) = \Sigma^{\ast}\}$
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Entscheidbarkeit II]\
+\begin{exercise}[Entscheidbarkeit II]\
 	% Erickson Models of Computation - Chapter 7, Exercise 10a,b,g
 	Argumentiere für jedes der folgenden Entscheidungsprobleme, dass es unentscheidbar ist.
 	\begin{enumerate}
@@ -78,9 +78,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Kann ein als Eingabe gegebenes Python-Programm \texttt{p.py} in eine Endlosschleife gelangen?
 		\item Berechnen zwei als Eingabe gegebene Python-Programme, \texttt{p1.py} und \texttt{p2.py}, die gleiche Funktion?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Entscheidbarkeit III]
+\begin{exercise}[Entscheidbarkeit III]
 	% Erickson Models of Computation - Chapter 7, Exercise 6c, i, Eigenkreation, k
 	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
 	\begin{enumerate}
@@ -89,9 +89,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Akzeptiert $M$ die Sprache $\{\langle M \rangle \;|\; M \text{ hat min. 100 Zustände und hält auf Eingabe } \langle M \rangle\}$?
 		\item Gibt es einen Eingabestring, der $M$ zu einer Bewegung nach links zwingt?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Entscheidbarkeit IV]
+\begin{exercise}[Entscheidbarkeit IV]
 	% Erickson Models of Computation - Chapter 7, Exercise 7b,e,n
 	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrem Eingabestring $w$.
 	\begin{enumerate}
@@ -99,13 +99,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Akzeptiert $M$ die Eingabe $w$ in höchstens $2^{|w|}$ Schritten?
 		\item Wenn $M$ auf der Eingabe $w$ ausgeführt wird, gelangt $M$ jemals wieder in den Startzustand?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 %\newpage
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Unentscheidbarkeit]\
+\begin{exercise}[\emoji{star}: Unentscheidbarkeit]\
 	% ALGO2 WiSe 20/21 - Blatt 9, Aufgabe 1b und 2
 	\begin{enumerate}
 		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M,w\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und }M\text{ durchl"auft Zustand 1 f"ur Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
@@ -115,6 +115,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			
 		Hierbei ist $L(M)$ die von der deterministischen Turingmaschine $M$ akzeptierte Sprache.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

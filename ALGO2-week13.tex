@@ -34,7 +34,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Primal vs Dual \acs{LP}]
+\begin{exercise}[Primal vs Dual \acs{LP}]
 	%Write down the corresponding dual problem to the following \acs{LP}.
 	Stelle für das folgende \acs{LP} das korrespondierende duale \acs{LP} auf.
 	\[
@@ -48,9 +48,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Bipartites Maximum Matching \acs{LP}]\
+\begin{exercise}[Bipartites Maximum Matching \acs{LP}]\
 	% Erickson Extended Dance Remix - Chapter H, Exercise 2a,b
 %	The \emph{Bipartite Maximum Matching Problem} can be formulated as a \acs{LP}. The input is a bipartite graph $G=(U\cup V;E)$ with $E \subseteq U \times V$ and the output is the largest matching in $G$.
 %	\begin{enumerate}
@@ -62,9 +62,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Stelle ein lineares Programm auf, das für jede Kante eine Variable besitzt.
 		\item Stelle das duale \acs{LP} aus \emph{Teil a)} auf. Was repräsentieren die dualen Variablen und die Zielfunktion? Welches Problem ist das?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Totale Unimodularität]
+\begin{exercise}[Totale Unimodularität]
 	% Erickson Extended Dance Remix - Chapter I, Exercise 9a,b
 %	A minor of a matrix $A$ is the submatrix defined by any subset of the rows and any subset of the columns. A matrix $A$ is \emph{totally unimodular} if, for every square minor $M$, the determinant of $M$ is $−1, 0$, or $1$.
 %	\begin{enumerate}
@@ -90,12 +90,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\emph{Hinweis: Cramersche Regel.}
 	\end{enumerate}
 	
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
 
-\begin{aufgabe}[Schulzuweisungs \acs{ILP}]
+\begin{exercise}[Schulzuweisungs \acs{ILP}]
 %	Consider a school district with $I$ schools, $G$ grades at each school and $J$ neighborhoods. Each school $i$ has a capacity of $C_{ig}$ for grade $g$. In each neighborhood $j$, the student population of grade $g$ is $S_{jg}$. Finally, the distance of school $i$ from neighborhood $j$ is $d_{ij}$. Formulate an integer linear programming problem whose objective is to assign all students to schools, while minimizing the total distance traveled by all students.\\
 %	\emph{Hint: introduce variables $x_{jig}$, which represent the number of students from neighborhood $j \in J$, who visit school $i \in I$ in grade $g \in G$}
 	Betrachte einen Schulbezirk mit $I$ Schulen, $G$ Jahrgangsstufen an jeder Schule und $J$ Nachbarschaften. Jede Schule $i$ hat eine Kapazität von $C_{ig}$ für den Jahrgang $g$. Die Anzahl der Schüler der Jahrgangsstufe $g$ aus jeder Nachbarschaft $j$ beträgt $S_{jg}$. Die Distanz einer Schule $i$ zu Nachbarschaft $j$ beträgt $d_{ij}$.
@@ -103,10 +103,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Formuliere ein ganzzahliges lineares Programm, dessen Zielfunktion es ist, alle Schüler einer Schule zuzuweisen, wobei die von allen Schülern zurückgelegte Distanz zwischen ihrer Nachbarschaft und ihrer Schule minimiert werden soll.
 
 	\emph{Hinweis: Führe Variablen $x_{jig}$ ein, die die Anzahl der Schüler aus Nachbarschaft $j \in J$, die die Schule $i \in I$ in der Jahrgangsstufe $g \in G$ besuchen, darstellen.}
-\end{aufgabe}
+\end{exercise}
 
 
-\begin{aufgabe}[Schief-symmetrische Matrizen]\
+\begin{exercise}[Schief-symmetrische Matrizen]\
 	% Erickson Extended Dance Remix - Chapter H, Exercise 1a,b
 %	A matrix $A=(a_{ij})$ is \emph{skew-symmetric} if and only if $a_{ji} = −a_{ij}$ for all indices $i \neq j$; in particular, every skew-symmetric matrix is square. A canonical linear program $\max\{c^T x  \; | \; Ax \leq b, x \geq 0\}$ is self-dual if the matrix $A$ is skew-symmetric and the objective vector $c$ is equal to the constraint vector $b$.
 %	\begin{enumerate}
@@ -119,9 +119,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Beweise, dass ein beliebiges selbst-duales lineares Programm (P) syntaktisch äquivalent zu seinem dualen linearen Programm (D) ist.
 	% 	\item Zeige, dass jedes beliebige lineare Programm (P) mit $n$ Variablen und $m$ Nebenbedingungen in ein selbst-duales lineares Programm mit $m + n$ Variablen und $m + n$ Nebenbedingungen transformiert werden kann. Die optimale Lösung zum selbst-dualen Programm sollte sowohl die optimale Lösung für (P) (in $n$ der Variablen), als auch die optimale Lösung für das duale Programm (D) (in den anderen $m$ Variablen) beinhalten.
 	% \end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[\acp{ILP} sind NP-hart]
+\begin{exercise}[\acp{ILP} sind NP-hart]
 %	Let $A \in \Z^{m\times n}, b \in \Z^m$, $P := \{x \in \R^n : Ax \leq b \}$.
 %	The Integer Feasibility problem is to decide if $P \cap \Z^n \neq \emptyset$.
 %	Show that it is NP-hard using a reduction from 3-SAT. \\
@@ -130,7 +130,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Zeige, dass das \emph{Integer Feasability Problem} \NP-hart ist, indem du eine Reduktion ausgehend von \textsc{3-Sat} durchführst.
 
 	\emph{Hinweis: Es soll eine \textsc{3CNF} Formel mit $m$ Klauseln und $n$ Variablen zu $P$ transformiert werden.}
-\end{aufgabe}
+\end{exercise}
 
 
 \end{document}

@@ -32,7 +32,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Erwartungswerte]\
+\begin{exercise}[Erwartungswerte]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	\begin{enumerate}
 		\item Sei $X$ eine Zufallsvariable, die die Werte $2$, $5$ und $8$ mit den folgenden Wahrscheinlichkeiten annimmt:
@@ -46,10 +46,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Sei $Y$ eine Zufallsvariable, die den Wert $2^i$ für alle $i \in \{0,1,2,\dots\}$ mit Wahrscheinlichkeit $\Pr[Y=2^i]$ annimmt, wobei \[\Pr[Y=2^i]= \frac{1}{2^{(i+1)}}\,.\]
 		Was ist der Erwartungswert von $Y$?
 	\end{enumerate}	
-\end{aufgabe}
+\end{exercise}
 
 
-\begin{aufgabe}[Analyse von Selection]\
+\begin{exercise}[Analyse von Selection]\
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	In Abschnitt 13.5 (\textbf{KT}) wurde die erwartete Laufzeit von \textsc{Selection} analysiert.
 	Anstatt eine Phase wie im Buch zu definieren, definieren wir eine Phase wie folgt:
@@ -57,9 +57,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\[n\left(\frac{2}{3}\right)^{j+1} < g \leq n\left(\frac{2}{3}\right)^j. \]
 	
 	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man mit dieser Analyse im Erwartungswert immer noch eine lineare Laufzeit?
-\end{aufgabe}    
+\end{exercise}    
 
-\begin{aufgabe}[Weihnachtsfeier im Institut]
+\begin{exercise}[Weihnachtsfeier im Institut]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh wissen, wer die meisten Cookies im \glqq Bing or Ding\grqq{}-~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor: 
 
@@ -85,12 +85,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $\Pr(X_i = 1)$.% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
 		\item Wie oft wird die $(\ast)$-Zeile in Erwartung ausgeführt? Berechne den Erwartungswert.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \newpage
 \section*{Donnerstag}
 
-\begin{aufgabe}[Schrauben und Muttern]
+\begin{exercise}[Schrauben und Muttern]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	% But taken from http://algs4.cs.princeton.edu/23quicksort/
 	Beim Ausmisten deines Kellers hast du genau $N$ Muttern und $N$ Schrauben gefunden.
@@ -102,9 +102,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Gib einen effizienten randomisierten Algorithmus an, der so schnell wie möglich herausfindet, welche Paare zusammenpassen. 
 	
 	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Bierkisten]
+\begin{exercise}[Bierkisten]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	Von $n$ Bierkisten $B_1,\dots,B_n$ enthalten genau $k$ Kisten eine Flasche Bier $(k \leq n)$, während die restlichen Kisten leer sind. Du kannst mit bloßem Auge nicht sehen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, eine Flasche Bier in einer Kiste zu finden. Dafür schlagen wir einen deterministischen und zwei randomisierte Algorithmen vor:
 	\begin{quote}
@@ -144,12 +144,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\item[f$_4$)] Was ist die erwartete Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
 		\end{itemize}
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \newpage
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Randomisierte Pivotwahl]
+\begin{exercise}[\emoji{star}: Randomisierte Pivotwahl]
 	Die Laufzeit von \textit{Quicksort} und \textit{Quickselect} hängt ganz entscheidend von der Wahl des Pivotelements ab.
 	Das Pivotelement sollte das zu sortierende Array in zwei möglichst gleichgroße Teilarrays aufspalten.
 
@@ -181,6 +181,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Berechne $\Pr\Big(\frac{n}{4}<r(\text{\textsc{SamplePivot($A$)}})\le\frac{3n}{4}\Big)$ und begründe deine Antwort.
 		\item Wir wiederholen \textsc{SamplePivot($A$)} jetzt unabhängig so oft, bis das Ereignis \[\tfrac{n}{4}<r(\text{\textsc{SamplePivot($A$))}}\le\tfrac{3n}{4}\] zum ersten Mal eintritt. Sei $W$ die Anzahl der Wiederholungen. Was ist der Erwartungswert von~$W$? Begründe deine Antwort.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

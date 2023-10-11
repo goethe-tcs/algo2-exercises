@@ -1,6 +1,6 @@
 % $Id: uebung_cs.cls 507 2009-04-15 15:40:29Z beckmann $
 % (C) Copyright 2007 Andreas Beckmann <beckmann@ae.cs.uni-frankfurt.de>
-% Some Updates (2021) by Holger Dell <dell@cs..>, use at own risk.
+% Some Updates (2021) by Holger Dell <dell@..>, use at own risk.
 
 % according to http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=445839
 % it's incorrect to include text with \AtEndDocument, so as a workaround
@@ -13,34 +13,58 @@
 \ProvidesClass{uebung_cs}[2021/04/12 v0]
 \PassOptionsToClass{a4paper,fontsize=11pt,parskip=half}{scrartcl}
 \LoadClass{scrartcl}
-\RequirePackage{scrlayer-scrpage}
-\RequirePackage[a4paper,left=1in,right=1in,bottom=1.5in,top=1in]{geometry}
-\RequirePackage{ifthen}
-
-\RequirePackage{amsmath,amsfonts,amssymb,ragged2e}
-\RequirePackage{mathtools}
-\RequirePackage[english,ngerman]{babel}
 
 \RequirePackage{iftex}
 \ifPDFTeX
 	\RequirePackage[utf8]{inputenc}
-	\RequirePackage[T1]{fontenc}
-	\RequirePackage{mathpazo} % palatino fonts
-\else
-	\RequirePackage{fontspec}
-	% \setmainfont{TeX Gyre Pagella} % palatino clone
 \fi
-\usepackage[babel,german=quotes]{csquotes}
+\RequirePackage[T1]{fontenc}
 \RequirePackage{microtype}
-\RequirePackage{unicode-math}
+
+\RequirePackage{scrlayer-scrpage}
+\RequirePackage[a4paper,margin=1in]{geometry}
+
+\RequirePackage{ifthen}
+
+\RequirePackage{amsmath,amsfonts,amssymb,ragged2e}
+\RequirePackage{mathtools}
+
+% Fonts (Palatino)
+% \RequirePackage[vvarbb]{newpxmath}
+% \RequirePackage[no-math]{newpxtext}
+% \RequirePackage[scale=0.9]{sourcecodepro}
+% Fonts (Garamond)
+\RequirePackage[lining,semibold,scaled=1.05]{ebgaramond}
+\RequirePackage[scale=0.85]{sourcecodepro}
+\RequirePackage[ebgaramond,vvarbb,subscriptcorrection]{newtxmath}
+
+% Multilanguage support
+\RequirePackage[english,ngerman,shorthands=off]{babel}
+
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{title}{\let\huge\Large}
+\addtokomafont{section}{\large}
+\addtokomafont{subsection}{\normalsize}
+\addtokomafont{subsubsection}{\normalfont\itshape}
+\addtokomafont{author}{\normalsize}
+\addtokomafont{date}{\normalsize}
+
+\RequirePackage[babel,german=quotes]{csquotes}
 \RequirePackage{epic,graphicx,xcolor}
 \RequirePackage{comment}
-\RequirePackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\definecolor{GoetheBlue}{rgb}{0,0.38,0.56}
+\RequirePackage[colorlinks=true,linkcolor=GoetheBlue,urlcolor=GoetheBlue,citecolor=GoetheBlue,unicode]{hyperref}
+\renewcommand\UrlFont{\normalfont\small}
+\renewcommand\path[1]{{\normalfont\small\detokenize{#1}}}
+\usepackage[noabbrev,nameinlink,capitalise]{cleveref}
+
 \RequirePackage{booktabs}
 \RequirePackage{tcolorbox}
-\RequirePackage{cleveref}
 
 \RequirePackage{subcaption}
+
+\RequirePackage{bm}% bold math, load after all math packages
 
 \RequirePackage[shortlabels,inline]{enumitem}
 \setlist{nosep,itemsep=2pt}
@@ -55,13 +79,11 @@
   mathescape=true,
   inputencoding=utf8,
   numbers=left,
-  numberstyle=\color{gray},
   xleftmargin=\parindent,
   basicstyle=\footnotesize\ttfamily,
   keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\normalfont\itshape\color{black!60},
-  identifierstyle=\color{blue},
-  stringstyle=\color{black!90},
+  commentstyle=\itshape\color{black!60},
+  stringstyle=\color{orange},
   tabsize=2%
 }
 \RequirePackage{algpseudocodex}
@@ -129,15 +151,27 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 \newcommand{\pr}{\ensuremath{\mathbb P}}
 \newcommand{\Oh}[0]{\ensuremath{\mathcal{O}}}
 
+
 % Usage: \uebung{Nummer}{Ausgabedatum}{Abgabedatum}
 \newcommand{\uebung}[3]{%
 \ifthenelse{\equal{#1}{}}{%
-\def\uebcs@useuebungnr{false}%
-\newtheorem{aufgabe}{\uebcs@@exercise}
+	\def\uebcs@useuebungnr{false}%
+	\theoremstyle{marginnum}
+	\newtheorem{aufgabe}{\uebcs@@exercise}
+	\theoremstyle{marginnumHome}
+	\newtheorem{aufgabeHome}[aufgabe]{\uebcs@@exercise}
+	\theoremstyle{marginnumPlenum}
+	\newtheorem{aufgabePlenum}[aufgabe]{\uebcs@@exercise}
 }{%
-\setcounter{uebungnr}{#1}%
-\def\uebcs@useuebungnr{true}%
-\newtheorem{aufgabe}{\uebcs@@exercise}[uebungnr]
+	\xdef\numberprefix{#1.}
+	\setcounter{uebungnr}{#1}%
+	\def\uebcs@useuebungnr{true}%
+	\theoremstyle{marginnum}
+	\newtheorem{aufgabe}{\uebcs@@exercise}[uebungnr]
+	\theoremstyle{marginnumHome}
+	\newtheorem{aufgabeHome}[aufgabe]{\uebcs@@exercise}
+	\theoremstyle{marginnumPlenum}
+	\newtheorem{aufgabePlenum}[aufgabe]{\uebcs@@exercise}
 }
 \def\uebcs@ausgabe{#2}%
 \def\uebcs@abgabe{#3}%
@@ -179,6 +213,9 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 
 \DeclareOption{german}
 {
+	% Hinzufügen der scheme-Umgebung zu cleveref/varioref
+	\crefname{figure}{Abbildung}{Abbildungen}
+	
 \institute{Institut f"ur Informatik}
 
 % i18n: deutsch
@@ -230,6 +267,7 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 
 \newboolean{loesung}
 \newcounter{aufgabennr}
+\setcounter{aufgabennr}{1}
 
 %\renewcommand\ThisComment[1]{%
 %    \immediate\write\CommentStream{\unexpanded{#1}}%
@@ -247,8 +285,18 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 \theorembodyfont{\upshape}
 \theoremprework{\begin{samepage}}
 \theorempostwork{\end{samepage}}
-%\newtheorem{aufgabe}{\uebcs@@exercise}
 
+\newtheoremstyle{marginnum}%
+{\item[\theorem@headerfont \llap{##2}]}%
+{\item[\theorem@headerfont \llap{##2}\hskip\labelsep ##3\theorem@separator]} %
+
+\newtheoremstyle{marginnumHome}%
+{\item[\theorem@headerfont \llap{$\smash[b]{\underset{\textrm{\normalsize \emoji{hatching-chick}}}{##2}}$}]}%
+{\item[\theorem@headerfont \llap{$\smash[b]{\underset{\textrm{\normalsize \emoji{hatching-chick}}}{##2}}$}\hskip\labelsep ##3\theorem@separator]} %
+
+\newtheoremstyle{marginnumPlenum}%
+{\item[\theorem@headerfont \llap{$\smash[b]{\underset{\textrm{\normalsize \emoji{teacher}}}{##2}}$}]}%
+{\item[\theorem@headerfont \llap{$\smash[b]{\underset{\textrm{\normalsize \emoji{teacher}}}{##2}}$}\hskip\labelsep ##3\theorem@separator]} %
 
 \newcommand{\hinweis}[1]{\par\emph{\uebcs@@hint}: {\small #1}}
 \let\hint\hinweis
@@ -257,7 +305,46 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 \newcommand{\warmup}{einfach}
 \newcommand{\hard}{schwer}
 \newcommand{\veryhard}{sehr schwer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{varwidth}
+\newcommand{\rightbox}[1]{%
+  \begin{flushright}
+    \begin{varwidth}{\linewidth}
+      #1
+    \end{varwidth}
+  \end{flushright}
+}
+\newcommand{\myrightbox}[1]{%
+    \begin{tabular}[t]{@{}r@{}}
+      #1
+    \end{tabular}%
+}
+
+\usepackage{xparse}
+\xdef\numberprefix{}
+\NewDocumentEnvironment{exerciseLarge}{O{} O{}}{%
+    % \begin{samepage}%
+		\bfseries\smash{\llap{\myrightbox{%
+			\numberprefix\arabic{aufgabennr}\hskip\labelsep\\%
+			\small#2%
+		}\hskip\labelsep}}%
+		\ifthenelse{\equal{#1}{}}{}{#1.\\}\normalfont%
+}{%
+    % \end{samepage}%
+	\stepcounter{aufgabennr}%
+}
+
+\NewDocumentEnvironment{exercise}{O{} O{}}{%
+    \begin{samepage}%
+		\bfseries\smash{\llap{%
+			\small#2\normalsize\ }\numberprefix\arabic{aufgabennr}\hskip\labelsep}%
+		\ifthenelse{\equal{#1}{}}{}{#1.}\normalfont%
+}{%
+    \end{samepage}\stepcounter{aufgabennr}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\renewcommand\ThisComment[1]{%
 %	\immediate\write\CommentStream{\unexpanded{#1}}%
 %}

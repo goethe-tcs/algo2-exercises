@@ -33,7 +33,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Turingmaschinen I]\
+\begin{exercise}[Turingmaschinen I]\
 	% Eigenkreation
 	\begin{enumerate}
 		\item Gegeben ist die Turingmaschine $M_1 = (Q,\Sigma,\Gamma,\delta,q_0,\texttt{acc},\mathtt{rej},\square)$ mit\\
@@ -82,25 +82,25 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		
 		Welche Funktion berechnet $M_2$?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Turingmaschinen II]\
+\begin{exercise}[Turingmaschinen II]\
 	% Eigenkreation
 	In \href{https://jeffe.cs.illinois.edu/teaching/algorithms/models/06-turing-machines.pdf}{Abschnitt 6.3 aus Ericksons \glqq Models of Computation\grqq}  ist eine Turingmaschine für die Sprache $L = \{0^n 1^n 0^n \;|\; n \geq 0\}$ angegeben. Diese enthält einige Fehler. Warum entscheidet die Turingmaschine nicht die Sprache $L$ und wie lassen sich die  Fehler beheben?
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Turingmaschinen III]\
+\begin{exercise}[Turingmaschinen III]\
 	% Eigenkreation
 	Sei $L = \{0^n 1^m 0^{(n+m)} \;|\; n,m \in \N\}$.
 	\begin{enumerate}
 		\item Beschreibe auf informelle Art und Weise eine Turingmaschine, die die Sprache $L$ entscheidet.
 		\item Gib die beschriebene Turingmaschine formal an. Insbesondere ist also auch die Überführungsfunktion $\delta$ der Maschine anzugeben.		
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Turingmaschinen IV]
+\begin{exercise}[Turingmaschinen IV]
 	% Eigenkreation
 	Beschreibe Turingmaschinen, die die folgenden Sprachen entscheiden, bzw. die folgenden Funktionen berechnen. Die Maschine muss nicht formal angegeben werden.
 	\begin{enumerate}
@@ -108,9 +108,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item $1^n 0 1^m \mapsto 1^{nm}$ (falls die Eingabe nicht von der Form $1^n 0 1^m$ für gewisse $n$ und $m$ ist, darf die Maschine sich beliebig verhalten)
 		\item $1^n \mapsto$ Binärdarstellung von $n$
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Rekursive Aufzählbarkeit]
+\begin{exercise}[Rekursive Aufzählbarkeit]
 	% Eigenkreation
 	Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv aufzählbar}, wenn $L = \emptyset$ oder es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^+) = L$, also $L = \{f(0), f(1), f(00), f(01), f(10), f(11), f(000), \dots\}$ gilt.
 	\begin{enumerate}
@@ -119,9 +119,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \emph{Hinweis}: Du kannst verwenden, dass Turingmaschinen Paare von Zahlen aus einzelnen Binärwörtern dekodieren können und sich dabei jedes Paar aus einer gewissen Zahl ergibt.
     (Dies ist mit der Cantor-Abzählung möglich.)
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Turingmaschinen V]\
+\begin{exercise}[Turingmaschinen V]\
 	% Ericksen "Models of Computation": Chapter 6, Exercise 4 und Eigenkreation
 	\begin{enumerate}
 		\item Bei einer Zwei-Band-Maschine gibt es zwei Bänder und jedes Band hat einen eigenen Lese-/Schreibkopf.
@@ -137,14 +137,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			Für alle Sprachen $L$ gibt es eine nichtdeterministische Turingmaschine, die $L$ entscheidet, genau dann, wenn es eine gewöhnliche Turingmaschine gibt, die $L$ entscheidet.
 		\end{quote}
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 %\newpage
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Turingmaschine simulieren (Coderunner)]
+\begin{exercise}[\emoji{star}: Turingmaschine simulieren (Coderunner)]
   Implementiere ein Programm, das eine gewöhnliche Turingmaschine als Eingabe erhält, diese simuliert, und die Ausgabe der Turingmaschine berechnet. Die genaue Ein- und Ausgabespezifikation des geforderten Programms findest du in Moodle.
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

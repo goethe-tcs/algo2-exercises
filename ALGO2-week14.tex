@@ -36,7 +36,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Gieriges Vertex-Cover]\
+\begin{exercise}[Gieriges Vertex-Cover]\
 	% Erickson Extended Dance Remix - Chapter J, Exercise 2a,b
 	\begin{enumerate}
 		\item Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{GreedyVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
@@ -44,21 +44,21 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item[] \textit{Hinweis: Uns ist eine Konstruktion mit $\O(n \log n)$ Knoten bekannt.}
 	\end{enumerate}
 	
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Dummes Vertex-Cover]\
+\begin{exercise}[Dummes Vertex-Cover]\
 	% Erickson Extended Dance Remix - Chapter J, Exercise 3a,b
 	\begin{enumerate}
 		\item Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{DumbVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
 		\item Beschreibe eine unendlich große Familie von Graphen, für welche \textsc{DumbVertexCover} eine Knotenüberdeckung der Größe $2 \cdot \mathrm{OPT}$ ausgibt.
 		(Hierbei ist $\mathrm{OPT}$ die Größe der kleinsten Knotenüberdeckung.)
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
 
-\begin{aufgabe}[Tiefengesuchtes Vertex-Cover]
+\begin{exercise}[Tiefengesuchtes Vertex-Cover]
 	% Erickson Extended Dance Remix - Chapter J, Exercise 5a,b,c
 	Betrachte folgenden heuristischen Algorithmus, der in einem zusammenhängenden Graphen $G$ eine Knotenüberdeckung berechnet: 
 	\begin{enumerate}[1.,leftmargin=5em]
@@ -73,9 +73,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Beschreibe eine unendlich große Familie von Graphen, für welche diese Heuristik eine Knotenüberdeckung der Größe $2 \cdot \mathrm{OPT}$ ausgibt.
 		(Hierbei ist $\mathrm{OPT}$ die Größe der kleinsten Knotenüberdeckung.)
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Beschränkte Suchbäume für Hitting Set]\
+\begin{exercise}[Beschränkte Suchbäume für Hitting Set]\
 	% KT - Exercise 10.1
 	Sei $U = \{1,\dots,n\}$ ein Universum mit $n$ Elementen.
 	Seien $B_1,B_2,\dots,B_m$ verschiedene Teilmengen von~$U$.
@@ -93,11 +93,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Welche Funktion~$f$ und welches Polynom~$\poly$ hat die Laufzeit deines Algorithmus?
 
 	\textit{Hinweis: Das Knotenüberdeckungsprolem \textsc{\upshape VertexCover} ist der Spezialfall $|B_1|=\dots=|B_m|=2$.}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Beschränkte Suchbäume für Clique]
+\begin{exercise}[\emoji{star}: Beschränkte Suchbäume für Clique]
 %	Eigenkreation
 	Wir haben in Woche $7$ bereits das Entscheidungsproblem \textsc{Clique} kennengelernt:
 	\begin{quote}
@@ -113,7 +113,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Gib die Funktion $f$ konkret an und beweise, dass dein Algorithmus die gegebene Laufzeitschranke einhält.
 		\item Wir wissen aus Woche $7$, dass \textsc{Clique} \NP-schwer ist. Impliziert dein Algorithmus aus Aufgabenteil a) nun $\P = \NP$? Erkläre deine Antwort in 2--3 Sätzen.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 
 \end{document}

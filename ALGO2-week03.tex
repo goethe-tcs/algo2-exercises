@@ -32,7 +32,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Residualgraphen zeichnen]
+\begin{exercise}[Residualgraphen zeichnen]
 \
 	Betrachte den Fluss~$f$ und das Flussnetzwerk~$(G,s,t)$, das in Abbildung~\ref{Fluss} dargestellt ist.
 	Zeichne den Residualgraphen $G_f$ und den eingeschränkten Residualgraphen $G_f(3)$.
@@ -64,9 +64,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\caption{\label{Fluss}}
 		\end{center}
 	\end{figure}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Edmonds-Karp Algorithmus und capacity-scaling algorithm]
+\begin{exercise}[Edmonds-Karp Algorithmus und capacity-scaling algorithm]
     % Algorithms and Data Structures 2 - networks2.pdf
     Benutze sowohl den Edmonds-Karp Algorithmus, als auch den \textit{capacity-scaling algorithm}, um in den folgenden beiden Graphen einen maximalen Fluss und einen minimalen Schnitt zu berechnen. Schreibe für jeden augmentierenden Pfad die zugehörigen Knoten und den Wert, um die der Pfad augmentiert wird, auf.
     
@@ -135,9 +135,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	
     	\end{minipage}
     \end{figure}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Blutspende]
+\begin{exercise}[Blutspende]
     % KT exercise 7.8
     Statistisch gesehen erhöht sich die Anzahl an Unfällen mit Beginn des Frühlings und damit auch der Bedarf an medizinischen Notfallbehandlungen, sodass auch vermehrt Bluttransfusionen notwendig sind. Stell dir vor, du arbeitest für ein Krankenhaus, das beurteilen muss, ob seine Blutreserven ausreichend sind.
 
@@ -167,9 +167,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{enumerate}
     \vspace{4mm}
     Möchtest auch du helfen, die Vorräte des Krankenhauses aufzufüllen? Dann informiere dich hier: \url{https://www.blutspende.de}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Weihnachtsbäume]
+\begin{exercise}[Weihnachtsbäume]
     % Algorithms and Data Structures 2 - networks2.pdf
     Professor Regloh hat dich beauftragt, die jährliche Weihnachtsfeier für alle Student:innen der Goethe-Universität zu organisieren. Du musst einen Plan erstellen, auf dem die Platzierung der Tische im Casino-Festsaal vermerkt ist. Damit die Brandschutzmaßnahmen eingehalten werden können, hat die Frankfurter Feuerwehr den Festsaal in ein rechteckiges $n \times m$ Gitter aufgeteilt und festgelegt, dass höchstens zwei Tische in jeder Zeile und höchstens ein Tisch in jeder Spalte aufgestellt werden dürfen. Leider liebt Professor Regloh Weihnachtsbäume so sehr, dass er in vielen Bereichen schon welche aufgestellt hat. Du kannst keinen Tisch in einen Bereich stellen, in dem schon ein Weihnachtsbaum steht.
     
@@ -214,11 +214,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	\item Gegeben sind $n,m$ und die Platzierung der Weihnachtsbäume. Beschreibe einen Algorithmus, der eine maximale Anzahl an Tischen, die im Festsaal platziert werden können, ausgibt. Analysiere die asymptotische Laufzeit deines Algorithmus und denke daran, die Korrektheit deines Algorithmus zu zeigen.
     	\item Implementiere deinen Algorithmus in Python, Java, oder C/C\texttt{++}. (In \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241#section-3}{Moodle} steht hierfür eine Coderunner-Aufgabe zur Verfügung!)
     \end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Fluchtwege]
+\begin{exercise}[Fluchtwege]
     % KT exercise 7.14
     Wir definieren das Fluchtproblem wie folgt: Gegeben ist ein gerichteter Graph $G = (V,E)$ (stell dir ein Straßennetzwerk vor). Eine Teilmenge $X \subseteq V$ aller Knoten sind bewohnte Knoten und eine andere Teilmenge $S \subseteq V$ sind sichere Knoten. Du kannst annehmen, dass $X$ und $S$ disjunkt sind. Für den Notfall soll es Fluchtwege von den bewohnten Knoten zu den sicheren Knoten geben. Eine Menge von Fluchtwegen ist als eine Menge von Pfaden in $G$ definiert, sodass
     \begin{enumerate}[i.]
@@ -234,10 +234,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	
     	Gib außerdem eine Beispiel-Eingabe $G_0, X_0, S_0$ an, für die der Algorithmus aus Aufgabenteil a) \glqq Ja\grqq{} ausgibt und der Algorithmus aus Aufgabenteil b) \glqq Nein\grqq.
     \end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \newpage
-\begin{aufgabe}[Eulerkreise in gemischten Graphen, \hard]
+\begin{exercise}[Eulerkreise in gemischten Graphen, \hard]
     % Algorithms and Data Structures 2 - networks2.pdf
     Ein Eulerkreis ist ein Kreis, der jede Kante genau einmal enthält.
     Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis genau dann besitzt, wenn jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten hat.
@@ -301,11 +301,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{figure}
     
     \textit{Hinweis:} Stelle dir einen bipartiten Graphen mit den Knoten aus $G$ auf der einen und den Kanten aus $G$ auf der anderen Seite vor und nutze den Algorithmus der vorherigen Aufgabe.
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Puzzle der Woche: Das Zwölf-Münzen Problem]
+\begin{exercise}[Puzzle der Woche: Das Zwölf-Münzen Problem]
 	% Algorithms and Data Structures 2 - networks2.pdf
 	Vor dir liegen 12 Münzen. 11 davon sind identisch, aber eine Münze ist schwerer oder leichter als der Rest. Du hast eine traditionelle Balkenwaage mit zwei Waagschalen. Um die Waage zu benutzen, legst du eine Münze in jede Schale. Die Waage zeigt dann an, welche der beiden Seiten (und damit welche der beiden Münzen) schwerer ist. Die Balkenwaage darf dreimal benutzt werden, um die andere Münze zu finden und um festzustellen, ob diese leichter oder schwerer ist als der Rest.
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

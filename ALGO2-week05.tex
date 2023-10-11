@@ -30,7 +30,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Wahrscheinlichkeitsrechnung]\
+\begin{exercise}[Wahrscheinlichkeitsrechnung]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	\begin{enumerate}
 		\item 
@@ -44,16 +44,16 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		Hierbei ist $F_{i,t}$ das Ereignis, dass Prozess $i$ es in keiner der Runden $1,\dots,t$ geschafft hat, auf die Datenbank zuzugreifen.
 		Sind die einzelnen Ereignisse~$F_{i,t}$ hierbei disjunkt oder überschneiden sie sich?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Contention Resolution]\
+\begin{exercise}[Contention Resolution]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen von Hand aus. Benutze hierzu zwei Münzen und werfe sie, um die zufällige Auswahl zu simulieren.
 	Wie viele Runden hast du gebraucht, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
 	Inwiefern passt dein Ergebnis zu der theoretisch vorhergesagten Anzahl an benötigten Runden zusammen?
-\end{aufgabe}    
+\end{exercise}    
 
-\begin{aufgabe}[Minimaler Schnitt]
+\begin{exercise}[Minimaler Schnitt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte den Beispielgraphen zum Kontraktionsalgorithmus aus der Vorlesung:
 	\begin{center}
@@ -74,16 +74,16 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führt.
 		\item Berechne die genaue Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Schneller Kontraktionsalgorithmus]
+\begin{exercise}[Schneller Kontraktionsalgorithmus]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe alle nötigen Datenstrukturen und Algorithmen und analysiere die Laufzeit sowie den Platzverbrauch.
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Kontraktionsalgorithmus analysieren]
+\begin{exercise}[Kontraktionsalgorithmus analysieren]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte die folgende Analyse der Erfolgswahrscheinlichkeit für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
 	\begin{align}
@@ -102,9 +102,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Zeige (4).
 		\item Zeige (5).
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Mehrheit]
+\begin{exercise}[Mehrheit]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat. Im Folgenden ist der randomisierter Algorithmus \textsc{FindeMehrheitsElement} beschrieben, der das Mehrheitselement finden soll.
 	
@@ -118,12 +118,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Kann \textsc{FindeMehrheitsElement} ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
 		\item Bestimme die Wahrscheinlichkeit, dass \textsc{FindeMehrheitsElement} eine falsche Antwort liefert.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \newpage
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Zufällige Konfliktfreiheit]
+\begin{exercise}[\emoji{star}: Zufällige Konfliktfreiheit]
 	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, ist eine verteilte Konstruktion eines Independent Set.
 
 	In einem System mit $n$ Aufgaben stehen einige Paare von Aufgaben miteinander im Konflikt, beispielsweise wenn beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
@@ -143,6 +143,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Beweise, dass die durch \textsc{FindeKonfliktfreieMenge} entstehende Menge~$S$ immer konfliktfrei ist.
 		\item Gib außerdem eine Formel für die erwartete Größe von $S$ in Abhängigkeit der Anzahl $n$ an Aufgaben und der Anzahl~$d$ an Konflikten pro Aufgabe an. Begründe, warum deine Formel korrekt ist.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

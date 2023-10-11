@@ -32,7 +32,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Schaltkreise]
+\begin{exercise}[Schaltkreise]
 	% Eigenkreation
 	In der Vorlesung haben wir eine Reduktion von \textsc{CircuitSat} auf \textsc{3SAT} gesehen. Gegeben sei folgender Schaltkreis:
 	
@@ -67,9 +67,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	% \end{center}
 	
 	Welche \textsc{3CNF} Formel gibt die Reduktion aus, wenn die Eingabe aus dem dargestellten Schaltkreis besteht?\\
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[DNF Erfüllbarkeit]
+\begin{exercise}[DNF Erfüllbarkeit]
 	% Erickson, Chapter 12, Exercise 3
 	Eine aussagenlogische Formel ist in \textit{disjunktiver Normalform} (DNF), wenn sie eine Disjunktion (\textsc{Or}) von Konjunktionstermen (\textsc{And}) ist. Ein Beispiel für eine DNF ist:
 	$$(\overline{x} \wedge y \wedge \overline{z}) \vee (y \wedge z) \vee (x \wedge \overline{y} \wedge \overline{z}).$$
@@ -83,9 +83,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			Nun können wir den Algorithmus aus Aufgabenteil a) verwenden, um in Polynomialzeit herauszufinden, ob die entstandene DNF erfüllbar ist. Wir haben also \textsc{3Sat} in Polynomialzeit gelöst! Da \textsc{3Sat} $\NP$-hart ist, gilt $\P = \NP$!	
 		\end{quote}
 	\end{enumerate}	 
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Perfektes Matching]\
+\begin{exercise}[Perfektes Matching]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 1
 	Sei $G = (V,E)$ ein ungerichteter Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit demselben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine andere mögliche Definition betrachtet die Größe des Matchings: $M$ ist perfekt, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfektesMatching}-Problem:
 	\begin{quote}
@@ -105,9 +105,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Erweitere das Beispiel aus der vorherigen Teilaufgabe: Konstruiere einen Graphen $G$ mit einer geraden Anzahl an Knoten, sodass $G$ kein perfektes Matching hat, $H$ aber schon.
 	\end{enumerate}
 	Damit ist die Reduktion inkorrekt, obwohl eine Richtung wahr ist.
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Independent Set]\
+\begin{exercise}[Independent Set]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 2
 	Ein \emph{Independent Set} in einem Graphen $G = (V,E)$ ist eine Teilmenge $S \subseteq V$, sodass keine zwei Knoten $u,v \in S$ durch eine Kante $\{u,v\} \in E$ verbunden sind. Du hast eine magische Blackbox, die auf wundersame Art und Weise das folgende Entscheidungsproblem in Polynomialzeit beantwortet:
 	\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
@@ -128,11 +128,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 			\item \textsc{Output}: Ein Independent Set in $G$ mit maximaler Größe.
 		\end{itemize}
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[NP]\
+\begin{exercise}[NP]\
 	% KT - Exercise 8.1
 	Entscheide für die beiden folgenden Fragen, welche der Antworten \glqq Ja\grqq{}, \glqq Nein\grqq{} oder \glqq Unbekannt, da es $\P = \NP$ beantworten würde\grqq{} zutrifft. Erkläre kurz, warum du dich für deine Antwort entschieden hast.
 
@@ -146,10 +146,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Gilt \textsc{IntervalScheduling} $\leq_p$ \textsc{VertexCover}?
 		\item Gilt \textsc{IndependentSet} $\leq_p$ \textsc{IntervalScheduling}?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 
-\begin{aufgabe}[Kundenanalyse]\
+\begin{exercise}[Kundenanalyse]\
 	% KT - Exercise 8.2
 	Zur Analyse des Kundenverhaltens benutzen Geschäfte oftmals ein zweidimensionales Array $A$, wo die Zeilen die Kunden und die Spalten die verkauften Produkte enthalten. Ein Eintrag $A[i,j]$ gibt an, welche Menge von Produkt $j$ der Kunde $i$ gekauft hat, so hat Chelsea im folgenden Beispiel siebenmal Katzenstreu gekauft.
 	
@@ -171,9 +171,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		Seien ein $n \times m$ Array $A$, wie oben definiert, und eine Zahl $k$ mit $k \leq n$ gegeben. Gibt es eine \textit{diverse} Teilmenge $S$ der Kunden mit $|S| \geq k$?
 	\end{quote}
 	Zeige, dass \textsc{DiverseTeilmenge} \NP-vollständig ist.
-\end{aufgabe}    
+\end{exercise}    
 
-% \begin{aufgabe}[Feriencamp]
+% \begin{exercise}[Feriencamp]
 % 	% KT - Exercise 8.3
 % 	Bei der Organisation eines Feriencamps wirst du mit dem Problem \textsc{EffizientesRekrutieren} konfrontiert.
 % 	\begin{quote}
@@ -182,12 +182,12 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 % 	\end{quote}	 
 	
 % 	Zeige, dass \textsc{EffizientesRekrutieren} \NP-vollständig ist.
-% \end{aufgabe}
+% \end{exercise}
 
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Search-to-Decision]\
+\begin{exercise}[\emoji{star}: Search-to-Decision]\
 	% Ericksen, Chapter 12, Exercise 5b,c,d
 	\begin{enumerate}
 		\item Du besitzt eine magische Blackbox, die in Polynomialzeit herausfindet, wie viele Knoten ein größter vollständiger Teilgraph ein beliebiger Graph $G$ besitzt. Beschreibe und analysiere einen Algorithmus, der in Polynomialzeit für einen beliebigen Graphen $G$ einen vollständigen Teilgraphen maximaler Größe berechnet. Benutze dafür die Blackbox.
@@ -199,6 +199,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		
 		\item Du besitzt eine magische Blackbox, die in Polynomialzeit herausfindet, ob eine beliebige Boolesche Formel $\Phi$ erfüllbar ist (zum Beispiel $\Phi= (x \Leftrightarrow ((z\wedge y)\vee \overline{x})) \wedge (y \Rightarrow \overline{x})$). Beschreibe und analysiere einen Algorithmus, der in Polynomialzeit eine erfüllende Belegung der Variablen von $\Phi$ ausgibt, oder richtigerweise ausgibt, dass so eine Belegung nicht existiert. Benutze dafür die Blackbox.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

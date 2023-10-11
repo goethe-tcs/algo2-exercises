@@ -23,26 +23,31 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Create .gitinfo files
         run: make gitinfo
 
       - name: Compile LateX
-        # You may pin to the exact commit or the version.
-        uses: hspaans/latexmk-action@v1.0.13
+        uses: holgerdell/latexmk-action@master
         with:
           format: pdf
           filename: "*.tex"
 
-      - name: Release pdf files to tag on github
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Latest version"
-          files: "*.pdf"
+      - name: Push generated files to branch 'gh-pages'
+        run: |
+          mkdir -p public/
+          cp *.html public/
+          mv *.pdf public/
+          cd public
+          git init -b gh-pages
+          git config user.name $GITHUB_ACTOR
+          git config user.email $GITHUB_ACTOR@users.noreply.github.com
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add .
+          git commit -m "[release] Publish on GitHub Pages"
+          git push --force origin gh-pages:gh-pages
+        if: ${{ success() }}
 
       # Copying files and artifacts via SSH
       # - name: Copying files to server

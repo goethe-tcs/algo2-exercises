@@ -33,7 +33,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[k-COLOR]\
+\begin{exercise}[k-COLOR]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 1
 	\begin{quote}
 		$k$-\textsc{Color}:\\
@@ -43,9 +43,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Beschreibe eine polynomielle Reduktion von \textsc{3Color} zu \textsc{4Color}.
 		\item Zeige, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-hart ist.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[$\NP$-Härte]\
+\begin{exercise}[$\NP$-Härte]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
 	Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen NP-hart ist.
 	Zeige, dass die folgenden Probleme $\NP$-hart sind.
@@ -54,11 +54,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
 		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Ressourcenmanagement]
+\begin{exercise}[Ressourcenmanagement]
 	% KT - Exercise 8.4
 	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
 	Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
@@ -76,9 +76,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
 	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
 	 \end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Doppel-Färbung]
+\begin{exercise}[Doppel-Färbung]
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
 	Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge von zwei unterschiedlichen Farben $\{f_1,f_2\} \in F$ zu. Es gibt zwei Arten der Doppel-Färbung:
 	\begin{itemize}
@@ -141,9 +141,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
                 \caption{Eine starke Doppel-Färbung.}\label{stark}
 	    \end{minipage}
 	\end{figure}
-\end{aufgabe}
+\end{exercise}
 
-%\begin{aufgabe}[Clique]
+%\begin{exercise}[Clique]
 	% Algorithms and Data Structures 2 - NP.pdf
 %	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
 %	\begin{quote}
@@ -155,13 +155,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Zeige, dass \textsc{Clique} $\in \NP$.
 %		\item Zeige, dass \textsc{Clique} \NP-vollständig ist, indem du \textsc{IndependentSet} auf \textsc{Clique} reduzierst.
 %	\end{enumerate}
-%\end{aufgabe}
+%\end{exercise}
 
 \newpage
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Vorsichtige Färbung]
+\begin{exercise}[\emoji{star}: Vorsichtige Färbung]
 	% Ericksen, Chapter 12, Exercise 24
 	Eine $5$-\textsc{Färbung} eines Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-\textsc{Färbung} ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (z.B.~darf die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-\textsc{Färbung} besitzt, $\NP$-hart ist.
 	
@@ -196,6 +196,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
         \caption{Ein Beispiel für eine vorsichtige $5$-\textsc{Färbung}.}
 	\end{center}
 	\end{figure}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}

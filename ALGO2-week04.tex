@@ -30,28 +30,28 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Dienstag}
 
-\begin{aufgabe}[Splay-Bäume]
+\begin{exercise}[Splay-Bäume]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Gegeben sei ein leerer Splay-Baum.
 	\begin{enumerate}
 		\item Füge die Schlüssel $41,38,31,12,19,8$ in der angegebenen Reihenfolge ein. Wie sieht der resultierende Splay-Baum aus?
 		\item Wie sieht der Splay-Baum aus, nachdem man Schlüssel $31$ entfernt hat?
 	\end{enumerate}		
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Amortisierte Analyse]
+\begin{exercise}[Amortisierte Analyse]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Wir haben eine Datenstruktur mit einer Operation \texttt{Foo()}. Die Kosten~$T(i)$ der $i$-ten Ausführung dieser Operation sind gegeben durch: 
 	\[T(i) = \begin{cases} 2i & \text{falls i eine Zweierpotenz ist}, \\ 1 & \text{sonst}. \end{cases}\] 
 	Was ist die amortisierte Laufzeit der Operation \texttt{Foo()}? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
-\end{aufgabe}    
+\end{exercise}    
 
-\begin{aufgabe}[Potenzialfunktion: Verdopplung von Arrays]
+\begin{exercise}[Potenzialfunktion: Verdopplung von Arrays]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Gegeben sei eine dynamische Tabelle, die nur Einfügungen und keine Löschungen erlaubt, und für die die Verdopplungsmethode genutzt wird. Wenn wir als Potenzialfunktion $\Phi(D_i) = k$ wählen, wobei $k$ die Anzahl an Elementen im Array ist, können wir dann mit dieser Potenzialfunktion zeigen, dass die amortisierten Kosten einer Einfügung $\Oh(1)$ sind?
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Mengenvereinigung]
+\begin{exercise}[Mengenvereinigung]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Mengenvereinigung ist eine abstrakte Datenstruktur, die disjunkte Teilmengen von $\{1,\dots,n\}$ verwaltet (ganz ähnlich zu Union-Find).
 	Anfangs sind die Elemente auf $n$ einzelne Mengen aufgeteilt, also $\{1\}, \{2\}, \dots,\{n\}$.
@@ -67,11 +67,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen. Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die worst-case Laufzeit $\Oh(m \log n + l)$ einhält.
 		\item[] \textit{Hinweis:} Wie oft kann ein Element die Farbe wechseln?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \section*{Donnerstag}
 
-\begin{aufgabe}[Splay-Bäume]
+\begin{exercise}[Splay-Bäume]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \emph{splay(x)}-Methode auf die nervigen \emph{roller-coaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
 	\begin{enumerate}
@@ -79,9 +79,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
 		\item Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \enquote{Du musst nur eine raffiniertere Potenzialfunktion benutzen}, sagt er. Liegt er damit richtig?
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Implementierung von dynamischen Tabellen]
+\begin{exercise}[Implementierung von dynamischen Tabellen]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Implementiere deine eigene dynamische Tabelle für \texttt{Integer}-Werte, ohne dabei built-in Methoden zu verwenden. Deine dynamische Tabelle soll folgende Operationen beherrschen:
 	\begin{itemize}
@@ -90,14 +90,14 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item Ausgabe enthaltener Elemente,
 		\item Ausgabe der Größe der Tabelle.
 	\end{itemize}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Dynamische Hashtabelle]
+\begin{exercise}[Dynamische Hashtabelle]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Erkläre, wie man eine dynamische Hashtabelle mit Einfügungen unter Verwendung der Verdopplungsmethode verwaltet. Deine Lösung soll einen Speicherplatz von $\Theta(n)$ benutzen, wobei $n$ die Anzahl der Elemente in der Hashtabelle ist. Wie viel Zeit benötigt deine Lösung zum Einfügen eines Elements in die Hashtabelle?
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Deamortisierung von dynamischen Tabellen]
+\begin{exercise}[Deamortisierung von dynamischen Tabellen]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Manchmal ist es möglich, Datenstrukturen zu deamortisieren. Das heißt, man erhält dieselben \emph{worst-case} Schranken, wie im amortisierten Fall, indem die teure Arbeit auf viele Operationen verteilt wird und im Hintergrund ausgeführt wird.
 
@@ -110,9 +110,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 	\item Jetzt mach dasselbe für dynamische Tabellen mit Einfügen \emph{und} Löschen.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
-\begin{aufgabe}[Puzzle der Woche: Prinzessinnen]
+\begin{exercise}[Puzzle der Woche: Prinzessinnen]
 	% Algorithms and Data Structures 2 - amortized.pdf
 	Stelle dir vor, du bist ein junger Prinz aus dem fernen Lande Algo und der König des benachbarten Landes Logik hat 3 Töchter. Die Älteste erzählt immer die Wahrheit, die Jüngste lügt immer und die Mittlere lügt und sagt die Wahrheit, wie es ihr gefällt.
 	
@@ -121,11 +121,11 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Der König ist ein hinterhältiger Mann und erlaubt dir, genau \textit{eine} Frage an genau \textit{eine} der drei Töchter zu stellen. Diese Frage soll mit \glqq Ja\grqq{} oder \glqq Nein\grqq{} zu beantworten sein. Danach musst du dich entscheiden, welche der drei Prinzessinnen du heiraten möchtest. 
 
 	Welche Frage solltest du stellen und dann welche der Töchter aussuchen?
-\end{aufgabe}
+\end{exercise}
 
 \section*{Sternaufgabe}
 
-\begin{aufgabe}[\emoji{star}: Queues mit zwei Stacks]\mbox{}\\
+\begin{exercise}[\emoji{star}: Queues mit zwei Stacks]\mbox{}\\
 	Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)}, \texttt{S.POP()} und \texttt{S.ISEMPTY()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
 
 	Du sollst für diese Aufgabe eine Queue \texttt{Q} mithilfe von zwei Stacks \texttt{S1}, \texttt{S2} implementieren. Dabei darfst du nur $\Oh(1)$ zusätzlichen Speicher benutzen.
@@ -136,6 +136,6 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\item
 		\textbf{Beweise mithilfe der Potenzialmethode}, dass die amortisierten Kosten deiner Implementierung tatsächlich konstant sind.
 	\end{enumerate}
-\end{aufgabe}
+\end{exercise}
 
 \end{document}
