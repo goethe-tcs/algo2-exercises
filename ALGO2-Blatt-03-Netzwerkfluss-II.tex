@@ -1,6 +1,6 @@
 % !TeX spellcheck = de_DE
 \documentclass{uebung_cs}
-\usepackage{algo221}
+\usepackage{algo223}
 \uebung{3}{}{}
 \blattname{Übungen zu Woche 3: Network Flow II}
 
@@ -9,30 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
-
-\begin{itemize}
-\item \textbf{Heimarbeit bis Montag 17:00.}
-    \begin{itemize}
-    \item 
-    Schau die Videos an und lies die Buchkapitel.
-    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
-    \item Lese den Aufgabentext aller Übungsaufgaben.
-    \end{itemize}
-\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
-\item \textbf{Dienstag/Donnerstag.}
-\begin{itemize}
-    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
-    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
-    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
-\end{itemize}
-
-\item \textbf{Heimarbeit bis Freitag, den 5.11., 17:00.} Gib deine Lösungen zu den beiden \emoji{star}-Aufgaben vom zweiten Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
-\end{itemize}
-
-\section*{Dienstag}
-
-\begin{exercise}[Residualgraphen zeichnen]
+\begin{exercise}[Residualgraphen zeichnen][\athome]
 \
 	Betrachte den Fluss~$f$ und das Flussnetzwerk~$(G,s,t)$, das in Abbildung~\ref{Fluss} dargestellt ist.
 	Zeichne den Residualgraphen $G_f$ und den eingeschränkten Residualgraphen $G_f(3)$.
@@ -66,9 +43,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{figure}
 \end{exercise}
 
-\begin{exercise}[Edmonds-Karp Algorithmus und capacity-scaling algorithm]
+\begin{exercise}[Edmonds-Karp Algorithmus und capacity-scaling algorithm][\athome]
     % Algorithms and Data Structures 2 - networks2.pdf
-    Benutze sowohl den Edmonds-Karp Algorithmus, als auch den \textit{capacity-scaling algorithm}, um in den folgenden beiden Graphen einen maximalen Fluss und einen minimalen Schnitt zu berechnen. Schreibe für jeden augmentierenden Pfad die zugehörigen Knoten und den Wert, um die der Pfad augmentiert wird, auf.
+    Benutze sowohl den Edmonds-Karp Algorithmus, als auch den \textit{capacity-scaling algorithm}, um in den folgenden beiden Graphen einen maximalen $s$-$t$-Fluss und einen minimalen $s$-$t$-Schnitt zu berechnen. Schreibe für jeden augmentierenden Pfad die zugehörigen Knoten und den Wert, um die der Pfad augmentiert wird, auf.
     
     \begin{figure}[ht]
     	\begin{minipage}[b]{0.5\textwidth}
@@ -137,44 +114,47 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{figure}
 \end{exercise}
 
-\begin{exercise}[Blutspende]
+\newpage
+\begin{exercise}[Blutspende][\athome\mittel]
     % KT exercise 7.8
     Statistisch gesehen erhöht sich die Anzahl an Unfällen mit Beginn des Frühlings und damit auch der Bedarf an medizinischen Notfallbehandlungen, sodass auch vermehrt Bluttransfusionen notwendig sind. Stell dir vor, du arbeitest für ein Krankenhaus, das beurteilen muss, ob seine Blutreserven ausreichend sind.
 
     Beim Blutspenden gibt es eine grundlegende Regel: Eine Person hat in ihrem Blut bestimmte Antigene (du kannst dir Antigene als eine Art molekulare Signatur vorstellen). Bei einer Blutspende kann eine Person nur Blut empfangen, welches die gleichen Antigene hat, wie das eigene. Konkret gesagt unterteilt dieses Prinzip das Blut in vier Gruppen: A, B, AB und 0. Blutgruppe A hat das Antigen A, Blutgruppe B hat das Antigen B, Blutgruppe AB hat beide und Blutgruppe 0 hat keines der Antigene. Demnach können Patienten mit Blutgruppe A nur Blut der Gruppen A und 0, Patienten der Blutgruppe B nur Blut der Gruppen B und 0, Patienten der Blutgruppe 0 nur Blut der Gruppe 0 und Patienten der Blutgruppe AB Blut aller Blutgruppen empfangen.
     \begin{enumerate}
-    	\item Seien $s_0,s_A,s_B$ und $s_{AB}$ die Vorräte des Krankenhauses an den vier Blutgruppen, angegeben in ganzen Einheiten. Nimm an, dass das Krankenhaus den prognostizierten Bedarf $d_0, d_A,d_B$ und $d_{AB}$ an Blut für die nächsten Wochen kennt. Gib einen Algorithmus an, der in Polynomialzeit auswertet, ob das vorrätige Blut den prognostizierten Bedarf der nächsten Woche deckt.
-    	\item Schaue dir das folgende Beispiel an. Das Krankenhaus prognostiziert für die nächste Woche einen Bedarf von maximal $100$ Einheiten Blut. Die durchschnittliche Verteilung der Blutgruppen über die U.S.-Bevölkerung liegt bei $45\%$ Blutgruppe 0, $42\%$ Blutgruppe A, $10\%$ Blutgruppe B und $3\%$ Blutgruppe AB. Das Krankenhaus möchte wissen, ob seine Vorräte ausreichend sind, wenn $100$ Patienten mit der erwarteten Verteilung über die Blutgruppen behandelt werden müssen. Es sind $105$ Einheiten Blut vorrätig. Die Tabelle gibt den Vorrat und die Nachfrage an Blut an.
+    	\item Das Krankenhaus hat für jede der vier Blutgruppen eine bestimmte Anzahl an ganzen Einheiten vorrätig. Diese Anzahlen sind gegeben durch $s_0,s_A,s_B,s_{AB}\in\N$.
+		Außerdem kennt das Krankenhaus den prognostizierten Bedarf $d_0, d_A,d_B,d_{AB}\in\N$ an Blut für die nächste Woche. Entwirf einen effizienten Algorithmus, der entscheidet, ob das vorrätige Blut den prognostizierten Bedarf der nächsten Woche deckt. (\emph{Tipp: \reflectbox{Konstruiere ein geeignetes Flussnetzwerk als Eingabe für Ford-Fulkerson}})
+    	\item
+		%  Das Krankenhaus prognostiziert für die nächste Woche einen Bedarf von $100$ Einheiten Blut.
+		% Die durchschnittliche Verteilung der Blutgruppen über die U.S.-Bevölkerung liegt bei $45\%$ Blutgruppe 0, $42\%$ Blutgruppe A, $10\%$ Blutgruppe B und $3\%$ Blutgruppe AB. Das Krankenhaus möchte wissen, ob seine Vorräte ausreichend sind, wenn $100$ Patienten mit der erwarteten Verteilung über die Blutgruppen behandelt werden müssen. Es sind $105$ Einheiten Blut vorrätig.
+		Wir schauen uns nun ein konkretes Beispiel an.
+		Die folgende Tabelle gibt den Vorrat und die Nachfrage an Blut an:
     	
     	\vspace{4mm}
     	\begin{center}
     	\begin{tabular}{|c|c|c|}
-    	\hline 
+    	% \hline 
     	Blutgruppe & Vorrat & Nachfrage \\ 
-    	\hline 
+    	% \hline 
     	0 & 50 & 45 \\ 
-    	\hline 
+    	% \hline 
     	A & 36 & 42 \\ 
-    	\hline 
+    	% \hline 
     	B & 11 & 10 \\ 
-    	\hline 
+    	% \hline 
     	AB & 8 & 3 \\ 
-    	\hline 
+    	% \hline 
     	\end{tabular}
     	\end{center}
     	\vspace{4mm}
-    	Sind die 105 vorrätigen Einheiten Blut ausreichend, um der Nachfrage von $100$ Einheiten gerecht zu werden? Finde eine Verteilung, sodass die maximale Anzahl an Patienten behandelt werden kann. Benutze die Idee minimaler Schnitte in einem passenden Flussnetzwerk, um zu begründen, warum nicht alle Patienten behandelt werden können. Stelle außerdem eine verständliche Erklärung dieses Umstandes für die Mitglieder der Krankenhausverwaltung bereit, die ALGO2 nicht belegt haben. (Beispielsweise soll deine Erklärung die Worte \textit{Fluss, Schnitt} oder \textit{Graph} nicht in dem Sinne enthalten, wie wir sie in der Vorlesung benutzen.)
+    	Sind die 105 vorrätigen Einheiten Blut ausreichend, um der Nachfrage von $100$ Einheiten gerecht zu werden? Finde eine Zuordnung, sodass die maximale Anzahl an Patienten behandelt werden kann. Benutze die Idee minimaler Schnitte in einem passenden Flussnetzwerk, um zu begründen, warum nicht alle Patienten behandelt werden können. Stelle außerdem eine allgemeinverständliche Erklärung dieses Umstandes für diejenigen Mitglieder der Krankenhausverwaltung bereit, die ALGO2 nicht belegt haben. (Beispielsweise soll deine Erklärung die Worte \emph{Fluss}, \emph{Schnitt} oder \emph{Graph} nicht in dem Sinne enthalten, wie wir sie in der Vorlesung benutzen.)
     \end{enumerate}
-    \vspace{4mm}
-    Möchtest auch du helfen, die Vorräte des Krankenhauses aufzufüllen? Dann informiere dich hier: \url{https://www.blutspende.de}
 \end{exercise}
 
+\newpage
 \begin{exercise}[Weihnachtsbäume]
     % Algorithms and Data Structures 2 - networks2.pdf
-    Professor Regloh hat dich beauftragt, die jährliche Weihnachtsfeier für alle Student:innen der Goethe-Universität zu organisieren. Du musst einen Plan erstellen, auf dem die Platzierung der Tische im Casino-Festsaal vermerkt ist. Damit die Brandschutzmaßnahmen eingehalten werden können, hat die Frankfurter Feuerwehr den Festsaal in ein rechteckiges $n \times m$ Gitter aufgeteilt und festgelegt, dass höchstens zwei Tische in jeder Zeile und höchstens ein Tisch in jeder Spalte aufgestellt werden dürfen. Leider liebt Professor Regloh Weihnachtsbäume so sehr, dass er in vielen Bereichen schon welche aufgestellt hat. Du kannst keinen Tisch in einen Bereich stellen, in dem schon ein Weihnachtsbaum steht.
+    Professor Regloh hat dich beauftragt, die jährliche Weihnachtsfeier für alle Student:innen der Goethe-Universität zu organisieren. Du musst einen Plan erstellen, auf dem die Platzierung der Tische im Casino-Festsaal vermerkt ist. Damit die Brandschutzmaßnahmen eingehalten werden können, hat die Frankfurter Feuerwehr den Festsaal in ein rechteckiges $n \times m$ Gitter aufgeteilt und festgelegt, dass höchstens zwei Tische in jeder Zeile und höchstens ein Tisch in jeder Spalte aufgestellt werden dürfen. Leider liebt Professor Regloh Weihnachtsbäume sehr und hat schon einige aufstellen lassen. Du darfst diese nicht verschieben und kannst einen Tisch nur dort aufstellen, wo noch kein Weihnachtsbaum steht.
     
-    \textbf{Beispiel.} Es gilt $n = 4$ und $m = 8$. Die $\star$ stellen Weihnachtsbäume dar und $T$ die Tische. In Abbildung~\ref{Ohne_Tische} ist die Ausgangslage (Weihnachtsbäume positioniert, Tische nicht) dargestellt. In Abbildung~\ref{Mit Tischen} ist die bestmögliche Positionierung einer maximalen Anzahl an Tischen (7) dargestellt.
-   
     \begin{figure}[h]
     \centering
     \begin{minipage}{0.4\textwidth}
@@ -207,18 +187,16 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{minipage}
     \end{figure}
      
-    
-    \vspace{4mm}
+    \textbf{Beispiel.} Es gilt $n = 4$ und $m = 8$. Die $\star$ stellen Weihnachtsbäume dar und $T$ die Tische. In \cref{Ohne_Tische} ist die Anfangssituation (Weihnachtsbäume positioniert, Tische nicht) dargestellt. In \cref{Mit Tischen} ist eine bestmögliche Positionierung der maximalen Anzahl an Tischen (7) dargestellt.
+   
     \begin{enumerate}
-    	\item Modelliere das Problem als Graphenproblem. Erkläre, wie du dir das überlegt hast und zeichne den zum oben angegebenen Beispiel passenden Graphen.
-    	\item Gegeben sind $n,m$ und die Platzierung der Weihnachtsbäume. Beschreibe einen Algorithmus, der eine maximale Anzahl an Tischen, die im Festsaal platziert werden können, ausgibt. Analysiere die asymptotische Laufzeit deines Algorithmus und denke daran, die Korrektheit deines Algorithmus zu zeigen.
-    	\item Implementiere deinen Algorithmus in Python, Java, oder C/C\texttt{++}. (In \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241#section-3}{Moodle} steht hierfür eine Coderunner-Aufgabe zur Verfügung!)
+    	\item\athome Modelliere das Problem als ein Netzwerkflussproblem. Erkläre, wie du dir das überlegt hast und zeichne den zum oben angegebenen Beispiel passenden Graphen.
+    	\item\mittel Gegeben sind $n,m$ und die Platzierung der Weihnachtsbäume. Beschreibe einen Algorithmus, der eine maximale Anzahl an Tischen, die im Festsaal platziert werden können, ausgibt. Analysiere die asymptotische Laufzeit deines Algorithmus und denke daran, die Korrektheit deines Algorithmus zu zeigen.
+    	\item\projekt Implementiere deinen Algorithmus in Python, Java, oder C/C\texttt{++}. (In Moodle steht hierfür eine Coderunner-Aufgabe zur Verfügung!)
     \end{enumerate}
 \end{exercise}
 
-\section*{Donnerstag}
-
-\begin{exercise}[Fluchtwege]
+\begin{exercise}[Fluchtwege][\atschool\mittel]
     % KT exercise 7.14
     Wir definieren das Fluchtproblem wie folgt: Gegeben ist ein gerichteter Graph $G = (V,E)$ (stell dir ein Straßennetzwerk vor). Eine Teilmenge $X \subseteq V$ aller Knoten sind bewohnte Knoten und eine andere Teilmenge $S \subseteq V$ sind sichere Knoten. Du kannst annehmen, dass $X$ und $S$ disjunkt sind. Für den Notfall soll es Fluchtwege von den bewohnten Knoten zu den sicheren Knoten geben. Eine Menge von Fluchtwegen ist als eine Menge von Pfaden in $G$ definiert, sodass
     \begin{enumerate}[i.]
@@ -228,7 +206,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     \end{enumerate}
     Diese Menge von Pfaden sorgt dafür, dass die bewohnten Knoten sicher evakuiert werden können, ohne dass eine Kante in $G$ überlastet wird.
     \begin{enumerate}
-    	\item Zeige, wie bei einer Eingabe von $G, X, S$ in polynomieller Zeit entscheiden werden kann, ob eine solche Menge von Fluchtwegen existiert.
+    	\item Zeige, wie bei einer Eingabe von $G, X, S$ in polynomieller Zeit entschieden werden kann, ob eine solche Menge von Fluchtwegen existiert.
     	\item Wir wollen das gleiche Problem wie in Aufgabenteil a)~mit einer strengeren Version von Bedingung iii.~lösen, das heißt die Pfade dürfen keine gemeinsamen Knoten mehr haben.
     	Zeige, wie in polynomieller Zeit entschieden werden kann, ob eine Menge von Fluchtwegen gemäß dieser neuen Bedinungen existiert.
     	
@@ -237,7 +215,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 \end{exercise}
 
 \newpage
-\begin{exercise}[Eulerkreise in gemischten Graphen, \hard]
+\begin{exercise}[Eulerkreise in gemischten Graphen][\atschool\note]
     % Algorithms and Data Structures 2 - networks2.pdf
     Ein Eulerkreis ist ein Kreis, der jede Kante genau einmal enthält.
     Es ist bekannt, dass ein stark zusammenhängender Graph einen Eulerkreis genau dann besitzt, wenn jeder Knoten die gleiche Anzahl eingehender und ausgehender Kanten hat.
@@ -300,10 +278,10 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
     	\end{minipage}
     \end{figure}
     
-    \textit{Hinweis:} Stelle dir einen bipartiten Graphen mit den Knoten aus $G$ auf der einen und den Kanten aus $G$ auf der anderen Seite vor und nutze den Algorithmus der vorherigen Aufgabe.
+    \textit{Hinweis:} Konstruiere einen bipartiten Graphen mit den Knoten aus $G$ auf der einen Seite und den Kanten aus $G$ auf der anderen Seite, und nutze dann den Algorithmus der vorherigen Aufgabe.
 \end{exercise}
 
-\begin{exercise}[Puzzle der Woche: Das Zwölf-Münzen Problem]
+\begin{exercise}[Puzzle der Woche: Das Zwölf-Münzen Problem][\spass]
 	% Algorithms and Data Structures 2 - networks2.pdf
 	Vor dir liegen 12 Münzen. 11 davon sind identisch, aber eine Münze ist schwerer oder leichter als der Rest. Du hast eine traditionelle Balkenwaage mit zwei Waagschalen. Um die Waage zu benutzen, legst du eine Münze in jede Schale. Die Waage zeigt dann an, welche der beiden Seiten (und damit welche der beiden Münzen) schwerer ist. Die Balkenwaage darf dreimal benutzt werden, um die andere Münze zu finden und um festzustellen, ob diese leichter oder schwerer ist als der Rest.
 \end{exercise}
