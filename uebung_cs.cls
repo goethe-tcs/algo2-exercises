@@ -11,8 +11,9 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uebung_cs}[2021/04/12 v0]
-\PassOptionsToClass{a4paper,fontsize=11pt,parskip=half}{scrartcl}
-\LoadClass{scrartcl}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrartcl}}
+\ProcessOptions\relax
+\LoadClass[a4paper,fontsize=11pt,parskip=half]{scrartcl}
 
 \RequirePackage{iftex}
 \ifPDFTeX
