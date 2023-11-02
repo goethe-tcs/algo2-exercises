@@ -8,26 +8,23 @@
 \begin{document}
 
 \section*{Dienstag}
-\begin{exercise}[Amortisierte Analyse][\athome]
+\begin{exercise}[Amortisierte Analyse][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=238780}{moodle}\athome]
     Hier ist eine Funktion \texttt{f($n$)}, die eine andere Funktion \texttt{g()} aufruft:
     \begin{lstlisting}[frame=single,frameround=tttt,xleftmargin=2em,linewidth=0.5\textwidth,numbers=none,language=Python]
 def f($n$):
     for $i$ in range($n$):
         g()
 \end{lstlisting}
+Wir nehmen an, dass der $i$-te Aufruf von \texttt{g()} eine Laufzeit von $T(i)$ hat, wobei
+\[T(i) = \begin{cases} 2i & \text{falls $i$ eine Zweierpotenz ist;} \\ 1 & \text{sonst.} \end{cases}\]
+Analysiere die amortisierte Laufzeit von \texttt{g()}.
     \begin{enumerate}
-        \item Wenn die worst-case Laufzeit von \texttt{g()} konstant ist, was ist dann die worst-case Laufzeit von \texttt{f($n$)}?
-        \item Wenn die amortisierte Laufzeit von \texttt{g()} konstant ist, was ist dann die worst-case Laufzeit von \texttt{f($n$)}?
-        \item Wenn die best-case Laufzeit von \texttt{g()} konstant ist, was ist dann die worst-case Laufzeit von \texttt{f($n$)}?
-        \item Wenn die amortisierte Laufzeit von \texttt{g()} linear ist, was ist dann die worst-case Laufzeit von \texttt{f($n$)}?
-        \item\mittel\label{g-aggregation} Wenn der $i$-te Aufruf von \texttt{g()} eine Laufzeit von $T(i)$ mit
-              \[T(i) = \begin{cases} 2i & \text{falls $i$ eine Zweierpotenz ist} \\ 1 & \text{sonst} \end{cases}\]
-              hat, was ist dann die amortisierte Laufzeit von \texttt{g()}?
-              Benutze die Aggregationsmethode.
-        \item\mittel Wie \ref{g-aggregation}, aber benutze jetzt das Buchhalter-Argument (\textit{accounting method}).
+        \item Benutze die Aggregationsmethode.
+        \item Benutze das Buchhalter-Argument (\textit{accounting method}).
     \end{enumerate}
 \end{exercise}
 
+        
 % \begin{exercise}[Amortisierte Analyse][\athome]
 %     % Algorithms and Data Structures 2 - amortized.pdf
 %     Wir haben eine Datenstruktur mit einer Operation \texttt{Foo()}. Die Kosten~$T(i)$ der $i$-ten Ausführung dieser Operation sind gegeben durch: 
@@ -49,39 +46,21 @@ def f($n$):
     \begin{enumerate}
         \item\athome Schreibe die Datenstruktur mit ihren beiden Operationen als Code oder Pseudocode auf.
         \item\athome Analysiere die \textit{worst-case} Laufzeit der beiden Operationen.
-        \item\athome\mittel Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen.
+        \item\atschool\mittel Zeige, dass die amortisierten Kosten $\Oh(\log n)$ für Union und $\O(1)$ für SameSet betragen.
         \item\atschool\note Zeige ebenfalls, dass jede Sequenz von $m$ Union-Operationen und $l$ SameSet-Operationen die worst-case Laufzeit $\Oh(m \log n + l)$ einhält.
         % \item[]
         (\emph{Tipp: \reflectbox{Wie oft kann ein Element die Farbe wechseln?}})
     \end{enumerate}
 \end{exercise}
 
-\clearpage
+% \clearpage
 \section*{Donnerstag}
-\begin{exercise}[Potenzialfunktion: Verdopplung von Arrays][\athome\mittel]
+\begin{exercise}[Potenzialfunktion: Verdopplung von Arrays][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=238781}{moodle}\athome]
     % Algorithms and Data Structures 2 - amortized.pdf
     Wir betrachten einen Stack, in dem wir nur \texttt{push} und nicht \texttt{pop} erlauben. Der Stack wird durch ein dynamisch wachsendes Array dargestellt ist, das heißt, das Array wird verdoppelt, wenn \texttt{push} aufgerufen wird und das Array voll ist.
     Sei $A_i$ das Array nach der $i$-ten Operation.
     Wir definieren die Potenzialfunktion $\Phi(A_i) = k$, wobei $k$ die aktuelle Anzahl an belegten Elementen im Array ist.
     Können wir mit dieser Potenzialfunktion zeigen, dass die amortisierten Kosten von \texttt{push} konstant sind? Wenn ja, wie? Wenn nein, warum nicht?
-\end{exercise}
-
-\begin{exercise}[Splay-Bäume][\athome]
-    % Algorithms and Data Structures 2 - amortized.pdf
-    Gegeben sei ein leerer Splay-Baum.
-    \begin{enumerate}
-        \item Füge die Schlüssel $41,38,31,12,19,8$ in der angegebenen Reihenfolge ein. Wie sieht der resultierende Splay-Baum aus?
-        \item Wie sieht der Splay-Baum aus, nachdem man Schlüssel $31$ entfernt hat?
-    \end{enumerate}
-\end{exercise}
-\begin{exercise}[Splay-Bäume]
-    % Algorithms and Data Structures 2 - amortized.pdf
-    Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \texttt{splay($x$)}-Methode auf die nervigen \emph{roller-coaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
-    \begin{enumerate}
-        \item{}\athome\mittel Was sind die amortisierten Kosten der Operation \texttt{splay($x$)}, wenn wir nur einfache Rotationen benutzen? Analysiere die Kosten mit derselben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
-        \item{}\athome\mittel Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
-        \item{}\atschool\note Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \enquote{Du musst nur eine raffiniertere Potenzialfunktion benutzen}, sagt er. Liegt er damit richtig?
-    \end{enumerate}
 \end{exercise}
 
 \begin{exercise}[Dynamische Hashtabelle]
@@ -101,9 +80,28 @@ def f($n$):
         Verändere nun deine Datenstruktur so, dass die \emph{worst-case} Laufzeit konstant ist, aber weiterhin nur $\Oh(n)$ Speicherplatz benutzt wird.
         (\emph{Tipp: \reflectbox{Kopiere bei jeder \texttt{set}-Operation in das neue Array}})
     \end{enumerate}
+\end{exercise}%
+%
+\section*{Weitere Aufgaben und mögliche Projekte}
+
+\begin{exercise}[Splay-Bäume][\bestehen]
+    % Algorithms and Data Structures 2 - amortized.pdf
+    Gegeben sei ein leerer Splay-Baum.
+    \begin{enumerate}
+        \item Füge die Schlüssel $41,38,31,12,19,8$ in der angegebenen Reihenfolge ein. Wie sieht der resultierende Splay-Baum aus?
+        \item Wie sieht der Splay-Baum aus, nachdem man Schlüssel $31$ entfernt hat?
+    \end{enumerate}
 \end{exercise}
 
-\section*{Optionale Aufgaben und mögliche Projekte}
+\begin{exercise}[Spiel-Bäume][\projekt]
+    % Algorithms and Data Structures 2 - amortized.pdf
+    Professor Sheldon schlägt die sogenannten Spiel-Bäume als eine einfachere Variante der Splay-Bäume vor. Hierbei verzichten wir innerhalb der \texttt{splay($x$)}-Methode auf die nervigen \emph{roller-coaster} und \emph{zig-zag} Transformationen, und führen stattdessen nur einfache Rotationen durch---so lange, bis $x$ an der Wurzel landet.
+    \begin{enumerate}
+        \item{}\mittel Was sind die amortisierten Kosten der Operation \texttt{splay($x$)}, wenn wir nur einfache Rotationen benutzen? Analysiere die Kosten mit derselben Potenzialfunktion, die wir für Splay-Bäume verwendet haben.
+        \item{}\mittel Was sind die gesamten (tatsächlichen) Kosten, wenn man zuerst $n$ Elemente mit den Schlüsseln $1,2,3,\dots,n$ der Reihenfolge nach in einen Spiel-Baum einfügt und dann in der gleichen Reihenfolge sucht?
+        \item{}\note Professor Sheldon behauptet, dass das Einfügen, Suchen und Löschen in Spiel-Bäumen amortisierte Kosten von $\Oh(\log n)$ hat. \enquote{Du musst nur eine raffiniertere Potenzialfunktion benutzen}, sagt er. Liegt er damit richtig?
+    \end{enumerate}
+\end{exercise}
 
 \begin{exercise}[Queues mit zwei Stacks][\projekt]\mbox{}\\
     Wir erinnern uns, dass ein Stack \texttt{S} eine Datenstruktur ist, die die Operationen \texttt{S.PUSH(x)}, \texttt{S.POP()} und \texttt{S.ISEMPTY()} unterstützt. Wir nehmen an, dass diese Operationen in konstanter \emph{worst-case} Zeit implementiert worden sind.
