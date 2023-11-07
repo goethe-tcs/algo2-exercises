@@ -11,24 +11,52 @@
 
 \section*{Dienstag}
 
-\begin{exercise}[Erwartungswerte]\
+\begin{exercise}[Erwartungswerte][\athome]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	\begin{enumerate}
-		\item Sei $X$ eine Zufallsvariable, die die Werte $2$, $5$ und $8$ mit den folgenden Wahrscheinlichkeiten annimmt:
+		\item\easy Sei $X$ eine Zufallsvariable, die die Werte $2$, $5$ und $8$ mit folgenden Wahrscheinlichkeiten annimmt:
 		\begin{align*}
-			\Pr[X=2] &= \tfrac{1}{3},\\
-			\Pr[X=5] &= \tfrac{1}{2},\\
-			\Pr[X=8] &= \tfrac{1}{6}.
+			\Pr[X=2] = \tfrac{1}{3}\,,\qquad
+			\Pr[X=5] = \tfrac{1}{2}\,,\qquad
+			\Pr[X=8] = \tfrac{1}{6}\,.
 		\end{align*}
-		Was ist der Erwartungswert von $X$?\\
+		Was ist der Erwartungswert von $X$?
 		
-		\item Sei $Y$ eine Zufallsvariable, die den Wert $2^i$ für alle $i \in \{0,1,2,\dots\}$ mit Wahrscheinlichkeit $\Pr[Y=2^i]$ annimmt, wobei \[\Pr[Y=2^i]= \frac{1}{2^{(i+1)}}\,.\]
+		\item\medium Sei $Y$ eine Zufallsvariable, die den Wert $2^i$ mit Wahrscheinlichkeit $2^{-(i+1)}$ für alle $i \in \{0,1,2,\dots\}$ annimmt.
+		% \item\medium Sei $Y$ eine Zufallsvariable, die den Wert $2^i$ mit Wahrscheinlichkeit $\Pr[Y=2^i]$ für alle $i \in \{0,1,2,\dots\}$ annimmt, wobei \[\Pr[Y=2^i]= \frac{1}{2^{(i+1)}}\,.\]
 		Was ist der Erwartungswert von $Y$?
 	\end{enumerate}	
 \end{exercise}
 
 
-\begin{exercise}[Analyse von Selection]\
+\begin{exercise}[Weihnachtsfeier][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=239339}{moodle}\athome]
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh wissen, wer die meisten Kekse im \glqq Bing or Ding\grqq{}-~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor: 
+
+	\begin{algorithm}[H]
+		max $\gets -\infty$\\
+		$s \gets \text{null}$\\
+		Sei $S[1\dots n]$ ein Array mit Student:innen, zunächst initialisiert mit $S[i]=i$.\\
+		Permutiere das Array $S$ nun gleichverteilt zufällig, sodass eine zufällige Reihenfolge entsteht.\\
+		Sei $K[i]$ die von Student:in $S[i]$ gewonnene Anzahl an Keksen.\\
+		\For{$i = 1,\dots,n$}{
+			\If{$K[i] >$ {\upshape max}}{
+				max $\gets K[i]$ und $s \gets S[i]$ \qquad $(\ast)$\\
+				}
+			}
+		\Return{$s$}
+		\caption{Finde Student:in mit den meisten Keksen}
+\end{algorithm}
+	
+	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Keksen gewonnen haben, das heißt wir haben $K[i] \neq K[j]$ für alle $i,j$ mit $i \neq j$.
+	\begin{enumerate}
+		\item\easy Was ist die Wahrscheinlichkeit dafür, dass die im Code mit $(\ast)$ markierte Zeile in der letzten Iteration der for-Schleife ausgeführt wird?
+		\item\medium Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $\Pr(X_i = 1)$. \tipp{$X_n$ kennst du schon aus der ersten Teilaufgabe}
+		\item\hard Wie oft wird die $(\ast)$-Zeile ausgeführt? Berechne den Erwartungswert für die Anzahl der Ausführungen. \tipp{Benutze die Zufallsvariablen $X_i$}
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Analyse von Selection][\atschool\medium]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
 	In Abschnitt 13.5 (\textbf{KT}) wurde die erwartete Laufzeit von \textsc{Selection} analysiert.
 	Anstatt eine Phase wie im Buch zu definieren, definieren wir eine Phase wie folgt:
@@ -38,83 +66,39 @@
 	Führe die Analyse von \textsc{Selection} mit der neuen Phasendefinition durch. Erreicht man mit dieser Analyse im Erwartungswert immer noch eine lineare Laufzeit?
 \end{exercise}    
 
-\begin{exercise}[Weihnachtsfeier im Institut]
-	% Algorithms and Data Structures 2 - randomizedII.pdf
-	Während der Weihnachtsfeier des Instituts für Informatik möchte Professor Regloh wissen, wer die meisten Cookies im \glqq Bing or Ding\grqq{}-~Spiel gewonnen hat. Er schlägt den folgenden Algorithmus vor: 
-
-	\begin{algorithm}[H]
-		\SetAlgoLined
-		max $\gets -\infty$\\
-		$s \gets \text{null}$\\
-		Permutiere die Student:innen gleichverteilt zufällig. \\
-		Sei $s_1,\dots,s_n$ die gezogene Reihenfolge.\\
-		Sei $c_i$ die von Student:in $s_i$ gewonnene Anzahl an Cookies.\\
-		\For{$i = 1,\dots,n$}{
-			\If{$c_i >$ {\upshape max}}{
-				max $\gets c_i$ and $s \gets s_i$ \qquad $(\ast)$\\
-				}
-			}
-		\Return{$s$}
-		\caption{Finde Student:in mit den meisten Cookies}
-\end{algorithm}
-	
-	Nimm an, dass alle Student:innen eine unterschiedliche Anzahl an Cookies gewonnen haben, d.h. $c_i \neq c_j$ gilt für alle $i,j$ mit $i \neq j$.
-	\begin{enumerate}
-		\item Was ist die Wahrscheinlichkeit, dass die im Code mit $(\ast)$ markierte Zeile in der letzten Iteration ausgeführt wird?
-		\item Sei $X_i$ eine Zufallsvariable. Sie nimmt den Wert $1$ an, wenn die $(\ast)$-Zeile in Iteration $i$ ausgeführt wird, und $0$ wenn nicht. Berechne $\Pr(X_i = 1)$.% Was ist die Wahrscheinlichkeit, dass $X_i = 1$ ist?\\
-		\item Wie oft wird die $(\ast)$-Zeile in Erwartung ausgeführt? Berechne den Erwartungswert.
-	\end{enumerate}
-\end{exercise}
-
 \section*{Donnerstag}
 
-\begin{exercise}[Schrauben und Muttern]
+\begin{exercise}[Bierkisten][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=239340}{moodle}\athome]
 	% Algorithms and Data Structures 2 - randomizedII.pdf
-	% But taken from http://algs4.cs.princeton.edu/23quicksort/
-	Beim Ausmisten deines Kellers hast du genau $N$ Muttern und $N$ Schrauben gefunden.
-	% Du hast deinen Keller ausgemistet und dabei einen großen Haufen von $N$ Muttern und $N$ Schrauben gefunden. 
-	Intuitiv weißt du, dass jede Mutter zu \emph{genau} einer Schraube und jede Schraube zu \emph{genau} einer Mutter passt, obwohl es nicht möglich ist, ein Paar von Mutter und Schraube mit bloßem Auge zu vergleichen. 
-	Um einen Vergleich durchzuführen, musst du die Mutter an der Schraube anbringen und herauszufinden, welches der beiden Teile größer ist. 
-
-	Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt. 
-	Gib einen effizienten randomisierten Algorithmus an, der so schnell wie möglich herausfindet, welche Paare zusammenpassen. 
-	
-	\textit{Hinweis:} Modifiziere QuickSort für dieses Problem.
-\end{exercise}
-
-\begin{exercise}[Bierkisten]
-	% Algorithms and Data Structures 2 - randomizedII.pdf
-	Von $n$ Bierkisten $B_1,\dots,B_n$ enthalten genau $k$ Kisten eine Flasche Bier $(k \leq n)$, während die restlichen Kisten leer sind. Du kannst mit bloßem Auge nicht sehen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, eine Flasche Bier in einer Kiste zu finden. Dafür schlagen wir einen deterministischen und zwei randomisierte Algorithmen vor:
+	Von $n$ Bierkisten $B_1,\dots,B_n$ enthalten genau $k$ Kisten eine Flasche Bier $(k \leq n)$, während die restlichen Kisten leer sind. Du kannst mit bloßem Auge nicht erkennen, welche der Kisten leer sind und welche nicht. Das Ziel ist es, eine Flasche Bier in einer Kiste zu finden. Dafür schlagen wir einen deterministischen und zwei randomisierte Algorithmen vor:
 	\begin{quote}
 		\textsc{FindeBier}:\\
-		Öffne die Kisten $B_1,B_2,\dots$ der Reihenfolge nach, wobei das Öffnen einer Kiste einem Rechenschritt entspricht.
-		Der Algorithmus terminiert, wenn ein Bier gefunden wurde. 
+		Öffne die Kisten $B_1,\dots,B_n$ der Reihenfolge nach, wobei das \enquote{Öffnen} einer Kiste einem Rechenschritt entspricht.
+		Der Algorithmus terminiert, sobald ein Bier gefunden wurde.
 
 		\textsc{FindeZufälligBier}:\\
-		Wähle zufällig eine Zahl $i \in \{1,2,\dots,n\}$ und öffne die Kiste $B_i$.
-		Der Algorithmus terminiert, wenn ein Bier gefunden wurde. 
+		Solange noch kein Bier gefunden wurde, wähle eine uniform zufällige Zahl $i \in \{1,2,\dots,n\}$ und öffne die Kiste $B_i$.
 
 		\textsc{FindeZufälligUngeöffnetesBier}:\\
-		Wähle zufällig eine noch nicht geöffnete Kiste aus und öffne diese.	
-		Der Algorithmus terminiert, wenn ein Bier gefunden wurde. 
+		Solange noch kein Bier gefunden wurde, wähle uniform zufällig eine bisher noch nicht geöffnete Kiste aus und öffne diese.	
 	\end{quote}
 	
 	\begin{enumerate}
-		\item Was ist die \textit{best-case}~Laufzeit von \textsc{FindeBier}?
-		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeBier}?
+		\item\easy Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeBier}?
+		\item\easy Was ist die \textit{best-case}~Laufzeit von \textsc{FindeBier}?
 	\end{enumerate}
 		
 	\begin{enumerate}
 		\setcounter{enumi}{2}
-		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligBier}?
-		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligBier}?
+		\item\easy Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligBier}?
+		\item\medium Was ist die erwartete Laufzeit von \textsc{FindeZufälligBier}?
 	\end{enumerate}	
 	
 	\begin{enumerate}
 		\setcounter{enumi}{4}
-		\item Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
-		\item Was ist die erwartete Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
-		\item[] Betrachte hierzu folgende Hilfestellung: Sei $X$ die Anzahl der vom Algorithmus geöffneten Kisten. Sei $X_i$ eine Indikatorvariable für jede \emph{leere} Kiste $i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. 
+		\item\easy Was ist die \textit{worst-case}~Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
+		\item\hard Was ist die erwartete Laufzeit von \textsc{FindeZufälligUngeöffnetesBier}?
+		\item[] Betrachte hierzu folgende Hilfestellung: Sei $X$ die Anzahl der vom Algorithmus geöffneten Kisten. Sei $X_i$ eine Indikatorvariable für jede \emph{leere} Kiste $B_i$. Wenn die Kiste geöffnet wurde, ist $X_i = 1$, sonst ist $X_i = 0$. 
 		\begin{itemize}[topsep=0.21cm, leftmargin=1.2cm]
 			\item[f$_1$)] Stelle $X$ durch die $X_i$ dar, in der Form $X = .....$.
 			\item[f$_2$)] Was ist der Erwartungswert von $X_i$?
@@ -124,6 +108,23 @@
 	\end{enumerate}
 \end{exercise}
 
+
+\begin{exercise}[Schrauben und Muttern][\atschool\hard]
+	% Algorithms and Data Structures 2 - randomizedII.pdf
+	% But taken from http://algs4.cs.princeton.edu/23quicksort/
+	Beim Ausmisten deines Kellers hast du genau $N$ Muttern und $N$ Schrauben gefunden.
+	Du erinnerst dich, dass jede Mutter zu \emph{genau} einer Schraube und jede Schraube zu \emph{genau} einer Mutter passt.
+	Aber es nicht möglich ist, ein Paar von Mutter und Schraube mit bloßem Auge zu vergleichen. 
+	Um einen Vergleich durchzuführen, musst du die Mutter an der Schraube anbringen und herausfinden, welches der beiden Teile größer ist. 
+
+	Für dieses Problem ist nur ein sehr komplizierter deterministischer Algorithmus mit Laufzeit $\Oh(N \log N)$ bekannt.
+	Randomisierte Algorithmen dafür sind deutlich einfacher.
+	Gib einen randomisierten Algorithmus an, der mit möglichst wenigen Vergleichen herausfindet, welche Paare zusammenpassen. 
+	
+	\tipp{Modifiziere QuickSort für dieses Problem}
+\end{exercise}
+
+\clearpage
 \section*{Weitere Aufgaben und Projekte}
 
 \begin{exercise}[Randomisierte Pivotwahl][\projekt]
@@ -143,9 +144,9 @@
 		\end{itemize}
 	\end{quote}
 	\begin{enumerate}
-		\item Was ist die Laufzeit von \textsc{SamplePivot}? (Ohne Begründung.)
-		\item Berechne $\Pr\Big(\frac{n}{4}<r(p_i)\le\frac{3n}{4}\Big)$ für alle $i\in\{1,\dots,7\}$ und begründe deine Antwort.
-		\item Sei
+		\item\easy Was ist die Laufzeit von \textsc{SamplePivot}? (Ohne Begründung.)
+		\item\medium Berechne $\Pr\Big(\frac{n}{4}<r(p_i)\le\frac{3n}{4}\Big)$ für alle $i\in\{1,\dots,7\}$ und begründe deine Antwort.
+		\item\hard Sei
 		\[X_i=
 		\begin{cases}
 			1,&\text{wenn }
@@ -154,9 +155,9 @@
 		\end{cases}
 		\]
 		Sei $X=\sum_{i=1}^7 X_i$.
-		Berechne $\Pr\left(X\ge 4\right)$ und begründe deine Antwort.
-		\item Berechne $\Pr\Big(\frac{n}{4}<r(\text{\textsc{SamplePivot($A$)}})\le\frac{3n}{4}\Big)$ und begründe deine Antwort.
-		\item Wir wiederholen \textsc{SamplePivot($A$)} jetzt unabhängig so oft, bis das Ereignis \[\tfrac{n}{4}<r(\text{\textsc{SamplePivot($A$))}}\le\tfrac{3n}{4}\] zum ersten Mal eintritt. Sei $W$ die Anzahl der Wiederholungen. Was ist der Erwartungswert von~$W$? Begründe deine Antwort.
+		Berechne $\Pr\big(X\ge 4\big)$ und begründe deine Antwort.
+		\item\medium Berechne $\Pr\Big(\frac{n}{4}<r(\text{\textsc{SamplePivot($A$)}})\le\frac{3n}{4}\Big)$ und begründe deine Antwort.
+		\item\medium Wir wiederholen \textsc{SamplePivot($A$)} jetzt unabhängig so oft, bis das Ereignis \[\tfrac{n}{4}<r(\text{\textsc{SamplePivot($A$))}}\le\tfrac{3n}{4}\] zum ersten Mal eintritt. Sei $W$ die Anzahl der Wiederholungen. Was ist der Erwartungswert von~$W$? Begründe deine Antwort.
 	\end{enumerate}
 \end{exercise}
 
