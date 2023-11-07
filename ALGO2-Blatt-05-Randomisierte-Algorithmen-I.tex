@@ -1,4 +1,4 @@
-% !TeX spellcheck = de_DE
+% LTeX: language=de_DE
 \documentclass{uebung_cs}
 \usepackage{algo223}
 \uebung{5}{}{}
@@ -16,7 +16,7 @@
 	Inwiefern passt dein Ergebnis zu der theoretisch vorhergesagten Anzahl an benötigten Runden zusammen?
 \end{exercise}    
 
-\begin{exercise}[Mehrheit][\athome]
+\begin{exercise}[Mehrheit][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=239323}{moodle}\athome]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat. Im Folgenden ist der randomisierte Algorithmus \textsc{FindeMehrheitsElement} beschrieben, der das Mehrheitselement finden soll.
 	
@@ -32,7 +32,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Wahrscheinlichkeitsrechnung][\athome]\
+\begin{exercise}[Wahrscheinlichkeitsrechnung][\atschool]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	\begin{enumerate}
 		\item\easy
@@ -75,16 +75,14 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Schneller Kontraktionsalgorithmus][\medium]
+\begin{exercise}[Schneller Kontraktionsalgorithmus][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=239326}{moodle}\athome\\\medium]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe deine Lösung als Pseudocode, unter Verwendung aller nötigen Datenstrukturen und Algorithmen. Analysiere die Laufzeit sowie den Platzverbrauch.
 \end{exercise}
 
-\section*{Weitere Aufgaben und Projekte}
-
-\begin{exercise}[Kontraktionsalgorithmus analysieren][\projekt]
+\begin{exercise}[Kontraktionsalgorithmus analysieren][\atschool]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Betrachte die folgende Analyse der Erfolgswahrscheinlichkeit für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
+	Wir vervollständigen jetzt die Analyse der Erfolgswahrscheinlichkeit des Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
 	\begin{align}
 		&\nonumber\Pr(E_{n-2} \cap \cdots \cap E_1) \\
 		&= \Pr(E_{n-3} \cap \cdots \cap E_1) \cdot \Pr(E_{n-2}|E_{n-3} \cap \cdots \cap E_1) \\
@@ -101,6 +99,9 @@
 		\item\easy Zeige (5) durch elementare Algebra.
 	\end{enumerate}
 \end{exercise}
+
+\clearpage
+\section*{Weitere Aufgaben und Projekte}
 
 \begin{exercise}[Zufällige Konfliktfreiheit][\projekt]
 	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, ist eine verteilte Konstruktion eines Independent Set.
