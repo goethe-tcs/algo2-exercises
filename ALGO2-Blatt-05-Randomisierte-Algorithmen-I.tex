@@ -1,59 +1,58 @@
 % !TeX spellcheck = de_DE
 \documentclass{uebung_cs}
-\usepackage{algo221}
+\usepackage{algo223}
 \uebung{5}{}{}
 \blattname{Übungen zu Woche 5: Randomisierte Algorithmen I}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
-
-\begin{itemize}
-\item \textbf{Heimarbeit bis Montag 17:00.}
-    \begin{itemize}
-    \item 
-    Schau die Videos an und lies die Buchkapitel.
-    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
-    \item Lese den Aufgabentext aller Übungsaufgaben.
-    \end{itemize}
-\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
-\item \textbf{Dienstag/Donnerstag.}
-\begin{itemize}
-    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
-    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
-    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
-\end{itemize}
-
-\item \textbf{Heimarbeit bis Freitag, den 19.11., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
-\end{itemize}
-
 \section*{Dienstag}
 
-\begin{exercise}[Wahrscheinlichkeitsrechnung]\
-	% Algorithms and Data Structures 2 - randomizedI.pdf
-	\begin{enumerate}
-		\item 
-		Seien $E$ und $F$ zwei Ereignisse, für die $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$ gelten. Zeige, dass dann auch $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$ gilt.
-		\item Betrachte \textit{contention resolution} mit $n$ Prozessen. Betrachte die folgende Anwendung der \textit{union bound} aus der Vorlesung:
-		\[
-			\Pr\left(\bigcup_{i=1}^n F_{i,t}\right)
-			\le
-			\sum_{i=1}^n \Pr(F_{i,t})\,.
-		\]
-		Hierbei ist $F_{i,t}$ das Ereignis, dass Prozess $i$ es in keiner der Runden $1,\dots,t$ geschafft hat, auf die Datenbank zuzugreifen.
-		Sind die einzelnen Ereignisse~$F_{i,t}$ hierbei disjunkt oder überschneiden sie sich?
-	\end{enumerate}
-\end{exercise}
-
-\begin{exercise}[Contention Resolution]\
+\begin{exercise}[Contention Resolution][\athome\easy]\
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Führe das \textit{contention resolution} Protokoll mit $4$ Prozessen von Hand aus. Benutze hierzu zwei Münzen und werfe sie, um die zufällige Auswahl zu simulieren.
 	Wie viele Runden hast du gebraucht, bis alle Prozesse erfolgreich auf die Datenbank zugegriffen haben?
 	Inwiefern passt dein Ergebnis zu der theoretisch vorhergesagten Anzahl an benötigten Runden zusammen?
 \end{exercise}    
 
-\begin{exercise}[Minimaler Schnitt]
+\begin{exercise}[Mehrheit][\athome]
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat. Im Folgenden ist der randomisierte Algorithmus \textsc{FindeMehrheitsElement} beschrieben, der das Mehrheitselement finden soll.
+	
+	\begin{quote}
+		\textsc{FindeMehrheitsElement}$(x_1,\dots,x_n)$: \\
+		Ziehe einen Index $i$ uniform zufällig aus $\{1,\dots,n\}$. Prüfe dann, ob $x_i$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, dann gib $x_i$ aus. Ansonsten gib aus, dass es kein Mehrheitselement gibt.
+	\end{quote}
+	\begin{enumerate}
+		\item\easy Was ist die Laufzeit von \textsc{FindeMehrheitsElement}?
+		\item\easy Kann \textsc{FindeMehrheitsElement} ein Mehrheitselement zurückgeben, wenn die Sequenz keines hat? Begründe deine Antwort.
+		\item\easy Kann \textsc{FindeMehrheitsElement} ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
+		\item\medium Bestimme die Wahrscheinlichkeit, dass \textsc{FindeMehrheitsElement} eine falsche Antwort liefert.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Wahrscheinlichkeitsrechnung][\athome]\
+	% Algorithms and Data Structures 2 - randomizedI.pdf
+	\begin{enumerate}
+		\item\easy
+		Seien $E$ und $F$ zwei Ereignisse mit $\Pr(E | F) = \Pr(E)$ und $\Pr(F | E) = P(F)$. Zeige, dass dann auch $\Pr(E \cap F) = \Pr(E) \cdot \Pr(F)$ gilt.
+		\tipp{Benutze die Definition der bedingten Wahrscheinlichkeit}
+		\item\medium
+		Betrachte die folgende Anwendung der \textit{union bound} auf den Folien zu \textit{contention resolution} mit $n$ Prozessen:
+		\[
+			\Pr\left(\bigcup_{i=1}^n F_{i,t}\right)
+			\le
+			\sum_{i=1}^n \Pr(F_{i,t})\,.
+		\]
+		Hierbei ist $F_{i,t}$ das Ereignis, dass Prozess $i$ es in keiner der Runden $1,\dots,t$ geschafft hat, auf die Datenbank zuzugreifen.
+		Sind die einzelnen Ereignisse~$F_{i,t}$ hierbei disjunkt oder überschneiden sie sich? Warum?
+	\end{enumerate}
+\end{exercise}
+
+\section*{Donnerstag}
+
+\begin{exercise}[Minimaler Schnitt][\athome]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte den Beispielgraphen zum Kontraktionsalgorithmus aus der Vorlesung:
 	\begin{center}
@@ -71,19 +70,19 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
         \end{tikzpicture}
 	\end{center}
 	\begin{enumerate}
-		\item Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht minimalen Schnitt führt.
-		\item Berechne die genaue Wahrscheinlichkeit, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
+		\item\easy Zeige, dass es eine Sequenz von Kontraktionen gibt, die zu einem nicht-minimalen Schnitt führt.
+		\item\medium Berechne die genaue Wahrscheinlichkeit dafür, dass der Kontraktionsalgorithmus den minimalen Schnitt ausgibt.
 	\end{enumerate}
 \end{exercise}
 
-\section*{Donnerstag}
-
-\begin{exercise}[Schneller Kontraktionsalgorithmus]
+\begin{exercise}[Schneller Kontraktionsalgorithmus][\medium]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe alle nötigen Datenstrukturen und Algorithmen und analysiere die Laufzeit sowie den Platzverbrauch.
+	Wie kann man den Kontraktionsalgorithmus für minimale Schnitte effizient implementieren? Beschreibe deine Lösung als Pseudocode, unter Verwendung aller nötigen Datenstrukturen und Algorithmen. Analysiere die Laufzeit sowie den Platzverbrauch.
 \end{exercise}
 
-\begin{exercise}[Kontraktionsalgorithmus analysieren]
+\section*{Weitere Aufgaben und Projekte}
+
+\begin{exercise}[Kontraktionsalgorithmus analysieren][\projekt]
 	% Algorithms and Data Structures 2 - randomizedI.pdf
 	Betrachte die folgende Analyse der Erfolgswahrscheinlichkeit für den Kontraktionsalgorithmus. Die folgende Herleitung führt zum gewünschten Ergebnis:
 	\begin{align}
@@ -95,44 +94,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		&= \left(\frac{2}{n(n-1)}\right) \geq \frac{2}{n^2}
 	\end{align}
 	\begin{enumerate}
-		\item Benutze zwei verschiedene Wege, um (1) zu zeigen. Erstens, indem du die Formel für die bedingte Wahrscheinlichkeit benutzt. Zweitens, mache dir bewusst, was die linke und rechte Seite bedeuten.
-		\item Zeige (2). 
-		\item[] \textit{Hinweis:} Benutze das Ergebnis aus Teilaufgabe a)
-		\item Schätze jeden Faktor einzeln ab, um (3) zu zeigen. 
-		\item Zeige (4).
-		\item Zeige (5).
+		\item\easy\label{conditional} Zeige~(1) formal, indem du die Definition der bedingten Wahrscheinlichkeit benutzt. Erkläre außerdem die Intuition, indem du dir bewusst machst, was die linke und rechte Seite bedeuten.
+		\item\mittel Zeige (2). \tipp{Wende die Aussage aus Teilaufgabe~\ref{conditional} induktiv an}
+		\item\easy Zeige (3), indem du jeden Faktor einzeln abschätzt.
+		\item\mittel Zeige (4). \tipp{Teleskopprodukt}
+		\item\easy Zeige (5) durch elementare Algebra.
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Mehrheit]
-	% Algorithms and Data Structures 2 - randomizedI.pdf
-	Gegeben ist eine Sequenz $x_1,x_2,\dots,x_n$ von $n$ ganzen Zahlen. Die Sequenz hat das \textit{Mehrheitselement}~$t$, wenn die Zahl $t$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Zum Beispiel hat die Sequenz $1,2,3,1,2,2,2$ das Mehrheitselement $2$, während die Sequenz $2,2,1,2,3,3$ kein Mehrheitselement hat. Im Folgenden ist der randomisierter Algorithmus \textsc{FindeMehrheitsElement} beschrieben, der das Mehrheitselement finden soll.
-	
-	\begin{quote}
-		\textsc{FindeMehrheitsElement}: \\
-		Ziehe eine uniform zufällige Zahl $x_i$ aus der Sequenz. Prüfe dann, ob $x_i$ öfter als $\frac{n}{2}$-mal in der Sequenz vorkommt. Wenn ja, dann ist $x_i$ das Mehrheitselement. Wenn das nicht der Fall ist, gibt der Algorithmus aus, dass es kein Mehrheitselement gibt.
-	\end{quote}
-	\begin{enumerate}
-		\item Was ist die Laufzeit von \textsc{FindeMehrheitsElement}?
-		\item Kann \textsc{FindeMehrheitsElement} ein Mehrheitselement zurückgeben, wenn die Sequenz keines hat? Begründe deine Antwort.
-		\item Kann \textsc{FindeMehrheitsElement} ausgeben, dass kein Mehrheitselement existiert, obwohl die Sequenz ein solches besitzt? Begründe deine Antwort.
-		\item Bestimme die Wahrscheinlichkeit, dass \textsc{FindeMehrheitsElement} eine falsche Antwort liefert.
-	\end{enumerate}
-\end{exercise}
-
-\newpage
-\section*{Sternaufgabe}
-
-\begin{exercise}[\emoji{star}: Zufällige Konfliktfreiheit]
+\begin{exercise}[Zufällige Konfliktfreiheit][\projekt]
 	In Abschnitt 13.1 (\textbf{KT}) haben wir ein einfaches verteiltes Protokoll gesehen, um ein \textit{contention resolution} Problem zu lösen. Eine zweite Möglichkeit, um \textit{contention resolution} mittels Randomisierung zu lösen, ist eine verteilte Konstruktion eines Independent Set.
 
-	In einem System mit $n$ Aufgaben stehen einige Paare von Aufgaben miteinander im Konflikt, beispielsweise wenn beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
+	In einem System mit $n$ Aufgaben $P_1,\dots,P_n$ stehen einige Paare von Aufgaben miteinander im Konflikt, beispielsweise wenn beide Aufgaben Zugang zu derselben Ressource brauchen. Das Ziel ist es, in einem gegebenen Zeitintervall eine möglichst große Menge~$S$ von ausführbaren Aufgaben zu finden, sodass keine zwei Aufgaben aus $S$ in einem Konflikt stehen. Die Menge~$S$ nennen wir \textit{konfliktfrei}.
 	
 	Diesen Vorgang kann man sich als einen Graphen $G = (V,E)$ vorstellen. Dabei repräsentiert jeder Knoten $v \in V$ eine Aufgabe und eine Kante $e = (u,v)$ stellt einen Konflikt zwischen zwei Aufgaben $u$ und $v$ dar. Ist eine Menge~$S$ von Aufgaben konfliktfrei, bilden sie eine \emph{unabhängige Menge} (\emph{independent set}) in $G$. 
-	Da man das allgemeine Independent Set Problem auf dieses Problem reduzieren kann, ist es schwierig, eine maximale und konfliktfreie Menge $S$ für einen beliebigen Konfliktgraphen $G$ zu finden. 
+	Es ist im Allgemeinen schwierig, eine maximale und konfliktfreie Menge~$S$ für einen beliebigen Konfliktgraphen~$G$ zu finden.
 	
-	Deshalb benutzen wir eine Heuristik mit einer einfachen dezentralisierten Methode, die eine vernünftig große und konfliktfreie Menge findet: Jede Aufgabe kommuniziert nur mit einer kleinen Anzahl anderer Aufgaben und entscheidet dann, ob sie in die Menge~$S$ gehört oder nicht.
-	Wir nehmen an, dass jeder Knoten genau $d$ Nachbarn in $G$ hat. Das heißt, jede Aufgabe hat einen Konflikt zu genau $d$ anderen Aufgaben. Schaue dir nun das folgende Verfahren an:
+	Deshalb benutzen wir eine Heuristik mit einer einfachen dezentralisierten Methode, die eine vernünftig große und konfliktfreie Menge findet: Jede Aufgabe \enquote{kommuniziert} nur mit den Aufgaben, mit denen sie in Konflikt steht, und entscheidet dann, ob sie in die Menge~$S$ gehört oder nicht.
+	Wir nehmen an, dass der Konfliktgraph~$G$ $d$-regulär ist, das heißt, jeder Knoten hat genau~$d$ Nachbarn. Schaue dir nun das folgende Verfahren an:
 	
 	\begin{quote}
 		\textsc{FindeKonfliktfreieMenge}: \\
@@ -140,8 +119,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{quote}
 	
 		\begin{enumerate}
-		\item Beweise, dass die durch \textsc{FindeKonfliktfreieMenge} entstehende Menge~$S$ immer konfliktfrei ist.
-		\item Gib außerdem eine Formel für die erwartete Größe von $S$ in Abhängigkeit der Anzahl $n$ an Aufgaben und der Anzahl~$d$ an Konflikten pro Aufgabe an. Begründe, warum deine Formel korrekt ist.
+		\item\medium Beweise, dass die durch \textsc{FindeKonfliktfreieMenge} entstehende Menge~$S$ immer konfliktfrei ist.
+		\item\hard Gib außerdem eine Formel für $\mathbf{E}[|S|]$ an, also die erwartete Größe von $S$, in Abhängigkeit von der Anzahl $n$ an Aufgaben und der Anzahl~$d$ an Konflikten pro Aufgabe. Begründe, warum deine Formel korrekt ist.
 	\end{enumerate}
 \end{exercise}
 

@@ -1,4 +1,4 @@
-% !TeX spellcheck = de_DE
+% LTeX: language=de_DE
 \documentclass{uebung_cs}
 \usepackage{algo223}
 \uebung{4}{}{}
@@ -32,17 +32,22 @@ Analysiere die amortisierte Laufzeit von \texttt{g()}.
 %     Was ist die amortisierte Laufzeit der Operation \texttt{Foo()}? Benutze sowohl die Aggregationsmethode, als auch das Buchhalter-Argument (\textit{accounting method}), um die amortisierte Laufzeit zu analysieren.
 % \end{exercise}
 
-\begin{exercise}[Mengenvereinigung]
+\begin{exercise}[Mengenvereinigungen]
     % Algorithms and Data Structures 2 - amortized.pdf
-    \emph{Mengenvereinigung} ist eine abstrakte Datenstruktur, die disjunkte Teilmengen von $\{1,\dots,n\}$ verwaltet (ganz ähnlich zu Union-Find).
+    Wir betrachten eine abstrakte Datenstruktur, die disjunkte Teilmengen von $\{1,\dots,n\}$ verwaltet (ganz ähnlich zur Union-Find).
     Anfangs sind die Elemente auf $n$ einzelne Mengen aufgeteilt, also $\{1\}, \{2\}, \dots,\{n\}$.
-    Die Datenstruktur soll die folgenden Operationen unterstützen:
+    Die Datenstruktur unterstützt die folgenden Operationen:
     \begin{itemize}
         \item Union($A,B$): Führe die beiden Mengen $A$ und $B$ zu einer neuen Menge $C = A \cup B$ zusammen und lösche die alten Mengen $A$ und $B$.
         \item SameSet($x,y$): Gebe \textit{true} zurück, wenn $x$ und $y$ in derselben Menge liegen, ansonsten gebe \textit{false} zurück.
     \end{itemize}
-    Diese Operationen können wir folgendermaßen implementieren: Weise jeder Menge am Anfang eine eigene \enquote{Farbe} zu, das heißt, eine Zahl aus $\{1,\dots,n\}$. Um die Union-Operation zu unterstützen, übernimm für alle Elemente in der kleineren Menge die Farbe der größeren Menge (bei Gleichstand wird die Farbe der Menge $A$ gewählt). Um die SameSet-Operation zu beantworten, überprüfe, ob die zwei Elemente dieselbe Farbe haben.
+    Wir implementieren diese Operationen nun nicht mit \emph{Weighted Quick-Union}, sondern mithilfe einer Variante von \emph{Quick-Find}, die wir \emph{Weighted Quick-Find} nennen.
+    Hierbei speichern wir wie bei \emph{Quick-Find} ein Array~$F[1\dots n]$, das jedem Element eine \enquote{Farbe} zuordnet; eine Zahl $F[i]\in\{1,\dots,n\}$ heißt hierbei, dass Element~$i$ die Farbe~$F[i]$ erhält.
+    Außerdem wird ein Array $M[1\dots n]$ aufrecht erhalten, das für jede Farbe $f\in\{1,\dots,n\}$ die Einträge $M[f].\mathtt{list}$ und  $M[f].\mathtt{length}$ enthält. Hier ist $M[f].\mathtt{list}$ eine verkettete Liste aller Elemente~$i\in\{1,\dots,n\}$ mit $F[i]=f$ und $M[f].\mathtt{length}$ ist die Länge der Liste $M[f].\mathtt{list}$.
+    Die Union-Operation übernimmt für alle Elemente in der kleineren Menge die Farbe der größeren Menge (bei Gleichstand wird die Farbe der Menge $A$ gewählt). Die SameSet-Operation überprüft, ob die zwei Elemente dieselbe Farbe haben.
 
+    Wir werden nun folgendes beobachten:
+    Aus Sicht der worst-case Laufzeit ist die Union-Operation von \emph{Weighted Quick-Find} viel schlechter als \emph{Weighted Quick-Union}, aber die amortisierten Kosten sind asymptotisch gleich.
     \begin{enumerate}
         \item\athome Schreibe die Datenstruktur mit ihren beiden Operationen als Code oder Pseudocode auf.
         \item\athome Analysiere die \textit{worst-case} Laufzeit der beiden Operationen.
