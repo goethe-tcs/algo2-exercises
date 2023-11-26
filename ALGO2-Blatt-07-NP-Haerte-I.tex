@@ -26,8 +26,9 @@ Hinweis: Auf \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/qu
 	% \end{figure}
 	\begin{figure}[ht]
 		\begin{center}
-			\begin{circuitikz}
+			\begin{circuitikz}[scale=0.7,transform shape]
 				\ctikzset{logic ports=ieee}
+				\coordinate (branch2) at (-2,-1);
 				\draw
 				(0,2)  node[and port] (and_1) {}
 				(0,0)  node[or port]  (or_1)  {}
@@ -40,13 +41,35 @@ Hinweis: Auf \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/qu
 				(not_1.out) -| (and_2.in 2)
 				(and_2.out) -| (or_2.in 2)
 				(not_2.out) -| (or_2.in 1)
-				(or_2.out) -- ++(1,0) node[near end,above]{$z$}
+				(or_2.out) -- ++(1,0) node[near end,above]{\scalebox{1.428}{$z$}};
 
-				(and_1.in 1) -- ++(-1.5,0)node[left](In1){$x_1$}
-				(and_1.in 2) -- ++(-1.5,0)node[left](In2){$x_2$}
-				(or_1.in 1) -- (In2)
-				(not_1.in) -- ++(-1.5,0)node[left](In3){$x_3$}
-				(or_1.in 2) -- (In3);
+				\coordinate (In1) at ($ (and_1.in 1) + (-1.5,0) $);
+				\coordinate (In2) at ($ (and_1.in 2) + (-1.5,0) $);
+				\coordinate (In3) at ($ (or_1.in 2) + (-1.5,0) $);
+				\node[left] at (In1) {\scalebox{1.428}{$x_1$}};
+				\node[left] at (In2) {\scalebox{1.428}{$x_2$}};
+				\node[left] at (In3) {\scalebox{1.428}{$x_3$}};
+
+				% \coordinate (branch2) at (-2,1);
+				\draw
+				(In1) -| (and_1.in 1);
+
+				\draw
+				(In2) -| (and_1.in 2)
+				(In2) -| (or_1.in 1);
+
+				\draw
+				(In3) -| (or_1.in 2)
+				(In3) -| (not_1.in);
+
+				% \draw[red]
+				% (and_1.in 1) -- ++(-1.5,0)node[left](In11){\scalebox{1.428}{$x_1$}}
+				% % (and_1.in 2) -- ++(-1.5,0)node[left](In2){\scalebox{1.428}{$x_2$}}
+				% % (or_1.in 1) -- (In2)
+				% (and_1.in 2) -- ++(-1.5,0)node[left](In22){\scalebox{1.428}{$x_2$}}
+				% (or_1.in 1) -- (In2)
+				% (not_1.in) -- ++(-1.5,0)node[left](In33){\scalebox{1.428}{$x_3$}}
+				% (or_1.in 2) -- (In33);
 			\end{circuitikz}
 		\end{center}
 	\end{figure}

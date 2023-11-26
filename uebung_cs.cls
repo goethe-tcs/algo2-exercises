@@ -325,6 +325,7 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 \usepackage{xparse}
 \xdef\numberprefix{}
 \NewDocumentEnvironment{exerciseLarge}{O{} O{}}{%
+	\par\nopagebreak%
     % \begin{samepage}%
 		\bfseries\smash{\llap{\myrightbox{%
 			\numberprefix\arabic{aufgabennr}\hskip\labelsep\\%
@@ -333,6 +334,7 @@ colframe=orange!80!gray,fonttitle=\scriptsize,title=#1, center title]{#2}}
 		\ifthenelse{\equal{#1}{}}{}{#1.\\}\normalfont%
 }{%
     % \end{samepage}%
+	\par\nopagebreak%
 	\stepcounter{aufgabennr}%
 }
 
