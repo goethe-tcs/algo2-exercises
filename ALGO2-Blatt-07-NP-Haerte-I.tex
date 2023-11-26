@@ -11,6 +11,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \section*{Dienstag}
+\vspace{-1em}
+Hinweis: Auf \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/questionnaire/view.php?id=241350}{Moodle} findet ihr eine Umfrage zu dieser Woche, bitte bis Montagabend ausfüllen.
 
 \begin{exercise}[Schaltkreise][\athome\easy]
 	% Eigenkreation
@@ -57,57 +59,37 @@
 	Gegeben ist eine aussagenlogische Formel in disjunktiver Normalform. DNF-\textsc{Sat} entscheidet, ob diese Formel erfüllbar ist.
 	\begin{enumerate}
 		\item\easy Beschreibe einen Algorithmus, der DNF-\textsc{Sat} in Polynomialzeit  löst.
-		\item\medium Prof.\ Regloh steht kurz vor dem Ruhestand und möchte am Ende seiner Forschungskarriere nochmal einen richtig großen Erfolg erzielen.
-		Seit ein paar Monaten schon hat er sich psychisch auffällig verhalten. Jetzt rennt er jubelnd auf dem Gelände der Universität am Campus Riedberg umher und schreit dir im Vorbeigehen folgendes zu:
+		\item\medium Wir zählen das Jahr 2050, Prof.\ Regloh steht kurz vor dem Ruhestand, das Institut für Informatik steht kurz vor dem Umzug auf den Campus Riedberg, und du stehst kurz vor deinem Studienabschluss. Prof.\ Regloh möchte am Ende seiner Forschungskarriere nochmal einen richtig großen Erfolg erzielen hat sich schon seit ein paar Monaten psychisch auffällig verhalten. Jetzt erkennst du ihn jubelnd durch die Gänge rennen, im Vorbeigehen schreit er dir folgendes zu:
 		      \begin{quote}
-			      Angenommen, wir haben eine aussagenlogische Formel in konjunktiver Normalform mit höchstens 3 Literalen pro Klausel. Wir wollen herausfinden, ob diese Funktion erfüllbar ist. Wir können das Distributivgesetz für Boolesche Operationen verwenden, um eine äquivalente Formel in disjunktiver Normalform zu konstruieren. Zum Beispiel:
+			      Angenommen, wir haben eine aussagenlogische Formel in konjunktiver Normalform mit höchstens 3 Literalen pro Klausel. Wir wollen herausfinden, ob diese Formel erfüllbar ist. Wir können das Distributivgesetz für Boolesche Operationen verwenden, um eine äquivalente Formel in disjunktiver Normalform zu konstruieren. Zum Beispiel:
 			      \[(x \vee y \vee \overline{z}) \wedge (\overline{x} \vee \overline{y}) \Leftrightarrow (x \wedge \overline{y}) \vee (y \wedge \overline{x}) \vee (\overline{z} \wedge \overline{x}) \vee (\overline{z} \wedge \overline{y})\,.\]
 			      Nun können wir den Algorithmus aus Aufgabenteil a) verwenden, um in Polynomialzeit herauszufinden, ob die entstandene DNF erfüllbar ist. Wir haben also \textsc{3Sat} in Polynomialzeit gelöst! Da \textsc{3Sat} $\NP$-schwer ist, gilt $\P = \NP$! Ich werde eine Million Dollar als Preisgeld erhalten und berühmt werden!
 		      \end{quote}
-			  Stimmt sein Beweis? Begründe deine Antwort.
+			  Stimmt sein Beweis? Begründe deine Antwort.%
 			  \footnote{Hier ist eine Liste von 115 Manuskripten, die das P versus NP Problem mit derartigen oder ähnlich fehlerhaften Argumenten angeblich lösen: \url{https://www.win.tue.nl/~wscor/woeginger/P-versus-NP.htm}}
 	\end{enumerate}
 \end{exercise}
-\clearpage
+\newpage
 
-\begin{exercise}[Perfektes Matching]
-	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 1
-	Sei $G = (V,E)$ ein ungerichteter Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit demselben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine äquivalente Definition betrachtet die Größe des Matchings: $M$ ist perfekt genau dann, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfectMatching}-Problem:
+\begin{exercise}[Interval Scheduling][\atschool]\
+	% KT - Exercise 8.1
+	% Entscheide für die beiden folgenden Fragen, welche der Antworten \enquote{Ja}, \enquote{Nein} oder \enquote{Unbekannt, da es $\P = \NP$ beantworten würde} zutrifft.
+	Betrachte das folgende Entscheidungsproblem:
 	\begin{quote}
-		\textsc{PerfectMatching}:\\
-		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Existiert ein perfektes Matching in $G$?
+		\textsc{IntervalScheduling}:\\
+		Sei eine Menge von Intervallen auf einer Zeitleiste sowie eine Zahl~$k$ gegeben. Enthält diese Menge eine Teilmenge von sich nicht überschneidenden Intervallen der Größe mindestens~$k$?
 	\end{quote}
-	Dieses Problem kann in Polynomialzeit gelöst werden. Für allgemeine Graphen handelt es sich hierbei um einen recht komplizierten Algorithmus, der einen Meilenstein in der kombinatorischen Optimierung darstellt, und viele Anwendungen in Theorie und Praxis hat.
-	Auf bipartiten Graphen ist das Problem einfacher zu lösen:
+
+	Im Folgenden schreiben wir $A \leq_p B$, wenn es eine Polynomialzeit-Reduktion gibt, die das Problem $A$ auf das Problem $B$ reduziert. Das heißt, das Problem $A$ soll in Polynomialzeit gelöst werden, falls es einen Algorithmus gibt, der $B$ in Polynomialzeit löst.
 	\begin{enumerate}
-		\item\medium Entwirf einen Polynomialzeit-Algorithmus für \textsc{PerfectMatching} auf bipartiten Graphen.\\\tipp{Flussnetzwerk}
-	\end{enumerate}
-	% Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Knoten auf zwei disjunkte Teilmengen~$L$ und~$R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ liegen. In anderen Worten: $L$ und $R$ sind jeweils unabhängige Knotenmengen (\textit{independent set}).
-	Prof.\ Regloh behauptet, dass der folgende Algorithmus das Problem von allgemeinen Graphen auf bipartite Graphen reduziert:
-	\begin{quote}
-		\textsc{ReduceGraph}$(G)$:\\
-		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
-		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Die Knotenmenge von~$H$ ist also partitioniert in zwei disjunkte Teile $V_1$ und $V_2$ eines bipartiten Graphen, wobei
-		\begin{equation*}
-			V_1 = \{(u,1)\,|\,u\in V\}\ \text{ und }\ V_2 = \{(u,2)\,|\,u\in V\}\,.
-		\end{equation*}
-		Die Menge $E_H$ der Kanten von~$H$ ist definiert via
-		\[E_H = \Big\{\;\{(u,1),(v,2)\}\,\;\Big|\;\,\{u,v\} \in E\;\Big\}\,.\]
-		Mit anderen Worten: Für alle Kanten $\{u,v\}$ auf~$G$ fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ in~$H$ ein. Beachte, dass~$G$ keine Eigenschleifen hat und es dadurch in $H$ für alle $u \in V$ keine Kante  $\{(u,1),(u,2)\}$ geben kann.
-	\end{quote}
-	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden, müssen wir überprüfen, ob $H$ genau dann ein perfektes Matching hat, wenn $G$ eins hat.
-	\begin{enumerate}[resume]
-		\item\medium Zeige die folgende Aussage: Wenn $G$ ein perfektes Matching hat, dann hat auch $H$ eins.
-		\item\medium Widerlege die folgende Aussage: Wenn $G$ kein perfektes Matching hat, dann hat auch $H$ keins.
-		      \begin{itemize}
-			      \item Konstruiere ein Gegenbeispiel, in dem $G$ drei Knoten hat. \tipp{Dreieck}
-			      \item Konstruiere ein Gegenbeispiel, in dem $G$ eine gerade Anzahl an Knoten hat.
-		      \end{itemize}
-			  Begründe jeweils, warum die behauptete Implikation falsch ist.
+		\item\medium Gilt \textsc{IntervalScheduling} $\leq_p$ \textsc{MaximumIndependentSet}? Begründe deine Antwort.\\\tipp{Modelliere Intervalle als Knoten. Was sind die Kanten?}
+		\item\medium Gilt \textsc{MaximumIndependentSet} $\leq_p$ \textsc{IntervalScheduling}? Begründe deine Antwort.\\
+		\tipp{Erinnere dich an Greedy-Algorithmen. Welche Konsequenzen hätte eine solche Reduktion?}
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Independent Set]\
+
+\begin{exercise}[Independent Set][\atschool]\
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 2
 	Eine \emph{unabhängige Menge} in einem Graphen $G = (V,E)$ ist eine Teilmenge $S \subseteq V$, sodass $\{u,v\} \not\in E$ für alle $u,v \in S$ gilt. Betrachte die folgenden drei Probleme:
 
@@ -150,25 +132,52 @@
 	% \end{enumerate}
 \end{exercise}
 
-\section*{Donnerstag}
+\subsection*{Donnerstag}
 
-\begin{exercise}[Interval Scheduling]\
-	% KT - Exercise 8.1
-	% Entscheide für die beiden folgenden Fragen, welche der Antworten \enquote{Ja}, \enquote{Nein} oder \enquote{Unbekannt, da es $\P = \NP$ beantworten würde} zutrifft.
-	Betrachte das folgende Entscheidungsproblem:
+\begin{exercise}[Search-to-Decision für 3SAT][\href{FF}{Moodle}\athome\medium]
+	Angenommen es gibt einen Algorithmus $A$, der in Polynomialzeit für jede 3CNF-Formel~$\Phi$ entscheidet, ob diese erfüllbar ist.
+	Konstruiere einen Polynomialzeit-Algorithmus~$B$, der~$A$ als Subroutine nutzt, um eine erfüllende Belegung von~$\Phi$ zu berechnen.
+\end{exercise}
+
+\begin{exercise}[Perfektes Matching][\atschool]
+	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab12.pdf - Exercise 1
+	Sei $G = (V,E)$ ein ungerichteter Graph. Eine Teilmenge $M \subseteq E$ ist ein \textit{Matching}, wenn keine zwei Kanten aus $M$ mit demselben Knoten verbunden sind. Ein Matching ist \textit{perfekt}, wenn jeder Knoten $v \in V$ zu einer Kante $m \in M$ inzident ist. Eine äquivalente Definition betrachtet die Größe des Matchings: $M$ ist perfekt genau dann, wenn $|M| = |V|/2$ gilt. Wir definieren das \textsc{PerfectMatching}-Problem:
 	\begin{quote}
-		\textsc{IntervalScheduling}:\\
-		Sei eine Menge von Intervallen auf einer Zeitleiste sowie eine Zahl~$k$ gegeben. Enthält diese Menge eine Teilmenge von sich nicht überschneidenden Intervallen der Größe mindestens~$k$?
+		\textsc{PerfectMatching}:\\
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Existiert ein perfektes Matching in $G$?
 	\end{quote}
-
-	Im Folgenden schreiben wir $A \leq_p B$, wenn es eine Polynomialzeit-Reduktion gibt, die das Problem $A$ auf das Problem $B$ reduziert. Das heißt, das Problem $A$ soll in Polynomialzeit gelöst werden, falls es einen Algorithmus gibt, der $B$ in Polynomialzeit löst.
+	Dieses Problem kann in Polynomialzeit gelöst werden. Für allgemeine Graphen handelt es sich hierbei um einen recht komplizierten Algorithmus, der einen Meilenstein in der kombinatorischen Optimierung darstellt, und viele Anwendungen in Theorie und Praxis hat.
+	Auf bipartiten Graphen ist das Problem einfacher zu lösen:
 	\begin{enumerate}
-		\item\medium Gilt \textsc{IntervalScheduling} $\leq_p$ \textsc{MaximumIndependentSet}? Begründe deine Antwort.\\\tipp{Modelliere Intervalle als Knoten. Was sind die Kanten?}
-		\item\medium Gilt \textsc{MaximumIndependentSet} $\leq_p$ \textsc{IntervalScheduling}? Begründe deine Antwort.\\
-		\tipp{Erinnere dich an Greedy-Algorithmen. Welche Konsequenzen hätte eine solche Reduktion?}
+		\item\medium Entwirf einen Polynomialzeit-Algorithmus für \textsc{PerfectMatching} auf bipartiten Graphen.\\\tipp{Flussnetzwerk}
+	\end{enumerate}
+	% Ein Graph $G = (V,E)$ ist \textit{bipartit}, wenn die Knoten auf zwei disjunkte Teilmengen~$L$ und~$R$ verteilt werden können, sodass alle Kanten zwischen $L$ und $R$ liegen. In anderen Worten: $L$ und $R$ sind jeweils unabhängige Knotenmengen (\textit{independent set}).
+	Prof.\ Regloh behauptet, dass der folgende Algorithmus das Problem von allgemeinen Graphen auf bipartite Graphen reduziert:
+	\begin{quote}
+		\textsc{ReduceGraph}$(G)$:\\
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Erstelle daraus einen bipartiten Graphen $H = (V \times \{1,2\},E_H)$ wie folgt:\\
+		Jeder Knoten $u \in V$ wird zu zwei Kopien $(u,1)$ und $(u,2)$. Die Knotenmenge von~$H$ ist also partitioniert in zwei disjunkte Teile $V_1$ und $V_2$ eines bipartiten Graphen, wobei
+		\begin{equation*}
+			V_1 = \{(u,1)\,|\,u\in V\}\ \text{ und }\ V_2 = \{(u,2)\,|\,u\in V\}\,.
+		\end{equation*}
+		Die Menge $E_H$ der Kanten von~$H$ ist definiert via
+		\[E_H = \Big\{\;\{(u,1),(v,2)\}\,\;\Big|\;\,\{u,v\} \in E\;\Big\}\,.\]
+		Mit anderen Worten: Für alle Kanten $\{u,v\}$ auf~$G$ fügen wir eine Kante zwischen $(u,1)$ und $(v,2)$ in~$H$ ein. Beachte, dass~$G$ keine Eigenschleifen hat und es dadurch in $H$ für alle $u \in V$ keine Kante  $\{(u,1),(u,2)\}$ geben kann.
+	\end{quote}
+	Ist die vorgeschlagene Reduktion korrekt? Um das herauszufinden, müssen wir überprüfen, ob $H$ genau dann ein perfektes Matching hat, wenn $G$ eins hat.
+	\begin{enumerate}[resume]
+		\item\medium Zeige die folgende Aussage: Wenn $G$ ein perfektes Matching hat, dann hat auch $H$ eins.
+		\item\medium Widerlege die folgende Aussage: Wenn $G$ kein perfektes Matching hat, dann hat auch $H$ keins.
+		      \begin{itemize}
+			      \item Konstruiere ein Gegenbeispiel, in dem $G$ drei Knoten hat. \tipp{Dreieck}
+			      \item Konstruiere ein Gegenbeispiel, in dem $G$ eine gerade Anzahl an Knoten hat.
+		      \end{itemize}
+			  Begründe jeweils, warum die behauptete Implikation falsch ist.
 	\end{enumerate}
 \end{exercise}
 
+\clearpage
+\section*{Optionale Aufgaben und Projekte}
 
 \begin{exercise}[Kundenanalyse][\hard]
 	% KT - Exercise 8.2
@@ -204,13 +213,6 @@
 
 % 	Zeige, dass \textsc{EffizientesRekrutieren} \NP-vollständig ist.
 % \end{exercise}
-
-\section*{Optionale Aufgaben und Projekte}
-
-\begin{exercise}[Search-to-Decision für 3SAT][\medium]
-	Angenommen es gibt einen Algorithmus $A$, der in Polynomialzeit für jede 3CNF-Formel~$\Phi$ entscheidet, ob diese erfüllbar ist.
-	Konstruiere einen Polynomialzeit-Algorithmus~$B$, der~$A$ als Subroutine nutzt, um eine erfüllende Belegung von~$\Phi$ zu berechnen.
-\end{exercise}
 
 \begin{exercise}[Search-to-Decision für 3COLOR][\hard]
 	Angenommen es gibt einen Algorithmus $A$, der in Polynomialzeit für jeden Graphen~$G$ entscheidet, ob dieser eine echte Knotenfärbung mit drei Farben zulässt.
