@@ -1,8 +1,8 @@
-% !TeX spellcheck = de_DE
+% LTeX: language=de_DE
 \documentclass{uebung_cs}
-\usepackage{algo221}
+\usepackage{algo223}
 \uebung{8}{}{}
-\blattname{Übungen zu Woche 8: Hartnäckigkeit II}
+\blattname{Übungen zu Woche 8: NP-Härte II}
 
 \usepackage[ruled]{algorithm2e}
 %\usepackage{circuitikz}
@@ -10,49 +10,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
-
-\begin{itemize}
-\item \textbf{Heimarbeit bis Montag 17:00.}
-    \begin{itemize}
-    \item 
-    Schau die Videos an und lies die Buchkapitel.
-    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
-    \item Lese den Aufgabentext aller Übungsaufgaben.
-    \end{itemize}
-\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
-\item \textbf{Dienstag/Donnerstag.}
-\begin{itemize}
-    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
-    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
-    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
-\end{itemize}
-
-\item \textbf{Heimarbeit bis Freitag, den 10.12., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
-\end{itemize}
-
 \section*{Dienstag}
 
-\begin{exercise}[k-COLOR]\
+\begin{exercise}[Färbbarkeit]
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 1
+    Wir betrachten die folgende Verallgemeinerung von $3$-\textsc{Color}.
 	\begin{quote}
 		$k$-\textsc{Color}:\\
-		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Können alle Knoten $v \in V$ mit $k$ Farben so gefärbt werden, dass jede Kante inzident zu zwei Knoten unterschiedlicher Farbe ist?
+		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Können die Knoten $v \in V$ mit höchstens~$k$ Farben so gefärbt werden, dass keine Kante zwischen Knoten derselben Farbe verläuft?
 	\end{quote}
 	\begin{enumerate}
-		\item Beschreibe eine polynomielle Reduktion von \textsc{3Color} zu \textsc{4Color}.
-		\item Zeige, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-hart ist.
+		\item\mittel Beschreibe eine Polynomialzeit-Reduktion von $3$-\textsc{Color} auf $4$-\textsc{Color}.
+		\item\mittel Zeige, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-schwer ist.
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[$\NP$-Härte]\
+\begin{exercise}[Pfade und Spannbäume]
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
-	Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen NP-hart ist.
-	Zeige, dass die folgenden Probleme $\NP$-hart sind.
+	Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen $\NP$-schwer ist.
+	Zeige, dass die folgenden drei Entscheidungsprobleme $\NP$-schwer sind.
 	\begin{enumerate}
-		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen einfachen Pfad, der alle außer 247 Knoten besucht?
-		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
-		\item Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
+		\item\mittel Gegeben sei ein ungerichteter Graph $G$ mit~$n$ Knoten. Enthält $G$ einen einfachen Pfad, der mindestens $n-247$ Knoten besucht?
+		\item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
+		\item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
 	\end{enumerate}
 \end{exercise}
 
@@ -72,23 +52,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	Gib für jedes Problem auf der folgenden Liste entweder einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem \NP-vollständig ist.
 	 \begin{enumerate}
 	 	\item \textsc{RessourcenReservieren}.
-	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall $k=2$.
+	 	\item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall $k=2$.
 	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
-	 	\item \textsc{RessourcenReservieren} mit dem Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
+	 	\item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
 	 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}[Doppel-Färbung]
 	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
-	Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge von zwei unterschiedlichen Farben $\{f_1,f_2\} \in F$ zu. Es gibt zwei Arten der Doppel-Färbung:
+	Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge $\{f_1,f_2\}$ von zwei unterschiedlichen Farben $f_1,f_2$ zu. Es gibt zwei Arten der Doppel-Färbung:
 	\begin{itemize}
-		\item In einer \textit{schwachen} Doppel-Färbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen. Die beiden Mengen dürfen sich aber eine Farbe teilen.
-		\item In einer \textit{starken} Doppel-Färbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten komplett unterschiedliche Farbmengen haben. Das heißt, eine Kante ist inzident zu $4$ Farben.
+		\item In einer \textit{schwachen} Doppel-Färbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen; die beiden Mengen dürfen sich aber eine Farbe teilen.
+		\item In einer \textit{starken} Doppel-Färbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten disjunkte Farbmengen haben; das heißt, es muss sich insgesamt um $4$ unterschiedliche Farben handeln.
 	\end{itemize}
 	Jede starke Doppel-Färbung ist auch eine schwache Doppel-Färbung.
 	\begin{enumerate}
-		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Doppel-Färbung zu finden.
-		\item Zeige, dass es $\NP$-hart ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Doppel-Färbung zu finden.
+		\item\medium Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Doppel-Färbung zu finden.
+		\tipp{Reduktion von $k$-\textsc{Color}}
+		\item\hard Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Doppel-Färbung zu finden.
 	\end{enumerate}
 	\begin{figure}[ht]
 	    \begin{minipage}{0.5\linewidth}
@@ -159,25 +140,25 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \newpage
 
-\section*{Sternaufgabe}
+\section*{Optionale Aufgaben und Projekte}
 
-\begin{exercise}[\emoji{star}: Vorsichtige Färbung]
+\begin{exercise}[Vorsichtige Färbung][\projekt\note]
 	% Ericksen, Chapter 12, Exercise 24
-	Eine $5$-\textsc{Färbung} eines Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-\textsc{Färbung} ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (z.B.~darf die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-\textsc{Färbung} besitzt, $\NP$-hart ist.
+	Eine echte $5$-Färbung eines Graphen $G = (V,E)$ weist jedem Knoten ${v \in V}$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-Färbung ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (der Abstand von $0$ zu $4$ ist beispielsweise~$1$, und die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-Färbung besitzt, $\NP$-schwer ist.
 	
-	\textit{Tipp: Benutze für die Reduktion das normale $5$-\textsc{Färbung}-Problem}.
+	\tipp{Benutze für die Reduktion das normale $5$-\textsc{Color} Problem}
 	
 	\begin{figure}[ht]
 	\begin{center}
 		\begin{tikzpicture}
             \node[draw,circle,fill=red] (a) at (0,0) {$0$};
-            \node[draw,circle,fill=blue] (b) at (0,1.75) {$3$};
+            \node[draw,circle,fill=cyan] (b) at (0,1.75) {$3$};
             \node[draw,circle,fill=orange] (c) at (1,1) {$4$};
             \node[draw,circle,fill=green] (d) at (1.75,0) {$2$};
             \node[draw,circle,fill=orange] (e) at (1,-1) {$4$};
             \node[draw,circle,fill=green] (f) at (0,-1.75) {$2$};
             \node[draw,circle,fill=red] (g) at (-1,-1) {$0$};
-            \node[draw,circle,fill=blue] (h) at (-1.75,0) {$3$};
+            \node[draw,circle,fill=cyan] (h) at (-1.75,0) {$3$};
             \node[draw,circle,fill=yellow] (i) at (-1,1) {$1$};
             
             \draw  (a) -- (b)
@@ -193,7 +174,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
                    (g) -- (h)
                    (h) -- (i);
         \end{tikzpicture}
-        \caption{Ein Beispiel für eine vorsichtige $5$-\textsc{Färbung}.}
+        \caption{Ein Beispiel für eine vorsichtige $5$-Färbung.}
 	\end{center}
 	\end{figure}
 \end{exercise}
