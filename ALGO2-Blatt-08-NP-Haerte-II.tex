@@ -12,120 +12,124 @@
 
 \section*{Dienstag}
 
-\begin{exercise}[Färbbarkeit]
-	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 1
+\begin{exercise}[Färbbarkeit][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=241464}{Moodle}\athome]
+    % https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 1
     Wir betrachten die folgende Verallgemeinerung von $3$-\textsc{Color}.
-	\begin{quote}
-		$k$-\textsc{Color}:\\
-		Gegeben sei ein ungerichteter Graph $G = (V,E)$. Können die Knoten $v \in V$ mit höchstens~$k$ Farben so gefärbt werden, dass keine Kante zwischen Knoten derselben Farbe verläuft?
-	\end{quote}
-	\begin{enumerate}
-		\item\mittel Beschreibe eine Polynomialzeit-Reduktion von $3$-\textsc{Color} auf $4$-\textsc{Color}.
-		\item\mittel Zeige, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-schwer ist.
-	\end{enumerate}
+    \begin{quote}
+        $k$-\textsc{Color}:\\
+        Gegeben sei ein ungerichteter Graph $G = (V,E)$. Können die Knoten $v \in V$ mit höchstens~$k$ Farben so gefärbt werden, dass keine Kante zwischen Knoten derselben Farbe verläuft?
+    \end{quote}
+    \begin{enumerate}
+        \item\mittel Beschreibe eine Polynomialzeit-Reduktion von $3$-\textsc{Color} auf $4$-\textsc{Color}. (Das heißt: Gib eine Funktion an, die eine Instanz von $3$-\textsc{Color} auf eine Instanz von $4$-\textsc{Color} abbildet.)
+        \item\mittel Beweise, dass deine Polynomialzeit-Reduktion korrekt ist. (Das heißt: Begründe, dass Ja-Instanzen auf Ja-Instanzen abgebildet werden und Nein-Instanzen auf Nein-Instanzen.)
+        \item\mittel Beweise, dass $k$-\textsc{Color} für jedes $k \geq 3$ $\NP$-schwer ist. (Das heißt: Gib für jedes~$k$ eine Polynomialzeit-Reduktion von einem Problem an, das bereits als $\NP$-schwer bekannt ist.)
+    \end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Pfade und Spannbäume]
-	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
-	Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen $\NP$-schwer ist.
-	Zeige, dass die folgenden drei Entscheidungsprobleme $\NP$-schwer sind.
-	\begin{enumerate}
-		\item\mittel Gegeben sei ein ungerichteter Graph $G$ mit~$n$ Knoten. Enthält $G$ einen einfachen Pfad, der mindestens $n-247$ Knoten besucht?
-		\item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
-		\item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
-	\end{enumerate}
+\begin{exercise}[Pfade und Spannbäume][\atschool]
+    % https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13.pdf - Exercise 2
+    Du darfst annehmen, dass das Hamiltonpfadproblem auch in ungerichteten Graphen $\NP$-schwer ist.
+    Zeige, dass die folgenden drei Entscheidungsprobleme $\NP$-schwer sind.
+    \begin{enumerate}
+        \item\mittel Gegeben sei ein ungerichteter Graph $G$ mit~$n$ Knoten. Enthält $G$ einen einfachen Pfad, der mindestens $n-247$ Knoten besucht?
+        \item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum, in dem jeder Knoten einen Grad von höchstens $198$ hat?
+        \item\mittel Gegeben sei ein ungerichteter Graph $G$. Enthält $G$ einen Spannbaum mit höchstens $350$ Blättern?
+    \end{enumerate}
 \end{exercise}
 
+\clearpage
 \section*{Donnerstag}
 
-\begin{exercise}[Ressourcenmanagement]
-	% KT - Exercise 8.4
-	Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen. 
-	Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen. 
-	
-	Deine Aufgabe ist es, die Ressourcen an die Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} ausdrücken lässt.
-	 \begin{quote}
-	 \textsc{RessourcenReservieren}:\\
-	 Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
-	 \end{quote}
-	 
-	Gib für jedes Problem auf der folgenden Liste entweder einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem \NP-vollständig ist.
-	 \begin{enumerate}
-	 	\item \textsc{RessourcenReservieren}.
-	 	\item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall $k=2$.
-	 	\item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
-	 	\item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.	 	
-	 \end{enumerate}
+\begin{exercise}[Ressourcenmanagement][\atschool]
+    % KT - Exercise 8.4
+    Ein Unternehmen verwaltet High-Performance Echtzeitsysteme mit asynchronen Prozessen, die auf gemeinsame Ressourcen zugreifen müssen. Das System hat eine Menge von $n$ Prozessen und eine Menge von $m$ Ressourcen.
+    Zu jedem Zeitpunkt spezifiziert ein Prozess eine Menge an Ressourcen, die er benutzen möchte. Jede Ressource kann gleichzeitig von mehreren Prozessoren angefragt werden, aber es kann zu jedem Zeitpunkt nur \emph{genau} ein Prozess auf die Ressource zugreifen.
+
+    Deine Aufgabe ist es, die Ressourcen an die Prozesse zu verteilen. Wenn ein Prozess alle benötigten Ressourcen zugeteilt bekommt, ist er \textit{aktiv}, ansonsten ist er \textit{blockiert}. Eine effiziente Zuweisung der Ressourcen sorgt dafür, dass möglichst viele Prozesse \textit{aktiv} sind, was sich als das Problem \textsc{RessourcenReservieren} ausdrücken lässt.
+    \begin{quote}
+        \textsc{RessourcenReservieren}:\\
+        Es sei eine Menge von $n$ Prozessen, eine Menge von $m$ Ressourcen und eine Zahl $k$ gegeben. Ist es möglich, die Ressourcen den Prozessen so zuzuweisen, dass mindestens $k$ Prozesse \textit{aktiv} sind?
+    \end{quote}
+
+    Gib für jedes Problem auf der folgenden Liste entweder einen Polynomialzeit-Algorithmus an oder zeige, dass das Problem \NP-vollständig ist.
+    \begin{enumerate}
+        \item \textsc{RessourcenReservieren}.
+        \item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall $k=2$.
+        \item \textsc{RessourcenReservieren} mit zwei Typen von Ressourcen. Hierbei sind die Ressourcen: Mensch und Maschine. Jeder Prozess benötigt höchstens eine Ressource von jedem Typ. (Anders ausgedrückt braucht jeder Prozess einen bestimmten Menschen und eine bestimmte Maschine.)
+        \item \textsc{RessourcenReservieren} eingeschränkt auf den Spezialfall, dass jede Ressource von maximal zwei Prozessen angefragt wird.
+    \end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Doppel-Färbung]
-	% https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
-	Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge $\{f_1,f_2\}$ von zwei unterschiedlichen Farben $f_1,f_2$ zu. Es gibt zwei Arten der Doppel-Färbung:
-	\begin{itemize}
-		\item In einer \textit{schwachen} Doppel-Färbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen; die beiden Mengen dürfen sich aber eine Farbe teilen.
-		\item In einer \textit{starken} Doppel-Färbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten disjunkte Farbmengen haben; das heißt, es muss sich insgesamt um $4$ unterschiedliche Farben handeln.
-	\end{itemize}
-	Jede starke Doppel-Färbung ist auch eine schwache Doppel-Färbung.
-	\begin{enumerate}
-		\item\medium Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Doppel-Färbung zu finden.
-		\tipp{Reduktion von $k$-\textsc{Color}}
-		\item\hard Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Doppel-Färbung zu finden.
-	\end{enumerate}
-	\begin{figure}[ht]
-	    \begin{minipage}{0.5\linewidth}
-	        \centering
-	        		\begin{tikzpicture}
-                    \node[draw,circle] (a) at (0,0.2) {};
-                    \node[] (label_1) at (-0.5,0.6) {$\{2,4\}$};
-                    \node[draw,circle] (b) at (1,1) {};
-                    \node[] (label_2) at (1,1.4) {$\{1,2\}$};
-                    \node[draw,circle] (c) at (2,0.2) {};
-                    \node[] (label_3) at (2.5,0.6) {$\{1,3\}$};
-                    \node[draw,circle] (d) at (1.5,-1) {};
-                    \node[] (label_4) at (1.7,-1.4) {$\{1,4\}$};
-                    \node[draw,circle] (e) at (0.5,-1) {};
-                    \node[] (label_5) at (0.2,-1.4) {$\{2,3\}$};
-            
-                    \draw  (a) -- (b)
-                           (a) -- (c)
-                           (a) -- (d)
-                           (a) -- (e)
-                           (b) -- (c)
-                           (b) -- (d)
-                           (b) -- (e)
-                           (c) -- (d)
-                           (c) -- (e)
-                           (d) -- (e);
-                \end{tikzpicture}
-                \caption{Eine schwache Doppel-Färbung.}\label{schwach}
-	    \end{minipage}
-	    \begin{minipage}{0.5\linewidth}
-	        \centering
-	            \begin{tikzpicture}
-                    \node[draw,circle] (a) at (0,0.2) {};
-                    \node[] (label_1) at (-0.5,0.6) {$\{4,5\}$};
-                    \node[draw,circle] (b) at (1,1) {};
-                    \node[] (label_2) at (1,1.4) {$\{1,2\}$};
-                    \node[draw,circle] (c) at (2,0.2) {};
-                    \node[] (label_3) at (2.5,0.6) {$\{3,4\}$};
-                    \node[draw,circle] (d) at (1.5,-1) {};
-                    \node[] (label_4) at (1.7,-1.4) {$\{5,1\}$};
-                    \node[draw,circle] (e) at (0.5,-1) {};
-                    \node[] (label_5) at (0.2,-1.4) {$\{2,3\}$};
-            
-                    \draw  (a) -- (b)
-                           (b) -- (c)
-                           (c) -- (d)
-                           (d) -- (e)
-                           (e) -- (a);
-                \end{tikzpicture}
-                \caption{Eine starke Doppel-Färbung.}\label{stark}
-	    \end{minipage}
-	\end{figure}
+\section*{Optionale Aufgaben und Projekte}
+
+\begin{exercise}[Doppel-Färbung][\projekt]
+    % https://courses.engr.illinois.edu/cs374/fa2021/A/labs/lab13bis.pdf - Exercise 3
+    Eine Doppel-Färbung eines ungerichteten Graphen $G = (V,E)$ weist jedem Knoten $v \in V$ eine Menge $\{f_1,f_2\}$ von zwei unterschiedlichen Farben $f_1,f_2$ zu. Es gibt zwei Arten der Doppel-Färbung:
+    \begin{itemize}
+        \item In einer \textit{schwachen} Doppel-Färbung (siehe Abbildung~\ref{schwach}) müssen die zu jeder Kante inzidenten Knoten verschiedene Farbmengen besitzen; die beiden Mengen dürfen sich aber eine Farbe teilen.
+        \item In einer \textit{starken} Doppel-Färbung (siehe Abbildung~\ref{stark}) müssen die zu jeder Kante inzidenten Knoten disjunkte Farbmengen haben; das heißt, es muss sich insgesamt um $4$ unterschiedliche Farben handeln.
+    \end{itemize}
+    Jede starke Doppel-Färbung ist auch eine schwache Doppel-Färbung.
+    \begin{enumerate}
+        \item\medium Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer schwachen Doppel-Färbung zu finden.
+              \tipp{Reduktion von $k$-\textsc{Color}}
+        \item\hard Zeige, dass es $\NP$-schwer ist, für einen gegebenen ungerichteten Graphen $G$ die minimale Anzahl an Farben in einer starken Doppel-Färbung zu finden.
+    \end{enumerate}
+    \begin{figure}[ht]
+        \begin{minipage}{0.5\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \node[draw,circle] (a) at (0,0.2) {};
+                \node[] (label_1) at (-0.5,0.6) {$\{2,4\}$};
+                \node[draw,circle] (b) at (1,1) {};
+                \node[] (label_2) at (1,1.4) {$\{1,2\}$};
+                \node[draw,circle] (c) at (2,0.2) {};
+                \node[] (label_3) at (2.5,0.6) {$\{1,3\}$};
+                \node[draw,circle] (d) at (1.5,-1) {};
+                \node[] (label_4) at (1.7,-1.4) {$\{1,4\}$};
+                \node[draw,circle] (e) at (0.5,-1) {};
+                \node[] (label_5) at (0.2,-1.4) {$\{2,3\}$};
+
+                \draw  (a) -- (b)
+                (a) -- (c)
+                (a) -- (d)
+                (a) -- (e)
+                (b) -- (c)
+                (b) -- (d)
+                (b) -- (e)
+                (c) -- (d)
+                (c) -- (e)
+                (d) -- (e);
+            \end{tikzpicture}
+            \caption{Eine schwache Doppel-Färbung.}\label{schwach}
+        \end{minipage}
+        \begin{minipage}{0.5\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \node[draw,circle] (a) at (0,0.2) {};
+                \node[] (label_1) at (-0.5,0.6) {$\{4,5\}$};
+                \node[draw,circle] (b) at (1,1) {};
+                \node[] (label_2) at (1,1.4) {$\{1,2\}$};
+                \node[draw,circle] (c) at (2,0.2) {};
+                \node[] (label_3) at (2.5,0.6) {$\{3,4\}$};
+                \node[draw,circle] (d) at (1.5,-1) {};
+                \node[] (label_4) at (1.7,-1.4) {$\{5,1\}$};
+                \node[draw,circle] (e) at (0.5,-1) {};
+                \node[] (label_5) at (0.2,-1.4) {$\{2,3\}$};
+
+                \draw  (a) -- (b)
+                (b) -- (c)
+                (c) -- (d)
+                (d) -- (e)
+                (e) -- (a);
+            \end{tikzpicture}
+            \caption{Eine starke Doppel-Färbung.}\label{stark}
+        \end{minipage}
+    \end{figure}
 \end{exercise}
 
 %\begin{exercise}[Clique]
-	% Algorithms and Data Structures 2 - NP.pdf
+% Algorithms and Data Structures 2 - NP.pdf
 %	Für einen ungerichteten Graphen $G = (V,E)$  ist eine \textit{Clique} eine Teilmenge $V' \subseteq V$ der Knotenmenge, sodass alle Knoten in $V'$ benachbart sind, also wenn zwischen jedem Knotenpaar $v,w \in V'$ mit $v \neq w$ eine Kante $(v,w) \in E$ existiert. Ein Graph $G$ hat eine $k$-\textit{Clique}, wenn $|V'| = k$ gilt. Das Entscheidungsproblem \textsc{Clique} ist wie folgt definiert:
 %	\begin{quote}
 %		\textsc{Clique}:\\
@@ -138,45 +142,43 @@
 %	\end{enumerate}
 %\end{exercise}
 
-\newpage
-
-\section*{Optionale Aufgaben und Projekte}
+% \newpage
 
 \begin{exercise}[Vorsichtige Färbung][\projekt\note]
-	% Ericksen, Chapter 12, Exercise 24
-	Eine echte $5$-Färbung eines Graphen $G = (V,E)$ weist jedem Knoten ${v \in V}$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-Färbung ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (der Abstand von $0$ zu $4$ ist beispielsweise~$1$, und die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-Färbung besitzt, $\NP$-schwer ist.
-	
-	\tipp{Benutze für die Reduktion das normale $5$-\textsc{Color} Problem}
-	
-	\begin{figure}[ht]
-	\begin{center}
-		\begin{tikzpicture}
-            \node[draw,circle,fill=red] (a) at (0,0) {$0$};
-            \node[draw,circle,fill=cyan] (b) at (0,1.75) {$3$};
-            \node[draw,circle,fill=orange] (c) at (1,1) {$4$};
-            \node[draw,circle,fill=green] (d) at (1.75,0) {$2$};
-            \node[draw,circle,fill=orange] (e) at (1,-1) {$4$};
-            \node[draw,circle,fill=green] (f) at (0,-1.75) {$2$};
-            \node[draw,circle,fill=red] (g) at (-1,-1) {$0$};
-            \node[draw,circle,fill=cyan] (h) at (-1.75,0) {$3$};
-            \node[draw,circle,fill=yellow] (i) at (-1,1) {$1$};
-            
-            \draw  (a) -- (b)
-                   (a) -- (d)
-                   (a) -- (h)
-                   (b) -- (i)
-                   (i) -- (c)
-                   (d) -- (g)
-                   (c) -- (d)
-                   (d) -- (e)
-                   (e) -- (f)
-                   (f) -- (g)
-                   (g) -- (h)
-                   (h) -- (i);
-        \end{tikzpicture}
-        \caption{Ein Beispiel für eine vorsichtige $5$-Färbung.}
-	\end{center}
-	\end{figure}
+    % Ericksen, Chapter 12, Exercise 24
+    Eine echte $5$-Färbung eines Graphen $G = (V,E)$ weist jedem Knoten ${v \in V}$ eine Farbe aus der Menge $\{0,1,2,3,4\}$ zu, sodass die Knoten $u,v \in V$ für jede Kante $\{u,v\} \in E$ unterschiedliche Farben haben. Eine $5$-Färbung ist \textit{vorsichtig}, wenn die Farben adjazenter Knoten sich Modulo~$5$ um mindestens $2$ unterscheiden (der Abstand von $0$ zu $4$ ist beispielsweise~$1$, und die Farbe~0 darf nur zu den Farben 2 und 3 adjazent sein). Zeige, dass das Entscheidungsproblem, ob ein gegebener Graph eine vorsichtige $5$-Färbung besitzt, $\NP$-schwer ist.
+
+    \tipp{Benutze für die Reduktion das normale $5$-\textsc{Color} Problem}
+
+    \begin{figure}[ht]
+        \begin{center}
+            \begin{tikzpicture}
+                \node[draw,circle,fill=red] (a) at (0,0) {$0$};
+                \node[draw,circle,fill=cyan] (b) at (0,1.75) {$3$};
+                \node[draw,circle,fill=orange] (c) at (1,1) {$4$};
+                \node[draw,circle,fill=green] (d) at (1.75,0) {$2$};
+                \node[draw,circle,fill=orange] (e) at (1,-1) {$4$};
+                \node[draw,circle,fill=green] (f) at (0,-1.75) {$2$};
+                \node[draw,circle,fill=red] (g) at (-1,-1) {$0$};
+                \node[draw,circle,fill=cyan] (h) at (-1.75,0) {$3$};
+                \node[draw,circle,fill=yellow] (i) at (-1,1) {$1$};
+
+                \draw  (a) -- (b)
+                (a) -- (d)
+                (a) -- (h)
+                (b) -- (i)
+                (i) -- (c)
+                (d) -- (g)
+                (c) -- (d)
+                (d) -- (e)
+                (e) -- (f)
+                (f) -- (g)
+                (g) -- (h)
+                (h) -- (i);
+            \end{tikzpicture}
+            \caption{Ein Beispiel für eine vorsichtige $5$-Färbung.}
+        \end{center}
+    \end{figure}
 \end{exercise}
 
 \end{document}
