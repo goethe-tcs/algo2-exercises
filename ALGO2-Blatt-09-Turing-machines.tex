@@ -1,0 +1,138 @@
+% LTeX: language=de_DE
+\documentclass{uebung_cs}
+\usepackage{algo223}
+\uebung{9}{}{}
+\blattname{Übungen zu Woche 9: Turingmaschinen}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\section*{Dienstag}
+
+\begin{exercise}[Was wird berechnet][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/questionnaire/view.php?id=242813}{Moodle}\athome]\
+	% Eigenkreation
+	Gegeben ist die Turingmaschine $M_1 = (Q,\Sigma,\Gamma,\delta,q_0,\texttt{acc},\mathtt{rej},\square)$\\
+	mit
+	$Q = \{q_0,q_1,q_2,q_3,q_4,\mathtt{acc},\mathtt{rej}\}$, $\Sigma = \{0,1\}$ und $\Gamma = \Sigma \cup \{\cancel{0},\cancel{1},\square\}$. Die Überführungsfunktion $\delta$ ist gegeben durch:
+	\[
+		\begin{tabular}{p{5cm}p{7.2cm}}
+			$\delta(q_0,0) = (q_1,\cancel{0},+1)$              & $\delta(q_3,\cancel{1}) = (q_3,\cancel{1},-1)$     \\
+			$\delta(q_0,\square) = (\mathtt{acc},\square ,+1)$ & $\delta(q_3,0) = (q_3,0,-1)$                       \\
+			$\delta(q_0,\cancel{1}) = (q_4,\cancel{1},+1)$     & $\delta(q_3,\cancel{0}) = (q_0,\cancel{0},+1)$     \\
+			                                                   &                                                    \\
+			$\delta(q_1,0) = (q_1,0,+1)$                       & $\delta(q_4,\cancel{1}) = (q_4,\cancel{1},+1)$     \\
+			$\delta(q_1,\cancel{1}) = (q_1,\cancel{1},+1)$     & $\delta(q_4,\square) = (\mathtt{acc},\square ,-1)$ \\
+			$\delta(q_1,1) = (q_2,\cancel{1},+1)$              &                                                    \\
+			                                                   &                                                    \\
+			$\delta(q_2,1) = (q_3,\cancel{1},-1)$              & $\delta(q,a) = (\mathtt{rej},a,+1)$ sonst          \\
+		\end{tabular}
+	\]
+
+	\begin{enumerate}
+		\item\easy
+		      Führe $M_1$ auf den beiden Eingaben \texttt{001111} und \texttt{00011111} aus. Gib jeweils die Konfiguration nach Ende der Berechnung, also bei Erreichen von \texttt{acc} oder \texttt{rej}, an.
+		\item\mittel
+		      Welche Sprache entscheidet $M_1$?
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Finde den Fehler][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=242812}{Moodle}\athome\mittel]\
+	% Eigenkreation
+	In \href{https://jeffe.cs.illinois.edu/teaching/algorithms/models/06-turing-machines.pdf}{Abschnitt 6.3 aus Ericksons \glqq Models of Computation\grqq}  ist eine Turingmaschine für die Sprache $L = \{0^n 1^n 0^n \;|\; n \geq 0\}$ angegeben. Diese enthält einige Fehler. Warum entscheidet die Turingmaschine nicht die Sprache $L$ und wie lassen sich die  Fehler beheben?
+\end{exercise}
+
+\begin{exercise}[Konstruiere eine Turingmaschine][\atschool]\
+	% Eigenkreation
+	Sei $L = \{0^n 1^m 0^{(n+m)} \;|\; n,m \in \N\}$.
+	\begin{enumerate}
+		\item\mittel Beschreibe auf informelle Art und Weise eine Turingmaschine, die die Sprache $L$ entscheidet.
+		\item\hard Gib die beschriebene Turingmaschine formal an. Insbesondere ist also auch die Überführungsfunktion $\delta$ der Maschine anzugeben.
+	\end{enumerate}
+\end{exercise}
+
+\vspace{-\baselineskip}
+\section*{Donnerstag}
+
+\begin{exercise}[Rekursive Aufzählbarkeit]
+	% Eigenkreation
+	Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv aufzählbar}, wenn $L = \emptyset$ oder es eine berechenbare, totale Funktion $f \colon \{0,1\}^* \rightarrow \Sigma^*$ gibt, sodass $f(\{0,1\}^+) = L$ gilt, das heißt, es gilt
+	\[L = \{f(x)\mid x\in\{0,1\}^*\} = \{f(0), f(1), f(00), f(01), f(10), f(11), f(000), \dots\}\,.\]
+	\begin{enumerate}
+		\item \athome\mittel Zeige, dass jede rekursiv aufzählbare Sprache semi-entscheidbar ist.
+		\item \atschool\hard Zeige, dass jede semi-entscheidbare Sprache rekursiv aufzählbar ist.\\
+		      \emph{Hinweis}: Du kannst ohne Beweis verwenden, dass es eine berechenbare bijektive Funktion $t\colon\Sigma^\ast\times\Sigma^\ast\to\Sigma^\ast$ gibt, deren inverse Funktion ebenfalls berechenbar ist. Das heißt eine Turingmaschine kann für zwei binär kodierte Zahlen $a,b\in\Sigma^\ast$ eine Zahl $t(a,b)$ berechnen, sodass $t(a,b)\neq t(a',b')$ für alle $(a,b)\neq(a',b')$ gilt, und eine zweite Turingmaschine kann für jedes $c$ das eindeutige Paar $(a,b)$ berechnen, sodass $t(a,b)=c$ gilt.
+		      (Dies ist mit der Cantor-Abzählung möglich.)
+	\end{enumerate}
+\end{exercise}
+\clearpage
+
+\section*{Weitere Aufgaben und Projekte}
+
+\begin{exercise}[Turingmaschine simulieren (Coderunner)][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/quiz/view.php?id=234918}{Moodle}\projekt\mittel]
+	Implementiere ein Programm, das eine Turingmaschine als Eingabe erhält, diese simuliert, und die Ausgabe der Turingmaschine berechnet. Die genaue Ein- und Ausgabespezifikation des geforderten Programms findest du in Moodle.
+\end{exercise}
+
+\begin{exercise}[Was wird berechnet][\easy]
+	Gegeben ist die Turingmaschine $M_2 = (Q,\Sigma,\Gamma,\delta,q_0,\mathtt{halt},\square)$ mit\\
+	$Q = \{q_0,q_1,q_2,q_3,q_4,q_5,q_6,\mathtt{halt}\}$, $\Sigma = \{0,1\}$ und $\Gamma = \Sigma \cup \{\cancel{0},\cancel{1},\underline{0},\underline{1},\underline{\cancel{0}},\underline{\cancel{1}},\square\}$.
+	Die Überführungsfunktion $\delta$ ist gegeben durch:
+
+	\[
+		\begin{tabular}{p{7.2cm}p{7.2cm}}
+			$\delta(q_0,0) = (q_1,\underline{\cancel{0}},+1)$                                                                & $\delta(q_4,0) = (q_1,\cancel{0},+1)$                              \\
+			$\delta(q_0,1) = (q_2,\underline{\cancel{1}},+1)$                                                                & $\delta(q_4,1) = (q_2,\cancel{1},+1)$                              \\
+			$\delta(q_0,\square) = (\mathtt{halt},\square ,+1)$                                                              & $\delta(q_4,\underline{0}) = (q_5,\underline{0},-1)$               \\
+			                                                                                                                 & $\delta(q_4,\underline{1}) = (q_5,\underline{1},-1)$               \\
+			                                                                                                                 &                                                                    \\
+			$\delta(q_1,x) = (q_1,x,+1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$                                     & $\delta(q_5,z) = (q_5,z,-1)$ für $z \in \{\cancel{0},\cancel{1}\}$ \\
+			$\delta(q_1,\square) = (q_3,\underline{0},-1)$                                                                   & $\delta(q_5,\underline{\cancel{0}}) = (q_6,0,+1)$                  \\
+			                                                                                                                 & $\delta(q_5,\underline{\cancel{1}}) = (q_6,1,+1) $                 \\
+			                                                                                                                 &                                                                    \\
+			$\delta(q_2,x) = (q_2,x,+1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$                                     & $\delta(q_6,\cancel{0}) = (q_6,0,+1)$                              \\
+			$\delta(q_2,\square) = (q_3,\underline{1},-1)$                                                                   & $\delta(q_6,\cancel{1}) = (q_6,1,+1)$                              \\
+			                                                                                                                 & $\delta(q_6,\underline{0}) = (q_6,0,+1)$                           \\
+			$\delta(q_3,x) = (q_3,x,-1)$ für $x \in \{0,1,\underline{0},\underline{1}\}$                                     & $\delta(q_6,\underline{1}) = (q_6,1,+1)$                           \\
+			$\delta(q_3,y) = (q_4,y,+1)$ für $y \in \{\cancel{0},\cancel{1},\underline{\cancel{0}},\underline{\cancel{1}}\}$ & $\delta(q_6,\square) = (\mathtt{halt,\square ,-1})$                \\
+			                                                                                                                 &                                                                    \\
+			$\delta(q,a) = (\mathtt{halt}, \square, +1)$ sonst                                                               &                                                                    \\
+		\end{tabular}
+	\]
+	\begin{enumerate}
+		\item\easy
+		      Führe $M_2$ auf den beiden Eingaben \texttt{0001} und \texttt{1010} aus. Gib jeweils die Konfiguration nach Ende der Berechnung, also bei Erreichen von \texttt{halt}, an.
+		\item\mittel
+		      Welche Funktion berechnet $M_2$?
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Nichtdeterminismus]
+	Sei $L\subseteq\Sigma^\ast$ eine beliebige Sprache. Beweise die folgenden Aussagen:
+	\begin{enumerate}
+		\item\easy Wenn es eine deterministische Turingmaschine gibt, die~$L$ entscheidet, dann gibt es auch eine nichtdeterministische Turingmaschine, die~$L$ entscheidet.
+		\item\hard Wenn es eine nichtdeterministische Turingmaschine gibt, die~$L$ entscheidet, dann gibt es auch eine deterministische Turingmaschine, die~$L$ entscheidet.
+	\end{enumerate}
+\end{exercise}
+\begin{exercise}[Konstruiere eine Turingschmaschine][\mittel]
+	% Eigenkreation
+	Beschreibe Turingmaschinen, die die folgenden Sprachen entscheiden, bzw. die folgenden Funktionen berechnen. Die Maschine muss nicht formal angegeben werden.
+	\begin{enumerate}
+		\item $\{ww \;|\; w \in \{0,1\}^*\}$
+		\item $1^n 0 1^m \mapsto 1^{nm}$ (falls die Eingabe nicht von der Form $1^n 0 1^m$ für irgendwelche $n$ und $m$ ist, darf die Maschine sich beliebig verhalten)
+		\item $1^n \mapsto$ Binärdarstellung von $n$
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Zwei-Stapel-Maschine][\mittel]\
+	% Ericksen "Models of Computation": Chapter 6, Exercise 4 und Eigenkreation
+	Bei einer Zwei-Band-Maschine gibt es zwei Bänder und jedes Band hat einen eigenen Lese-/Schreibkopf.
+	Eine \emph{Zwei-Stapel-Maschine} ist eine Turingmaschine mit zwei Bändern und dem folgendem eingeschränkten Verhalten:
+
+	Zu jeder Zeit ist auf jedem Band jede Zelle rechts vom Kopf das Blanksymbol und jede Zelle links vom Kopf ist kein Blanksymbol. Deshalb kann sich der Kopf nur nach rechts bewegen, indem ein Symbol, das kein Blank ist, in eine Zelle mit Blank geschrieben wird. Der Kopf kann sich nur nach links bewegen, wenn die rechteste Zelle, die kein Blank ist, zu einem Blank wird. Jedes Band verhält sich also wie ein Stapel (\emph{stack}) und die beiden Köpfe sind immer ganz oben auf dem Stapel. Um ein Überlaufen des Kopfes am linken Anfang des Bands zu vermeiden, gibt es dort ein spezielles Symbol, das nicht überschrieben werden kann. Zu Beginn enthält das erste Band den Input, wobei sich der Kopf ganz rechts über dem letzten Symbol der Eingabe befindet. Das andere Band ist, bis auf das spezielle Symbol am Anfang des Bandes, leer.
+
+	Zeige, dass jede normale Turingmaschine durch eine Zwei-Stapel-Maschine simuliert werden kann. Gegeben ist also eine normale Turingmaschine $M$, und du sollst eine Zwei-Stapel-Maschine $M'$ beschreiben, die genau die gleichen Eingaben akzeptiert und verwirft wie~$M$.
+\end{exercise}
+
+\end{document}
