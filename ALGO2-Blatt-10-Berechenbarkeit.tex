@@ -1,6 +1,6 @@
 % LTeX: language=de_DE
 \documentclass{uebung_cs}
-\usepackage{algo221}
+\usepackage{algo223}
 \uebung{10}{}{}
 \blattname{Übungen zu Woche 10: Berechenbarkeit}
 
@@ -9,32 +9,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
-
-\begin{itemize}
-\item \textbf{Heimarbeit bis Montag 17:00.}
-    \begin{itemize}
-    \item 
-    Schau die Videos an und lies die Buchkapitel.
-    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Feste Abgabefrist!)
-    \item Lese den Aufgabentext aller Übungsaufgaben.
-    \end{itemize}
-\item \textbf{Heimarbeit.} Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
-\item \textbf{Dienstag/Donnerstag.}
-\begin{itemize}
-    \item \textbf{8:00--8:15.} Besprechung im Hörsaal.
-    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam um Hilfe!
-    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute.
-\end{itemize}
-
-\item \textbf{Heimarbeit bis Freitag, den 21.01., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
-\end{itemize}
-
-\section*{Dienstag}
-
-\textbf{Zur Erinnerung:}
-
+\emph{Zur Erinnerung:}
 \begin{itemize}
 	\item $\textsc{Accept}(M) := \{w \in \Sigma^{\ast} \;|\; M \text{ akzeptiert } w\}$
 	\item $\textsc{Reject}(M) := \{w \in \Sigma^{\ast} \;|\; M \text{ verwirft } w\}$
@@ -42,7 +17,8 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\item $\textsc{Diverge}(M) := \Sigma^{\ast} \backslash \textsc{Halt}(M)$
 \end{itemize}
 
-\begin{exercise}[Turingmaschinen]\
+\section*{Dienstag}
+\begin{exercise}[Turingmaschinen][\atschool\easy]\
 	% Erickson Models of Computation - Chapter 7, Exercise 1
 	Sei $M$ eine beliebige Turingmaschine.
 	\begin{enumerate}
@@ -57,7 +33,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Entscheidbarkeit I]\
+\begin{exercise}[Entscheidbarkeit I][\atschool\medium]\
 	% Erickson Models of Computation - Chapter 7, Exercise 3b
 	Beweise für jede der folgenden vier Sprachen, dass sie unentscheidbar ist:
 	\begin{enumerate}
@@ -70,17 +46,19 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 
 \section*{Donnerstag}
 
-\begin{exercise}[Entscheidbarkeit II]\
-	% Erickson Models of Computation - Chapter 7, Exercise 10a,b,g
-	Argumentiere für jedes der folgenden Entscheidungsprobleme, dass es unentscheidbar ist.
+\begin{exercise}[Entscheidbarkeit II][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245311}{Moodle}\athome\medium]\
+	% ALGO2 WiSe 20/21 - Blatt 9, Aufgabe 1b und 2
 	\begin{enumerate}
-		\item Für ein als Eingabe gegebenes Python-Programm \texttt{fib.py} wollen wir verifizieren, ob \texttt{fib.py} ein korrektes Programm für die Fibonacci-Zahlen ist, also ob \texttt{fib.py} bei Eingabe $n$ die $n$-te Fibonacci-Zahl ausgibt.
-		\item Kann ein als Eingabe gegebenes Python-Programm \texttt{p.py} in eine Endlosschleife gelangen?
-		\item Berechnen zwei als Eingabe gegebene Python-Programme, \texttt{p1.py} und \texttt{p2.py}, die gleiche Funktion?
+		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M,w\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und }M\text{ durchläuft Zustand 1 für Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
+		
+		\item Zeige unter Anwendung des Satzes von Rice, dass die folgende Sprache nicht entscheidbar ist. Begründe die Nicht-Trivialität der Menge $S$.
+ $$L_2 = \left\{\langle M\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und } |L(M)| \leq 2\end{array}\right\}$$
+			
+		Hierbei ist $L(M)$ die von der deterministischen Turingmaschine $M$ akzeptierte Sprache.
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Entscheidbarkeit III]
+\begin{exercise}[Entscheidbarkeit III][\atschool\medium]
 	% Erickson Models of Computation - Chapter 7, Exercise 6c, i, Eigenkreation, k
 	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M \rangle$ einer Turingmaschine $M$.
 	\begin{enumerate}
@@ -91,29 +69,24 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Entscheidbarkeit IV]
+\section*{Weitere Aufgaben und Projekte \projekt}
+
+\begin{exercise}[Entscheidbarkeit IV]\
+	% Erickson Models of Computation - Chapter 7, Exercise 10a,b,g
+	Argumentiere für jedes der folgenden Entscheidungsprobleme, dass es unentscheidbar ist.
+	\begin{enumerate}
+		\item Für ein als Eingabe gegebenes Python-Programm \texttt{fib.py} wollen wir verifizieren, ob \texttt{fib.py} ein korrektes Programm für die Fibonacci-Zahlen ist, also ob \texttt{fib.py} bei Eingabe $n$ die $n$-te Fibonacci-Zahl ausgibt.
+		\item Kann ein als Eingabe gegebenes Python-Programm \texttt{p.py} in eine Endlosschleife gelangen?
+		\item Berechnen zwei als Eingabe gegebene Python-Programme, \texttt{p1.py} und \texttt{p2.py}, die gleiche Funktion?
+	\end{enumerate}
+\end{exercise}
+\begin{exercise}[Entscheidbarkeit V]
 	% Erickson Models of Computation - Chapter 7, Exercise 7b,e,n
 	Entwerfe für jedes der folgenden Entscheidungsprobleme entweder einen Algorithmus oder beweise, dass das Problem unentscheidbar ist. Die Eingabe ist für jedes Entscheidungsproblem die Kodierung $\langle M,w \rangle$ einer Turingmaschine $M$ und ihrem Eingabestring $w$.
 	\begin{enumerate}
 		\item Akzeptiert $M$ entweder $w$ oder $w^R$?
 		\item Akzeptiert $M$ die Eingabe $w$ in höchstens $2^{|w|}$ Schritten?
 		\item Wenn $M$ auf der Eingabe $w$ ausgeführt wird, gelangt $M$ jemals wieder in den Startzustand?
-	\end{enumerate}
-\end{exercise}
-
-%\newpage
-
-\section*{Sternaufgabe}
-
-\begin{exercise}[\emoji{star}: Unentscheidbarkeit]\
-	% ALGO2 WiSe 20/21 - Blatt 9, Aufgabe 1b und 2
-	\begin{enumerate}
-		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M,w\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und }M\text{ durchl"auft Zustand 1 f"ur Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
-		
-		\item Zeige unter Anwendung des Satzes von Rice, dass die folgende Sprache nicht entscheidbar ist. Begründe die Nicht-Trivialität der Menge $S$.
- $$L_2 = \left\{\langle M\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und } |L(M)| \leq 2.\end{array}\right\}$$
-			
-		Hierbei ist $L(M)$ die von der deterministischen Turingmaschine $M$ akzeptierte Sprache.
 	\end{enumerate}
 \end{exercise}
 
