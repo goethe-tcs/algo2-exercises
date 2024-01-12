@@ -1,6 +1,6 @@
 % LTeX: language=de_DE
 \documentclass{uebung_cs}
-\usepackage{algo221}
+\usepackage{algo223}
 \uebung{12}{}{}
 \blattname{Übungen zu Woche 12: Lineare Programmierung I}
 
@@ -12,29 +12,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Woche.
-
-\begin{itemize}
-\item \textbf{Heimarbeit bis Montag 17:00.}
-    \begin{itemize}
-    \item 
-    Schau die Videos an und lies die Buchkapitel.
-    \item Bearbeite die \emoji{seedling}-Aufgabe in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle}. (Abgabefrist: Mittwoch 17:00!)
-    \item Bearbeite die Übungsaufgaben soweit möglich. Probier zumindest alle mal!
-    \end{itemize}
-\item \textbf{Dienstag/Donnerstag.}
-\begin{itemize}
-    \item \textbf{8:00--8:15.} Besprechung in Zoom.
-    \item \textbf{8:15--9:15.} Bearbeite jetzt die Übungen, die du noch nicht lösen konntest. Sprich mit anderen Studis! Frag das Vorlesungsteam auf Discord um Hilfe!
-    \item \textbf{9:15--9:45.} Lösungsspaziergang zu den Aufgaben für heute in Zoom.
-\end{itemize}
-
-\item \textbf{Heimarbeit bis Freitag, den 04.02., 17:00.} Gib deine Lösungen zu der \emoji{star}-Aufgabe von diesem Übungsblatt in \href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/course/view.php?id=2241}{Moodle} ab. (Feste Abgabefrist!)
-\end{itemize}
-
 \section*{Dienstag}
 
-\begin{exercise}[Lösungsmenge eines \acsp{LP}]\
+\begin{exercise}[Lösungsmenge eines \acsp{LP}][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245947}{Moodle}\athome]\
 %	Consider the following \acs{LP}.
 %	\[
 %		\begin{array}{rrllll}
@@ -54,7 +34,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %	$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$ 
 %	Find non-negative values for $p_1,p_2,p_3$ such that proceeding as above we obtain $2x_1+5x_2\leq opt$ for every $x \in P$,  where $opt$ is one of the optimal values determined in \textit{part b)}.
 %	\end{enumerate}
-	Betrachte das folgende \acs{LP}.
+	Betrachte das folgende \acs{LP}, welches in kanonischer Form gegeben ist.
 	\[
 		\begin{array}{rrllll}
 			\text{max} &   2 x_1 +5 x_2 \\	
@@ -67,15 +47,15 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\] 
 	
 	\begin{enumerate}
-		\item Zeichne das korrespondierende Polytop $P$.
-		\item Finde grafisch eine optimale fraktionale und eine optimale ganzzahlige Lösung.
-		\item Addiert man die erste Nebenbedingung, multipliziert mit $p_1 = 1$, zu der zweiten Nebenbedingung, multipliziert mit $p_2 = 1$, und zu der dritten Nebenbedingung, multipliziert mit $p_3 = 1.5$, dann erhält man
+		\item\easy Zeichne das korrespondierende Polytop $P$.
+		\item\easy Finde grafisch eine optimale fraktionale und eine optimale ganzzahlige Lösung.
+		\item\medium Addiert man die erste Nebenbedingung, multipliziert mit $p_1 = 1$, zu der zweiten Nebenbedingung, multipliziert mit $p_2 = 1$, und zu der dritten Nebenbedingung, multipliziert mit $p_3 = 1.5$, dann erhält man
 		$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$
-		Finde nicht-negative Werte für $p_1, p_2, p_3$, sodass man, wenn man wie oben vorgeht, $2x_1 + 5x_2 \leq opt$ für jedes $x \in P$ erhält, wobei $opt$ einer der in \text{Aufgabenteil b)} bestimmten optimalen Werte ist.
+		Finde nicht-negative Werte für $p_1, p_2, p_3$, sodass man, wenn man wie oben vorgeht, $2x_1 + 5x_2 \leq \mathrm{opt}$ für jedes $x \in P$ erhält, wobei $\mathrm{opt}$ einer der in \text{Aufgabenteil b)} bestimmten optimalen Werte ist.
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Standardform]\
+\begin{exercise}[Standardform][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245947}{Moodle}\athome]\
 %	Optimization Lecture
 %	Consider the following \acs{LP}.
 %	\[
@@ -91,7 +71,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %		\item Convert the \acs{LP} into standard form by introducing slack variables $s_1,s_2, s_3$, one for each equation.
 %		\item List all the feasible bases for this \acs{LP}.   
 %	\end{enumerate}
-	Betrachte das folgende \acs{LP}.
+	Betrachte das folgende \acs{LP}, welches in kanonischer Form gegeben ist.
 	\[
 		\begin{array}{rrrllll}
 			\text{max}    & 3x_1 		    & + & 2 x_2	& +  & 4x_3  &\\
@@ -102,12 +82,13 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	\begin{enumerate}
-		\item Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Schlupfvariablen (\textit{slack variables}) $s_1,s_2,s_3$ einführst.
-		\item Zähle alle zulässigen (\emph{feasible}) Basen für das \acs{LP} auf.
+		\item\easy Überführe das \acs{LP} in seine Standardform, indem du für jede der Gleichungen Schlupfvariablen (\textit{slack variables}) $s_1,s_2,s_3$ einführst.
+		\item\medium Zähle alle zulässigen (\emph{feasible}) Basen für das \acs{LP} auf.
 	\end{enumerate}
 \end{exercise}
 
-\begin{exercise}[Single-Source Shortest Path \acs{LP}]
+\newpage
+\begin{exercise}[Single-Source Shortest Path \acs{LP}][\atschool]
 	% Erickson Extended Dance Remix - Chapter H, Exercise 7a - c
 %	The \emph{single-source shortest path problem} can be formulated as a \acs{LP}, with one variable $d_v$ for each vertex $v \neq s$ in the input graph:
 %
@@ -139,53 +120,17 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	
 	Beschreibe das Verhalten des Simplex-Algorithmus auf diesem linearen Programm in Bezug auf die Distanzen. Nimm an, dass die Kantengewichte $l_{u \rightarrow v}$ nicht-negativ sind und dass ein eindeutiger kürzester Pfad zwischen zwei beliebigen Knoten im Graphen existiert.
 	\begin{enumerate}
-		\item Was sind die Basen dieses linearen Programms? Was ist eine zulässige (\textit{feasible}) Basis? Was ist eine lokal optimale Basis?
-		\item Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
-		\item Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer zulässigen Basis zu einer anderen zulässigen Basis ausführt?
+		\item\medium Was sind die Basen dieses linearen Programms? Was ist eine zulässige (\textit{feasible}) Basis? Was ist eine lokal optimale Basis?
+		\item\hard Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
+		\item\medium Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer zulässigen Basis zu einer anderen zulässigen Basis ausführt?
 	\end{enumerate}
 	
 \end{exercise}
 
 \section*{Donnerstag}
 
-\begin{exercise}[Polyeder]
-	% Erickson Extended Dance Remix - Chapter I, Exercise 2a, Optimization Lecture
-%	Let $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ be a polyhedron, where $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^m$.
-%	\begin{enumerate}
-%		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
-%		\item Prove that $P$ is convex.
-%	\end{enumerate}
-	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyhedron, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
-	\begin{enumerate}
-		\item Gib ein Beispiel für ein nicht-leeres $P$, das für jeden Zielvektor $c$ unbeschränkt ist.
-		\item Beweise, dass $P$ konvex ist.
-	\end{enumerate}
-\end{exercise}
-
-\begin{exercise}[Lokal optimale und zulässige Basis]\
-	% Erickson Extended Dance Remix - Chapter I, Exercise 1a,b
-%	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
-%
-%	A basis is \emph{locally optimal} if its location $x$ is the optimal solution to the linear program with the same objective function and only the constraints in the basis. Geometrically, a basis is locally optimal if its location $x$ is the lowest point in the intersection of those $d$ halfspaces.
-%
-%	Fix a non-degenerate linear program in canonical form with d variables and n + d constraints.
-%	\begin{enumerate}
-%		\item Prove that every feasible basis has exactly d feasible neighbors.
-%		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
-%	\end{enumerate}
-	% Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
-	
-	% Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
-	Stelle ein nicht-degenerierendes lineares Programm in kanonischer Form mit $n$ Variablen und $m + n$ Constraints auf.
-	\begin{enumerate}
-		\item Argumentiere, dass jede zulässige Basis genau $n$ zulässige (\textit{feasible}) Nachbarn hat.
-		\item Argumentiere, dass jede lokal optimale Basis genau $m$ lokal optimale Nachbarn hat.
-		
-		\emph{Hinweis: Wandel das LP in eine äquivalente Form um.}
-	\end{enumerate}
-\end{exercise}
-
-\begin{exercise}[Initiale Basis für Simplex]
+\vspace{-0.5cm}
+\begin{exercise}[Initiale Basis für Simplex][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245948}{Moodle}\athome]
 	% Erickson Extended Dance Remix - Chapter I, Exercise 4a,b
 %	In this exercise, we develop another standard method for computing an initial feasible basis for the primal simplex algorithm. Suppose we are given a linear program (P) with $d$ variables and $n + d$ constraints as input:
 %
@@ -210,9 +155,9 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 %
 %	\begin{enumerate}
 %		\item Prove that $x_1 = x_2 = \dots = x_d = \lambda = 0$ is a feasible basis for (P).
-%		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1. 
+%		\item Prove that (P) is feasible, if and only if the optimal value for (P') is 1.
 %	\end{enumerate}
-	In dieser Aufgabe entwickeln wir eine Standardmethode, um eine initiale zulässige (\textit{feasible}) Basis für den Simplex-Algorithmus zu berechnen. Nimm an, wir erhalten ein lineares Programm (P) mit $m$ Variablen und $n + m$ Nebenbedingungen als Eingabe:
+	In dieser Aufgabe entwickeln wir einen Algorithmus, um eine initiale zulässige (\textit{feasible}) Basis zu berechnen, mit der der Simplex-Algorithmus anfangen kann. Nimm an, wir erhalten ein lineares Programm $(P)$ mit $m$ Variablen und $n + m$ Nebenbedingungen als Eingabe:
 	
 	\[
 		\begin{array}{rrl}
@@ -222,8 +167,7 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 		\end{array}
 	\]
 	
-	Um eine initiale zulässige Basis für (P) zu berechnen, lösen wir ein modifiziertes lineares Programm (P') für das eine neue Variable $\lambda$ und zwei neue Constraints $0 \leq \lambda \leq 1$ eingeführt und die Zielfunktion angepasst wird:
-	
+	Um eine initiale zulässige Basis für $(P)$ zu berechnen, lösen wir ein modifiziertes lineares Programm $(P')$, für das eine initiale zulässige Basis immer leicht zu finden ist. In $(P')$ gibt es eine neue Variable $\lambda$ und zwei neue Nebenbedingungen $0 \leq \lambda \leq 1$, und eine neue Zielfunktion:
 	\[
 		\begin{array}{rrl}
 			\text{max}   &        \lambda & 	   \\
@@ -234,16 +178,54 @@ Das Übungsblatt enthält alle empfohlenen Lernaktivitäten für die aktuelle Wo
 	\]
 	
 	\begin{enumerate}
-		\item Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ eine zulässige Basis für (P') ist.
-		\item Beweise, dass (P) genau dann eine Lösung hat, wenn für (P') der optimale Wert 1 ist.
+		\item\easy Beweise, dass $x_1 = x_2 = \dots = x_d = \lambda = 0$ immer eine zulässige Basis für $(P')$ ist.
+		\item\medium Beweise, dass $(P)$ genau dann eine Lösung hat, wenn für $(P')$ der optimale Wert $1$ ist.
+		\item\hard Beschreibe in 1-3 Sätzen, wie wir eine initiale zulässige Basis für $(P)$ berechnen können.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Polyeder][\atschool]
+	% Erickson Extended Dance Remix - Chapter I, Exercise 2a, Optimization Lecture
+%	Let $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ be a polyhedron, where $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^m$.
+%	\begin{enumerate}
+%		\item Give an example of a non-empty $P$ that is unbounded for every objective vector $c$.
+%		\item Prove that $P$ is convex.
+%	\end{enumerate}
+	Sei $P=\{ x\in \mathbb{R}^n : Ax\leq b \}$ ein Polyhedron, wobei $A\in \mathbb{R}^{m\times n}$ und $b\in \mathbb{R}^m$.
+	\begin{enumerate}
+		\item\easy Gib ein Beispiel für ein nicht-leeres $P$, das für jeden Zielvektor $c$ unbeschränkt ist.
+		\item\hard Beweise, dass $P$ konvex ist.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Lokal optimale und zulässige Basis][\atschool]\
+	% Erickson Extended Dance Remix - Chapter I, Exercise 1a,b
+%	Two bases are \emph{neighbors} if they have $d − 1$ constraints in common. Equivalently, in geometric terms, two vertices are neighbors if they lie on a line determined by some $d − 1$ constraint hyperplanes.
+%
+%	A basis is \emph{locally optimal} if its location $x$ is the optimal solution to the linear program with the same objective function and only the constraints in the basis. Geometrically, a basis is locally optimal if its location $x$ is the lowest point in the intersection of those $d$ halfspaces.
+%
+%	Fix a non-degenerate linear program in canonical form with d variables and n + d constraints.
+%	\begin{enumerate}
+%		\item Prove that every feasible basis has exactly d feasible neighbors.
+%		\item Prove that every locally optimal basis has exactly n locally optimal neighbors.
+%	\end{enumerate}
+	% Zwei Basen sind \emph{Nachbarn}, wenn sie $d-1$ Nebenbedingungen gemeinsam haben. Äquivalent dazu sind zwei Knoten geometrisch gesehen Nachbarn, wenn sie auf einer Linie liegen, die durch $d-1$ Hyperebenen aus Nebenbedingungen bestimmt wird.
+	%
+	% Eine Basis ist \emph{lokal optimal}, wenn ihre Lage $x$ die optimale Lösung zu einem linearen Programm ist, das dieselbe Zielfunktion und nur die Nebenbedingungen in der Basis hat. Geometrisch gesehen ist eine Basis lokal optimal, wenn ihre Lage $x$ der niedrigste Punkt im Schnittpunkt der $d$ Halbräume ist.
+	Gegeben sei ein nicht-degenerierendes lineares Programm in kanonischer Form mit $n$ Variablen und $m + n$ Nebenbedingungen auf.
+	\begin{enumerate}
+		\item\hard Argumentiere, dass jede zulässige Basis genau $n$ zulässige (\textit{feasible}) Nachbarn hat.
+		\item\hard Argumentiere, dass jede lokal optimale Basis genau $m$ lokal optimale Nachbarn hat.
+		
+		\emph{Hinweis: Wandle das LP in eine äquivalente Form um.}
 	\end{enumerate}
 \end{exercise}
 
 %\newpage
 
-\section*{Sternaufgabe}
+\section*{Weitere Aufgaben und Projekte}
 
-\begin{exercise}[\emoji{star}: Carath{\'e}odory's Theorem]
+\begin{exercise}[Carath{\'e}odory's Theorem][\hard]
 %	Let $A_1,\dots , A_n$ be a collection of $n$ vectors in $\R^m$.
 %	\begin{enumerate}
 %		\item Show that any element of
