@@ -1,0 +1,95 @@
+% LTeX: language=de_DE
+\documentclass{uebung_cs}
+\usepackage{algo223}
+\uebung{11}{}{}
+\blattname{Übungen zu Woche 11: Algorithmen für NP-schwere Probleme}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{cancel}
+\usepackage[smaller]{acronym}
+\newacro{LP}{Linear Program}
+\newacro{ILP}{Integer Linear Program}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\section*{Dienstag: Approximationsalgorithmen}
+
+\begin{exercise}[Gieriges Vertex-Cover][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245924}{Moodle}\athome]\
+	% Erickson Extended Dance Remix - Chapter J, Exercise 2a,b
+	\begin{enumerate}
+		\item\easy Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{GreedyVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
+		\item\hard Beschreibe für alle ganzzahligen Werte von $n$ einen Graphen mit höchstens $\poly(n)$ Knoten, für den \textsc{GreedyVertexCover} eine Knotenüberdeckung der Größe $\mathrm{OPT} \cdot \Omega(\log n)$ ausgibt.
+		\item[] \textit{Hinweis: Uns ist eine Konstruktion mit $\O(n \log n)$ Knoten bekannt.}
+	\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[Dummes Vertex-Cover][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245924}{Moodle}\athome]\
+	% Erickson Extended Dance Remix - Chapter J, Exercise 3a,b
+	\begin{enumerate}
+		\item\easy Finde den kleinsten Graphen (minimale Anzahl an Kanten), für den \textsc{DumbVertexCover} \emph{nicht} die kleinste Knotenüberdeckung ausgibt.
+		\item\medium Beschreibe eine unendlich große Familie von Graphen, für welche \textsc{DumbVertexCover} eine Knotenüberdeckung der Größe $2 \cdot \mathrm{OPT}$ ausgibt.
+		      (Hierbei ist $\mathrm{OPT}$ die Größe der kleinsten Knotenüberdeckung.)
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Tiefengesuchtes Vertex-Cover][\atschool]
+	% Erickson Extended Dance Remix - Chapter J, Exercise 5a,b,c
+	Betrachte folgenden heuristischen Algorithmus, der in einem zusammenhängenden Graphen $G$ eine Knotenüberdeckung berechnet:
+	\begin{enumerate}[1.,leftmargin=5em]
+		\item
+		      Berechne einen Tiefensuchbaum~$T$ in~$G$, dessen Wurzel ein beliebiger Knoten ist.
+		\item
+		      Gebe die Menge aller Knoten aus, die keine Blätter in~$T$ sind. (Also die Wurzel und alle inneren Knoten von $T$.)
+	\end{enumerate}
+	\begin{enumerate}
+		\item\easy Warum findet diese Heuristik eine Knotenüberdeckung in~$G$?
+		\item\medium Warum berechnet sie eine $2$-Approximation zur minimalen Knotenüberdeckung von $G$?
+		\item\medium Beschreibe eine unendlich große Familie von Graphen, für welche diese Heuristik eine Knotenüberdeckung der Größe $2 \cdot \mathrm{OPT}$ ausgibt.
+		      (Hierbei ist $\mathrm{OPT}$ die Größe der kleinsten Knotenüberdeckung.)
+	\end{enumerate}
+\end{exercise}
+
+\newpage
+\section*{Donnerstag: Beschränkte Suchbäume}
+
+\begin{exercise}[Beschränkte Suchbäume für Hitting Set][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245925}{Moodle}\athome\hard]\
+	% KT - Exercise 10.1
+	Sei $U = \{1,\dots,n\}$ ein Universum mit $n$ Elementen.
+	Seien $B_1,B_2,\dots,B_m$ verschiedene Teilmengen von~$U$.
+	Eine Menge $H \subseteq A$ heißt \emph{hitting set} für die Kollektion $B_1,B_2,\dots,B_m$, wenn $H$ mindestens ein Element von jeder Menge $B_i$ enthält. Mit anderen Worten: Für alle $i \in \{1,\dots,m\}$ gilt $H \cap B_i \neq \emptyset$.
+
+	Betrachte das \textsc{HittingSet}-Problem:
+	\begin{quote}
+		\textsc{HittingSet}\\
+		\emph{Eingabe:} Mengen $B_1,\dots,B_m\subseteq U$ und Zahl $k\in \mathbb N$.\\
+		\emph{Frage:} Hat die Kollektion $B_1,\dots,B_m$ ein \textit{hitting set} der Größe höchstens~$k$?
+	\end{quote}
+
+	Sei $b$ die maximale Größe der Eingabemengen, also $b=\max_i|B_i|$.
+	Überlege dir einen \textit{bounded search tree} Algorithmus, der das \textsc{HittingSet}-Problem in einer Laufzeit von $f(k,b) \cdot \poly(n,m)$ löst, wobei $\poly(n,m)$ ein Polynom in $n$ und $m$ ist und $f(k,b)$ eine beliebige Funktion ist, die nur von $b$ und $k$ abhängt.
+	Welche Funktion~$f$ und welches Polynom~$\poly$ hat die Laufzeit deines Algorithmus?
+
+	\textit{Hinweis: Das Knotenüberdeckungsprolem \textsc{\upshape VertexCover} ist der Spezialfall $|B_1|=\dots=|B_m|=2$.}
+\end{exercise}
+
+\begin{exercise}[Beschränkte Suchbäume für Clique][\atschool]
+	%	Eigenkreation
+	Wir haben in Woche $7$ bereits das Entscheidungsproblem \textsc{Clique} kennengelernt:
+	\begin{quote}
+		\textsc{Clique}\\
+		\emph{Eingabe:} Ein Graph $G$ mit $n$ Knoten und eine Zahl $k\in\mathbb N$.\\
+		\emph{Frage:} Enthält $G$ eine Clique (d.h. einen vollständigen Teilgraphen) mit $k$ Knoten?
+	\end{quote}
+	\begin{enumerate}
+		\item\hard Sei $\Delta$ der Maximalgrad von~$G$.
+		      Überlege dir einen \textbf{rekursiven} \textit{bounded search tree} Algorithmus, der das \textsc{Clique}-Problem in einer Laufzeit von $f(k,\Delta) \cdot \poly(n)$ löst, wobei $\poly(n)$ ein Polynom in $n$ ist und $f(k,\Delta)$ eine beliebige Funktion ist, die nur von $k$ und $\Delta$ abhängt.
+		      Beschreibe deinen Algorithmus \textbf{in Pseudocode}.
+		\item\medium Beweise, dass dein Algorithmus korrekt ist.
+		\item\hard Gib die Funktion $f$ konkret an und beweise, dass dein Algorithmus die gegebene Laufzeitschranke einhält.
+		\item\medium Wir wissen aus Woche $7$, dass \textsc{Clique} \NP-schwer ist. Impliziert dein Algorithmus aus Aufgabenteil a) nun $\P = \NP$? Erkläre deine Antwort in 2--3 Sätzen.
+	\end{enumerate}
+\end{exercise}
+
+\end{document}
