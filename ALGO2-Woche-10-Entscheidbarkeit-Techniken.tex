@@ -1,0 +1,248 @@
+% LTeX: language=de
+\documentclass[a4paper,11pt,oneside,ngerman]{scrartcl}
+% For best results, it is recommended to use lualatex.
+% You don't need to edit the preamble until the fat comment below.
+
+% Multilanguage support
+\usepackage[english,main=ngerman,shorthands=off]{babel}
+
+% Set serif font:
+\usepackage[lining,semibold,scaled=1.05]{ebgaramond}
+
+% Set monospace font:
+\usepackage[scale=0.85]{sourcecodepro}
+
+% if amsthm is needed, must be loaded before newtxmath
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Set math font:
+\usepackage[ebgaramond,vvarbb,subscriptcorrection]{newtxmath}
+
+% load after all math to give access to bold math using \bm{..} command:
+\usepackage{bm}
+
+% Standard packages
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage[autostyle=true]{csquotes}
+
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize,1]{label=$\circ$}
+
+\definecolor{GoetheBlue}{rgb}{0,0.38,0.56}
+\usepackage[%
+  colorlinks = true,
+  citecolor  = GoetheBlue,
+  linkcolor  = GoetheBlue,
+  urlcolor   = GoetheBlue,
+  unicode,
+  ]{hyperref}
+  \usepackage[nameinlink,capitalize]{cleveref}
+
+% Nice typesetting of source code
+\usepackage{listings}
+\lstset{%
+  showstringspaces=false,
+  mathescape=true,
+  inputencoding=utf8,
+  numbers=left,
+  xleftmargin=\parindent,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{black!60},
+  stringstyle=\color{orange},
+  tabsize=2%
+}
+
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{title}{\let\huge\Large}
+\addtokomafont{section}{\large}
+\addtokomafont{subsection}{\normalsize}
+\addtokomafont{subsubsection}{\normalfont\itshape}
+\addtokomafont{author}{\normalsize}
+\addtokomafont{date}{\normalsize}
+\makeatletter
+\renewcommand*{\@maketitle}{%
+{\usekomafont{title}{\huge \@title \par}}%
+\vskip 0.3em%
+{\renewcommand\and{\par}\usekomafont{author}{\@author\par}}%
+\vskip 0.3em%
+{\usekomafont{date}{\@date\par}}%
+\rule{\textwidth}{0.4pt}
+}%
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EDIT BELOW THIS LINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If the document is mainly written in English,
+% then modify the following line:
+\AtBeginDocument{\selectlanguage{ngerman}}
+
+% Set the title of this document:
+\title{Beweistechniken: Entscheidbarkeit und Unentscheidbarkeit}
+
+% Fill in all authors:
+\author{%
+  Holger Dell%
+}
+
+% Date of the document:
+\date{\today}
+
+% Add any additional packages that you need:
+% \usepackage{tikz}
+
+% Add any references you cite.
+% You can get most BibTex records from https://dblp.org.
+% Use the format "condensed".
+% \begin{filecontents}[overwrite]{\jobname.bib}
+% @inproceedings{DBLP:conf/coco/Karp72,
+%   author    = {Richard M. Karp},
+%   title     = {Reducibility Among Combinatorial Problems},
+%   booktitle = {Complexity of Computer Computations},
+%   series    = {The {IBM} Research Symposia Series},
+%   pages     = {85--103},
+%   publisher = {Plenum Press, New York},
+%   year      = {1972}
+% }
+% \end{filecontents}
+
+\begin{document}
+\maketitle
+
+\section*{Übliche Klausuraufgabe}
+Die meisten Klausuraufgaben zu Entscheidbarkeit sehen so oder ähnlich aus:
+
+\begin{quote}
+Sei $L$ die folgende Sprache über dem Alphabet $\Sigma$:
+\[
+    L = \Big\{x\in\Sigma^\ast \;\big|\; \text{irgendeine Bedingung an $x$}\Big\}.
+\]
+Ist $L$ entscheidbar oder unentscheidbar? Beweise deine Behauptung.
+\end{quote}
+Natürlich wird statt \enquote{irgendeine Bedingung an $x$} eine konkrete Bedingung angegeben. Auch kann die Eingabe $x$ anders formatiert sein, zum Beispiel kann die Eingabe auch $\langle M \rangle$ für eine Turingmaschine $M$, oder $\langle M, w\rangle$ für eine Turingmaschine $M$ und ein Wort $w$ sein.
+
+\section{Entscheidbarkeit}
+Um zu beweisen, dass die Sprache entscheidbar ist, muss ein deterministischer Algorithmus angegeben werden, der die Sprache entscheidet.
+Zum Beispiel:
+\[
+    L_1 = \Big\{x\in\{0,1\}^\ast \;\big|\; \text{$x$ ist die Binärkodierung einer geraden Zahl}\,\Big\}
+\]
+Die Sprache $L_1$ ist entscheidbar, da folgender Algorithmus die Sprache entscheidet:
+\begin{quote}
+\textbf{Eingabe:} Wort $x\in\{0,1\}^\ast$\\
+\textbf{Algorithmus:} Laufe den Lesekopf zum rechtesten Bit der Eingabe $x$. Falls es eine $0$ ist, gib \enquote{Ja} aus. Falls es eine $1$ ist, gib \enquote{Nein} aus.
+\end{quote}
+
+
+\section{Unentscheidbarkeit}
+
+Falls die Sprache unentscheidbar ist, so gibt es mehrere mögliche Ansätze, dies zu beweisen: Satz von Rice, Reduktion, Widerspruch.
+
+\subsection{Beweis durch Satz von Rice}
+
+Man kann den Satz von Rice nicht immer anwenden. Zum Beispiel kann man den Satz von Rice nicht oder nicht direkt anwenden, wenn die Instanzen nicht das Format $\langle M\rangle$ haben. Man kann den Satz von Rice auch nicht auf die Sprache \textsc{SelfHalt} anwenden, da die Eigenschaft \enquote{Maschine $M$ hält auf Eingabe $\langle M\rangle$} eine selbstreferentielle Eigenschaft der Maschine~$M$ ist und sich nicht nur auf die von $M$ berechnete Funktion bezieht.
+
+Falls der Satz von Rice angewendet werden kann, dann ist diese Beweismethode in den allermeisten Fällen der einfachste Ansatz, da man relativ mechanisch vorgehen kann, sofern man die Methode verinnerlicht hat. Zum Beispiel:
+\[
+    L_1 = \Big\{\langle M\rangle\;\big|\; \text{$M$ ist eine Turingmaschine, die genau eine Eingabe akzeptiert}\,\Big\}
+\]
+$L_1$ ist ein Problem, bei dem die Probleminstanzen von der Form $\langle M\rangle$ sind, und das sich nicht auf die syntaktischen Eigenschaften von~$M$ bezieht, sondern \underline{nur} auf die Funktion, die von~$M$ berechnet wird.
+Daher kann der Satz von Rice angewendet werden.
+
+\begin{enumerate}
+    \item \textbf{(Ganz wichtig!) Genaue Definition von $S$}: 
+Wir müssen die Menge $S$ definieren, die alle partiellen Funktionen enthält, die von Maschinen in $L_1$ berechnet wird.
+In unserem Fall definieren wir $S$ als die Menge aller berechenbaren Funktionen \[f\colon\Sigma^\ast\to\{\texttt{accept},\texttt{reject},\texttt{undefined}\}\,,\] die auf genau einer Eingabe $\texttt{accept}$ ausgeben:
+\[
+    S = \Big\{
+        f\colon\Sigma^\ast\to\{\texttt{accept},\texttt{reject},\texttt{undefined}\}
+        \;\Big|\;
+        \substack{\text{$f$ ist berechenbar und}\\\text{$f(w)=\texttt{accept}$ für genau ein $w\in\Sigma^\ast$}}
+        \Big\}
+    \]
+
+
+\item \textbf{Korrektheit der Definition von $S$}:
+Der Satz von Rice macht nur Aussagen über die Sprache $C(S)$. Daher müssen wir zeigen, dass $L_2=C(S)$ gilt. Hierzu zeigen wir beide Inklusionen $L_2\subseteq C(S)$ und $L_2\supseteq C(S)$:
+\begin{itemize}
+    \item Sei $\langle M \rangle\in L_2$. Dann ist $M$ eine Turingmaschine, die genau eine Eingabe akzeptiert. Daher berechnet $M$ eine partielle Funktion $f\colon\Sigma^\ast\to\{\texttt{accept},\texttt{reject},\texttt{undefined}\}$, die auf genau einer Eingabe $\texttt{accept}$ ausgibt. Daher gilt $f\in S$ und somit $\langle M \rangle\in C(S)$.
+    \item Sei umgekehrt $f\in S$. Dann ist $f$ eine partielle Funktion, die von einer Turingmaschine $M$ berechnet wird, die genau eine Eingabe akzeptiert. Daher gilt $\langle M \rangle\in L_2$.
+\end{itemize}
+
+\item \textbf{(Einfach, aber wichtig!) Beweis, dass $S$ nicht trivial ist}:
+Wir müssen beweisen, dass $S$ nicht die Menge aller berechenbaren partiellen Funktionen ist und auch nicht die leere Menge.
+Wir definieren hierzu zwei partielle Funktionen $f_1$ und $f_2$ wie folgt:
+\begin{itemize}
+    \item $f_1$ ist die partielle Funktion, die genau eine Eingabe akzeptiert, nämlich die Eingabe $0$. Also $f_1(0)=1$ und $f_1(w)$ ist undefiniert falls $w\in\Sigma^\ast$ mit $w\neq 0$. Diese Funktion wird von einer Turingmaschine berechnet, die Eingabe $0$ akzeptiert und alle anderen Eingaben verwirft. Daher gilt $f_1\in S$.
+    \item $f_2$ ist die partielle Funktion $\Omega$, die überall undefiniert ist. Diese Funktion wird von der Turingmaschine berechnet, die auf keiner Eingabe hält. Daher ist $f_2$ eine berechenbare partielle Funktion mit $f_2\notin S$.
+\end{itemize}
+Wir haben gezeigt, dass $L_2=C(S)$ für eine nicht-triviale Menge~$S$ von berechenbaren partiellen Funktionen gilt. Laut Satz von Rice ist $L_2$ dann unentscheidbar.
+\end{enumerate}
+
+\subsection{Beweis durch Reduktion}
+
+Falls der Satz von Rice nicht anwendbar ist, könnte eine Reduktion funktionieren. Hierzu suchen wir uns eine Sprache, die wir bereits als unentscheidbar kennen, und konstruieren eine Reduktion von dieser Sprache auf die Sprache, von der wir zeigen wollen, dass sie unentscheidbar ist. Zum Beispiel:
+\[
+    \textsc{Halt} = \Big\{\langle M,w\rangle\;\big|\; \text{$M$ ist eine Turingmaschine, die auf Eingabe $w$ hält}\,\Big\}
+\]
+Hierzu eignet sich als Reduktionspartner die Sprache \textsc{Accept}, von der wir bereits gezeigt haben, dass sie unentscheidbar ist:
+\[
+    \textsc{Accept} = \Big\{\langle M,w\rangle\;\big|\; \text{$M$ ist eine Turingmaschine, die $w$ akzeptiert}\,\Big\}\,.
+\]
+
+\paragraph*{(Ganz wichtig!) Präzise Beschreibung der Reduktion, z.B. als Algorithmus.}
+Wir konstruieren eine Reduktion $R$ von \textsc{Accept} auf \textsc{Halt}.
+$R$ erhält als Eingabe eine Instanz $\langle M,w\rangle$ für das Problem \textsc{Accept} und geht wie folgt vor:
+\begin{enumerate}
+    \item $R$ berechnet eine Instanz $\langle M',w'\rangle$ für das Problem \textsc{Halt} wie folgt:
+    \item $R$ setzt $w'=w$ und konstruiert eine Turingmaschine $M'$, die genau wie $M$ arbeitet, jedoch wie folgt verändert wird: immer wenn $M$ verwerfen würde, läuft $M'$ stattdessen in eine Endlosschleife.
+    \item $R$ gibt $\langle M',w\rangle$ aus.
+\end{enumerate}
+
+\paragraph*{(Wichtig!) Korektheitsbeweis für die Reduktion.}
+Wir müssen nun zeigen, dass $R$ eine Reduktion von \textsc{Accept} auf \textsc{Halt} ist. Hierzu zeigen wir, dass $R$ korrekt ist:
+\begin{itemize}
+    \item Sei $\langle M,w\rangle\in\textsc{Accept}$. Dann akzeptiert $M$ die Eingabe $w$. Daher akzeptiert $M'$ die Eingabe $w$ und hält. Also gilt $\langle M',w\rangle\in\textsc{Halt}$.
+    \item Sei umgekehrt $\langle M,w\rangle\notin\textsc{Accept}$. Dann verwirft $M$ die Eingabe $w$ oder hält nicht auf Eingabe~$w$. Falls $M$ die Eingabe $w$ verwirft, läuft $M'$ auf Eingabe $w$ in eine Endlosschleife. In beiden Fällen gilt also $\langle M',w\rangle\notin\textsc{Halt}$.
+\end{itemize}
+Wir haben gezeigt, dass $R$ eine Reduktion von \textsc{Accept} auf \textsc{Halt} ist. Da \textsc{Accept} unentscheidbar ist, muss auch \textsc{Halt} unentscheidbar sein.
+
+\subsection{Beweis durch Widerspruch}
+
+Der vermutlich schwierigste Ansatz ist es, den Widerspruchsbeweis für die Unentscheidbarkeit des speziellen Halteproblems \textsc{SelfHalt} zu imitieren.
+Das müssen wir immer dann tun, wenn der Satz von Rice nicht anwendbar ist und wir auch keine Reduktion finden können.
+Dazu nehmen wir an, dass die Sprache entscheidbar ist, und führen dies zu einem Widerspruch. Zum Beispiel:
+\[
+    L_3 = \Big\{\langle M\rangle\;\big|\; \text{$\langle M\rangle$ ist die Kodierung einer Turingmaschine, die auf Eingabe $\langle M\rangle\langle M\rangle$ hält}\,\Big\}
+\]
+Um zu beweisen, dass $L_2$ unentscheidbar ist, nehmen wir an, dass $L_2$ entscheidbar ist, und führen diese Annahme zum Widerspruch.
+
+\begin{enumerate}
+    \item \textbf{Annahme}: Wir nehmen an, dass \( L_2 \) entscheidbar ist. Das bedeutet, es gibt eine Turingmaschine \( A \), die für jede Eingabe entscheiden kann, ob sie zu \( L_2 \) gehört oder nicht.
+    
+    \item \textbf{Konstruktion von \( B \)}: Wir konstruieren eine neue Turingmaschine \( B \). Diese Turingmaschine \( B \) nimmt als Eingabe ein Wort $x\in\Sigma^\ast$ und arbeitet wie folgt:
+    \begin{itemize}
+        \item \(B\) prüft zunächst, ob \(x\) geschrieben werden kann als \(x=yy\) für ein Wort \(y\in\Sigma^\ast\). Falls das nicht der Fall ist, dann hält \(B\) in einem beliebigen Zustand.
+        \item Falls \(x=yy\) gilt, dann wendet \( B \) die Maschine \( A \) auf \( y \) an.
+        \item Wenn \( A \) entscheidet, dass \( y \in L_2 \), dann geht \( B \) in eine Endlosschleife und hält nicht.
+        \item Wenn \( A \) entscheidet, dass \( y \notin L_2 \), dann hält \( B \).
+    \end{itemize}
+    
+    \item \textbf{Widerspruch}: Nun beweisen wir, dass weder \( \langle B \rangle\in L_2 \) noch \( \langle B \rangle\not\in L_2 \) gilt, was absurd ist und also zu einem Widerspruch zur Annahme führt.
+    \begin{itemize}
+        \item Wenn \( \langle B \rangle \in L_2 \), dann hält \( B \) gemäß Definition von \(L_2\) auf der Eingabe \( \langle B \rangle\langle B \rangle \). Aber laut der Definition von \( B \) würde \(B\) bei Eingabe \(\langle B \rangle\langle B \rangle\) zunächst \(A\) auf Eingabe \(\langle B \rangle\) aufrufen; \(A\) entscheidet, dass \(\langle B \rangle\in L_2\) gilt, und dann geht \(B\) in eine Endlosschleife, was ein Widerspruch ist. Also kann \( \langle B \rangle \in L_2 \) nicht gelten.
+        \item Wenn umgekehrt \( \langle B \rangle \notin L_2 \), dann hält \( B \) gemäß Definition von \(L_2\) auf der Eingabe \( \langle B \rangle\langle B \rangle \) nicht. Aber laut der Definition von \( B \) würde \(B\) bei Eingabe \(\langle B \rangle\langle B \rangle\) zunächst \(A\) auf Eingabe \(\langle B \rangle\) aufrufen; \(A\) entscheidet, dass \(\langle B \rangle\not\in L_2\) gilt, und dann \(B\) würde halten, was ein Widerspruch ist. Also kann \( \langle B \rangle \not\in L_2 \) nicht gelten.
+    \end{itemize}
+    
+    \item \textbf{Schlussfolgerung}: In beiden Fällen führt die Annahme, dass \( L_2 \) entscheidbar ist, zu einem Widerspruch. Daher ist \( L_2 \) unentscheidbar.
+\end{enumerate}
+
+Dieser Beweis nutzt die Selbstreferenz und die Idee des Widerspruchs, um zu zeigen, dass es keine Turingmaschine geben kann, die konsistent entscheiden kann, ob eine andere Turingmaschine auf einer gegebenen Eingabe hält oder nicht.
+
+\end{document}

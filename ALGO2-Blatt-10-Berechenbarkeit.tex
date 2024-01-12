@@ -47,12 +47,13 @@
 \section*{Donnerstag}
 
 \begin{exercise}[Entscheidbarkeit II][\href{https://moodle.studiumdigitale.uni-frankfurt.de/moodle/mod/assign/view.php?id=245311}{Moodle}\athome\medium]\
+	Wir beschränken uns im Folgenden auf deterministische Turingmaschinen.
 	% ALGO2 WiSe 20/21 - Blatt 9, Aufgabe 1b und 2
 	\begin{enumerate}
-		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M,w\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und }M\text{ durchläuft Zustand 1 für Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
+		\item Zeige über eine Reduktion ausgehend von der Sprache \textsc{Accept}, dass die Sprache $$L_1 = \left\{\langle M,w\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine Turingmaschine}\\\text{und }M\text{ erreicht Zustand 1 für Eingabe }w\end{array}\right\}$$ nicht entscheidbar ist.
 		
 		\item Zeige unter Anwendung des Satzes von Rice, dass die folgende Sprache nicht entscheidbar ist. Begründe die Nicht-Trivialität der Menge $S$.
- $$L_2 = \left\{\langle M\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine deterministische Turingmaschine}\\\text{und } |L(M)| \leq 2\end{array}\right\}$$
+ $$L_2 = \left\{\langle M\rangle \mathrel{\Bigg|} \begin{array}{l}M\text{ ist eine Turingmaschine}\\\text{und } |L(M)| \leq 2\end{array}\right\}$$
 			
 		Hierbei ist $L(M)$ die von der deterministischen Turingmaschine $M$ akzeptierte Sprache.
 	\end{enumerate}
