@@ -245,4 +245,16 @@ Um zu beweisen, dass $L_2$ unentscheidbar ist, nehmen wir an, dass $L_2$ entsche
 
 Dieser Beweis nutzt die Selbstreferenz und die Idee des Widerspruchs, um zu zeigen, dass es keine Turingmaschine geben kann, die konsistent entscheiden kann, ob eine andere Turingmaschine auf einer gegebenen Eingabe hält oder nicht.
 
+Beachte, dass man auch per Reduktion zeigen kann, dass $L_3$ unentscheidbar ist.
+Beispielsweise kann mit folgender Reduktionsfunktion von \textsc{SelfHalt} auf $L_2$ reduziert werden:
+Bei Eingabe $\langle M \rangle$, konstruiere eine neue Maschine $M'$, die ihre Eingabe ignoriert und die Maschine $M$ auf Eingabe $\langle M \rangle$ ausführt.
+Diese Reduktionsfunktion ist berechenbar und es gilt:
+\begin{align*}
+  \langle M \rangle \in \textsc{SelfHalt} &\iff M \text{ hält auf Eingabe } \langle M \rangle \\
+  &\iff M' \text{ hält auf allen Eingaben} \\
+  &\iff M' \text{ hält auf Eingabe } \langle M' \rangle \langle M' \rangle \\
+  &\iff M' \in L_3.
+\end{align*}
+
+
 \end{document}
