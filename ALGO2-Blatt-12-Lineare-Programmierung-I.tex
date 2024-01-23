@@ -47,7 +47,7 @@
 	\] 
 	
 	\begin{enumerate}
-		\item\easy Zeichne das korrespondierende Polytop $P$.
+		\item\easy Zeichne das korrespondierende Polytop $P$ in der Ebene.
 		\item\easy Finde grafisch eine optimale fraktionale und eine optimale ganzzahlige Lösung.
 		\item\medium Addiert man die erste Nebenbedingung, multipliziert mit $p_1 = 1$, zu der zweiten Nebenbedingung, multipliziert mit $p_2 = 1$, und zu der dritten Nebenbedingung, multipliziert mit $p_3 = 1.5$, dann erhält man
 		$$2x_1+5x_2\leq 1\cdot 8+ 1\cdot 4+1.5\cdot 7= 22.5.$$
@@ -107,20 +107,19 @@
 %		\item Show that in the optimal basis, every variable $d_v$ is equal to the shortest-path distance from $s$ to $v$.
 %		\item Describe the primal simplex algorithm for the shortest-path linear program directly in terms of vertex distances. In particular, what does it mean to pivot from a feasible basis to a neighboring feasible basis, and how can we execute such a pivot quickly?
 %	\end{enumerate}
-	Das \emph{Single-Source Shortest Path Problem} kann, mit einer Variable $d_v$ für jeden Knoten $v \neq s$ im Input-Graphen, als \acs{LP} formuliert werden:
-	
+	Das \emph{Single-Source Shortest Path Problem} kann als \acs{LP} formuliert werden, welches für jeden Knoten $v\in V(G)$ im Eingabegraphen~$G$ mit Quelle~$s\in V(G)$ eine Variable $d_v$ hat:
 	\[
 		\begin{array}{rrl}
 			\text{max}   &  \sum_{v} d_v & 	   \\
-			\text{s.t.}  &		   d_v & \leq l_{s \rightarrow v} \\
-						 &	 d_v - d_u & \leq l_{u \rightarrow v} \\
-						 &	       d_v & \geq 0
+			\text{s.t.}  &		   d_s & \leq 0\\
+						 &	 d_v - d_u & \leq l_{u \rightarrow v} \quad\text{für alle $uv\in E(G)$}\\
+						 &	       d_v & \geq 0\quad\text{für alle $v\in V(G)$}
 		\end{array}
 	\]
 	
-	Beschreibe das Verhalten des Simplex-Algorithmus auf diesem linearen Programm in Bezug auf die Distanzen. Nimm an, dass die Kantengewichte $l_{u \rightarrow v}$ nicht-negativ sind und dass ein eindeutiger kürzester Pfad zwischen zwei beliebigen Knoten im Graphen existiert.
+	Beschreibe das Verhalten des Simplex-Algorithmus auf diesem linearen Programm in Bezug auf die Distanzen. Nimm an, dass die Kantengewichte $l_{u \rightarrow v}$ nicht-negativ sind und dass zwischen allen Paaren von Knoten jeweils ein eindeutiger kürzester Weg existiert.
 	\begin{enumerate}
-		\item\medium Was sind die Basen dieses linearen Programms? Was ist eine zulässige (\textit{feasible}) Basis? Was ist eine lokal optimale Basis?
+		\item\medium Was ist eine Basis für dieses lineare Programm? Was ist eine zulässige Basis? Was ist eine lokal optimale Basis?
 		\item\hard Zeige, dass in einer optimalen Basis jede Variable $d_v$ den gleichen Wert hat, wie die kürzeste-Pfad-Distanz von $s$ zu $v$.
 		\item\medium Beschreibe den Simplex-Algorithmus für das Kürzeste-Wege lineare Programm direkt in Bezug auf die Knotendistanzen. Was bedeutet es insbesondere, wenn man eine Pivot-Operation von einer zulässigen Basis zu einer anderen zulässigen Basis ausführt?
 	\end{enumerate}
